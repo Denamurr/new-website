@@ -39,16 +39,14 @@ export default function Blog() {
               <a 
                 key={post.title}
                 href={post.href}
-                className={`flex justify-between items-center py-3 hover:bg-gray-50 -mx-3 px-3 rounded-lg transition-colors ${
+                className={`flex items-center py-3 hover:bg-gray-50 -mx-3 px-3 rounded-lg transition-colors ${
                   index !== posts.length - 1 ? 'border-b border-gray-100' : ''
                 }`}
               >
                 <span className="text-gray-900 hover:text-blue-600">
                   {post.title}
                 </span>
-                <span className="text-sm text-gray-400 ml-4 flex-shrink-0">
-                  {post.date}
-                </span>
+              
               </a>
             ))}
           </div>
