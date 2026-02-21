@@ -1,7 +1,13 @@
 export default function Projects() {
   const projects = [
-    { 
-      title: 'SQL + Airbnb Data Analysis', 
+    {
+      title: 'Wordle Game',
+      description: 'Play the classic word game right in your browser',
+      tech: 'React, Next.js',
+      href: '/wordle'
+    },
+    {
+      title: 'SQL + Airbnb Data Analysis',
       description: 'Analyzing Airbnb listing data with SQL queries',
       tech: 'SQL, Python',
       href: '#'
