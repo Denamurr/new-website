@@ -1,7 +1,7 @@
 import Navigation from '../components/Navigation'
 import Hero from '../components/Hero'
 import Tools from '../components/Tools'
-import Blog from '../components/Blog'
+import LabDashboard from '../components/LabDashboard'
 import Projects from '../components/Projects'
 import Footer from '../components/Footer'
 
@@ -11,7 +11,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <Tools />
-      <Blog />
+      <LabDashboard />
       <Projects />
       <Footer />
     </main>
