@@ -1,40 +1,24 @@
 const experiments = [
   {
-    name: 'AI-Augmented Post Drafts',
+    name: 'AI-Augmented Drafting',
     description:
-      'Using GPT-4 to generate structured first drafts, then editing for accuracy, voice, and original analysis.',
+      'Selected posts begin with a structured AI draft before manual refinement. AI handles scaffolding; I refine thesis and reasoning.',
     status: 'Live',
     since: 'Aug 2024',
     detail: '9 posts produced',
   },
   {
-    name: 'Theme Auto-Tagger',
+    name: 'Theme Extraction Engine',
     description:
-      'Extracting strategic themes from post content using embeddings + a small classifier. Goal: auto-populate theme metadata on publish.',
+      'Uses embeddings to auto-detect recurring strategic themes across posts. Powers the Strategic Theme Map.',
     status: 'In Development',
     since: 'Nov 2024',
     detail: 'Prototype in testing',
   },
   {
-    name: 'Prediction Accuracy Tracker',
+    name: 'Cross-Post Synthesis',
     description:
-      'Scoring historical predictions against actual outcomes to build a calibration record and surface forecasting biases.',
-    status: 'In Development',
-    since: 'Jan 2025',
-    detail: '3 predictions queued',
-  },
-  {
-    name: 'Competitive Signal Monitor',
-    description:
-      'Automated monitoring of earnings calls, SEC filings, and industry RSS feeds for platform strategy signals.',
-    status: 'Planned',
-    since: null,
-    detail: null,
-  },
-  {
-    name: 'Trend Forecasting Model',
-    description:
-      'Fine-tuned model to identify emerging strategic themes before they reach mainstream press coverage.',
+      'Clusters related analyses to surface pattern overlap. Evolving from a collection of posts into a connected intelligence system.',
     status: 'Planned',
     since: null,
     detail: null,

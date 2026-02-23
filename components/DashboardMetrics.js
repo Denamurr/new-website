@@ -33,7 +33,7 @@ const metrics = [
   },
   {
     label: 'Last Deployment',
-    value: 'Feb 2026',
+    value: 'Feb 23, 2026',
     subtext: 'site updated',
     accentClass: 'bg-gray-400',
     valueClass: 'text-gray-700',
