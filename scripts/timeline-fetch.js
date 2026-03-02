@@ -17,10 +17,9 @@ const DAYS_BACK = 7;
 const RSS_FEEDS = [
   { url: 'https://huggingface.co/blog/feed.xml',          source: 'Hugging Face' },
   { url: 'https://openai.com/blog/rss.xml',               source: 'OpenAI' },
-  { url: 'https://www.anthropic.com/rss.xml',             source: 'Anthropic' },
-  { url: 'https://blog.research.google/feeds/posts/default?alt=rss', source: 'Google Research' },
-  { url: 'https://ai.meta.com/blog/rss/',                 source: 'Meta AI' },
-  { url: 'https://mistral.ai/news/rss/',                  source: 'Mistral AI' },
+  { url: 'https://deepmind.google/blog/rss.xml',          source: 'Google DeepMind' },
+  { url: 'https://blog.google/technology/ai/rss/',        source: 'Google AI' },
+  { url: 'https://venturebeat.com/category/ai/feed/',     source: 'VentureBeat' },
 ];
 
 // ── Keywords used to filter HN stories ───────────────────────────────────────
@@ -150,7 +149,7 @@ async function fetchArxiv(category) {
   const feed = parser.parse(xml);
   const items = [].concat(feed?.rss?.channel?.item || []);
 
-  return items.slice(0, 30).map(item => {
+  return items.slice(0, 5).map(item => {
     const rawTitle = typeof item.title === 'string' ? item.title : String(item.title ?? '');
     const rawDesc  = typeof item.description === 'string' ? item.description : String(item.description ?? '');
     const link     = typeof item.link === 'string' ? item.link.trim() : '';

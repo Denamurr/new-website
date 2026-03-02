@@ -2,12 +2,45 @@
 
 import { useState, useMemo } from 'react'
 
-const CATEGORIES = {
-  all:            { label: 'All',      dotColor: '#9ca3af', activeClass: 'bg-gray-900 text-white border-gray-900' },
-  model_release:  { label: 'Models',   dotColor: '#6366f1', activeClass: 'bg-indigo-600 text-white border-indigo-600' },
-  research_paper: { label: 'Papers',   dotColor: '#16a34a', activeClass: 'bg-green-600 text-white border-green-600' },
-  announcement:   { label: 'News',     dotColor: '#ea580c', activeClass: 'bg-orange-600 text-white border-orange-600' },
-  product_launch: { label: 'Products', dotColor: '#0891b2', activeClass: 'bg-cyan-600 text-white border-cyan-600' },
+const DOT_COLORS = {
+  model_release:  '#6366f1',
+  research_paper: '#16a34a',
+  announcement:   '#ea580c',
+  product_launch: '#0891b2',
+}
+
+// Filter definitions — 'categories: null' means show all
+const FILTERS = {
+  highlights: {
+    label: 'Highlights',
+    categories: ['model_release', 'announcement', 'product_launch'],
+    activeClass: 'bg-gray-900 text-white border-gray-900',
+  },
+  all: {
+    label: 'All',
+    categories: null,
+    activeClass: 'bg-gray-500 text-white border-gray-500',
+  },
+  model_release: {
+    label: 'Models',
+    categories: ['model_release'],
+    activeClass: 'bg-indigo-600 text-white border-indigo-600',
+  },
+  research_paper: {
+    label: 'Papers',
+    categories: ['research_paper'],
+    activeClass: 'bg-green-600 text-white border-green-600',
+  },
+  announcement: {
+    label: 'News',
+    categories: ['announcement'],
+    activeClass: 'bg-orange-600 text-white border-orange-600',
+  },
+  product_launch: {
+    label: 'Products',
+    categories: ['product_launch'],
+    activeClass: 'bg-cyan-600 text-white border-cyan-600',
+  },
 }
 
 function formatDate(str) {
@@ -18,12 +51,13 @@ function formatDate(str) {
 }
 
 export default function TimelineClient({ entries }) {
-  const [activeCategory, setActiveCategory] = useState('all')
+  const [activeFilter, setActiveFilter] = useState('highlights')
   const [searchQuery, setSearchQuery] = useState('')
 
   const filtered = useMemo(() => {
+    const { categories } = FILTERS[activeFilter]
     return entries.filter(e => {
-      if (activeCategory !== 'all' && e.category !== activeCategory) return false
+      if (categories && !categories.includes(e.category)) return false
       if (searchQuery) {
         const q = searchQuery.toLowerCase()
         return (
@@ -35,7 +69,7 @@ export default function TimelineClient({ entries }) {
       }
       return true
     })
-  }, [entries, activeCategory, searchQuery])
+  }, [entries, activeFilter, searchQuery])
 
   const byDate = useMemo(() => {
     const map = {}
@@ -60,7 +94,7 @@ export default function TimelineClient({ entries }) {
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">AI Timeline</h1>
         <p className="text-gray-500 text-sm mt-1">
-          {entries.length} key developments · {dateRange}
+          {entries.length} entries · {dateRange}
         </p>
       </div>
 
@@ -74,17 +108,17 @@ export default function TimelineClient({ entries }) {
           className="flex-1 border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
         />
         <div className="flex gap-2 flex-wrap">
-          {Object.entries(CATEGORIES).map(([key, cat]) => (
+          {Object.entries(FILTERS).map(([key, filter]) => (
             <button
               key={key}
-              onClick={() => setActiveCategory(key)}
+              onClick={() => setActiveFilter(key)}
               className={`px-3 py-1.5 text-xs rounded-full border transition-colors ${
-                activeCategory === key
-                  ? cat.activeClass
+                activeFilter === key
+                  ? filter.activeClass
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
               }`}
             >
-              {cat.label}
+              {filter.label}
             </button>
           ))}
         </div>
@@ -101,49 +135,45 @@ export default function TimelineClient({ entries }) {
                 {formatDate(date)}
               </div>
               <div className="border-l border-gray-200 pl-6 space-y-6">
-                {items.map(entry => {
-                  const cat = CATEGORIES[entry.category] || CATEGORIES.announcement
-
-                  return (
-                    <div key={entry.id} className="relative">
-                      <span
-                        className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full"
-                        style={{ background: cat.dotColor }}
-                      />
-                      <a
-                        href={entry.url || '#'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors leading-snug"
-                      >
-                        {entry.title}
-                      </a>
-                      {entry.description && (
-                        <p className="text-sm text-gray-600 mt-1 leading-relaxed">{entry.description}</p>
+                {items.map(entry => (
+                  <div key={entry.id} className="relative">
+                    <span
+                      className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full"
+                      style={{ background: DOT_COLORS[entry.category] || '#9ca3af' }}
+                    />
+                    <a
+                      href={entry.url || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors leading-snug"
+                    >
+                      {entry.title}
+                    </a>
+                    {entry.description && (
+                      <p className="text-sm text-gray-600 mt-1 leading-relaxed">{entry.description}</p>
+                    )}
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
+                      {entry.source && (
+                        <a
+                          href={entry.url || '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs text-gray-400 hover:text-blue-500 transition-colors"
+                        >
+                          {entry.source}
+                        </a>
                       )}
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
-                        {entry.source && (
-                          <a
-                            href={entry.url || '#'}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs text-gray-400 hover:text-blue-500 transition-colors"
-                          >
-                            {entry.source}
-                          </a>
-                        )}
-                        {(entry.tags || []).map(tag => (
-                          <span
-                            key={tag}
-                            className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                      {(entry.tags || []).map(tag => (
+                        <span
+                          key={tag}
+                          className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                  )
-                })}
+                  </div>
+                ))}
               </div>
             </div>
           ))}
