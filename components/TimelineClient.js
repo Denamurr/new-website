@@ -2,11 +2,11 @@
 
 import { useState, useMemo } from 'react'
 
-const DOT_COLORS = {
-  model_release:  '#6366f1',
-  research_paper: '#16a34a',
-  announcement:   '#ea580c',
-  product_launch: '#0891b2',
+const CATEGORY_STYLE = {
+  model_release:  { dot: '#6366f1', badge: 'bg-indigo-50 text-indigo-700',  label: 'Model'   },
+  research_paper: { dot: '#16a34a', badge: 'bg-green-50 text-green-700',    label: 'Paper'   },
+  announcement:   { dot: '#ea580c', badge: 'bg-orange-50 text-orange-700',  label: 'News'    },
+  product_launch: { dot: '#0891b2', badge: 'bg-cyan-50 text-cyan-700',      label: 'Product' },
 }
 
 // Filter definitions — 'categories: null' means show all
@@ -135,45 +135,53 @@ export default function TimelineClient({ entries }) {
                 {formatDate(date)}
               </div>
               <div className="border-l border-gray-200 pl-6 space-y-6">
-                {items.map(entry => (
-                  <div key={entry.id} className="relative">
-                    <span
-                      className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full"
-                      style={{ background: DOT_COLORS[entry.category] || '#9ca3af' }}
-                    />
-                    <a
-                      href={entry.url || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors leading-snug"
-                    >
-                      {entry.title}
-                    </a>
-                    {entry.description && (
-                      <p className="text-sm text-gray-600 mt-1 leading-relaxed">{entry.description}</p>
-                    )}
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
-                      {entry.source && (
+                {items.map(entry => {
+                  const style = CATEGORY_STYLE[entry.category] || CATEGORY_STYLE.announcement
+                  return (
+                    <div key={entry.id} className="relative">
+                      <span
+                        className="absolute -left-[25px] top-1.5 w-2.5 h-2.5 rounded-full"
+                        style={{ background: style.dot }}
+                      />
+                      <div className="flex items-baseline gap-2 flex-wrap">
                         <a
                           href={entry.url || '#'}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-xs text-gray-400 hover:text-blue-500 transition-colors"
+                          className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors leading-snug"
                         >
-                          {entry.source}
+                          {entry.title}
                         </a>
-                      )}
-                      {(entry.tags || []).map(tag => (
-                        <span
-                          key={tag}
-                          className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded"
-                        >
-                          {tag}
+                        <span className={`shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded ${style.badge}`}>
+                          {style.label}
                         </span>
-                      ))}
+                      </div>
+                      {entry.description && (
+                        <p className="text-sm text-gray-600 mt-1 leading-relaxed">{entry.description}</p>
+                      )}
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
+                        {entry.source && (
+                          <a
+                            href={entry.url || '#'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-gray-400 hover:text-blue-500 transition-colors"
+                          >
+                            {entry.source}
+                          </a>
+                        )}
+                        {(entry.tags || []).map(tag => (
+                          <span
+                            key={tag}
+                            className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
           ))}
