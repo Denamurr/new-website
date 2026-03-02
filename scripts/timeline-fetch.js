@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // scripts/timeline-fetch.js
-// Auto-fetches AI news from Hacker News, ArXiv, and blog RSS feeds.
+// Fetches AI news from ArXiv and official lab/news RSS feeds.
 // Writes data/timeline-fetched.json — run `node scripts/timeline-build.js` afterward to merge.
 //
 // Node 18+ required (uses built-in fetch).
@@ -13,32 +13,13 @@ const { XMLParser } = require('fast-xml-parser');
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const DAYS_BACK = 7;
 
-// ── Blog RSS feeds ────────────────────────────────────────────────────────────
+// ── Official lab and AI news RSS feeds ───────────────────────────────────────
 const RSS_FEEDS = [
-  { url: 'https://huggingface.co/blog/feed.xml',          source: 'Hugging Face' },
   { url: 'https://openai.com/blog/rss.xml',               source: 'OpenAI' },
+  { url: 'https://huggingface.co/blog/feed.xml',          source: 'Hugging Face' },
   { url: 'https://deepmind.google/blog/rss.xml',          source: 'Google DeepMind' },
   { url: 'https://blog.google/technology/ai/rss/',        source: 'Google AI' },
   { url: 'https://venturebeat.com/category/ai/feed/',     source: 'VentureBeat' },
-];
-
-// ── Keywords used to filter HN stories ───────────────────────────────────────
-const AI_KEYWORDS = [
-  'OpenAI', 'Anthropic', 'DeepMind', 'Google AI', 'Meta AI', 'xAI',
-  'GPT', 'Claude', 'Gemini', 'Llama', 'Grok',
-  'Mistral', 'Aleph Alpha', 'Cohere',
-  'DeepSeek', 'Qwen', 'ERNIE', 'Baidu AI', 'Alibaba AI',
-  'Kimi', 'Moonshot AI', 'ChatGLM', 'Zhipu', 'MiniMax',
-  'Yi model', '01.AI', 'Doubao', 'ByteDance AI', 'Baichuan',
-  'Falcon', 'TII', 'Technology Innovation Institute',
-  'HyperCLOVA', 'Naver AI', 'Kakao AI',
-  'AI21', 'AI21 Labs',
-  'Reka', 'Inflection', 'Adept',
-  'LLM', 'language model', 'large language', 'AI model', 'foundation model',
-  'diffusion model', 'image generation', 'text-to-image', 'text-to-video',
-  'fine-tuning', 'RLHF', 'reinforcement learning from human feedback',
-  'transformer', 'attention mechanism', 'neural network', 'deep learning',
-  'machine learning', 'artificial intelligence',
 ];
 
 // ── Category detection by title keywords ─────────────────────────────────────
@@ -56,86 +37,26 @@ function categorize(title) {
 
 function extractTags(title) {
   const checks = {
-    openai:     /openai/i,
-    anthropic:  /anthropic/i,
-    google:     /google|deepmind|gemini/i,
-    meta:       /\bmeta\b|\bllama\b/i,
-    xai:        /\bxai\b|\bgrok\b/i,
-    mistral:    /mistral/i,
-    cohere:     /cohere/i,
-    deepseek:   /deepseek/i,
-    alibaba:    /alibaba|qwen|tongyi/i,
-    baidu:      /baidu|ernie/i,
-    moonshot:   /moonshot|kimi/i,
-    falcon:     /\bfalcon\b|tii\b/i,
-    gpt:            /\bgpt[-\s]?\d/i,
-    claude:         /\bclaude\b/i,
-    llm:            /\bllm\b|language model/i,
-    'open-source':  /open[\s-]source|open[\s-]weights/i,
-    reasoning:      /reasoning|chain[\s-]of[\s-]thought|\bcot\b/i,
-    multimodal:     /multimodal|vision|\bvlm\b/i,
+    openai:          /openai/i,
+    anthropic:       /anthropic/i,
+    google:          /google|deepmind|gemini/i,
+    meta:            /\bmeta\b|\bllama\b/i,
+    xai:             /\bxai\b|\bgrok\b/i,
+    mistral:         /mistral/i,
+    cohere:          /cohere/i,
+    deepseek:        /deepseek/i,
+    gpt:             /\bgpt[-\s]?\d/i,
+    claude:          /\bclaude\b/i,
+    'open-source':   /open[\s-]source|open[\s-]weights/i,
+    reasoning:       /reasoning|chain[\s-]of[\s-]thought/i,
+    multimodal:      /multimodal|vision|\bvlm\b/i,
     'text-to-image': /text[\s-]to[\s-]image|image gen/i,
     'text-to-video': /text[\s-]to[\s-]video|video gen/i,
-    agentic:        /agent(ic)?|tool use|function call/i,
+    agentic:         /agent(ic)?|tool use|function call/i,
   };
   return Object.entries(checks)
     .filter(([, re]) => re.test(title))
     .map(([tag]) => tag);
-}
-
-function isAIRelated(title, url = '') {
-  const text = (title + ' ' + url).toLowerCase();
-  return AI_KEYWORDS.some(kw => text.includes(kw.toLowerCase()));
-}
-
-// ── Hacker News via Algolia search API ───────────────────────────────────────
-async function fetchHackerNews() {
-  const cutoff = Math.floor(Date.now() / 1000) - DAYS_BACK * 86400;
-  const queries = [
-    'AI model release',
-    'LLM OpenAI Anthropic Mistral',
-    'machine learning research benchmark',
-    'DeepSeek Qwen Kimi AI model',
-    'ERNIE Baidu Alibaba AI',
-    'Falcon Cohere AI model',
-  ];
-  const seen = new Set();
-  const results = [];
-
-  for (const q of queries) {
-    const url =
-      `https://hn.algolia.com/api/v1/search_by_date` +
-      `?query=${encodeURIComponent(q)}&tags=story` +
-      `&numericFilters=created_at_i>${cutoff},points>30&hitsPerPage=50`;
-
-    try {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-
-      for (const hit of data.hits) {
-        if (seen.has(hit.objectID)) continue;
-        if (!isAIRelated(hit.title, hit.url || '')) continue;
-        seen.add(hit.objectID);
-
-        results.push({
-          id: `hn-${hit.objectID}`,
-          date: hit.created_at.split('T')[0],
-          category: categorize(hit.title),
-          title: hit.title,
-          description: '',
-          source: 'Hacker News',
-          url: hit.url || `https://news.ycombinator.com/item?id=${hit.objectID}`,
-          tags: extractTags(hit.title),
-          manual: false,
-        });
-      }
-    } catch (e) {
-      console.error(`  HN query "${q}" failed:`, e.message);
-    }
-  }
-
-  return results;
 }
 
 // ── ArXiv RSS feeds ───────────────────────────────────────────────────────────
@@ -217,15 +138,6 @@ async function fetchRSS({ url, source }) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
   const all = [];
-
-  console.log('Fetching Hacker News…');
-  try {
-    const hn = await fetchHackerNews();
-    all.push(...hn);
-    console.log(`  → ${hn.length} entries`);
-  } catch (e) {
-    console.error('  HN failed:', e.message);
-  }
 
   for (const cat of ['cs.AI', 'cs.LG', 'cs.CL']) {
     console.log(`Fetching ArXiv ${cat}…`);

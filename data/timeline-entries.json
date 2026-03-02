@@ -1369,19 +1369,6 @@
     "manual": false
   },
   {
-    "id": "hn-47149586",
-    "date": "2026-02-25",
-    "category": "announcement",
-    "title": "Show HN: A real-time strategy game that AI agents can play",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://llmskirmish.com/",
-    "tags": [
-      "agentic"
-    ],
-    "manual": false
-  },
-  {
     "id": "rss-openai-disrupting-malicious-ai-uses",
     "date": "2026-02-25",
     "category": "announcement",
@@ -1390,19 +1377,6 @@
     "source": "OpenAI",
     "url": "https://openai.com/index/disrupting-malicious-ai-uses",
     "tags": [],
-    "manual": false
-  },
-  {
-    "id": "hn-47131225",
-    "date": "2026-02-24",
-    "category": "announcement",
-    "title": "Show HN: Steerling-8B, a language model that can explain any token it generates",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.guidelabs.ai/post/steerling-8b-base-model-release/",
-    "tags": [
-      "llm"
-    ],
     "manual": false
   },
   {
@@ -1693,19 +1667,6 @@
     "manual": false
   },
   {
-    "id": "hn-46828482",
-    "date": "2026-01-30",
-    "category": "model_release",
-    "title": "Videogame stocks slide after Google's Project Genie AI model release",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.reuters.com/business/videogame-stocks-slide-googles-ai-model-that-turns-prompts-into-playable-worlds-2026-01-30/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
     "id": "rss-hugging-face-daggr",
     "date": "2026-01-29",
     "category": "announcement",
@@ -1781,95 +1742,6 @@
     "manual": false
   },
   {
-    "id": "hn-46121889",
-    "date": "2025-12-02",
-    "category": "model_release",
-    "title": "Mistral 3 family of models released",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://mistral.ai/news/mistral-3",
-    "tags": [
-      "mistral"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-45838540",
-    "date": "2025-11-06",
-    "category": "announcement",
-    "title": "Show HN: TabPFN-2.5 – SOTA foundation model for tabular data",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://priorlabs.ai/technical-reports/tabpfn-2-5-model-report",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "hn-45504388",
-    "date": "2025-10-07",
-    "category": "product_launch",
-    "title": "Launch HN: LlamaFarm (YC W22) – Open-source framework for distributed AI",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://github.com/llama-farm/llamafarm",
-    "tags": [
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-45466865",
-    "date": "2025-10-03",
-    "category": "model_release",
-    "title": "Show HN: FLE v0.3 – Claude Code Plays Factorio",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://jackhopkins.github.io/factorio-learning-environment/versions/0.3.0.html",
-    "tags": [
-      "claude"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-45440431",
-    "date": "2025-10-01",
-    "category": "announcement",
-    "title": "OpenTSLM: Language models that understand time series",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.opentslm.com/",
-    "tags": [
-      "llm"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-44657727",
-    "date": "2025-07-23",
-    "category": "product_launch",
-    "title": "Cerebras launches Qwen3-235B, achieving 1.5k tokens per second",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.cerebras.ai/press-release/cerebras-launches-qwen3-235b-world-s-fastest-frontier-ai-model-with-full-131k-context-support",
-    "tags": [
-      "alibaba"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-44650567",
-    "date": "2025-07-22",
-    "category": "announcement",
-    "title": "Show HN: Any-LLM – Lightweight router to access any LLM Provider",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://github.com/mozilla-ai/any-llm",
-    "tags": [
-      "llm"
-    ],
-    "manual": false
-  },
-  {
     "id": "manual-claude4",
     "date": "2025-05-22",
     "category": "model_release",
@@ -1884,19 +1756,6 @@
       "agentic"
     ],
     "manual": true
-  },
-  {
-    "id": "hn-43790093",
-    "date": "2025-04-25",
-    "category": "announcement",
-    "title": "DeepMind releases Lyria 2 music generation model",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://deepmind.google/discover/blog/music-ai-sandbox-now-with-new-features-and-broader-access/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
   },
   {
     "id": "manual-o3-o4mini",
