@@ -3,6 +3,12 @@ import Link from 'next/link'
 export default function Projects() {
   const projects = [
     {
+      title: 'AI Timeline',
+      description: 'Curated history of AI milestones from AlexNet to today',
+      tech: 'Next.js, React',
+      href: '/timeline'
+    },
+    {
       title: 'Wordle Game',
       description: 'Play the classic word game right in your browser',
       tech: 'React, Next.js',

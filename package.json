@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "timeline:fetch": "node scripts/timeline-fetch.js",
+    "timeline:build": "node scripts/timeline-build.js",
+    "timeline:update": "node scripts/timeline-fetch.js && node scripts/timeline-build.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -18,6 +21,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",
+    "fast-xml-parser": "^4.3.6",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1"
   }
