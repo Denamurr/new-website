@@ -8,17 +8,10 @@
 
 const fs = require('fs');
 const path = require('path');
-const { XMLParser } = require('fast-xml-parser');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const DAYS_BACK = 7;
 
-// ── Official lab RSS feeds (announcements only) ───────────────────────────────
-const RSS_FEEDS = [
-  { url: 'https://openai.com/blog/rss.xml',           source: 'OpenAI' },
-  { url: 'https://deepmind.google/blog/rss.xml',      source: 'Google DeepMind' },
-  { url: 'https://blog.google/technology/ai/rss/',    source: 'Google AI' },
-];
 
 // Known AI model families
 const MODEL_NAMES = [
@@ -141,47 +134,6 @@ async function fetchPapersWithCode() {
     }));
 }
 
-// ── RSS blog feed fetcher ─────────────────────────────────────────────────────
-async function fetchRSS({ url, source }) {
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'ai-timeline-bot/1.0' },
-  });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const xml = await res.text();
-
-  const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
-  const feed = parser.parse(xml);
-  const channel = feed?.rss?.channel || feed?.feed;
-  const rawItems = [].concat(channel?.item || channel?.entry || []).slice(0, 30);
-
-  const cutoff = new Date(Date.now() - DAYS_BACK * 86400 * 1000);
-
-  return rawItems
-    .map(item => {
-      const rawTitle = String(item.title?.['#text'] ?? item.title ?? '').replace(/\n/g, ' ').trim();
-      const rawDesc  = String(item.description?.['#text'] ?? item.description ?? item.summary ?? '');
-      const link     = String(item.link?.['@_href'] ?? item.link ?? item.id ?? '').trim();
-      const pubDate  = new Date(item.pubDate ?? item.published ?? item.updated ?? 0);
-      const cleanDesc = rawDesc.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().slice(0, 250);
-
-      if (!rawTitle || pubDate < cutoff) return null;
-      if (!isSignificant(rawTitle, cleanDesc)) return null;
-
-      return {
-        id: `rss-${source.toLowerCase().replace(/\s+/g, '-')}-${link.split('/').pop() || Date.now()}`,
-        date: pubDate.toISOString().split('T')[0],
-        category: categorize(rawTitle),
-        title: rawTitle,
-        description: cleanDesc,
-        source,
-        url: link,
-        tags: extractTags(rawTitle),
-        manual: false,
-      };
-    })
-    .filter(Boolean);
-}
-
 // ── Main ──────────────────────────────────────────────────────────────────────
 async function main() {
   const all = [];
@@ -193,17 +145,6 @@ async function main() {
     console.log(`  → ${papers.length} significant papers`);
   } catch (e) {
     console.error('  Papers With Code failed:', e.message);
-  }
-
-  for (const feed of RSS_FEEDS) {
-    console.log(`Fetching ${feed.source}…`);
-    try {
-      const entries = await fetchRSS(feed);
-      all.push(...entries);
-      console.log(`  → ${entries.length} entries`);
-    } catch (e) {
-      console.error(`  ${feed.source} failed:`, e.message);
-    }
   }
 
   fs.mkdirSync(DATA_DIR, { recursive: true });
