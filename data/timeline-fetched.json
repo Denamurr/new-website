@@ -1,5 +1,146 @@
 [
   {
+    "id": "hn-47149586",
+    "date": "2026-02-25",
+    "category": "announcement",
+    "title": "Show HN: A real-time strategy game that AI agents can play",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://llmskirmish.com/",
+    "tags": [
+      "agentic"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-47131225",
+    "date": "2026-02-24",
+    "category": "announcement",
+    "title": "Show HN: Steerling-8B, a language model that can explain any token it generates",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://www.guidelabs.ai/post/steerling-8b-base-model-release/",
+    "tags": [
+      "llm"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-46828482",
+    "date": "2026-01-30",
+    "category": "model_release",
+    "title": "Videogame stocks slide after Google's Project Genie AI model release",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://www.reuters.com/business/videogame-stocks-slide-googles-ai-model-that-turns-prompts-into-playable-worlds-2026-01-30/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-46121889",
+    "date": "2025-12-02",
+    "category": "model_release",
+    "title": "Mistral 3 family of models released",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://mistral.ai/news/mistral-3",
+    "tags": [
+      "mistral"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-45838540",
+    "date": "2025-11-06",
+    "category": "announcement",
+    "title": "Show HN: TabPFN-2.5 – SOTA foundation model for tabular data",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://priorlabs.ai/technical-reports/tabpfn-2-5-model-report",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "hn-45504388",
+    "date": "2025-10-07",
+    "category": "product_launch",
+    "title": "Launch HN: LlamaFarm (YC W22) – Open-source framework for distributed AI",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://github.com/llama-farm/llamafarm",
+    "tags": [
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-45466865",
+    "date": "2025-10-03",
+    "category": "model_release",
+    "title": "Show HN: FLE v0.3 – Claude Code Plays Factorio",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://jackhopkins.github.io/factorio-learning-environment/versions/0.3.0.html",
+    "tags": [
+      "claude"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-45440431",
+    "date": "2025-10-01",
+    "category": "announcement",
+    "title": "OpenTSLM: Language models that understand time series",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://www.opentslm.com/",
+    "tags": [
+      "llm"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-44657727",
+    "date": "2025-07-23",
+    "category": "product_launch",
+    "title": "Cerebras launches Qwen3-235B, achieving 1.5k tokens per second",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://www.cerebras.ai/press-release/cerebras-launches-qwen3-235b-world-s-fastest-frontier-ai-model-with-full-131k-context-support",
+    "tags": [
+      "alibaba"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-43790093",
+    "date": "2025-04-25",
+    "category": "announcement",
+    "title": "DeepMind releases Lyria 2 music generation model",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://deepmind.google/discover/blog/music-ai-sandbox-now-with-new-features-and-broader-access/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hn-44650567",
+    "date": "2025-07-22",
+    "category": "announcement",
+    "title": "Show HN: Any-LLM – Lightweight router to access any LLM Provider",
+    "description": "",
+    "source": "Hacker News",
+    "url": "https://github.com/mozilla-ai/any-llm",
+    "tags": [
+      "llm"
+    ],
+    "manual": false
+  },
+  {
     "id": "arxiv-2602.23367",
     "date": "2026-03-02",
     "category": "research_paper",
@@ -1260,78 +1401,6 @@
     "manual": false
   },
   {
-    "id": "rss-openai-our-agreement-with-the-department-of-war",
-    "date": "2026-02-28",
-    "category": "announcement",
-    "title": "Our agreement with the Department of War",
-    "description": "Details on OpenAI’s contract with the Department of War, outlining safety red lines, legal protections, and how AI systems will be deployed in classified environments.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/our-agreement-with-the-department-of-war",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-continuing-microsoft-partnership",
-    "date": "2026-02-27",
-    "category": "announcement",
-    "title": "Joint Statement from OpenAI and Microsoft",
-    "description": "Microsoft and OpenAI continue to work closely across research, engineering, and product development, building on years of deep collaboration and shared success.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/continuing-microsoft-partnership",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-amazon-partnership",
-    "date": "2026-02-27",
-    "category": "announcement",
-    "title": "OpenAI and Amazon announce strategic partnership",
-    "description": "OpenAI and Amazon announce a strategic partnership bringing OpenAI’s Frontier platform to AWS, expanding AI infrastructure, custom models, and enterprise AI agents.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/amazon-partnership",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-scaling-ai-for-everyone",
-    "date": "2026-02-27",
-    "category": "announcement",
-    "title": "Scaling AI for everyone",
-    "description": "Today we’re announcing $110B in new investment at a $730B pre money valuation. This includes $30B from SoftBank, $30B from NVIDIA, and $50B from Amazon.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/scaling-ai-for-everyone",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-introducing-the-stateful-runtime-environment-for-agents-in-amazon-bedrock",
-    "date": "2026-02-27",
-    "category": "announcement",
-    "title": "Introducing the Stateful Runtime Environment for Agents in Amazon Bedrock",
-    "description": "Stateful Runtime for Agents in Amazon Bedrock brings persistent orchestration, memory, and secure execution to multi-step AI workflows powered by OpenAI.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-the-stateful-runtime-environment-for-agents-in-amazon-bedrock",
-    "tags": [
-      "agentic"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-update-on-mental-health-related-work",
-    "date": "2026-02-27",
-    "category": "announcement",
-    "title": "An update on our mental health-related work",
-    "description": "OpenAI shares updates on its mental health safety work, including parental controls, trusted contacts, improved distress detection, and recent litigation developments.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/update-on-mental-health-related-work",
-    "tags": [],
-    "manual": false
-  },
-  {
     "id": "rss-hugging-face-moe-transformers",
     "date": "2026-02-26",
     "category": "announcement",
@@ -1340,69 +1409,6 @@
     "source": "Hugging Face",
     "url": "https://huggingface.co/blog/moe-transformers",
     "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-pacific-northwest-national-laboratory",
-    "date": "2026-02-26",
-    "category": "announcement",
-    "title": "Pacific Northwest National Laboratory and OpenAI partner to accelerate federal permitting",
-    "description": "OpenAI and Pacific Northwest National Laboratory introduce DraftNEPABench, a new benchmark evaluating how AI coding agents can accelerate federal permitting—showing potential to reduce NEPA drafting time by up to 15% and modernize infrastructure revi",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/pacific-northwest-national-laboratory",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-figma-partnership",
-    "date": "2026-02-26",
-    "category": "product_launch",
-    "title": "OpenAI Codex and Figma launch seamless code-to-design experience",
-    "description": "OpenAI and Figma launch a new Codex integration that connects code and design, enabling teams to move between implementation and the Figma canvas to iterate and ship faster.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/figma-partnership",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-47149586",
-    "date": "2026-02-25",
-    "category": "announcement",
-    "title": "Show HN: A real-time strategy game that AI agents can play",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://llmskirmish.com/",
-    "tags": [
-      "agentic"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-disrupting-malicious-ai-uses",
-    "date": "2026-02-25",
-    "category": "announcement",
-    "title": "Disrupting malicious uses of AI | February 2026",
-    "description": "Our latest threat report examines how malicious actors combine AI models with websites and social platforms—and what it means for detection and defense.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/disrupting-malicious-ai-uses",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "hn-47131225",
-    "date": "2026-02-24",
-    "category": "announcement",
-    "title": "Show HN: Steerling-8B, a language model that can explain any token it generates",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.guidelabs.ai/post/steerling-8b-base-model-release/",
-    "tags": [
-      "llm"
-    ],
     "manual": false
   },
   {
@@ -1417,41 +1423,6 @@
       "llm",
       "open-source",
       "multimodal"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-arvind-kc-chief-people-officer",
-    "date": "2026-02-24",
-    "category": "announcement",
-    "title": "Arvind KC appointed Chief People Officer",
-    "description": "OpenAI appoints Arvind KC as Chief People Officer to help scale the company, strengthen its culture, and lead how work evolves in the age of AI.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/arvind-kc-chief-people-officer",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-why-we-no-longer-evaluate-swe-bench-verified",
-    "date": "2026-02-23",
-    "category": "announcement",
-    "title": "Why we no longer evaluate SWE-bench Verified",
-    "description": "SWE-bench Verified is increasingly contaminated and mismeasures frontier coding progress. Our analysis shows flawed tests and training leakage. We recommend SWE-bench Pro.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-frontier-alliance-partners",
-    "date": "2026-02-23",
-    "category": "announcement",
-    "title": "OpenAI announces Frontier Alliance Partners",
-    "description": "OpenAI announces Frontier Alliance Partners to help enterprises move from AI pilots to production with secure, scalable agent deployments.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/frontier-alliance-partners",
-    "tags": [
-      "openai"
     ],
     "manual": false
   },
@@ -1480,28 +1451,6 @@
     "manual": false
   },
   {
-    "id": "rss-openai-first-proof-submissions",
-    "date": "2026-02-20",
-    "category": "announcement",
-    "title": "Our First Proof submissions",
-    "description": "We share our AI model’s proof attempts for the First Proof math challenge, testing research-grade reasoning on expert-level problems.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/first-proof-submissions",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-advancing-independent-research-ai-alignment",
-    "date": "2026-02-19",
-    "category": "research_paper",
-    "title": "Advancing independent research on AI alignment",
-    "description": "OpenAI commits $7.5M to The Alignment Project to fund independent AI alignment research, strengthening global efforts to address AGI safety and security risks.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/advancing-independent-research-ai-alignment",
-    "tags": [],
-    "manual": false
-  },
-  {
     "id": "rss-hugging-face-itbenchandmast",
     "date": "2026-02-18",
     "category": "announcement",
@@ -1526,30 +1475,6 @@
     "manual": false
   },
   {
-    "id": "rss-openai-openai-for-india",
-    "date": "2026-02-18",
-    "category": "announcement",
-    "title": "Introducing OpenAI for India",
-    "description": "OpenAI for India expands AI access across the country—building local infrastructure, powering enterprises, and advancing workforce skills.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/openai-for-india",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-introducing-evmbench",
-    "date": "2026-02-18",
-    "category": "announcement",
-    "title": "Introducing EVMbench",
-    "description": "OpenAI and Paradigm introduce EVMbench, a benchmark evaluating AI agents’ ability to detect, patch, and exploit high-severity smart contract vulnerabilities.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-evmbench",
-    "tags": [],
-    "manual": false
-  },
-  {
     "id": "rss-hugging-face-custom-cuda-kernels-agent-skills",
     "date": "2026-02-13",
     "category": "announcement",
@@ -1560,52 +1485,6 @@
     "tags": [
       "claude"
     ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-new-result-theoretical-physics",
-    "date": "2026-02-13",
-    "category": "announcement",
-    "title": "GPT-5.2 derives a new result in theoretical physics",
-    "description": "A new preprint shows GPT-5.2 proposing a new formula for a gluon amplitude, later formally proved and verified by OpenAI and academic collaborators.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/new-result-theoretical-physics",
-    "tags": [
-      "gpt"
-    ],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt",
-    "date": "2026-02-13",
-    "category": "announcement",
-    "title": "Introducing Lockdown Mode and Elevated Risk labels in ChatGPT",
-    "description": "Introducing Lockdown Mode and Elevated Risk labels in ChatGPT to help organizations defend against prompt injection and AI-driven data exfiltration.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-beyond-rate-limits",
-    "date": "2026-02-13",
-    "category": "announcement",
-    "title": "Beyond rate limits: scaling access to Codex and Sora",
-    "description": "How OpenAI built a real-time access system combining rate limits, usage tracking, and credits to power continuous access to Sora and Codex.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/beyond-rate-limits",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "rss-openai-scaling-social-science-research",
-    "date": "2026-02-13",
-    "category": "research_paper",
-    "title": "Scaling social science research",
-    "description": "GABRIEL is a new open-source toolkit from OpenAI that uses GPT to turn qualitative text and images into quantitative data, helping social scientists analyze research at scale.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/scaling-social-science-research",
-    "tags": [],
     "manual": false
   },
   {
@@ -1693,19 +1572,6 @@
     "manual": false
   },
   {
-    "id": "hn-46828482",
-    "date": "2026-01-30",
-    "category": "model_release",
-    "title": "Videogame stocks slide after Google's Project Genie AI model release",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.reuters.com/business/videogame-stocks-slide-googles-ai-model-that-turns-prompts-into-playable-worlds-2026-01-30/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
     "id": "rss-hugging-face-daggr",
     "date": "2026-01-29",
     "category": "announcement",
@@ -1781,883 +1647,239 @@
     "manual": false
   },
   {
-    "id": "hn-46121889",
-    "date": "2025-12-02",
-    "category": "model_release",
-    "title": "Mistral 3 family of models released",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://mistral.ai/news/mistral-3",
-    "tags": [
-      "mistral"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-45838540",
-    "date": "2025-11-06",
+    "id": "rss-openai-our-agreement-with-the-department-of-war",
+    "date": "2026-02-28",
     "category": "announcement",
-    "title": "Show HN: TabPFN-2.5 – SOTA foundation model for tabular data",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://priorlabs.ai/technical-reports/tabpfn-2-5-model-report",
+    "title": "Our agreement with the Department of War",
+    "description": "Details on OpenAI’s contract with the Department of War, outlining safety red lines, legal protections, and how AI systems will be deployed in classified environments.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/our-agreement-with-the-department-of-war",
     "tags": [],
     "manual": false
   },
   {
-    "id": "hn-45504388",
-    "date": "2025-10-07",
-    "category": "product_launch",
-    "title": "Launch HN: LlamaFarm (YC W22) – Open-source framework for distributed AI",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://github.com/llama-farm/llamafarm",
-    "tags": [
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-45466865",
-    "date": "2025-10-03",
-    "category": "model_release",
-    "title": "Show HN: FLE v0.3 – Claude Code Plays Factorio",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://jackhopkins.github.io/factorio-learning-environment/versions/0.3.0.html",
-    "tags": [
-      "claude"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-45440431",
-    "date": "2025-10-01",
+    "id": "rss-openai-continuing-microsoft-partnership",
+    "date": "2026-02-27",
     "category": "announcement",
-    "title": "OpenTSLM: Language models that understand time series",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.opentslm.com/",
+    "title": "Joint Statement from OpenAI and Microsoft",
+    "description": "Microsoft and OpenAI continue to work closely across research, engineering, and product development, building on years of deep collaboration and shared success.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/continuing-microsoft-partnership",
     "tags": [
-      "llm"
+      "openai"
     ],
     "manual": false
   },
   {
-    "id": "hn-44657727",
-    "date": "2025-07-23",
-    "category": "product_launch",
-    "title": "Cerebras launches Qwen3-235B, achieving 1.5k tokens per second",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://www.cerebras.ai/press-release/cerebras-launches-qwen3-235b-world-s-fastest-frontier-ai-model-with-full-131k-context-support",
-    "tags": [
-      "alibaba"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hn-44650567",
-    "date": "2025-07-22",
+    "id": "rss-openai-amazon-partnership",
+    "date": "2026-02-27",
     "category": "announcement",
-    "title": "Show HN: Any-LLM – Lightweight router to access any LLM Provider",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://github.com/mozilla-ai/any-llm",
+    "title": "OpenAI and Amazon announce strategic partnership",
+    "description": "OpenAI and Amazon announce a strategic partnership bringing OpenAI’s Frontier platform to AWS, expanding AI infrastructure, custom models, and enterprise AI agents.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/amazon-partnership",
     "tags": [
-      "llm"
+      "openai"
     ],
     "manual": false
   },
   {
-    "id": "manual-claude4",
-    "date": "2025-05-22",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 4 — Sonnet 4 and Opus 4 with hybrid reasoning",
-    "description": "Anthropic releases Claude Sonnet 4 and Claude Opus 4, both capable of switching between instant responses and extended thinking. Opus 4 is Anthropic's most capable model and sets new benchmarks on complex coding and agentic tasks.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-4",
+    "id": "rss-openai-scaling-ai-for-everyone",
+    "date": "2026-02-27",
+    "category": "announcement",
+    "title": "Scaling AI for everyone",
+    "description": "Today we’re announcing $110B in new investment at a $730B pre money valuation. This includes $30B from SoftBank, $30B from NVIDIA, and $50B from Amazon.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/scaling-ai-for-everyone",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "rss-openai-introducing-the-stateful-runtime-environment-for-agents-in-amazon-bedrock",
+    "date": "2026-02-27",
+    "category": "announcement",
+    "title": "Introducing the Stateful Runtime Environment for Agents in Amazon Bedrock",
+    "description": "Stateful Runtime for Agents in Amazon Bedrock brings persistent orchestration, memory, and secure execution to multi-step AI workflows powered by OpenAI.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-the-stateful-runtime-environment-for-agents-in-amazon-bedrock",
     "tags": [
-      "anthropic",
-      "claude",
-      "reasoning",
       "agentic"
     ],
-    "manual": true
+    "manual": false
   },
   {
-    "id": "hn-43790093",
-    "date": "2025-04-25",
+    "id": "rss-openai-update-on-mental-health-related-work",
+    "date": "2026-02-27",
     "category": "announcement",
-    "title": "DeepMind releases Lyria 2 music generation model",
-    "description": "",
-    "source": "Hacker News",
-    "url": "https://deepmind.google/discover/blog/music-ai-sandbox-now-with-new-features-and-broader-access/",
+    "title": "An update on our mental health-related work",
+    "description": "OpenAI shares updates on its mental health safety work, including parental controls, trusted contacts, improved distress detection, and recent litigation developments.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/update-on-mental-health-related-work",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "rss-openai-pacific-northwest-national-laboratory",
+    "date": "2026-02-26",
+    "category": "announcement",
+    "title": "Pacific Northwest National Laboratory and OpenAI partner to accelerate federal permitting",
+    "description": "OpenAI and Pacific Northwest National Laboratory introduce DraftNEPABench, a new benchmark evaluating how AI coding agents can accelerate federal permitting—showing potential to reduce NEPA drafting time by up to 15% and modernize infrastructure revi",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/pacific-northwest-national-laboratory",
     "tags": [
-      "google"
+      "openai"
     ],
     "manual": false
   },
   {
-    "id": "manual-o3-o4mini",
-    "date": "2025-04-16",
-    "category": "model_release",
-    "title": "OpenAI releases o3 and o4-mini — reasoning models with tool use and vision",
-    "description": "OpenAI releases o3 and o4-mini, the latest in their reasoning model line. Both can use tools (web search, Python, image generation) natively during their thinking process. o4-mini achieves o3-level math at a fraction of the cost.",
-    "source": "OpenAI",
-    "url": "https://openai.com/o3",
-    "tags": [
-      "openai",
-      "o3",
-      "reasoning",
-      "multimodal",
-      "agentic"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama4",
-    "date": "2025-04-05",
-    "category": "model_release",
-    "title": "Meta releases Llama 4 — natively multimodal MoE models with 10M context",
-    "description": "Meta releases Llama 4 Scout and Maverick, natively multimodal mixture-of-experts models supporting up to 10 million token context. Scout (17B active params) is the most efficient; Maverick rivals GPT-4o and Gemini 2.0 Flash.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
-    "tags": [
-      "meta",
-      "llama",
-      "multimodal",
-      "moe",
-      "long-context"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini25-pro",
-    "date": "2025-03-25",
-    "category": "model_release",
-    "title": "Google releases Gemini 2.5 Pro — best reasoning model on public benchmarks",
-    "description": "Google releases Gemini 2.5 Pro with strong reasoning capabilities via an internal thinking process. Tops the LMArena leaderboard and achieves best-in-class results on math, science, and coding evaluations.",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/technologies/gemini/pro/",
-    "tags": [
-      "google",
-      "gemini",
-      "reasoning"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt45",
-    "date": "2025-02-27",
-    "category": "model_release",
-    "title": "OpenAI releases GPT-4.5 — largest and most emotionally intelligent GPT yet",
-    "description": "OpenAI releases GPT-4.5, their largest model trained with unsupervised learning at unprecedented scale. Focuses on improved emotional intelligence, reduced hallucination, and better world knowledge. Available to ChatGPT Pro users first.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-4-5/",
-    "tags": [
-      "openai",
-      "gpt",
-      "scaling"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude37",
-    "date": "2025-02-24",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3.7 Sonnet — first model with extended thinking",
-    "description": "Anthropic releases Claude 3.7 Sonnet with an optional extended thinking mode, letting the model reason through hard problems before responding. Sets new records on coding benchmarks (SWE-bench) and agentic tasks.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
-    "tags": [
-      "anthropic",
-      "claude",
-      "reasoning",
-      "extended-thinking"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-grok3",
-    "date": "2025-02-17",
-    "category": "model_release",
-    "title": "xAI releases Grok 3 — trained on 100k GPU cluster, tops reasoning benchmarks",
-    "description": "Elon Musk's xAI releases Grok 3, trained on a 100,000 H100 GPU cluster. Claims top performance on math and science reasoning benchmarks. Includes a \"Think\" mode for extended chain-of-thought reasoning.",
-    "source": "xAI",
-    "url": "https://x.ai/blog/grok-3",
-    "tags": [
-      "xai",
-      "grok",
-      "reasoning"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-deepseek-r1",
-    "date": "2025-01-20",
-    "category": "model_release",
-    "title": "DeepSeek R1 released — open-source reasoning model matches o1 performance",
-    "description": "DeepSeek releases R1, an open-source reasoning model trained with reinforcement learning. Achieves performance comparable to OpenAI o1 on math and coding benchmarks at a fraction of the cost.",
-    "source": "DeepSeek",
-    "url": "https://github.com/deepseek-ai/DeepSeek-R1",
-    "tags": [
-      "deepseek",
-      "reasoning",
-      "open-source",
-      "rl"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-deepseek-v3",
-    "date": "2024-12-26",
-    "category": "model_release",
-    "title": "DeepSeek V3 released — open-source model rivaling GPT-4o trained for $6M",
-    "description": "Chinese AI lab DeepSeek releases V3, a 671B MoE model that matches or beats GPT-4o and Claude 3.5 Sonnet on many benchmarks. Trained for approximately $6M — a fraction of comparable Western models — sparking intense discussion about efficiency.",
-    "source": "DeepSeek",
-    "url": "https://github.com/deepseek-ai/DeepSeek-V3",
-    "tags": [
-      "deepseek",
-      "open-source",
-      "moe",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini2-flash",
-    "date": "2024-12-11",
-    "category": "model_release",
-    "title": "Gemini 2.0 Flash released — faster multimodal model with agentic features",
-    "description": "Google releases Gemini 2.0 Flash, a fast multimodal model with native image generation, tool use, and improved reasoning. Designed for agentic workflows and real-time applications.",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/technologies/gemini/flash/",
-    "tags": [
-      "google",
-      "gemini",
-      "multimodal",
-      "agentic"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-sora-public",
-    "date": "2024-12-09",
+    "id": "rss-openai-figma-partnership",
+    "date": "2026-02-26",
     "category": "product_launch",
-    "title": "OpenAI opens Sora to ChatGPT Plus and Pro users",
-    "description": "After nearly a year as a closed demo, OpenAI makes Sora generally available to ChatGPT Plus and Pro subscribers. Includes a creative mode, storyboard editor, and remix tools. Turbo variant enables faster generation.",
+    "title": "OpenAI Codex and Figma launch seamless code-to-design experience",
+    "description": "OpenAI and Figma launch a new Codex integration that connects code and design, enabling teams to move between implementation and the Figma canvas to iterate and ship faster.",
     "source": "OpenAI",
-    "url": "https://openai.com/sora",
+    "url": "https://openai.com/index/figma-partnership",
     "tags": [
-      "openai",
-      "sora",
-      "video"
+      "openai"
     ],
-    "manual": true
+    "manual": false
   },
   {
-    "id": "manual-llama33",
-    "date": "2024-11-19",
-    "category": "model_release",
-    "title": "Meta releases Llama 3.3 70B — 405B-level performance at a fraction of the cost",
-    "description": "Meta releases Llama 3.3 70B, a text-only model delivering performance comparable to Llama 3.1 405B on key benchmarks while being dramatically cheaper to run. Immediately becomes the go-to open-source model for cost-sensitive deployments.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/meta-llama-3-3/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude35-haiku",
-    "date": "2024-10-22",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3.5 Haiku — fastest Claude yet, matches Opus 3",
-    "description": "Anthropic releases Claude 3.5 Haiku, the fastest model in the Claude 3.5 family. Delivers Claude 3 Opus-level performance at a fraction of the latency and cost. Designed for high-throughput applications.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-5-haiku",
-    "tags": [
-      "anthropic",
-      "claude",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-openai-valuation",
-    "date": "2024-10-02",
+    "id": "rss-openai-disrupting-malicious-ai-uses",
+    "date": "2026-02-25",
     "category": "announcement",
-    "title": "OpenAI closes $6.6B funding round at $157B valuation",
-    "description": "OpenAI raises $6.6 billion in a funding round led by Thrive Capital, with participation from Microsoft, Nvidia, and SoftBank. Values the company at $157 billion, one of the largest private fundraises ever.",
-    "source": "Reuters",
-    "url": "https://www.reuters.com/technology/artificial-intelligence/openai-closes-66-billion-funding-round-2024-10-02/",
-    "tags": [
-      "openai",
-      "funding"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama32",
-    "date": "2024-09-25",
-    "category": "model_release",
-    "title": "Meta releases Llama 3.2 — first multimodal Llama with vision and 1B/3B edge models",
-    "description": "Meta releases Llama 3.2 with two multimodal vision models (11B, 90B) and two lightweight models (1B, 3B) optimized for edge and mobile devices. First Llama models to process images alongside text.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/",
-    "tags": [
-      "meta",
-      "llama",
-      "multimodal",
-      "edge"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-openai-o1",
-    "date": "2024-09-12",
-    "category": "model_release",
-    "title": "OpenAI releases o1-preview — reasoning model that thinks before answering",
-    "description": "OpenAI releases o1-preview and o1-mini, a new model family trained to reason through problems step-by-step using reinforcement learning. Significantly outperforms GPT-4o on math, science, and coding at the cost of slower responses.",
+    "title": "Disrupting malicious uses of AI | February 2026",
+    "description": "Our latest threat report examines how malicious actors combine AI models with websites and social platforms—and what it means for detection and defense.",
     "source": "OpenAI",
-    "url": "https://openai.com/o1",
-    "tags": [
-      "openai",
-      "o1",
-      "reasoning",
-      "rl"
-    ],
-    "manual": true
+    "url": "https://openai.com/index/disrupting-malicious-ai-uses",
+    "tags": [],
+    "manual": false
   },
   {
-    "id": "manual-mistral-large2",
-    "date": "2024-07-24",
-    "category": "model_release",
-    "title": "Mistral Large 2 released — 128k context, strong at coding and reasoning",
-    "description": "Mistral AI releases Mistral Large 2 (123B parameters) with 128k context, strong multilingual support, and improved coding and math performance. Available via API and for self-hosting.",
-    "source": "Mistral AI",
-    "url": "https://mistral.ai/news/mistral-large-2407/",
-    "tags": [
-      "mistral",
-      "open-weights",
-      "coding"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama31",
-    "date": "2024-07-23",
-    "category": "model_release",
-    "title": "Llama 3.1 released with 405B flagship — first open-source frontier model",
-    "description": "Meta releases Llama 3.1 including a 405B parameter flagship model that competes with GPT-4o and Claude 3.5 Sonnet. First open-source model to be considered genuinely frontier-level.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/meta-llama-3-1/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "frontier"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt4o-mini",
-    "date": "2024-07-18",
-    "category": "model_release",
-    "title": "GPT-4o mini released — replaces GPT-3.5 Turbo as default cheap model",
-    "description": "OpenAI releases GPT-4o mini, a small efficient model that outperforms GPT-3.5 Turbo while being cheaper. Becomes the new default for cost-sensitive applications.",
+    "id": "rss-openai-arvind-kc-chief-people-officer",
+    "date": "2026-02-24",
+    "category": "announcement",
+    "title": "Arvind KC appointed Chief People Officer",
+    "description": "OpenAI appoints Arvind KC as Chief People Officer to help scale the company, strengthen its culture, and lead how work evolves in the age of AI.",
     "source": "OpenAI",
-    "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-    "tags": [
-      "openai",
-      "gpt",
-      "efficient"
-    ],
-    "manual": true
+    "url": "https://openai.com/index/arvind-kc-chief-people-officer",
+    "tags": [],
+    "manual": false
   },
   {
-    "id": "manual-anthropic-artifacts",
-    "date": "2024-06-20",
-    "category": "product_launch",
-    "title": "Anthropic launches Artifacts — Claude can generate interactive web apps",
-    "description": "Anthropic introduces Artifacts in Claude.ai, allowing Claude to create and display runnable code, documents, and interactive web apps alongside conversations.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
-    "tags": [
-      "anthropic",
-      "claude",
-      "product"
-    ],
-    "manual": true
+    "id": "rss-openai-why-we-no-longer-evaluate-swe-bench-verified",
+    "date": "2026-02-23",
+    "category": "announcement",
+    "title": "Why we no longer evaluate SWE-bench Verified",
+    "description": "SWE-bench Verified is increasingly contaminated and mismeasures frontier coding progress. Our analysis shows flawed tests and training leakage. We recommend SWE-bench Pro.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified",
+    "tags": [],
+    "manual": false
   },
   {
-    "id": "manual-attention-paper-scaling",
-    "date": "2024-06-15",
+    "id": "rss-openai-frontier-alliance-partners",
+    "date": "2026-02-23",
+    "category": "announcement",
+    "title": "OpenAI announces Frontier Alliance Partners",
+    "description": "OpenAI announces Frontier Alliance Partners to help enterprises move from AI pilots to production with secure, scalable agent deployments.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/frontier-alliance-partners",
+    "tags": [
+      "openai"
+    ],
+    "manual": false
+  },
+  {
+    "id": "rss-openai-first-proof-submissions",
+    "date": "2026-02-20",
+    "category": "announcement",
+    "title": "Our First Proof submissions",
+    "description": "We share our AI model’s proof attempts for the First Proof math challenge, testing research-grade reasoning on expert-level problems.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/first-proof-submissions",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "rss-openai-advancing-independent-research-ai-alignment",
+    "date": "2026-02-19",
     "category": "research_paper",
-    "title": "Scaling Laws for Reward Model Overoptimization (ArXiv)",
-    "description": "Research paper studying how reward models degrade as policy optimization pressure increases — a key challenge in RLHF-trained models. Provides empirical scaling laws for the phenomenon.",
-    "source": "ArXiv (cs.LG)",
-    "url": "https://arxiv.org/abs/2210.10760",
-    "tags": [
-      "rlhf",
-      "reward-models",
-      "scaling"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt4o",
-    "date": "2024-05-13",
-    "category": "model_release",
-    "title": "GPT-4o released by OpenAI — native multimodal model with real-time voice",
-    "description": "OpenAI launches GPT-4o ('omni'), their first natively multimodal model that processes text, audio, and images in a unified architecture. Introduces real-time conversational voice mode.",
+    "title": "Advancing independent research on AI alignment",
+    "description": "OpenAI commits $7.5M to The Alignment Project to fund independent AI alignment research, strengthening global efforts to address AGI safety and security risks.",
     "source": "OpenAI",
-    "url": "https://openai.com/index/hello-gpt-4o/",
-    "tags": [
-      "openai",
-      "gpt",
-      "multimodal",
-      "voice"
-    ],
-    "manual": true
+    "url": "https://openai.com/index/advancing-independent-research-ai-alignment",
+    "tags": [],
+    "manual": false
   },
   {
-    "id": "manual-llama3",
-    "date": "2024-04-18",
-    "category": "model_release",
-    "title": "Meta releases Llama 3 (8B and 70B) — best open models at their size",
-    "description": "Meta releases Llama 3 in 8B and 70B parameter sizes, claiming best-in-class performance for open models. Available under a custom license permitting commercial use for most applications.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/meta-llama-3/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude3",
-    "date": "2024-03-04",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3 family — Haiku, Sonnet, and Opus",
-    "description": "Anthropic releases three new models: Claude 3 Haiku (fast/cheap), Claude 3 Sonnet (balanced), and Claude 3 Opus (most capable). Opus claims to outperform GPT-4 on multiple benchmarks.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-family",
-    "tags": [
-      "anthropic",
-      "claude"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-mixtral",
-    "date": "2023-12-11",
-    "category": "model_release",
-    "title": "Mistral releases Mixtral 8x7B — sparse mixture-of-experts open model",
-    "description": "Mistral AI releases Mixtral 8x7B, a sparse mixture-of-experts model that routes tokens through 2 of 8 expert networks per token. Matches or beats Llama 2 70B and GPT-3.5 on most benchmarks at lower inference cost.",
-    "source": "Mistral AI",
-    "url": "https://mistral.ai/news/mixtral-of-experts/",
-    "tags": [
-      "mistral",
-      "open-source",
-      "moe",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini1",
-    "date": "2023-12-06",
-    "category": "model_release",
-    "title": "Google announces Gemini — multimodal model in Ultra, Pro, and Nano sizes",
-    "description": "Google DeepMind announces Gemini, its most capable model family. Comes in three sizes: Ultra (most capable), Pro (balanced), and Nano (on-device). Claims to outperform GPT-4 on several benchmarks. Gemini Pro ships in Bard immediately.",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/technologies/gemini/",
-    "tags": [
-      "google",
-      "gemini",
-      "multimodal"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt4-turbo",
-    "date": "2023-11-06",
-    "category": "model_release",
-    "title": "OpenAI DevDay: GPT-4 Turbo with 128k context and updated knowledge",
-    "description": "At the first OpenAI DevDay, Sam Altman announces GPT-4 Turbo with a 128k context window, knowledge cutoff of April 2023, and lower prices. Also announces the GPT Store, Assistants API, and custom GPTs.",
+    "id": "rss-openai-openai-for-india",
+    "date": "2026-02-18",
+    "category": "announcement",
+    "title": "Introducing OpenAI for India",
+    "description": "OpenAI for India expands AI access across the country—building local infrastructure, powering enterprises, and advancing workforce skills.",
     "source": "OpenAI",
-    "url": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
+    "url": "https://openai.com/index/openai-for-india",
     "tags": [
-      "openai",
-      "gpt",
-      "long-context"
+      "openai"
     ],
-    "manual": true
+    "manual": false
   },
   {
-    "id": "manual-mistral7b",
-    "date": "2023-09-27",
-    "category": "model_release",
-    "title": "Mistral 7B released — outperforms Llama 2 13B on most benchmarks",
-    "description": "Mistral AI releases Mistral 7B under Apache 2.0, a 7B model using grouped-query attention and sliding window attention. Despite its small size, it outperforms Llama 2 13B across most benchmarks and becomes a widely adopted open model.",
-    "source": "Mistral AI",
-    "url": "https://mistral.ai/news/announcing-mistral-7b/",
-    "tags": [
-      "mistral",
-      "open-source",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-code-llama",
-    "date": "2023-08-24",
-    "category": "model_release",
-    "title": "Meta releases Code Llama — open-source coding model up to 34B",
-    "description": "Meta releases Code Llama, a family of coding-specialized models fine-tuned from Llama 2 in 7B, 13B, and 34B sizes. Supports fill-in-the-middle completions and long context (100k tokens). Free for research and commercial use.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/code-llama-large-language-model-for-coding/",
-    "tags": [
-      "meta",
-      "llama",
-      "coding",
-      "open-source"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama2",
-    "date": "2023-07-18",
-    "category": "model_release",
-    "title": "Meta releases Llama 2 with commercial license — open-source LLM goes legit",
-    "description": "Meta releases Llama 2 (7B, 13B, 70B) with a commercial-use license in partnership with Microsoft. Includes instruction-tuned chat variants. Becomes the dominant open-source LLM baseline for fine-tuning and research.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/llama/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "commercial"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude2",
-    "date": "2023-07-11",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 2 — 100k context window, improved reasoning",
-    "description": "Anthropic releases Claude 2 with a 100,000 token context window (able to process full books), stronger coding and math performance, and improved instruction following. Available in the US and UK via Claude.ai.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-2",
-    "tags": [
-      "anthropic",
-      "claude",
-      "long-context"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-bard",
-    "date": "2023-03-21",
-    "category": "product_launch",
-    "title": "Google opens Bard to public — powered by LaMDA, later PaLM 2",
-    "description": "Google opens Bard, its conversational AI product, to the public in the US and UK following a stumbling demo in February. Initially powered by LaMDA and later upgraded to PaLM 2, it later becomes Gemini.",
-    "source": "Google",
-    "url": "https://blog.google/technology/ai/bard-google-ai-search-updates/",
-    "tags": [
-      "google",
-      "bard",
-      "chatbot"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt4",
-    "date": "2023-03-14",
-    "category": "model_release",
-    "title": "GPT-4 released — multimodal model with bar exam–level reasoning",
-    "description": "OpenAI releases GPT-4, a multimodal model that accepts text and image input. Scores in the top percentiles on the bar exam, SAT, and GRE. Powers ChatGPT Plus and marks a step-change in reasoning capability.",
+    "id": "rss-openai-introducing-evmbench",
+    "date": "2026-02-18",
+    "category": "announcement",
+    "title": "Introducing EVMbench",
+    "description": "OpenAI and Paradigm introduce EVMbench, a benchmark evaluating AI agents’ ability to detect, patch, and exploit high-severity smart contract vulnerabilities.",
     "source": "OpenAI",
-    "url": "https://openai.com/research/gpt-4",
-    "tags": [
-      "openai",
-      "gpt",
-      "multimodal",
-      "reasoning"
-    ],
-    "manual": true
+    "url": "https://openai.com/index/introducing-evmbench",
+    "tags": [],
+    "manual": false
   },
   {
-    "id": "manual-claude1",
-    "date": "2023-03-14",
-    "category": "model_release",
-    "title": "Anthropic introduces Claude — constitutional AI assistant enters limited beta",
-    "description": "Anthropic launches Claude, its first publicly available AI assistant trained with Constitutional AI (CAI). Positioned as a safer, more steerable alternative to ChatGPT. Released in limited beta via API and Slack integration.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/introducing-claude",
-    "tags": [
-      "anthropic",
-      "claude",
-      "constitutional-ai"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama1",
-    "date": "2023-02-24",
-    "category": "model_release",
-    "title": "Meta releases LLaMA — open foundation models from 7B to 65B parameters",
-    "description": "Meta AI releases LLaMA (Large Language Model Meta AI) as a research artifact in sizes from 7B to 65B. Though access-gated, the weights leak within days, sparking an open-source LLM movement and countless fine-tuned derivatives.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "foundation-model"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-chatgpt",
-    "date": "2022-11-30",
-    "category": "product_launch",
-    "title": "ChatGPT launches — reaches 1 million users in 5 days",
-    "description": "OpenAI launches ChatGPT as a free research preview. Built on GPT-3.5 with RLHF fine-tuning, it becomes the fastest-growing consumer application in history, reaching 100 million users in two months and triggering an industry-wide AI race.",
+    "id": "rss-openai-new-result-theoretical-physics",
+    "date": "2026-02-13",
+    "category": "announcement",
+    "title": "GPT-5.2 derives a new result in theoretical physics",
+    "description": "A new preprint shows GPT-5.2 proposing a new formula for a gluon amplitude, later formally proved and verified by OpenAI and academic collaborators.",
     "source": "OpenAI",
-    "url": "https://openai.com/blog/chatgpt",
+    "url": "https://openai.com/index/new-result-theoretical-physics",
     "tags": [
-      "openai",
-      "chatgpt",
-      "rlhf",
-      "chatbot"
+      "gpt"
     ],
-    "manual": true
+    "manual": false
   },
   {
-    "id": "manual-whisper",
-    "date": "2022-09-21",
-    "category": "model_release",
-    "title": "OpenAI releases Whisper — robust open-source speech recognition",
-    "description": "OpenAI open-sources Whisper, a speech recognition model trained on 680,000 hours of audio. Achieves near-human transcription accuracy across dozens of languages and is released as freely usable open-source software.",
+    "id": "rss-openai-introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt",
+    "date": "2026-02-13",
+    "category": "announcement",
+    "title": "Introducing Lockdown Mode and Elevated Risk labels in ChatGPT",
+    "description": "Introducing Lockdown Mode and Elevated Risk labels in ChatGPT to help organizations defend against prompt injection and AI-driven data exfiltration.",
     "source": "OpenAI",
-    "url": "https://openai.com/research/whisper",
-    "tags": [
-      "openai",
-      "whisper",
-      "speech",
-      "open-source"
-    ],
-    "manual": true
+    "url": "https://openai.com/index/introducing-lockdown-mode-and-elevated-risk-labels-in-chatgpt",
+    "tags": [],
+    "manual": false
   },
   {
-    "id": "manual-stable-diffusion",
-    "date": "2022-08-22",
-    "category": "model_release",
-    "title": "Stable Diffusion released openly — first open-source image generation model",
-    "description": "Stability AI releases Stable Diffusion weights publicly, making high-quality image generation available for anyone to run locally. The open release triggers an explosion of derivative models, fine-tunes, and applications.",
-    "source": "Stability AI",
-    "url": "https://stability.ai/blog/stable-diffusion-public-release",
-    "tags": [
-      "stability-ai",
-      "stable-diffusion",
-      "open-source",
-      "image-generation",
-      "diffusion"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-midjourney",
-    "date": "2022-07-12",
-    "category": "product_launch",
-    "title": "Midjourney enters open beta — AI art generation goes mainstream",
-    "description": "Midjourney opens its Discord-based image generation tool to the public. Its distinctive artistic aesthetic and accessible interface make it one of the first AI tools to reach millions of non-technical users.",
-    "source": "Midjourney",
-    "url": "https://www.midjourney.com/",
-    "tags": [
-      "midjourney",
-      "image-generation",
-      "art"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-dalle2",
-    "date": "2022-04-06",
-    "category": "product_launch",
-    "title": "OpenAI announces DALL-E 2 — photorealistic image generation leap",
-    "description": "OpenAI demonstrates DALL-E 2, producing photorealistic images and artistic compositions with dramatically improved quality over the original. Combines CLIP with a diffusion model. Released in limited beta before broader access.",
+    "id": "rss-openai-beyond-rate-limits",
+    "date": "2026-02-13",
+    "category": "announcement",
+    "title": "Beyond rate limits: scaling access to Codex and Sora",
+    "description": "How OpenAI built a real-time access system combining rate limits, usage tracking, and credits to power continuous access to Sora and Codex.",
     "source": "OpenAI",
-    "url": "https://openai.com/dall-e-2",
-    "tags": [
-      "openai",
-      "dalle",
-      "image-generation",
-      "diffusion"
-    ],
-    "manual": true
+    "url": "https://openai.com/index/beyond-rate-limits",
+    "tags": [],
+    "manual": false
   },
   {
-    "id": "manual-alphafold2",
-    "date": "2021-07-15",
-    "category": "product_launch",
-    "title": "DeepMind releases AlphaFold 2 database — solves protein folding",
-    "description": "DeepMind releases the AlphaFold Protein Structure Database with predicted structures for nearly all human proteins. Solves a 50-year grand challenge in biology. Over 1 million structures made freely available to researchers.",
-    "source": "DeepMind",
-    "url": "https://www.deepmind.com/blog/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology",
-    "tags": [
-      "deepmind",
-      "biology",
-      "protein-folding",
-      "science"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-copilot",
-    "date": "2021-06-29",
-    "category": "product_launch",
-    "title": "GitHub Copilot launches in technical preview — AI pair programmer",
-    "description": "GitHub and OpenAI launch Copilot, an AI coding assistant trained on public GitHub repositories. Powered by Codex (a GPT-3 descendant), it autocompletes functions and writes boilerplate from comments. First mass-market AI coding tool.",
-    "source": "GitHub",
-    "url": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/",
-    "tags": [
-      "github",
-      "openai",
-      "coding",
-      "copilot"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-dalle1",
-    "date": "2021-01-05",
-    "category": "model_release",
-    "title": "OpenAI unveils DALL-E — GPT-3 variant that generates images from text",
-    "description": "OpenAI demonstrates DALL-E, a 12B parameter version of GPT-3 trained to generate images from text descriptions. Shows surprisingly creative and compositional outputs, marking the beginning of mainstream text-to-image AI.",
-    "source": "OpenAI",
-    "url": "https://openai.com/research/dall-e",
-    "tags": [
-      "openai",
-      "dalle",
-      "image-generation",
-      "multimodal"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt3",
-    "date": "2020-05-28",
-    "category": "model_release",
-    "title": "GPT-3 paper published — 175B parameter model stuns with few-shot learning",
-    "description": "OpenAI publishes the GPT-3 paper, describing a 175B parameter model that performs tasks from just a few examples in the prompt — no fine-tuning required. Sets off widespread excitement about large language models.",
-    "source": "ArXiv",
-    "url": "https://arxiv.org/abs/2005.14165",
-    "tags": [
-      "openai",
-      "gpt",
-      "few-shot",
-      "scaling"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt2",
-    "date": "2019-11-05",
-    "category": "model_release",
-    "title": "OpenAI releases GPT-2 1.5B in full after staged rollout",
-    "description": "After a controversial phased release citing misuse concerns, OpenAI releases the full 1.5B parameter GPT-2. The model generates coherent long-form text and sparks public debate about AI safety and responsible disclosure.",
-    "source": "OpenAI",
-    "url": "https://openai.com/research/gpt-2-1-5b-release",
-    "tags": [
-      "openai",
-      "gpt",
-      "language-model"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-bert",
-    "date": "2018-10-11",
+    "id": "rss-openai-scaling-social-science-research",
+    "date": "2026-02-13",
     "category": "research_paper",
-    "title": "Google releases BERT — bidirectional language model sets new NLP benchmarks",
-    "description": "Google releases BERT (Bidirectional Encoder Representations from Transformers), pre-trained on Wikipedia and Books. Sets state-of-the-art on 11 NLP tasks. Becomes the dominant approach for NLP fine-tuning for years.",
-    "source": "Google Research",
-    "url": "https://arxiv.org/abs/1810.04805",
-    "tags": [
-      "google",
-      "bert",
-      "nlp",
-      "language-model"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt1",
-    "date": "2018-06-11",
-    "category": "model_release",
-    "title": "OpenAI releases GPT-1 — first large-scale generative language model",
-    "description": "OpenAI releases the first GPT (Generative Pre-trained Transformer), a 117M parameter model pre-trained on BooksCorpus. Demonstrates that unsupervised pre-training followed by fine-tuning achieves strong NLP results.",
+    "title": "Scaling social science research",
+    "description": "GABRIEL is a new open-source toolkit from OpenAI that uses GPT to turn qualitative text and images into quantitative data, helping social scientists analyze research at scale.",
     "source": "OpenAI",
-    "url": "https://openai.com/research/language-unsupervised",
-    "tags": [
-      "openai",
-      "gpt",
-      "language-model"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-attention",
-    "date": "2017-06-12",
-    "category": "research_paper",
-    "title": "\"Attention Is All You Need\" — the Transformer architecture is published",
-    "description": "Google Brain researchers introduce the Transformer, replacing recurrent networks with self-attention. Becomes the foundational architecture for every major language model that follows, from BERT to GPT to Claude.",
-    "source": "ArXiv",
-    "url": "https://arxiv.org/abs/1706.03762",
-    "tags": [
-      "transformer",
-      "attention",
-      "architecture"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gans",
-    "date": "2014-06-10",
-    "category": "research_paper",
-    "title": "Generative Adversarial Networks introduced by Goodfellow et al.",
-    "description": "Ian Goodfellow proposes GANs — a framework where two neural networks compete: a generator creates fake data and a discriminator tries to distinguish it from real data. Becomes the foundation for synthetic image generation.",
-    "source": "ArXiv",
-    "url": "https://arxiv.org/abs/1406.2661",
-    "tags": [
-      "gans",
-      "generative",
-      "deep-learning"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-alexnet",
-    "date": "2012-09-30",
-    "category": "research_paper",
-    "title": "AlexNet wins ImageNet — deep learning era begins",
-    "description": "Krizhevsky, Sutskever, and Hinton's deep convolutional network crushes the ImageNet competition by a 10-point margin, proving deep learning at scale. Triggers a decade-long AI research explosion.",
-    "source": "NeurIPS 2012",
-    "url": "https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
-    "tags": [
-      "deep-learning",
-      "computer-vision",
-      "alexnet",
-      "imagenet"
-    ],
-    "manual": true
+    "url": "https://openai.com/index/scaling-social-science-research",
+    "tags": [],
+    "manual": false
   }
 ]
