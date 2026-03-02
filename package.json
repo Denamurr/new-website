@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "timeline:fetch": "node scripts/timeline-fetch.js",
-    "timeline:build": "node scripts/timeline-build.js",
-    "timeline:update": "node scripts/timeline-fetch.js && node scripts/timeline-build.js"
+    "timeline:build": "node scripts/timeline-build.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

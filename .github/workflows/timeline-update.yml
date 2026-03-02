@@ -1,15 +1,16 @@
-name: Daily AI Timeline Update
+name: Daily AI Timeline Fetch
 
 on:
   schedule:
     - cron: '0 8 * * *'  # 8am UTC every day
-  workflow_dispatch:       # allow manual trigger from GitHub UI
+  workflow_dispatch:
 
 jobs:
-  update:
+  fetch:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout
@@ -24,17 +25,59 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Fetch and merge timeline entries
-        run: npm run timeline:update
+      - name: Fetch pending entries
+        run: npm run timeline:fetch
 
-      - name: Commit and push (triggers Vercel redeploy)
+      - name: Check for new entries
+        id: check
         run: |
+          COUNT=$(node -e "
+            const pending  = require('./data/timeline-pending.json');
+            const existing = require('./data/timeline-entries.json');
+            const existingUrls = new Set(existing.map(e => e.url || e.id));
+            const newOnes = pending.filter(e => !existingUrls.has(e.url || e.id));
+            console.log(newOnes.length);
+          ")
+          echo "new_count=$COUNT" >> $GITHUB_OUTPUT
+
+      - name: Open review PR
+        if: steps.check.outputs.new_count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="timeline/pending-$(date -u '+%Y-%m-%d')"
+          COUNT=${{ steps.check.outputs.new_count }}
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/timeline-entries.json data/timeline-fetched.json
-          if git diff --staged --quiet; then
-            echo "No new entries — skipping commit."
-          else
-            git commit -m "chore: update AI timeline [$(date -u '+%Y-%m-%d')]"
-            git push
-          fi
+          git checkout -b "$BRANCH"
+          git add data/timeline-pending.json
+          git commit -m "chore: timeline pending entries [$(date -u '+%Y-%m-%d')]"
+          git push origin "$BRANCH"
+
+          TITLES=$(node -e "
+            const pending  = require('./data/timeline-pending.json');
+            const existing = require('./data/timeline-entries.json');
+            const existingUrls = new Set(existing.map(e => e.url || e.id));
+            pending.filter(e => !existingUrls.has(e.url || e.id))
+                   .forEach(e => console.log('- ' + e.title));
+          ")
+
+          gh pr create \
+            --title "Timeline: $COUNT new entries for review [$(date -u '+%Y-%m-%d')]" \
+            --body "$(cat <<EOF
+          **$COUNT new entries** fetched from Papers With Code + lab RSS feeds.
+
+          Review \`data/timeline-pending.json\` and delete any entries that don't belong, then merge.
+          Merging will automatically rebuild the timeline and trigger a Vercel redeploy.
+
+          **Pending entries:**
+          $TITLES
+          EOF
+          )" \
+            --base main \
+            --head "$BRANCH"
+
+      - name: No new entries
+        if: steps.check.outputs.new_count == '0'
+        run: echo "No new significant entries found."

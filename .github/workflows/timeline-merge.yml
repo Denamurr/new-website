@@ -1,0 +1,41 @@
+name: Build Timeline After Review
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/timeline-pending.json'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Merge pending into entries
+        run: npm run timeline:build
+
+      - name: Commit updated entries
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/timeline-entries.json
+          if git diff --staged --quiet; then
+            echo "No new entries after merge."
+          else
+            git commit -m "chore: merge approved timeline entries [$(date -u '+%Y-%m-%d')]"
+            git push
+          fi

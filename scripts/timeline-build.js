@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // scripts/timeline-build.js
-// Merges data/timeline-fetched.json into data/timeline-entries.json.
-// Existing entries always win on URL collision (preserves accumulated history).
-// Sorts by date descending (newest first).
+// Merges data/timeline-pending.json into data/timeline-entries.json.
+// Run this after reviewing and trimming pending.json.
+// Existing entries always win on URL collision. Sorts newest first.
 
 const fs = require('fs');
 const path = require('path');
@@ -24,19 +24,19 @@ function readJSON(filename) {
 }
 
 const existing = readJSON('timeline-entries.json');
-const fetched  = readJSON('timeline-fetched.json');
+const pending  = readJSON('timeline-pending.json');
 
 console.log(`timeline-entries.json: ${existing.length} existing entries`);
-console.log(`timeline-fetched.json: ${fetched.length} fetched entries`);
+console.log(`timeline-pending.json: ${pending.length} pending entries`);
 
-// Add fetched first, then overwrite with existing (existing always wins)
 const byKey = new Map();
 
-for (const entry of fetched) {
+for (const entry of pending) {
   const key = entry.url || entry.id;
   byKey.set(key, entry);
 }
 
+// Existing always wins on collision
 for (const entry of existing) {
   const key = entry.url || entry.id;
   byKey.set(key, entry);
@@ -47,7 +47,6 @@ const merged = Array.from(byKey.values())
   .sort((a, b) => b.date.localeCompare(a.date));
 
 const newCount = merged.length - existing.length;
-
 const out = path.join(DATA_DIR, 'timeline-entries.json');
 fs.writeFileSync(out, JSON.stringify(merged, null, 2));
-console.log(`\nBuilt data/timeline-entries.json: ${merged.length} total entries (+${newCount} new)`);
+console.log(`\nBuilt data/timeline-entries.json: ${merged.length} total (+${newCount} new)`);
