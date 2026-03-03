@@ -46,7 +46,7 @@ function ReachInput({ value, onChange, onFocus, onBlur }) {
       onChange={e => onChange(e.target.value.replace(/,/g, ''))}
       onFocus={() => { setFocused(true); onFocus?.() }}
       onBlur={() => { setFocused(false); onBlur?.() }}
-      className="w-[90px] border-none bg-transparent text-[14px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-200 transition-colors"
+      className="w-[90px] border-none bg-transparent text-[14px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-300 transition-colors"
     />
   )
 }
@@ -157,7 +157,7 @@ export default function RiceClient() {
             style={{ minWidth: '12ch', width: `${Math.max(sessionName.length + 2, 12)}ch` }}
           />
           {!isEmpty && (
-            <span className="text-[13px] text-gray-300">
+            <span className="text-[13px] text-gray-500">
               {features.length} feature{features.length !== 1 ? 's' : ''}
             </span>
           )}
@@ -181,7 +181,7 @@ export default function RiceClient() {
 
       {isEmpty ? (
         /* Empty state */
-        <div className="flex flex-col items-center justify-center gap-5 py-24 text-gray-300">
+        <div className="flex flex-col items-center justify-center gap-5 py-24 text-gray-500">
           <div className="flex flex-col items-center gap-1.5 text-[14px]">
             <span className="text-gray-400">Reach × Impact × Confidence</span>
             <div className="w-52 h-px bg-gray-200" />
@@ -202,22 +202,22 @@ export default function RiceClient() {
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-100">
-                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 pr-3 pl-0 whitespace-nowrap min-w-[220px] w-[30%]">
+                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 pr-3 pl-0 whitespace-nowrap min-w-[220px] w-[30%]">
                     Feature
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[100px]">
-                    Reach <span className="font-normal normal-case tracking-normal text-gray-200">per quarter</span>
+                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[100px]">
+                    Reach <span className="font-normal normal-case tracking-normal text-gray-400">per quarter</span>
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[120px]">
+                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[120px]">
                     Impact
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[220px]">
+                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[220px]">
                     Confidence
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[110px]">
-                    Effort <span className="font-normal normal-case tracking-normal text-gray-200">person-weeks</span>
+                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[110px]">
+                    Effort <span className="font-normal normal-case tracking-normal text-gray-400">person-weeks</span>
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[140px]">
+                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[140px]">
                     RICE Score
                   </th>
                   <th className="w-9" />
@@ -225,8 +225,9 @@ export default function RiceClient() {
               </thead>
               <tbody>
                 {display.map((f, i) => {
+                  const hasReach   = parseFloat(f.reach) > 0
                   const barPct     = f.score > 0 ? (f.score / maxScore) * 100 : 0
-                  const scoreLabel = f.score > 0 ? Math.round(f.score).toLocaleString() : '—'
+                  const scoreLabel = f.score > 0 ? Math.round(f.score).toLocaleString() : (hasReach ? '0' : 'add reach')
                   const isLast     = i === display.length - 1
 
                   return (
@@ -245,7 +246,7 @@ export default function RiceClient() {
                       <td className="py-2 pr-3 pl-0">
                         <input
                           type="text"
-                          className="name-input w-full border-none bg-transparent text-[14px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-200 transition-colors"
+                          className="name-input w-full border-none bg-transparent text-[14px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-300 transition-colors"
                           value={f.name}
                           placeholder="Feature name…"
                           onChange={e => update(f.id, 'name', e.target.value)}
@@ -324,7 +325,7 @@ export default function RiceClient() {
                             className="absolute inset-0 bg-gray-100 rounded transition-all duration-300"
                             style={{ width: `${barPct.toFixed(1)}%` }}
                           />
-                          <span className="relative text-[13px] font-medium text-gray-500 px-2.5 z-10 tabular-nums">
+                          <span className="relative text-[13px] font-semibold text-gray-700 px-2.5 z-10 tabular-nums">
                             {scoreLabel}
                           </span>
                         </div>
@@ -334,7 +335,7 @@ export default function RiceClient() {
                       <td className="py-2 px-1">
                         <button
                           onClick={() => deleteRow(f.id)}
-                          className="opacity-0 group-hover:opacity-100 text-[12px] text-gray-300 hover:text-red-400 hover:bg-red-50 px-1.5 py-1 rounded transition-all"
+                          className="opacity-0 group-hover:opacity-100 text-[12px] text-gray-500 hover:text-red-400 hover:bg-red-50 px-1.5 py-1 rounded transition-all"
                         >
                           ✕
                         </button>
@@ -347,7 +348,7 @@ export default function RiceClient() {
           </div>
 
           {/* Footer */}
-          <p className="mt-6 text-[12px] text-gray-300">
+          <p className="mt-6 text-[12px] text-gray-500">
             Reach is per quarter · Effort in person-weeks · {features.length} feature{features.length !== 1 ? 's' : ''}
           </p>
         </>
