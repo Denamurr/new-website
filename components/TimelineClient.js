@@ -1,80 +1,59 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect, Fragment } from 'react'
 
-const CATEGORY_STYLE = {
-  model_release:  { dot: '#6366f1', badge: 'bg-indigo-50 text-indigo-700',  filter: 'bg-indigo-600 text-white',  label: 'Models'  },
-  research_paper: { dot: '#16a34a', badge: 'bg-green-50 text-green-700',    filter: 'bg-green-600 text-white',   label: 'Papers'  },
-  announcement:   { dot: '#ea580c', badge: 'bg-orange-50 text-orange-700',  filter: 'bg-orange-600 text-white',  label: 'News'    },
-  product_launch: { dot: '#0891b2', badge: 'bg-cyan-50 text-cyan-700',      filter: 'bg-cyan-600 text-white',    label: 'Products'},
+const CATEGORIES = {
+  model_release:  { label: 'Models',   color: '#6366f1' },
+  research_paper: { label: 'Papers',   color: '#16a34a' },
+  announcement:   { label: 'News',     color: '#ea580c' },
+  product_launch: { label: 'Products', color: '#0891b2' },
 }
 
-// Default: models, news, products visible — papers hidden
-const DEFAULT_SELECTED = new Set(['model_release', 'announcement', 'product_launch'])
+const PX_PER_DAY = 12
+const MIN_GAP    = 180
+
+function daysBetween(a, b) {
+  return Math.round((b - a) / 86400000)
+}
+
+function xForDate(date, startDate) {
+  return 80 + daysBetween(startDate, date) * PX_PER_DAY
+}
 
 function formatDate(str) {
   const [y, m, d] = str.split('-').map(Number)
-  return new Date(y, m - 1, d).toLocaleDateString('en-US', {
-    month: 'short', day: 'numeric', year: 'numeric',
-  })
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
 }
 
-function EntryCard({ entry }) {
-  const style = CATEGORY_STYLE[entry.category] || CATEGORY_STYLE.announcement
-  return (
-    <div>
-      <div className="flex items-baseline gap-2 flex-wrap">
-        <a
-          href={entry.url || '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors leading-snug"
-        >
-          {entry.title}
-        </a>
-        <span className={`shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded ${style.badge}`}>
-          {style.label}
-        </span>
-      </div>
-      {entry.description && (
-        <p className="text-sm text-gray-500 mt-1 leading-relaxed">{entry.description}</p>
-      )}
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1.5">
-        {entry.source && (
-          <a
-            href={entry.url || '#'}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-gray-400 hover:text-blue-500 transition-colors"
-          >
-            {entry.source}
-          </a>
-        )}
-        {(entry.tags || []).map(tag => (
-          <span key={tag} className="text-xs text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
-  )
+function chooseSide(x, lastX) {
+  const gapAbove = x - lastX.above
+  const gapBelow = x - lastX.below
+  if (gapAbove >= MIN_GAP && gapBelow >= MIN_GAP) {
+    return gapAbove >= gapBelow ? 'above' : 'below'
+  }
+  if (gapAbove >= MIN_GAP) return 'above'
+  if (gapBelow >= MIN_GAP) return 'below'
+  return gapAbove >= gapBelow ? 'above' : 'below'
+}
+
+function safeHostname(url) {
+  try { return new URL(url).hostname.replace(/^www\./, '') }
+  catch { return '' }
 }
 
 export default function TimelineClient({ entries }) {
-  const [selected, setSelected] = useState(DEFAULT_SELECTED)
-  const [searchQuery, setSearchQuery] = useState('')
+  const [activeCategory, setActiveCategory] = useState('all')
+  const [searchQuery, setSearchQuery]       = useState('')
+  const [showHint, setShowHint]             = useState(true)
+  const wrapRef    = useRef(null)
+  const isDragging = useRef(false)
+  const startX     = useRef(0)
+  const scrollStart = useRef(0)
 
-  function toggle(category) {
-    setSelected(prev => {
-      const next = new Set(prev)
-      next.has(category) ? next.delete(category) : next.add(category)
-      return next
-    })
-  }
-
+  // Filter
   const filtered = useMemo(() => {
     return entries.filter(e => {
-      if (!selected.has(e.category)) return false
+      if (activeCategory !== 'all' && e.category !== activeCategory) return false
       if (searchQuery) {
         const q = searchQuery.toLowerCase()
         return (
@@ -86,134 +65,235 @@ export default function TimelineClient({ entries }) {
       }
       return true
     })
-  }, [entries, selected, searchQuery])
+  }, [entries, activeCategory, searchQuery])
 
-  const byDate = useMemo(() => {
-    const map = {}
-    for (const e of filtered) {
-      if (!map[e.date]) map[e.date] = []
-      map[e.date].push(e)
+  // Layout calculation
+  const { items, totalWidth, years } = useMemo(() => {
+    if (filtered.length === 0) return { items: [], totalWidth: 800, years: [] }
+
+    const sorted = [...filtered].sort((a, b) => a.date.localeCompare(b.date))
+    const firstDate = new Date(sorted[0].date)
+    const lastDate  = new Date(sorted[sorted.length - 1].date)
+    const startDate = new Date(firstDate.getFullYear(), 0, 1)
+
+    const endDate   = new Date(lastDate.getFullYear() + 1, 0, 1)
+    const totalDays = daysBetween(startDate, endDate)
+    const totalWidth = totalDays * PX_PER_DAY + 160
+
+    const years = []
+    for (let y = firstDate.getFullYear(); y <= lastDate.getFullYear() + 1; y++) {
+      years.push({ year: y, x: xForDate(new Date(y, 0, 1), startDate) })
     }
-    return Object.entries(map).sort(([a], [b]) => b.localeCompare(a))
+
+    const lastX = { above: -Infinity, below: -Infinity }
+    const items = sorted.map(entry => {
+      const x    = xForDate(new Date(entry.date), startDate)
+      const side = chooseSide(x, lastX)
+      lastX[side] = x
+      return { ...entry, x, side }
+    })
+
+    return { items, totalWidth, years }
   }, [filtered])
 
-  const dateRange = useMemo(() => {
-    if (entries.length === 0) return ''
-    const dates = entries.map(e => e.date).sort()
-    return `${formatDate(dates[0])} – ${formatDate(dates[dates.length - 1])}`
-  }, [entries])
+  // Scroll to most recent on load
+  useEffect(() => {
+    const wrap = wrapRef.current
+    if (wrap) wrap.scrollLeft = wrap.scrollWidth
+  }, [items.length])
+
+  // Drag + wheel
+  useEffect(() => {
+    const wrap = wrapRef.current
+    if (!wrap) return
+
+    const onMouseDown = e => {
+      if (e.button !== 0) return
+      isDragging.current  = true
+      startX.current      = e.clientX
+      scrollStart.current = wrap.scrollLeft
+      wrap.style.cursor   = 'grabbing'
+      e.preventDefault()
+    }
+    const onMouseMove = e => {
+      if (!isDragging.current) return
+      wrap.scrollLeft = scrollStart.current - (e.clientX - startX.current)
+    }
+    const onMouseUp = () => {
+      isDragging.current = false
+      wrap.style.cursor  = 'grab'
+    }
+    const onWheel = e => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return
+      e.preventDefault()
+      wrap.scrollLeft += e.deltaY
+    }
+    const onScroll = () => setShowHint(false)
+
+    wrap.addEventListener('mousedown', onMouseDown)
+    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mouseup', onMouseUp)
+    wrap.addEventListener('wheel', onWheel, { passive: false })
+    wrap.addEventListener('scroll', onScroll, { once: true })
+
+    return () => {
+      wrap.removeEventListener('mousedown', onMouseDown)
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('mouseup', onMouseUp)
+      wrap.removeEventListener('wheel', onWheel)
+    }
+  }, [])
 
   return (
-    <div className="max-w-5xl mx-auto px-6 pt-24 pb-16">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">AI Timeline</h1>
-        <p className="text-gray-500 text-sm mt-1">
-          {entries.length} entries · {dateRange}
-        </p>
-      </div>
+    <div className="flex flex-col" style={{ height: 'calc(100vh - 57px)' }}>
 
-      {/* Search + Filters */}
-      <div className="flex flex-col sm:flex-row gap-3 mb-12">
-        <input
-          type="search"
-          placeholder="Search entries..."
-          value={searchQuery}
-          onChange={e => setSearchQuery(e.target.value)}
-          className="flex-1 border border-gray-200 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-gray-400 bg-white"
-        />
-        <div className="flex gap-2 flex-wrap">
-          {Object.entries(CATEGORY_STYLE).map(([key, style]) => {
-            const active = selected.has(key)
-            return (
+      {/* Topbar */}
+      <div className="flex items-center justify-between px-8 py-4 shrink-0 gap-4 flex-wrap border-b border-gray-100">
+        <span className="text-[15px] font-semibold tracking-tight text-gray-900 whitespace-nowrap">
+          AI Timeline
+        </span>
+        <div className="flex items-center gap-5 flex-wrap">
+          {/* Category filters */}
+          <div className="flex items-center gap-0.5">
+            <button
+              onClick={() => setActiveCategory('all')}
+              className={`text-[13px] px-2.5 py-1 rounded transition-colors ${
+                activeCategory === 'all' ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
+              }`}
+            >
+              All
+            </button>
+            {Object.entries(CATEGORIES).map(([key, cat]) => (
               <button
                 key={key}
-                onClick={() => toggle(key)}
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border transition-colors ${
-                  active
-                    ? `${style.filter} border-transparent`
-                    : 'bg-white text-gray-500 border-gray-200 hover:border-gray-400'
+                onClick={() => setActiveCategory(activeCategory === key ? 'all' : key)}
+                className={`flex items-center gap-1.5 text-[13px] px-2.5 py-1 rounded transition-colors ${
+                  activeCategory === key ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
                 }`}
               >
-                {/* Checkbox indicator */}
-                <span className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center shrink-0 transition-colors ${
-                  active ? 'bg-white/25 border-white/50' : 'border-gray-300 bg-white'
-                }`}>
-                  {active && (
-                    <svg width="8" height="7" viewBox="0 0 8 7" fill="none">
-                      <path d="M1 3.5L3 5.5L7 1" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  )}
-                </span>
-                {style.label}
+                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: cat.color }} />
+                {cat.label}
               </button>
-            )
-          })}
+            ))}
+          </div>
+
+          {/* Search */}
+          <input
+            type="search"
+            placeholder="Search…"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            className="border-0 border-b border-gray-200 pb-0.5 text-[13px] w-40 outline-none text-gray-900 placeholder-gray-300 bg-transparent focus:border-gray-500 transition-colors"
+          />
         </div>
       </div>
 
-      {/* Timeline */}
-      {byDate.length === 0 ? (
-        <p className="text-sm text-gray-500">No entries match your filter.</p>
-      ) : (
-        <div className="relative">
-          {/* Center line — desktop only */}
-          <div className="hidden sm:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gray-200" />
+      {/* Timeline scroll area */}
+      <div
+        ref={wrapRef}
+        className="flex-1 overflow-x-auto overflow-y-hidden relative select-none"
+        style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        <style>{`.timeline-wrap::-webkit-scrollbar { display: none; }`}</style>
 
-          <div className="space-y-12">
-            {byDate.map(([date, items], i) => {
-              const isLeft = i % 2 === 0
-              const dotColor = CATEGORY_STYLE[items[0]?.category]?.dot || '#9ca3af'
+        {filtered.length === 0 ? (
+          <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-300">
+            No entries match your filter.
+          </p>
+        ) : (
+          <div className="relative h-full" style={{ width: totalWidth, minHeight: 520 }}>
+
+            {/* Axis */}
+            <div
+              className="absolute top-1/2 bg-gray-200"
+              style={{ left: 0, right: 0, height: 1, transform: 'translateY(-50%)' }}
+            />
+
+            {/* Year markers */}
+            {years.map(({ year, x }) => (
+              <div
+                key={year}
+                className="absolute top-1/2 flex flex-col items-center"
+                style={{ left: x, transform: 'translateX(-50%) translateY(-50%)' }}
+              >
+                <div className="w-px bg-gray-300" style={{ height: 16 }} />
+                <div className="text-[13px] font-semibold text-gray-400 mt-2 whitespace-nowrap">{year}</div>
+              </div>
+            ))}
+
+            {/* Events */}
+            {items.map(entry => {
+              const cat     = CATEGORIES[entry.category] || CATEGORIES.announcement
+              const domain  = safeHostname(entry.url)
+              const srcText = domain || entry.source || ''
 
               return (
-                <div key={date}>
-                  {/* ── Mobile: left-border list ── */}
-                  <div className="sm:hidden pl-5 border-l border-gray-200 relative">
-                    <span
-                      className="absolute -left-[5px] top-1 w-2.5 h-2.5 rounded-full border-2 border-white"
-                      style={{ background: dotColor }}
+                <Fragment key={entry.id}>
+                  {/* Diamond */}
+                  <div
+                    className="absolute rounded-sm"
+                    style={{
+                      left:      entry.x,
+                      top:       '50%',
+                      width:     10,
+                      height:    10,
+                      transform: 'translateX(-50%) translateY(-50%) rotate(45deg)',
+                      background: cat.color,
+                    }}
+                  />
+
+                  {/* Card */}
+                  <div
+                    className="absolute flex flex-col items-center text-center"
+                    style={{
+                      left:  entry.x,
+                      width: 160,
+                      transform: 'translateX(-50%)',
+                      ...(entry.side === 'above'
+                        ? { bottom: '50%', paddingBottom: 32 }
+                        : { top: '50%',    paddingTop:    32 }),
+                    }}
+                  >
+                    {/* Connector */}
+                    <div
+                      className="absolute bg-gray-200"
+                      style={{
+                        width: 1,
+                        height: 24,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        ...(entry.side === 'above' ? { bottom: 8 } : { top: 8 }),
+                      }}
                     />
-                    <p className="text-xs text-gray-400 mb-3">{formatDate(date)}</p>
-                    <div className="space-y-5">
-                      {items.map(entry => <EntryCard key={entry.id} entry={entry} />)}
-                    </div>
-                  </div>
-
-                  {/* ── Desktop: alternating layout ── */}
-                  <div className="hidden sm:grid grid-cols-[1fr_72px_1fr] items-start">
-                    {/* Left column */}
-                    <div className="pr-10 pt-0.5">
-                      {isLeft && (
-                        <div className="space-y-5">
-                          {items.map(entry => <EntryCard key={entry.id} entry={entry} />)}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Center: dot + date */}
-                    <div className="flex flex-col items-center gap-1.5 pt-0.5">
-                      <span
-                        className="w-3 h-3 rounded-full border-2 border-white shadow shrink-0"
-                        style={{ background: dotColor }}
-                      />
-                      <span className="text-[10px] text-gray-400 text-center leading-tight">
-                        {formatDate(date)}
+                    <span className="text-[11px] text-gray-300 mb-0.5 whitespace-nowrap leading-none">
+                      {formatDate(entry.date)}
+                    </span>
+                    <a
+                      href={entry.url || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[12.5px] font-medium text-gray-800 leading-snug hover:underline underline-offset-2"
+                      onClick={e => e.stopPropagation()}
+                    >
+                      {entry.title}
+                    </a>
+                    {srcText && (
+                      <span className="text-[11px] text-gray-300 mt-0.5 leading-none" style={{ maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {srcText}
                       </span>
-                    </div>
-
-                    {/* Right column */}
-                    <div className="pl-10 pt-0.5">
-                      {!isLeft && (
-                        <div className="space-y-5">
-                          {items.map(entry => <EntryCard key={entry.id} entry={entry} />)}
-                        </div>
-                      )}
-                    </div>
+                    )}
                   </div>
-                </div>
+                </Fragment>
               )
             })}
           </div>
+        )}
+      </div>
+
+      {/* Scroll hint */}
+      {showHint && (
+        <div className="fixed bottom-5 right-8 text-xs text-gray-300 pointer-events-none transition-opacity">
+          scroll or drag →
         </div>
       )}
     </div>
