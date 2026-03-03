@@ -4,8 +4,6 @@ import { useState, useMemo, useRef, useEffect, Fragment } from 'react'
 
 const CATEGORIES = {
   model_release:  { label: 'Models',   color: '#6366f1' },
-  research_paper: { label: 'Papers',   color: '#16a34a' },
-  announcement:   { label: 'News',     color: '#ea580c' },
   product_launch: { label: 'Products', color: '#0891b2' },
 }
 
