@@ -1,11 +1,13 @@
+import Link from 'next/link'
+
 export default function Tools() {
   const tools = [
-    { 
-      title: 'RICE Prioritization Tool', 
+    {
+      title: 'RICE Prioritization Tool',
       description: 'Score and rank product features using the RICE framework. Input your features and get instant prioritization.',
-      status: 'Coming Soon',
+      status: 'Live',
       icon: '📊',
-      href: '#'
+      href: '/tools/rice'
     },
     { 
       title: 'BCG Matrix Analyzer', 
@@ -34,7 +36,7 @@ export default function Tools() {
         
         <div className="grid gap-4">
           {tools.map(tool => (
-            <a 
+            <Link
               key={tool.title}
               href={tool.href}
               className="block border border-gray-200 rounded-xl p-6 bg-gray-50 hover:bg-gray-100 hover:border-gray-300 transition-all group"
@@ -58,7 +60,7 @@ export default function Tools() {
                   →
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 
