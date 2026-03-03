@@ -19,3 +19,7 @@ a {
 a:hover {
   color: #0066cc;
 }
+
+.timeline-scroll::-webkit-scrollbar {
+  display: none;
+}

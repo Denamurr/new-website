@@ -189,10 +189,9 @@ export default function TimelineClient({ entries }) {
       {/* Timeline scroll area */}
       <div
         ref={wrapRef}
-        className="flex-1 overflow-x-auto overflow-y-hidden relative select-none"
+        className="timeline-scroll flex-1 overflow-x-auto overflow-y-hidden relative select-none"
         style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        <style>{`.timeline-wrap::-webkit-scrollbar { display: none; }`}</style>
 
         {filtered.length === 0 ? (
           <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-300">
