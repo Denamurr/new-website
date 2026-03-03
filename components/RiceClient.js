@@ -211,7 +211,7 @@ export default function RiceClient() {
                   <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[120px]">
                     Impact
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[260px]">
+                  <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[220px]">
                     Confidence
                   </th>
                   <th className="text-left text-[11px] font-medium text-gray-300 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[110px]">
@@ -283,12 +283,12 @@ export default function RiceClient() {
 
                       {/* Confidence */}
                       <td className="py-2 px-3">
-                        <div className="flex gap-1">
+                        <div className="flex gap-0.5">
                           {CONFIDENCE_OPTIONS.map(c => (
                             <button
                               key={c}
                               onClick={() => { update(f.id, 'confidence', c); setEditingId(null) }}
-                              className={`px-2 py-0.5 text-[12px] rounded border transition-all ${
+                              className={`px-1.5 py-0.5 text-[11px] rounded border transition-all ${
                                 f.confidence === c
                                   ? 'bg-gray-900 border-gray-900 text-white'
                                   : 'bg-white border-gray-200 text-gray-400 hover:border-gray-300 hover:text-gray-600'
