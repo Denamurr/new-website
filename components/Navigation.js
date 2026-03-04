@@ -11,7 +11,6 @@ export default function Navigation() {
     { name: 'Tools', href: '#tools' },
     { name: 'Blog', href: '#blog' },
     { name: 'Projects', href: '#projects' },
-    { name: 'Timeline', href: '/timeline' },
   ]
 
   return (

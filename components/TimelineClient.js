@@ -43,6 +43,7 @@ export default function TimelineClient({ entries }) {
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery]       = useState('')
   const [showHint, setShowHint]             = useState(true)
+  const [wrapHeight, setWrapHeight]         = useState(600)
   const wrapRef    = useRef(null)
   const isDragging = useRef(false)
   const startX     = useRef(0)
@@ -93,6 +94,16 @@ export default function TimelineClient({ entries }) {
 
     return { items, totalWidth, years }
   }, [filtered])
+
+  // Measure scroll area height
+  useEffect(() => {
+    const wrap = wrapRef.current
+    if (!wrap) return
+    setWrapHeight(wrap.clientHeight)
+    const ro = new ResizeObserver(() => setWrapHeight(wrap.clientHeight))
+    ro.observe(wrap)
+    return () => ro.disconnect()
+  }, [])
 
   // Scroll to most recent on load
   useEffect(() => {
@@ -198,7 +209,7 @@ export default function TimelineClient({ entries }) {
             No entries match your filter.
           </p>
         ) : (
-          <div className="relative h-full" style={{ width: totalWidth, minHeight: 520 }}>
+          <div className="relative" style={{ width: totalWidth, height: wrapHeight, minHeight: 400 }}>
 
             {/* Axis */}
             <div
