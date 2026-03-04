@@ -143,7 +143,7 @@ export default function TimelineClient({ entries }) {
   }, [])
 
   return (
-    <div className="flex flex-col" style={{ height: 'calc(100vh - 61px)' }}>
+    <div className="flex flex-col bg-white" style={{ position: 'fixed', top: 61, left: 0, right: 0, bottom: 0 }}>
 
       {/* Topbar */}
       <div className="flex items-center justify-between px-8 py-4 shrink-0 gap-4 flex-wrap border-b border-gray-100">
