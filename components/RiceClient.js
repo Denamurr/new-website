@@ -141,10 +141,30 @@ export default function RiceClient() {
   const isEmpty = features.length === 0
 
   return (
-    <div className="max-w-[1100px] mx-auto px-8 pt-24 pb-20">
+    <div className="max-w-[1100px] mx-auto px-8 pt-[72px] pb-16">
+
+      {/* Intro */}
+      <div className="mb-5 pt-5">
+        <p className="text-[13px] text-gray-400 leading-relaxed max-w-2xl">
+          RICE is a prioritization framework I keep coming back to whenever a roadmap conversation
+          starts going in circles. It forces the debate onto numbers — how many people does this
+          reach, how much does it move the needle, how confident are we, how long will it take.
+          I built this so I could pull it up during planning without hunting for a spreadsheet.
+        </p>
+        <div className="flex items-center gap-2 mt-3 text-[12px] text-gray-300 font-mono">
+          <span className="text-gray-500">Reach</span>
+          <span>×</span>
+          <span className="text-gray-500">Impact</span>
+          <span>×</span>
+          <span className="text-gray-500">Confidence</span>
+          <span>÷</span>
+          <span className="text-gray-500">Effort</span>
+          <span className="ml-2 text-gray-300 font-sans not-italic">= RICE Score</span>
+        </div>
+      </div>
 
       {/* Header */}
-      <div className="flex items-baseline justify-between gap-4 mb-9 flex-wrap">
+      <div className="flex items-baseline justify-between gap-4 mb-5 flex-wrap">
         <div className="flex flex-col gap-1">
           <input
             type="text"
