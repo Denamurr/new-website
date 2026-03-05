@@ -34,7 +34,6 @@ function formatNumber(n) {
   return v.toLocaleString()
 }
 
-// ── Reach input — shows comma-formatted on blur ───────────────────────────────
 function ReachInput({ value, onChange, onFocus, onBlur }) {
   const [focused, setFocused] = useState(false)
   return (
@@ -46,19 +45,18 @@ function ReachInput({ value, onChange, onFocus, onBlur }) {
       onChange={e => onChange(e.target.value.replace(/,/g, ''))}
       onFocus={() => { setFocused(true); onFocus?.() }}
       onBlur={() => { setFocused(false); onBlur?.() }}
-      className="w-[90px] border-none bg-transparent text-[14px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-300 transition-colors"
+      className="w-[80px] border-none bg-transparent text-[13px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-300 transition-colors"
     />
   )
 }
 
 export default function RiceClient() {
   const [features,     setFeatures]     = useState([])
-  const [sessionName,  setSessionName]  = useState('Q2 2025 Prioritization')
+  const [sessionName,  setSessionName]  = useState('Q2 Prioritization')
   const [editingId,    setEditingId]    = useState(null)
   const [loaded,       setLoaded]       = useState(false)
   const focusNextId = useRef(null)
 
-  // ── Load ──────────────────────────────────────────────────────────────────
   useEffect(() => {
     try {
       const name = localStorage.getItem('rice:session')
@@ -72,19 +70,16 @@ export default function RiceClient() {
     setLoaded(true)
   }, [])
 
-  // ── Save ──────────────────────────────────────────────────────────────────
   useEffect(() => {
     if (!loaded) return
     try { localStorage.setItem('rice:features', JSON.stringify(features)) } catch {}
   }, [features, loaded])
 
-  // ── Computed ──────────────────────────────────────────────────────────────
   const scored = useMemo(
     () => features.map(f => ({ ...f, score: calcScore(f) })),
     [features]
   )
 
-  // While editing a text/reach cell keep insertion order to avoid mid-type jumps
   const display = useMemo(() => {
     if (editingId !== null) return scored
     return [...scored].sort((a, b) => b.score - a.score)
@@ -92,7 +87,6 @@ export default function RiceClient() {
 
   const maxScore = useMemo(() => Math.max(...display.map(f => f.score), 1), [display])
 
-  // ── Mutations ──────────────────────────────────────────────────────────────
   function update(id, field, value) {
     setFeatures(prev => prev.map(f => f.id === id ? { ...f, [field]: value } : f))
   }
@@ -108,7 +102,11 @@ export default function RiceClient() {
     setFeatures(prev => prev.filter(f => f.id !== id))
   }
 
-  // Focus the name input of a newly added row
+  function clearAll() {
+    setFeatures([newRow()])
+    setEditingId(null)
+  }
+
   useEffect(() => {
     if (!focusNextId.current) return
     const el = document.querySelector(`[data-rowid="${focusNextId.current}"] .name-input`)
@@ -116,7 +114,6 @@ export default function RiceClient() {
     focusNextId.current = null
   })
 
-  // ── Export CSV ────────────────────────────────────────────────────────────
   function exportCSV() {
     const headers = ['Feature', 'Reach', 'Impact', 'Confidence (%)', 'Effort (wks)', 'RICE Score']
     const rows = [...display].sort((a, b) => b.score - a.score).map(f => {
@@ -141,29 +138,33 @@ export default function RiceClient() {
   const isEmpty = features.length === 0
 
   return (
-    <div className="max-w-[1100px] mx-auto px-8 pt-[72px] pb-16">
+    <div className="max-w-[1000px] mx-auto px-8 pt-[72px] pb-16">
 
       {/* Intro */}
-      <div className="mb-5 pt-5">
-        <p className="text-[13px] text-gray-400 leading-relaxed max-w-2xl">
-          RICE is a prioritization framework I keep coming back to whenever a roadmap conversation
-          starts going in circles. It forces the debate onto numbers — how many people does this
-          reach, how much does it move the needle, how confident are we, how long will it take.
-          I built this so I could pull it up during planning without hunting for a spreadsheet.
+      <div className="mb-8 pt-5 max-w-2xl">
+        <h1 className="text-2xl font-semibold tracking-tight text-gray-900 mb-1">
+          RICE stands for Reach, Impact, Confidence and Effort.
+        </h1>
+        <p className="text-[13px] text-gray-400 mb-3">Free RICE tool.</p>
+        <p className="text-[13px] text-gray-500 leading-relaxed mb-4">
+          A framework I keep coming back to whenever a roadmap conversation starts going in circles.
+          It forces the debate onto numbers — if we built this, how many people would it reach? How
+          much would it move the needle on our north star? How confident are we about this? How long
+          will it take? I built this so I could pull it up during planning without hunting for a
+          spreadsheet.
         </p>
-        <div className="flex items-center gap-2 mt-3 text-[12px] text-gray-300 font-mono">
-          <span className="text-gray-500">Reach</span>
-          <span>×</span>
-          <span className="text-gray-500">Impact</span>
-          <span>×</span>
-          <span className="text-gray-500">Confidence</span>
-          <span>÷</span>
-          <span className="text-gray-500">Effort</span>
-          <span className="ml-2 text-gray-300 font-sans not-italic">= RICE Score</span>
-        </div>
+        <p className="text-[13px] text-gray-500 leading-relaxed mb-4">
+          Enter a name for each possible feature or product, then estimate how many users would see
+          it over 3 months. What impact could it have — more sign-ups, awareness, engagement? How
+          confident are you about the impact and reach? And lastly, how much effort will it take to
+          build. Use # of engineers × # of weeks, so 2 engineers over 3 weeks would be 6 in effort.
+          From there it will perform the calculation and give you a numerical score. Use this to
+          compare features and figure out what gives you the most bang for your buck.
+        </p>
+        <p className="text-[13px] text-gray-500">You can even export it to share with your team.</p>
       </div>
 
-      {/* Header */}
+      {/* Session header */}
       <div className="flex items-baseline justify-between gap-4 mb-5 flex-wrap">
         <div className="flex flex-col gap-1">
           <input
@@ -177,22 +178,28 @@ export default function RiceClient() {
             style={{ minWidth: '12ch', width: `${Math.max(sessionName.length + 2, 12)}ch` }}
           />
           {!isEmpty && (
-            <span className="text-[13px] text-gray-500">
+            <span className="text-[13px] text-gray-400">
               {features.length} feature{features.length !== 1 ? 's' : ''}
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2.5 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={clearAll}
+            className="text-[13px] px-3 py-1.5 rounded-md border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
+          >
+            Clear
+          </button>
           <button
             onClick={exportCSV}
             disabled={isEmpty}
-            className="text-[13px] px-3.5 py-1.5 rounded-md border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="text-[13px] px-3 py-1.5 rounded-md border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
           >
             Export CSV
           </button>
           <button
             onClick={() => addRow(true)}
-            className="text-[13px] px-3.5 py-1.5 rounded-md bg-gray-900 text-white hover:bg-gray-700 transition-colors"
+            className="text-[13px] px-3 py-1.5 rounded-md bg-gray-900 text-white hover:bg-gray-700 transition-colors"
           >
             + Add feature
           </button>
@@ -200,7 +207,6 @@ export default function RiceClient() {
       </div>
 
       {isEmpty ? (
-        /* Empty state */
         <div className="flex flex-col items-center justify-center gap-5 py-24 text-gray-500">
           <div className="flex flex-col items-center gap-1.5 text-[14px]">
             <span className="text-gray-400">Reach × Impact × Confidence</span>
@@ -217,30 +223,31 @@ export default function RiceClient() {
         </div>
       ) : (
         <>
-          {/* Table */}
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="border-b border-gray-100">
-                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 pr-3 pl-0 whitespace-nowrap min-w-[220px] w-[30%]">
-                    Feature
+                  <th className="text-left pb-2.5 pr-2 pl-0 min-w-[180px] w-[28%]">
+                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest">Feature</span>
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[100px]">
-                    Reach <span className="font-normal normal-case tracking-normal text-gray-400">per quarter</span>
+                  <th className="text-left pb-2.5 px-2 min-w-[80px]">
+                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Reach</span>
+                    <span className="block text-[10px] font-normal text-gray-400 mt-0.5">per qtr</span>
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[120px]">
-                    Impact
+                  <th className="text-left pb-2.5 px-2 min-w-[100px]">
+                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Impact</span>
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[220px]">
-                    Confidence
+                  <th className="text-left pb-2.5 px-2 min-w-[190px]">
+                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Confidence</span>
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[110px]">
-                    Effort <span className="font-normal normal-case tracking-normal text-gray-400">person-weeks</span>
+                  <th className="text-left pb-2.5 px-2 min-w-[80px]">
+                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Effort</span>
+                    <span className="block text-[10px] font-normal text-gray-400 mt-0.5">person-wks</span>
                   </th>
-                  <th className="text-left text-[11px] font-medium text-gray-500 uppercase tracking-widest pb-2.5 px-3 whitespace-nowrap min-w-[140px]">
-                    RICE Score
+                  <th className="text-left pb-2.5 px-2 min-w-[120px]">
+                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Score</span>
                   </th>
-                  <th className="w-9" />
+                  <th className="w-8" />
                 </tr>
               </thead>
               <tbody>
@@ -263,10 +270,10 @@ export default function RiceClient() {
                       }}
                     >
                       {/* Feature name */}
-                      <td className="py-2 pr-3 pl-0">
+                      <td className="py-1.5 pr-2 pl-0">
                         <input
                           type="text"
-                          className="name-input w-full border-none bg-transparent text-[14px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-300 transition-colors"
+                          className="name-input w-full border-none bg-transparent text-[13px] text-gray-900 outline-none py-0.5 border-b border-transparent focus:border-gray-200 placeholder-gray-300 transition-colors"
                           value={f.name}
                           placeholder="Feature name…"
                           onChange={e => update(f.id, 'name', e.target.value)}
@@ -276,7 +283,7 @@ export default function RiceClient() {
                       </td>
 
                       {/* Reach */}
-                      <td className="py-2 px-3">
+                      <td className="py-1.5 px-2">
                         <ReachInput
                           value={f.reach}
                           onChange={v => update(f.id, 'reach', v)}
@@ -286,14 +293,14 @@ export default function RiceClient() {
                       </td>
 
                       {/* Impact */}
-                      <td className="py-2 px-3">
+                      <td className="py-1.5 px-2">
                         <select
                           value={f.impact}
                           onChange={e => {
                             update(f.id, 'impact', parseFloat(e.target.value))
                             setEditingId(null)
                           }}
-                          className="border-none bg-transparent text-[14px] text-gray-900 outline-none cursor-pointer appearance-none py-0.5 pr-5"
+                          className="border-none bg-transparent text-[13px] text-gray-900 outline-none cursor-pointer appearance-none py-0.5 pr-5"
                           style={selectStyle}
                         >
                           {IMPACT_OPTIONS.map(o => (
@@ -303,13 +310,13 @@ export default function RiceClient() {
                       </td>
 
                       {/* Confidence */}
-                      <td className="py-2 px-3">
+                      <td className="py-1.5 px-2">
                         <div className="flex gap-0.5">
                           {CONFIDENCE_OPTIONS.map(c => (
                             <button
                               key={c}
                               onClick={() => { update(f.id, 'confidence', c); setEditingId(null) }}
-                              className={`px-1.5 py-0.5 text-[11px] rounded border transition-all ${
+                              className={`px-1 py-0.5 text-[11px] rounded border transition-all ${
                                 f.confidence === c
                                   ? 'bg-gray-900 border-gray-900 text-white'
                                   : 'bg-white border-gray-200 text-gray-400 hover:border-gray-300 hover:text-gray-600'
@@ -322,14 +329,14 @@ export default function RiceClient() {
                       </td>
 
                       {/* Effort */}
-                      <td className="py-2 px-3">
+                      <td className="py-1.5 px-2">
                         <select
                           value={f.effort}
                           onChange={e => {
                             update(f.id, 'effort', parseFloat(e.target.value))
                             setEditingId(null)
                           }}
-                          className="border-none bg-transparent text-[14px] text-gray-900 outline-none cursor-pointer appearance-none py-0.5 pr-5"
+                          className="border-none bg-transparent text-[13px] text-gray-900 outline-none cursor-pointer appearance-none py-0.5 pr-5"
                           style={selectStyle}
                         >
                           {EFFORT_OPTIONS.map(o => (
@@ -339,23 +346,23 @@ export default function RiceClient() {
                       </td>
 
                       {/* Score */}
-                      <td className="py-2 px-3">
-                        <div className="relative h-7 flex items-center rounded bg-gray-50 overflow-hidden min-w-[100px]">
+                      <td className="py-1.5 px-2">
+                        <div className="relative h-6 flex items-center rounded bg-gray-50 overflow-hidden min-w-[90px]">
                           <div
                             className="absolute inset-0 bg-gray-100 rounded transition-all duration-300"
                             style={{ width: `${barPct.toFixed(1)}%` }}
                           />
-                          <span className="relative text-[13px] font-semibold text-gray-700 px-2.5 z-10 tabular-nums">
+                          <span className="relative text-[12px] font-semibold text-gray-700 px-2 z-10 tabular-nums">
                             {scoreLabel}
                           </span>
                         </div>
                       </td>
 
                       {/* Delete */}
-                      <td className="py-2 px-1">
+                      <td className="py-1.5 px-1">
                         <button
                           onClick={() => deleteRow(f.id)}
-                          className="opacity-0 group-hover:opacity-100 text-[12px] text-gray-500 hover:text-red-400 hover:bg-red-50 px-1.5 py-1 rounded transition-all"
+                          className="opacity-0 group-hover:opacity-100 text-[11px] text-gray-400 hover:text-red-400 hover:bg-red-50 px-1.5 py-1 rounded transition-all"
                         >
                           ✕
                         </button>
@@ -367,8 +374,7 @@ export default function RiceClient() {
             </table>
           </div>
 
-          {/* Footer */}
-          <p className="mt-6 text-[12px] text-gray-500">
+          <p className="mt-5 text-[12px] text-gray-400">
             Reach is per quarter · Effort in person-weeks · {features.length} feature{features.length !== 1 ? 's' : ''}
           </p>
         </>
