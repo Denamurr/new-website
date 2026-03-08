@@ -3,6 +3,7 @@ import Hero from '../components/Hero'
 import Tools from '../components/Tools'
 import LabDashboard from '../components/LabDashboard'
 import Projects from '../components/Projects'
+import Blog from '../components/Blog'
 import Footer from '../components/Footer'
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Tools />
       <LabDashboard />
       <Projects />
+      <Blog />
       <Footer />
     </main>
   )
