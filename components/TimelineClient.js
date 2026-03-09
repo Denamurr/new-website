@@ -7,31 +7,12 @@ const CATEGORIES = {
   product_launch: { label: 'Products', color: '#0891b2' },
 }
 
-const PX_PER_DAY = 12
-const MIN_GAP    = 180
-
-function daysBetween(a, b) {
-  return Math.round((b - a) / 86400000)
-}
-
-function xForDate(date, startDate) {
-  return 80 + daysBetween(startDate, date) * PX_PER_DAY
-}
+const ITEM_GAP  = 220   // px between events
+const PADDING   = 100   // px left/right
 
 function formatDate(str) {
-  const [y, m, d] = str.split('-').map(Number)
-  return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-}
-
-function chooseSide(x, lastX) {
-  const gapAbove = x - lastX.above
-  const gapBelow = x - lastX.below
-  if (gapAbove >= MIN_GAP && gapBelow >= MIN_GAP) {
-    return gapAbove >= gapBelow ? 'above' : 'below'
-  }
-  if (gapAbove >= MIN_GAP) return 'above'
-  if (gapBelow >= MIN_GAP) return 'below'
-  return gapAbove >= gapBelow ? 'above' : 'below'
+  const [y, m] = str.split('-').map(Number)
+  return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
 }
 
 function safeHostname(url) {
@@ -43,10 +24,9 @@ export default function TimelineClient({ entries }) {
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery]       = useState('')
   const [showHint, setShowHint]             = useState(true)
-  const [wrapHeight, setWrapHeight]         = useState(600)
-  const wrapRef    = useRef(null)
-  const isDragging = useRef(false)
-  const startX     = useRef(0)
+  const wrapRef     = useRef(null)
+  const isDragging  = useRef(false)
+  const startX      = useRef(0)
   const scrollStart = useRef(0)
 
   // Filter
@@ -66,44 +46,18 @@ export default function TimelineClient({ entries }) {
     })
   }, [entries, activeCategory, searchQuery])
 
-  // Layout calculation
-  const { items, totalWidth, years } = useMemo(() => {
-    if (filtered.length === 0) return { items: [], totalWidth: 800, years: [] }
-
+  // Evenly-spaced layout
+  const { items, totalWidth } = useMemo(() => {
+    if (filtered.length === 0) return { items: [], totalWidth: 800 }
     const sorted = [...filtered].sort((a, b) => a.date.localeCompare(b.date))
-    const firstDate = new Date(sorted[0].date)
-    const lastDate  = new Date(sorted[sorted.length - 1].date)
-    const startDate = new Date(firstDate.getFullYear(), 0, 1)
-
-    const endDate   = new Date(lastDate.getFullYear() + 1, 0, 1)
-    const totalDays = daysBetween(startDate, endDate)
-    const totalWidth = totalDays * PX_PER_DAY + 160
-
-    const years = []
-    for (let y = firstDate.getFullYear(); y <= lastDate.getFullYear() + 1; y++) {
-      years.push({ year: y, x: xForDate(new Date(y, 0, 1), startDate) })
-    }
-
-    const lastX = { above: -Infinity, below: -Infinity }
-    const items = sorted.map(entry => {
-      const x    = xForDate(new Date(entry.date), startDate)
-      const side = chooseSide(x, lastX)
-      lastX[side] = x
-      return { ...entry, x, side }
-    })
-
-    return { items, totalWidth, years }
+    const items = sorted.map((entry, i) => ({
+      ...entry,
+      x:    PADDING + i * ITEM_GAP,
+      side: i % 2 === 0 ? 'above' : 'below',
+    }))
+    const totalWidth = PADDING * 2 + (sorted.length - 1) * ITEM_GAP
+    return { items, totalWidth }
   }, [filtered])
-
-  // Measure scroll area height
-  useEffect(() => {
-    const wrap = wrapRef.current
-    if (!wrap) return
-    setWrapHeight(wrap.clientHeight)
-    const ro = new ResizeObserver(() => setWrapHeight(wrap.clientHeight))
-    ro.observe(wrap)
-    return () => ro.disconnect()
-  }, [])
 
   // Scroll to most recent on load
   useEffect(() => {
@@ -154,62 +108,66 @@ export default function TimelineClient({ entries }) {
   }, [])
 
   return (
-    <div className="flex flex-col bg-white" style={{ position: 'fixed', top: 61, left: 0, right: 0, bottom: 0 }}>
+    <div className="bg-white">
+
+      {/* Intro */}
+      <div className="px-8 pt-12 pb-8 max-w-2xl">
+        <h1 className="text-2xl font-bold text-gray-900 mb-3">The Timeline of AI Breakthroughs</h1>
+        <p className="text-[15px] text-gray-500 leading-relaxed mb-4">
+          AI has been advancing at a pace that&apos;s hard to follow. To make sense of it, I designed this interactive
+          timeline showing the major milestones that pushed AI into the mainstream. It starts with a research paper,
+          moves on to model releases and finally to the products that brought them to millions of users.
+        </p>
+        <p className="text-xs text-gray-400">
+          Built as an interactive visualization using React and a small dataset of model and product milestones.
+        </p>
+      </div>
 
       {/* Topbar */}
-      <div className="flex items-center justify-between px-8 py-4 shrink-0 gap-4 flex-wrap border-b border-gray-100">
-        <span className="text-[15px] font-semibold tracking-tight text-gray-900 whitespace-nowrap">
-          AI Timeline
-        </span>
-        <div className="flex items-center gap-5 flex-wrap">
-          {/* Category filters */}
-          <div className="flex items-center gap-0.5">
+      <div className="flex items-center justify-between px-8 py-3 gap-4 flex-wrap border-y border-gray-100">
+        <div className="flex items-center gap-0.5">
+          <button
+            onClick={() => setActiveCategory('all')}
+            className={`text-[13px] px-2.5 py-1 rounded transition-colors ${
+              activeCategory === 'all' ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
+            }`}
+          >
+            All
+          </button>
+          {Object.entries(CATEGORIES).map(([key, cat]) => (
             <button
-              onClick={() => setActiveCategory('all')}
-              className={`text-[13px] px-2.5 py-1 rounded transition-colors ${
-                activeCategory === 'all' ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
+              key={key}
+              onClick={() => setActiveCategory(activeCategory === key ? 'all' : key)}
+              className={`flex items-center gap-1.5 text-[13px] px-2.5 py-1 rounded transition-colors ${
+                activeCategory === key ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
               }`}
             >
-              All
+              <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: cat.color }} />
+              {cat.label}
             </button>
-            {Object.entries(CATEGORIES).map(([key, cat]) => (
-              <button
-                key={key}
-                onClick={() => setActiveCategory(activeCategory === key ? 'all' : key)}
-                className={`flex items-center gap-1.5 text-[13px] px-2.5 py-1 rounded transition-colors ${
-                  activeCategory === key ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
-                }`}
-              >
-                <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: cat.color }} />
-                {cat.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Search */}
-          <input
-            type="search"
-            placeholder="Search…"
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            className="border-0 border-b border-gray-200 pb-0.5 text-[13px] w-40 outline-none text-gray-900 placeholder-gray-300 bg-transparent focus:border-gray-500 transition-colors"
-          />
+          ))}
         </div>
+        <input
+          type="search"
+          placeholder="Search…"
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+          className="border-0 border-b border-gray-200 pb-0.5 text-[13px] w-40 outline-none text-gray-900 placeholder-gray-300 bg-transparent focus:border-gray-500 transition-colors"
+        />
       </div>
 
       {/* Timeline scroll area */}
       <div
         ref={wrapRef}
-        className="timeline-scroll flex-1 overflow-x-auto overflow-y-hidden relative select-none"
-        style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        className="timeline-scroll overflow-x-auto overflow-y-hidden relative select-none"
+        style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 380 }}
       >
-
         {filtered.length === 0 ? (
           <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-300">
             No entries match your filter.
           </p>
         ) : (
-          <div className="relative" style={{ width: totalWidth, height: wrapHeight, minHeight: 400 }}>
+          <div className="relative" style={{ width: totalWidth, height: '100%' }}>
 
             {/* Axis */}
             <div
@@ -217,21 +175,9 @@ export default function TimelineClient({ entries }) {
               style={{ left: 0, right: 0, height: 1, transform: 'translateY(-50%)' }}
             />
 
-            {/* Year markers */}
-            {years.map(({ year, x }) => (
-              <div
-                key={year}
-                className="absolute top-1/2 flex flex-col items-center"
-                style={{ left: x, transform: 'translateX(-50%) translateY(-50%)' }}
-              >
-                <div className="w-px bg-gray-300" style={{ height: 16 }} />
-                <div className="text-[13px] font-semibold text-gray-400 mt-2 whitespace-nowrap">{year}</div>
-              </div>
-            ))}
-
             {/* Events */}
             {items.map(entry => {
-              const cat     = CATEGORIES[entry.category] || CATEGORIES.announcement
+              const cat     = CATEGORIES[entry.category] || CATEGORIES.model_release
               const domain  = safeHostname(entry.url)
               const srcText = domain || entry.source || ''
 
@@ -258,8 +204,8 @@ export default function TimelineClient({ entries }) {
                       width: 160,
                       transform: 'translateX(-50%)',
                       ...(entry.side === 'above'
-                        ? { bottom: '50%', paddingBottom: 32 }
-                        : { top: '50%',    paddingTop:    32 }),
+                        ? { bottom: '50%', paddingBottom: 28 }
+                        : { top: '50%',    paddingTop:    28 }),
                     }}
                   >
                     {/* Connector */}
@@ -267,15 +213,12 @@ export default function TimelineClient({ entries }) {
                       className="absolute bg-gray-200"
                       style={{
                         width: 1,
-                        height: 24,
+                        height: 20,
                         left: '50%',
                         transform: 'translateX(-50%)',
                         ...(entry.side === 'above' ? { bottom: 8 } : { top: 8 }),
                       }}
                     />
-                    <span className="text-[11px] text-gray-300 mb-0.5 whitespace-nowrap leading-none">
-                      {formatDate(entry.date)}
-                    </span>
                     <a
                       href={entry.url || '#'}
                       target="_blank"
@@ -285,8 +228,14 @@ export default function TimelineClient({ entries }) {
                     >
                       {entry.title}
                     </a>
+                    <span className="text-[11px] text-gray-300 mt-1 whitespace-nowrap leading-none">
+                      {formatDate(entry.date)}
+                    </span>
                     {srcText && (
-                      <span className="text-[11px] text-gray-300 mt-0.5 leading-none" style={{ maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span
+                        className="text-[11px] text-gray-300 mt-0.5 leading-none"
+                        style={{ maxWidth: 140, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                      >
                         {srcText}
                       </span>
                     )}
@@ -298,9 +247,8 @@ export default function TimelineClient({ entries }) {
         )}
       </div>
 
-      {/* Scroll hint */}
       {showHint && (
-        <div className="fixed bottom-5 right-8 text-xs text-gray-300 pointer-events-none transition-opacity">
+        <div className="px-8 py-2 text-xs text-gray-300 pointer-events-none">
           scroll or drag →
         </div>
       )}

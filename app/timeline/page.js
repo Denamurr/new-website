@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function TimelinePage() {
   return (
-    <main className="bg-white">
+    <main className="bg-white pt-[61px]">
       <Navigation />
       <TimelineClient entries={entries} />
     </main>
