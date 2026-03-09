@@ -18,7 +18,7 @@ const STAGE_POOLS = {
   0: [ // Discovery
     {
       id: 'PM-001', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "The CEO attended the discovery kickoff, loved it, and has since developed three fully-formed product visions. Your team has capacity for one. What do you do?",
+      scenario: "The CEO attended one discovery session — the kickoff — and has since developed three fully-formed product visions. Your team has capacity for one. The CEO considers this a minor logistical detail. What do you do?",
       choices: [
         { label: "Go with the CEO's favorite",            effects: { trust: 1, morale: -1 },                consequence: "Team ships the CEO's gut. At least the roadmap review will be short." },
         { label: "Run a quick validation sprint",         effects: { roadmap: -1, morale: 2 },              consequence: "One week slower. The CEO doesn't love 'we did research.' They love 'research confirmed your instinct.'" },
@@ -28,7 +28,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-002', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "Three stakeholders have given you three completely different definitions of success. The exec alignment meeting is next week. You've been in this role for four months. What do you do?",
+      scenario: "Three stakeholders have each sent you a separate 'success criteria' doc ahead of the exec alignment meeting. None of them reference each other. One is a slideshow with stock photos. What do you do?",
       choices: [
         { label: "Synthesize all three into one definition",  effects: { roadmap: -1, trust: 1, morale: -1 }, consequence: "You made one definition that technically includes all three. Nobody is wrong. Nobody is aligned." },
         { label: "Schedule 1:1s with each before the meeting", effects: { trust: 2, morale: 1 },             consequence: "You did the pre-work. The meeting runs 22 minutes. This is what good looks like." },
@@ -38,7 +38,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-003', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "Your user research is 5 interviews and a survey with 40 responses. Your designer is openly skeptical. Your lead engineer is asking whether any of this is statistically significant. What do you do?",
+      scenario: "Your user research is 5 interviews and a survey with 40 responses. Your designer calls it 'directional at best.' Your lead engineer has started asking about sample size. The kickoff is in three days. What do you do?",
       choices: [
         { label: "Run 10 more interviews",             effects: { roadmap: -1, quality: 2 },            consequence: "It costs time. You find a behavior pattern that changes the entire approach. You say nothing about the timeline." },
         { label: "Proceed with what you have",         effects: { quality: -1, roadmap: 1 },            consequence: "Ship it and find out. This is technically a research strategy." },
@@ -48,7 +48,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-004', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "A key assumption — that users would pay for the premium tier — just got challenged by a sales rep who closed zero paid deals in 30 days. This is the first you're hearing of it. What do you do?",
+      scenario: "A sales rep who's done 30 discovery calls tells you nobody wants to pay for the premium tier. Your research says otherwise. The sales rep is about to say this in the all-hands. What do you do?",
       choices: [
         { label: "Go back to users and validate",       effects: { roadmap: -1, quality: 2, trust: -1 }, consequence: "You pumped the brakes. It stings now. The alternative stings worse." },
         { label: "Trust the original research",         effects: { quality: -1, roadmap: 1 },            consequence: "You stayed the course. The sales rep was right." },
@@ -58,7 +58,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-005', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "Your CEO wants to invite three enterprise customers to a 'vision alignment session' before you finalize discovery. You have never heard the term 'vision alignment session' before. What do you do?",
+      scenario: "The CEO wants to invite three enterprise customers to a 'vision alignment session' before you finalize discovery outputs. The invites have already gone out. You have never heard the term 'vision alignment session' before. What do you do?",
       choices: [
         { label: "Run it — customer insight is good",      effects: { morale: 1, quality: 1, roadmap: -1 }, consequence: "Actually useful. One customer says something that changes the entire product direction. The CEO is very pleased." },
         { label: "Redirect to structured interviews",      effects: { quality: 1, trust: -1 },              consequence: "You reframed it as user research. Nobody liked the reframe. The insights were better." },
@@ -71,7 +71,7 @@ const STAGE_POOLS = {
   1: [ // Strategy
     {
       id: 'PM-011', epic: 'STRATEGY', epicColor: 'bg-blue-100 text-blue-700',
-      scenario: "A competitor launched a feature you hadn't planned. It's getting press. The CEO has forwarded the TechCrunch article to you with the subject line 'Thoughts?' What do you do?",
+      scenario: "A competitor launched a feature yesterday. It's fine — not great. The CEO has forwarded the TechCrunch article with the subject line 'Thoughts?' and no other context. What do you do?",
       choices: [
         { label: "Add it to the roadmap",                  effects: { roadmap: -1, trust: 1 },            consequence: "You said yes. The team adjusts. The roadmap quietly weeps." },
         { label: "Reply with a clear-headed tradeoff",     effects: { morale: 1, trust: 1 },              consequence: "You held the line. The CEO forwarded your reply to the board. That's new." },
@@ -81,7 +81,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-012', epic: 'STRATEGY', epicColor: 'bg-blue-100 text-blue-700',
-      scenario: "The engineering lead pulls you aside to say scope has grown 30% since kickoff. Nobody formally approved any of it. You added most of it. What do you do?",
+      scenario: "The engineering lead pulls you aside after standup to say scope has grown 30% since kickoff. You added most of it. They are being very polite about this. What do you do?",
       choices: [
         { label: "Acknowledge it and cut back",            effects: { roadmap: 1, morale: 1, quality: -1 }, consequence: "Painful but honest. You own the problem. The team respects the reset." },
         { label: "Keep it — it's all valuable",            effects: { roadmap: -2, morale: -1 },            consequence: "You said yes to everything. Everything is now late. You will use the word 'learnings.'" },
@@ -91,7 +91,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-013', epic: 'STRATEGY', epicColor: 'bg-blue-100 text-blue-700',
-      scenario: "Planning is blocked because Marketing wants MAU, Product wants activation rate, and Engineering wants uptime. The argument has lasted two weeks and been given a name: 'the metric standoff.' What do you do?",
+      scenario: "It's been two weeks and the team still can't agree on a north star metric. Marketing wants MAU. Product wants activation rate. Engineering wants uptime. The disagreement has been named 'the metric standoff' in the team Slack. What do you do?",
       choices: [
         { label: "Call a meeting and decide together",      effects: { morale: 1, trust: 1, roadmap: -1 },  consequence: "Inclusive. Everyone's bought in. You lost a week getting there." },
         { label: "Pick activation rate",                   effects: { quality: 1, morale: 1 },              consequence: "The correct answer. You will spend six months explaining why to Marketing." },
@@ -101,7 +101,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-014', epic: 'STRATEGY', epicColor: 'bg-blue-100 text-blue-700',
-      scenario: "Two engineers just told you a core feature isn't technically feasible in the timeline. This is week 4. They've known since week 2. What do you do?",
+      scenario: "Two engineers inform you that a core feature isn't feasible in the timeline. This is week 4. They've known since week 2. Their explanation for the delay: 'we were hoping to find a workaround.' What do you do?",
       choices: [
         { label: "Reset the timeline",                     effects: { roadmap: -2, trust: -1, morale: 1 },  consequence: "Expensive. Honest. The team is relieved you didn't try to force it." },
         { label: "Find a workaround together",             effects: { tech: 1, morale: 1, roadmap: -1 },   consequence: "You rolled up your sleeves. The solution isn't elegant but it ships." },
@@ -111,7 +111,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-015', epic: 'STRATEGY', epicColor: 'bg-blue-100 text-blue-700',
-      scenario: "It's Q3 planning. Your OKRs are due in 48 hours, your roadmap is 60% speculative, and a VP just added three new strategic initiatives to your team's scope. What do you do?",
+      scenario: "OKRs are due in 48 hours. Your roadmap is 60% speculative. A VP just added three new 'strategic priorities' to your team's scope in a message that ended with 'excited to see what you do with this!' What do you do?",
       choices: [
         { label: "Push back on the initiatives",           effects: { trust: -1, morale: 1 },               consequence: "Necessary. Uncomfortable. The VP will find another angle." },
         { label: "Accept them and adjust the OKRs",        effects: { roadmap: -2, morale: -1 },            consequence: "The OKRs are now aspirational. The team knows it. So do you." },
@@ -124,7 +124,7 @@ const STAGE_POOLS = {
   2: [ // Design
     {
       id: 'PM-021', epic: 'DESIGN', epicColor: 'bg-pink-100 text-pink-700',
-      scenario: "User testing shows the core navigation is confusing. All five testers failed the same task. A full redesign would take 2 extra weeks. Your designer already knows and is waiting. What do you do?",
+      scenario: "Five out of five user testers failed the same navigation task. Your designer has had a full redesign ready in Figma for two weeks — built it 'just in case.' They have not said 'I told you so.' Yet. What do you do?",
       choices: [
         { label: "Redesign now",                              effects: { roadmap: -1, morale: 1, quality: 2 }, consequence: "Slower. Better. The designer gives you a subtle nod in standup." },
         { label: "Ship it and iterate post-launch",           effects: { morale: -1, quality: -1 },            consequence: "The team knows it's broken. Users will, too. The App Store reviews will be instructive." },
@@ -134,7 +134,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-022', epic: 'DESIGN', epicColor: 'bg-pink-100 text-pink-700',
-      scenario: "Brand wants bold. UX says bold is unusable. They've been in a standoff for 11 days, which is now being called a 'creative tension period' in standup. What do you do?",
+      scenario: "Brand wants bold. UX says bold is unusable. They've been arguing for 11 days and it's now officially being called a 'creative tension period' in standup, which everyone knows is not a real thing. What do you do?",
       choices: [
         { label: "Side with UX — usability first",           effects: { quality: 2, morale: 1 },              consequence: "Users will thank you. Brand sends a passive-aggressive Slack message." },
         { label: "Side with Brand — it needs to stand out",  effects: { quality: -1, trust: 1 },              consequence: "It looks great. Users will figure it out eventually." },
@@ -144,7 +144,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-023', epic: 'DESIGN', epicColor: 'bg-pink-100 text-pink-700',
-      scenario: "An accessibility audit flags 12 issues ranging from color contrast to keyboard navigation. Fixing all of them would push design back 3 weeks. What do you do?",
+      scenario: "An accessibility audit comes back with 12 issues. Your designer reads the report, sighs audibly on the call, and says 'I flagged most of these in the design review.' Fixing all of them takes 3 weeks. What do you do?",
       choices: [
         { label: "Fix all 12 — ship it right",               effects: { roadmap: -2, quality: 2, morale: 1 }, consequence: "The right call. It cost time. You can stand behind everything that shipped." },
         { label: "Fix the critical 4, log the rest",         effects: { roadmap: -1, quality: 1 },            consequence: "Reasonable triage. The 8 you logged will come back. Budget for it." },
@@ -154,7 +154,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-024', epic: 'DESIGN', epicColor: 'bg-pink-100 text-pink-700',
-      scenario: "Your designer wants to prototype three interaction models before committing. Engineering says they only have time to build one. This has been the state of things for a week. What do you do?",
+      scenario: "Your designer wants to prototype three interaction models before committing. Engineering says they have time for one. Your designer has already started on all three. What do you do?",
       choices: [
         { label: "Let the designer prototype all three",     effects: { roadmap: -1, quality: 2 },            consequence: "Time well spent. The decision is right. The designer owns it completely." },
         { label: "Have engineering build the first option",  effects: { roadmap: 1, quality: -1, morale: -1 }, consequence: "Fast. The designer never fully believed in it. The reviews will show it." },
@@ -164,7 +164,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-025', epic: 'DESIGN', epicColor: 'bg-pink-100 text-pink-700',
-      scenario: "Your lead designer wants to throw out the existing component library and start fresh. Engineering is horrified. The library is two years old and genuinely painful to work with. What do you do?",
+      scenario: "Your lead designer sends a doc titled 'Why We Need to Rebuild the Component Library.' It is 14 pages long and was clearly written over the weekend. Engineering is horrified. What do you do?",
       choices: [
         { label: "Allow the full rebuild",                   effects: { roadmap: -2, tech: 2, quality: 1 },   consequence: "Expensive. The right call. In six months the team will forget there was ever a choice." },
         { label: "Decline — patch the existing library",     effects: { roadmap: 1, tech: -1, morale: -1 },   consequence: "You bought time. The patches accumulate. The designer starts updating their portfolio." },
@@ -177,7 +177,7 @@ const STAGE_POOLS = {
   3: [ // Development
     {
       id: 'PM-031', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
-      scenario: "Your lead dev says the team is 3 weeks behind. The root cause is unclear. Everyone has a different explanation. What do you do?",
+      scenario: "Your lead dev announces in standup that the team is 3 weeks behind. After standup, four people send you four different explanations for why. What do you do?",
       choices: [
         { label: "Bring in contractors",              effects: { roadmap: 2, morale: -1, tech: -1 },   consequence: "Timeline recovers. The team has friction with the new people. The new people will outlast the friction." },
         { label: "Cut a feature",                     effects: { morale: 1, quality: 1 },              consequence: "Less to build. The team breathes. Sometimes the answer is less." },
@@ -187,7 +187,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-032', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
-      scenario: "The tech lead wants to refactor the authentication layer before the next feature. It wasn't planned. Engineering is very insistent about the word 'critical.' What do you do?",
+      scenario: "The tech lead wants to refactor the auth layer before the next feature. It wasn't planned. When you ask how long, they say 'a week, maybe two' and then immediately say 'definitely one week.' What do you do?",
       choices: [
         { label: "Allow it — trust the engineer's judgment", effects: { tech: 2, morale: 1, roadmap: -1 }, consequence: "The codebase is measurably better. The tech lead says 'thank you' for the first time in months." },
         { label: "Decline — scope it for next quarter",      effects: { roadmap: 1, tech: -1, morale: -1 }, consequence: "You held the line. The debt just got a week bigger." },
@@ -197,7 +197,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-033', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
-      scenario: "Your team has been waiting on a platform team API for 2 weeks. The platform team now says 3 more. Their lead isn't responding to Slack. What do you do?",
+      scenario: "Your team has been blocked on a platform API for 2 weeks. The platform team now says 3 more. Their lead has been 'in meetings' every time you try to reach them. What do you do?",
       choices: [
         { label: "Escalate through management",              effects: { trust: -1, roadmap: 1, morale: -1 }, consequence: "It works. The platform lead responds within the hour. You now have an enemy on the 4th floor." },
         { label: "Build a temporary workaround",             effects: { tech: -1, roadmap: 1, morale: 1 },  consequence: "Pragmatic. The workaround will outlive your employment at this company." },
@@ -207,7 +207,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-034', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
-      scenario: "Three engineers have each flagged a different 'critical' infrastructure concern. They all want it addressed before the next feature. None of them agree on which is most critical. What do you do?",
+      scenario: "Three engineers have each filed a separate Jira ticket flagging a different 'critical' infrastructure issue. None of them have spoken to each other about it. All three want it prioritized before the next sprint. What do you do?",
       choices: [
         { label: "Address all three in sequence",            effects: { tech: 3, roadmap: -3, morale: 1 },  consequence: "The codebase is pristine. The roadmap is a memory. The team is weirdly happy." },
         { label: "Triage with the team — pick one",         effects: { tech: 1, morale: 1 },               consequence: "Good process. One concern was real. Two were vibes. Nobody says this." },
@@ -217,7 +217,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-035', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
-      scenario: "Nobody on the team writes documentation. Engineers say it's product's job. You know it's everyone's job. The codebase has zero documentation and launches in 8 weeks. What do you do?",
+      scenario: "The codebase has zero documentation. When you raise it, engineering says it's product's job. When you ask the tech lead, they say 'we all just kind of know how it works.' Launch is in 8 weeks. What do you do?",
       choices: [
         { label: "Mandate docs in the sprint process",       effects: { tech: 1, morale: -1, roadmap: -1 }, consequence: "Principled. The documentation that gets written is just good enough to comply." },
         { label: "Hire a technical writer",                  effects: { trust: 1, tech: 1, roadmap: -1 },   consequence: "Smart. Expensive. The technical writer becomes the most popular person on the team." },
@@ -230,7 +230,7 @@ const STAGE_POOLS = {
   4: [ // Testing
     {
       id: 'PM-041', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
-      scenario: "QA finds a critical bug two days before launch. It affects 20% of users but isn't a total blocker. The team is very tired. What do you do?",
+      scenario: "QA files a P0 bug ticket two days before launch. It affects 20% of users but has a workaround. Your lead dev's Slack status is currently a red circle. What do you do?",
       choices: [
         { label: "Delay launch to fix it",               effects: { roadmap: -1, morale: 1, quality: 1 }, consequence: "The right call. Painful and clean. Stakeholders grumble. Users never know." },
         { label: "Launch and hotfix within 24 hours",    effects: { morale: -1, trust: -1 },              consequence: "You'll probably be fine. 'Probably' is doing a lot of work in that sentence." },
@@ -240,7 +240,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-042', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
-      scenario: "Beta users submitted 200 pieces of feedback in week one. There is no clear signal. It ranges from typos to requests to rebuild the entire product. What do you do?",
+      scenario: "Beta users submitted 200 pieces of feedback in week one. You have read 12 of them. They range from 'button too small' to 'fundamentally rethink the product.' What do you do?",
       choices: [
         { label: "Tag and categorize everything",            effects: { quality: 1, roadmap: -1, morale: -1 }, consequence: "Thorough. The team is exhausted from tagging. The taxonomy is actually useful." },
         { label: "Find the top 10 by frequency and fix them", effects: { quality: 1, roadmap: 1 },             consequence: "Focused. Some important things got missed. Most important things got fixed." },
@@ -250,7 +250,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-043', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
-      scenario: "Load testing shows the app degrades at 500 concurrent users. You're expecting 2,000 at launch. Engineering's estimate to fix it: 2 weeks. What do you do?",
+      scenario: "Load testing results are in: the app falls apart at 500 concurrent users. You're expecting 2,000 at launch. The engineer who ran the test posted the results to the group channel with no comment. What do you do?",
       choices: [
         { label: "Delay launch until it's resolved",        effects: { roadmap: -1, quality: 2, trust: -1 }, consequence: "The right call. The CEO is unhappy. Users will never know this conversation happened." },
         { label: "Launch with soft rate limiting",          effects: { tech: -1, quality: -1, trust: 1 },    consequence: "You controlled the risk and capped your own launch. Twitter interprets this as mystery." },
@@ -260,7 +260,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-044', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
-      scenario: "QA wants to delay a week to get from 40% to 80% test coverage. Engineering says coverage doesn't matter. They've been arguing about this for three days. What do you do?",
+      scenario: "QA wants to delay launch a week to go from 40% to 80% test coverage. Engineering says coverage doesn't predict bugs. They are both correct. The argument is now three days old. What do you do?",
       choices: [
         { label: "Delay for the week — get to 80%",        effects: { roadmap: -1, quality: 2, tech: 1 },  consequence: "Your QA lead is satisfied. Engineering quietly admits it was the right call. Nobody says this out loud." },
         { label: "Ship at 40% and monitor closely",        effects: { quality: -1, tech: -1, morale: -1 }, consequence: "You shipped. The monitors lit up within 48 hours. The argument was resolved empirically." },
@@ -270,7 +270,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'PM-045', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
-      scenario: "The automated smoke test failed on the production deploy. Root cause is unclear. Launch is in 18 hours. The on-call engineer has been up since 4am. What do you do?",
+      scenario: "The automated smoke test just failed on the production deploy. Root cause is unclear. Launch is in 18 hours. The on-call engineer has been up since 4am and is now sending messages in all lowercase. What do you do?",
       choices: [
         { label: "Delay launch",                            effects: { roadmap: -1, quality: 1, morale: 1 }, consequence: "Everyone gets some sleep. The root cause turns out to be a one-line fix. Nobody says this was the wrong call." },
         { label: "Push through and fix live",               effects: { morale: -2, tech: -1, quality: -1 },  consequence: "Heroic in a way that shouldn't be heroic. The engineer finds the bug at 2am. Nobody celebrates." },
@@ -283,7 +283,7 @@ const STAGE_POOLS = {
   5: [ // Launch — single card
     {
       id: 'PM-051', epic: 'LAUNCH', epicColor: 'bg-green-100 text-green-700',
-      scenario: "Launch day. Traffic is 3x what you load tested for. The site is degrading in real time. You are watching the error rate in a dashboard that is also starting to lag. What do you do?",
+      scenario: "Launch day. Traffic is 3x what you load tested for. The site is degrading in real time. You're watching the error rate in a dashboard that is also starting to lag. Your phone has 11 unread Slacks. What do you do?",
       choices: [
         { label: "Rollback",                                     effects: { roadmap: -1, morale: -2, trust: -1 }, consequence: "Safe. Embarrassing. The post-mortem will be three hours long." },
         { label: "Scale up servers immediately",                 effects: { morale: 1, tech: 1, trust: 1 },       consequence: "Costs more. Works. This is why you wrote the runbooks." },
