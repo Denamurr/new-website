@@ -9,8 +9,15 @@ export default function Tools() {
       icon: '📊',
       href: '/tools/rice'
     },
-    { 
-      title: 'BCG Matrix Analyzer', 
+    {
+      title: "The Product Manager's Journey",
+      description: 'Six stages. Five stats. One launch. Make PM decisions and see how they compound.',
+      status: 'Live',
+      icon: '🗺️',
+      href: '/tools/roadmap-game'
+    },
+    {
+      title: 'BCG Matrix Analyzer',
       description: 'Plot your products on the growth-share matrix. Visualize portfolio strategy.',
       status: 'Coming Soon',
       icon: '📈',
