@@ -692,21 +692,27 @@ export default function RoadmapGameClient() {
     return (
       <div className="min-h-screen bg-[#f4f5f7] font-sans flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-xl">
+          {/* Hero image */}
+          <div className="relative mb-6 rounded-xl overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/slack-hero.png" alt="" className="w-full object-cover opacity-50" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f4f5f7]" />
+          </div>
           <div className="mb-8">
-            <div className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">Interactive Tool</div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-3">The Product Manager's Journey</h1>
+            <div className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">A realistic PM simulation</div>
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">The PM Survival Game</h1>
             <p className="text-gray-500 leading-relaxed">
-              Think you can ship without burning the team, blowing the roadmap, or losing the CEO's trust? You have 5 sprints. Make the calls.
+              Think you can ship the product without burning out the team, blowing the roadmap, or losing your stakeholders trust?
             </p>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-4">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">How it works</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">How to Play</p>
             <div className="space-y-2 text-sm text-gray-600">
               {[
-                "You're a PM taking a product from Discovery through Testing across 5 sprints.",
-                "Each sprint, click the Jira card to draw a scenario and pick your response.",
-                "Watch out for urgent Slack messages -- the CEO has opinions.",
-                "Every decision moves your stats. Your weakest stat at launch determines your fate.",
+                "The goal is simple: ship on time, keep the team motivated, maintain stakeholder trust, and launch a product that's both well built and genuinely useful.",
+                "You have 5 sprints to take the product from discovery to launch. Each sprint has 3 jira cards to resolve.",
+                "Watch out for urgent Slack messages that can easily get you off track.",
+                "Every stat starts at 5 out of 10. Your decisions move them up or down. Tradeoffs are inevitable, so try to keep things balanced.",
               ].map((t, i) => (
                 <div key={i} className="flex gap-3">
                   <span className="text-gray-300 font-mono mt-0.5 shrink-0">{i + 1}</span>
@@ -716,7 +722,7 @@ export default function RoadmapGameClient() {
             </div>
           </div>
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">Your stats -- all start at 5/10</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3 text-center">Stats</p>
             <div className="space-y-2.5">
               {[
                 { color: 'bg-violet-500',  label: 'Roadmap', desc: 'Are you still on track to ship?' },
@@ -752,7 +758,7 @@ export default function RoadmapGameClient() {
           </div>
           <div>
             <div className="text-xs text-gray-400">Projects</div>
-            <div className="text-sm font-semibold text-gray-800">The Product Manager's Journey</div>
+            <div className="text-sm font-semibold text-gray-800">The PM Survival Game</div>
           </div>
         </div>
         <div className="flex items-center gap-3">
