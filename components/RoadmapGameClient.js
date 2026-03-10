@@ -691,45 +691,55 @@ export default function RoadmapGameClient() {
   if (gameState === 'intro') {
     return (
       <div className="min-h-screen bg-[#f4f5f7] font-sans flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-xl">
-          {/* Hero image */}
-          <div className="relative mb-6 rounded-xl overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/slack-hero.png" alt="" className="w-full object-cover opacity-50" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#f4f5f7]" />
+        <div className="w-full max-w-6xl">
+
+          {/* Top: text left, image right */}
+          <div className="flex items-center gap-10 mb-6">
+
+            {/* Left: label + title + desc */}
+            <div className="flex-1 min-w-0">
+              <div className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">A realistic PM simulation</div>
+              <h1 className="text-3xl font-bold text-gray-900 mb-3">The PM Survival Game</h1>
+              <p className="text-gray-700 leading-relaxed">
+                Think you can ship the product without burning out the team, blowing the roadmap, or losing your stakeholders trust?
+              </p>
+            </div>
+
+            {/* Right: floating image */}
+            <div className="flex-shrink-0 w-[280px]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/slack-hero.png" alt="" className="w-full h-auto object-contain opacity-90 drop-shadow-lg" />
+            </div>
           </div>
-          <div className="mb-8">
-            <div className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">A realistic PM simulation</div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-3">The PM Survival Game</h1>
-            <p className="text-gray-500 leading-relaxed">
-              Think you can ship the product without burning out the team, blowing the roadmap, or losing your stakeholders trust?
-            </p>
-          </div>
-          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-4">
+
+          {/* How to Play — full width */}
+          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">How to Play</p>
-            <div className="space-y-2 text-sm text-gray-600">
+            <div className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm text-gray-600">
               {[
                 "The goal is simple: ship on time, keep the team motivated, maintain stakeholder trust, and launch a product that's both well built and genuinely useful.",
                 "You have 5 sprints to take the product from discovery to launch. Each sprint has 3 jira cards to resolve.",
                 "Watch out for urgent Slack messages that can easily get you off track.",
                 "Every stat starts at 5 out of 10. Your decisions move them up or down. Tradeoffs are inevitable, so try to keep things balanced.",
               ].map((t, i) => (
-                <div key={i} className="flex gap-3">
-                  <span className="text-gray-300 font-mono mt-0.5 shrink-0">{i + 1}</span>
+                <div key={i} className={`flex gap-3${i === 2 ? ' mt-5' : ''}`}>
+                  <span className="text-gray-500 font-mono mt-0.5 shrink-0">{i + 1}</span>
                   <span>{t}</span>
                 </div>
               ))}
             </div>
           </div>
+
+          {/* Bottom: stats + button full width */}
           <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3 text-center">Stats</p>
-            <div className="space-y-2.5">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4 text-center">Stats</p>
+            <div className="grid grid-cols-2 gap-x-10 gap-y-2.5">
               {[
                 { color: 'bg-violet-500',  label: 'Roadmap', desc: 'Are you still on track to ship?' },
-                { color: 'bg-emerald-500', label: 'Morale',  desc: "How's the team holding up?" },
-                { color: 'bg-sky-500',     label: 'Trust',   desc: 'Do stakeholders still believe in you?' },
                 { color: 'bg-amber-500',   label: 'Tech',    desc: 'Is the codebase staying healthy?' },
+                { color: 'bg-emerald-500', label: 'Morale',  desc: "How's the team holding up?" },
                 { color: 'bg-rose-500',    label: 'Quality', desc: 'Will users actually want this?' },
+                { color: 'bg-sky-500',     label: 'Trust',   desc: 'Do stakeholders still believe in you?' },
               ].map(s => (
                 <div key={s.label} className="flex items-center gap-3">
                   <div className={`w-2.5 h-2.5 rounded-sm shrink-0 ${s.color}`} />
