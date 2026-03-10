@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Link from 'next/link'
 
 const STATS_CONFIG = [
   { key: 'roadmap', label: 'Roadmap', color: 'bg-violet-500' },
@@ -691,7 +692,11 @@ export default function RoadmapGameClient() {
   if (gameState === 'intro') {
     return (
       <div className="min-h-screen bg-[#f4f5f7] font-sans flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-6xl">
+        <div className="w-full max-w-3xl">
+
+          <div className="mb-5">
+            <Link href="/" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">← Home</Link>
+          </div>
 
           {/* Top: text left, image right */}
           <div className="flex items-center gap-10 mb-6">
@@ -749,10 +754,12 @@ export default function RoadmapGameClient() {
               ))}
             </div>
           </div>
-          <button onClick={handleStart} className="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 transition-colors text-sm">
-            Start Sprint 1: Discovery
-          </button>
-          <p className="text-center text-xs text-gray-400 mt-3">Click the first Jira card to draw your opening scenario</p>
+          <div className="flex flex-col items-center gap-3">
+            <button onClick={handleStart} className="bg-blue-600 text-white font-medium py-2.5 px-8 rounded-lg hover:bg-blue-700 transition-colors text-sm">
+              Start Sprint 1: Discovery
+            </button>
+            <p className="text-xs text-gray-400">Click the first Jira card to draw your opening scenario</p>
+          </div>
         </div>
       </div>
     )
