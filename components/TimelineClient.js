@@ -8,7 +8,7 @@ const CATEGORIES = {
 }
 
 const ITEM_GAP   = 100   // px between events
-const PADDING    = 120   // px left/right padding
+const PADDING    = 200   // px left/right padding
 const CARD_WIDTH = 160   // px card width
 const CIRCLE_R   = 6     // axis circle radius
 const DOT_R      = 3     // card-end dot radius
@@ -110,8 +110,8 @@ export default function TimelineClient({ entries }) {
     <div className="bg-white">
 
       {/* Intro */}
-      <div className="px-8 pt-10 pb-8 border-b border-gray-100">
-        <div className="max-w-2xl">
+      <div className="px-8 pt-10 pb-8 border-b border-gray-100 flex items-center gap-12">
+        <div className="flex-1 max-w-xl">
           <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-3">Timeline</p>
           <h1 className="text-2xl font-bold text-gray-900 tracking-tight mb-3">
             The Timeline of AI Breakthroughs
@@ -122,6 +122,14 @@ export default function TimelineClient({ entries }) {
             with a research paper, moves on to model releases and finally to the products that brought them
             to millions of users.
           </p>
+        </div>
+        <div className="flex-shrink-0 hidden md:block">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://substackcdn.com/image/fetch/$s_!jpqs!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F080273ad-5424-4bb3-9386-a10b5d23dbb4_2500x1406.png"
+            alt="Evolution of AI"
+            className="w-72 h-auto object-contain opacity-80"
+          />
         </div>
       </div>
 
@@ -168,7 +176,7 @@ export default function TimelineClient({ entries }) {
         <div
           ref={wrapRef}
           className="timeline-scroll overflow-x-auto overflow-y-hidden select-none"
-          style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 380 }}
+          style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 440 }}
         >
           {filtered.length === 0 ? (
             <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-300">
