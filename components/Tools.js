@@ -3,15 +3,15 @@ import Link from 'next/link'
 export default function Tools() {
   const tools = [
     {
-      title: 'RICE Prioritization Tool',
+      title: 'NEW: RICE Prioritization Tool for AI features',
       description: 'Score and rank product features using the RICE framework. Input your features and get instant prioritization.',
       status: 'Live',
       icon: '📊',
       href: '/tools/rice'
     },
     {
-      title: "The Product Manager's Journey",
-      description: 'Six stages. Five stats. One launch. Make PM decisions and see how they compound.',
+      title: 'NEW: The PM Survival Game',
+      description: 'Think you can launch a product 0 to 1?',
       status: 'Live',
       icon: '🗺️',
       href: '/tools/roadmap-game'
@@ -38,7 +38,7 @@ export default function Tools() {
         </div>
         
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
-          PM Tools I&apos;m Building
+          PM Things I&apos;m Working On
         </h2>
         
         <div className="grid gap-4">
