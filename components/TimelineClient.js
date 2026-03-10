@@ -168,7 +168,7 @@ export default function TimelineClient({ entries }) {
         <div
           ref={wrapRef}
           className="timeline-scroll overflow-x-auto overflow-y-hidden select-none"
-          style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 520 }}
+          style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 380 }}
         >
           {filtered.length === 0 ? (
             <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-300">
@@ -188,7 +188,7 @@ export default function TimelineClient({ entries }) {
                 const isAbove = entry.side === 'above'
 
                 const cardText = (
-                  <div style={{ width: '100%', textAlign: 'justify' }}>
+                  <div style={{ width: '100%' }}>
                     <a
                       href={entry.url || '#'}
                       target="_blank"
@@ -198,20 +198,6 @@ export default function TimelineClient({ entries }) {
                     >
                       {cleanTitle(entry.title)}
                     </a>
-                    {entry.description && (
-                      <p
-                        className="text-[11px] text-gray-400 leading-snug mt-1"
-                        style={{
-                          display: '-webkit-box',
-                          WebkitLineClamp: 4,
-                          WebkitBoxOrient: 'vertical',
-                          overflow: 'hidden',
-                          textAlign: 'justify',
-                        }}
-                      >
-                        {entry.description}
-                      </p>
-                    )}
                   </div>
                 )
 
