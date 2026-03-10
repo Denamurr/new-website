@@ -7,7 +7,7 @@ const CATEGORIES = {
   product_launch: { label: 'Products', color: '#0891b2' },
 }
 
-const ITEM_GAP   = 160   // px between events
+const ITEM_GAP   = 100   // px between events
 const PADDING    = 120   // px left/right padding
 const CARD_WIDTH = 160   // px card width
 const CIRCLE_R   = 6     // axis circle radius
