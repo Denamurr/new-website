@@ -19,6 +19,10 @@ function formatDate(str) {
   return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
 }
 
+function cleanTitle(title) {
+  return title.replace(/\s*—\s*/g, ', ')
+}
+
 export default function TimelineClient({ entries }) {
   const [activeCategory, setActiveCategory] = useState('all')
   const [searchQuery, setSearchQuery]       = useState('')
@@ -192,7 +196,7 @@ export default function TimelineClient({ entries }) {
                       className="block text-[12.5px] font-semibold text-gray-800 leading-snug hover:text-gray-900 transition-colors"
                       onClick={e => e.stopPropagation()}
                     >
-                      {entry.title}
+                      {cleanTitle(entry.title)}
                     </a>
                     {entry.description && (
                       <p
