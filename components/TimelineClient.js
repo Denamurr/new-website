@@ -7,17 +7,16 @@ const CATEGORIES = {
   product_launch: { label: 'Products', color: '#0891b2' },
 }
 
-const ITEM_GAP = 160   // px between events
-const PADDING  = 120   // px left/right padding
+const ITEM_GAP   = 160   // px between events
+const PADDING    = 120   // px left/right padding
+const CARD_WIDTH = 160   // px card width
+const CIRCLE_R   = 6     // axis circle radius
+const DOT_R      = 3     // card-end dot radius
+const CONNECTOR  = 28    // connector line height
 
 function formatDate(str) {
   const [y, m] = str.split('-').map(Number)
   return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-}
-
-function safeHostname(url) {
-  try { return new URL(url).hostname.replace(/^www\./, '') }
-  catch { return '' }
 }
 
 export default function TimelineClient({ entries }) {
@@ -45,7 +44,6 @@ export default function TimelineClient({ entries }) {
     })
   }, [entries, activeCategory, searchQuery])
 
-  // Evenly-spaced layout
   const { items, totalWidth } = useMemo(() => {
     if (filtered.length === 0) return { items: [], totalWidth: 800 }
     const sorted = [...filtered].sort((a, b) => a.date.localeCompare(b.date))
@@ -58,13 +56,11 @@ export default function TimelineClient({ entries }) {
     return { items, totalWidth }
   }, [filtered])
 
-  // Scroll to most recent on load
   useEffect(() => {
     const wrap = wrapRef.current
     if (wrap) wrap.scrollLeft = wrap.scrollWidth
   }, [items.length])
 
-  // Drag + wheel
   useEffect(() => {
     const wrap = wrapRef.current
     if (!wrap) return
@@ -158,23 +154,17 @@ export default function TimelineClient({ entries }) {
         />
       </div>
 
-      {/* Timeline — relative wrapper enables edge fade overlays */}
+      {/* Timeline */}
       <div className="relative">
-        {/* Left fade */}
-        <div
-          className="absolute inset-y-0 left-0 w-24 pointer-events-none z-10"
-          style={{ background: 'linear-gradient(to right, white 40%, transparent)' }}
-        />
-        {/* Right fade */}
-        <div
-          className="absolute inset-y-0 right-0 w-24 pointer-events-none z-10"
-          style={{ background: 'linear-gradient(to left, white 40%, transparent)' }}
-        />
+        <div className="absolute inset-y-0 left-0 w-24 pointer-events-none z-10"
+          style={{ background: 'linear-gradient(to right, white 40%, transparent)' }} />
+        <div className="absolute inset-y-0 right-0 w-24 pointer-events-none z-10"
+          style={{ background: 'linear-gradient(to left, white 40%, transparent)' }} />
 
         <div
           ref={wrapRef}
           className="timeline-scroll overflow-x-auto overflow-y-hidden select-none"
-          style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 460 }}
+          style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 520 }}
         >
           {filtered.length === 0 ? (
             <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-300">
@@ -183,76 +173,105 @@ export default function TimelineClient({ entries }) {
           ) : (
             <div className="relative" style={{ width: totalWidth, height: '100%' }}>
 
-              {/* Axis */}
+              {/* Axis line */}
               <div
                 className="absolute top-1/2 bg-gray-200"
                 style={{ left: 0, right: 0, height: 1, transform: 'translateY(-50%)' }}
               />
 
-              {/* Events */}
               {items.map(entry => {
-                const cat    = CATEGORIES[entry.category] || CATEGORIES.model_release
-                const domain = safeHostname(entry.url)
-                const src    = domain || entry.source || ''
+                const cat     = CATEGORIES[entry.category] || CATEGORIES.model_release
+                const isAbove = entry.side === 'above'
+
+                const cardText = (
+                  <div style={{ width: '100%', textAlign: 'justify' }}>
+                    <a
+                      href={entry.url || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-[12.5px] font-semibold text-gray-800 leading-snug hover:text-gray-900 transition-colors"
+                      onClick={e => e.stopPropagation()}
+                    >
+                      {entry.title}
+                    </a>
+                    {entry.description && (
+                      <p
+                        className="text-[11px] text-gray-400 leading-snug mt-1"
+                        style={{
+                          display: '-webkit-box',
+                          WebkitLineClamp: 4,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                          textAlign: 'justify',
+                        }}
+                      >
+                        {entry.description}
+                      </p>
+                    )}
+                  </div>
+                )
+
+                const dateLabel = (
+                  <span className="text-[10px] font-medium text-gray-400 whitespace-nowrap">
+                    {formatDate(entry.date)}
+                  </span>
+                )
+
+                const endDot = (
+                  <div
+                    className="rounded-full shrink-0"
+                    style={{ width: DOT_R * 2, height: DOT_R * 2, background: cat.color }}
+                  />
+                )
+
+                const connector = (
+                  <div className="bg-gray-200 shrink-0" style={{ width: 1, height: CONNECTOR }} />
+                )
 
                 return (
                   <Fragment key={entry.id}>
-                    {/* Diamond */}
+                    {/* Axis circle */}
                     <div
-                      className="absolute rounded-sm"
+                      className="absolute rounded-full"
                       style={{
-                        left:      entry.x,
-                        top:       '50%',
-                        width:     10,
-                        height:    10,
-                        transform: 'translateX(-50%) translateY(-50%) rotate(45deg)',
+                        left:       entry.x,
+                        top:        '50%',
+                        width:      CIRCLE_R * 2,
+                        height:     CIRCLE_R * 2,
+                        transform:  'translateX(-50%) translateY(-50%)',
                         background: cat.color,
+                        zIndex:     1,
                       }}
                     />
 
-                    {/* Card */}
+                    {/* Card container — anchored at axis circle edge, grows away from axis */}
                     <div
-                      className="absolute flex flex-col"
+                      className="absolute flex flex-col items-center"
                       style={{
-                        left:  entry.x,
-                        width: 168,
+                        left:      entry.x,
+                        width:     CARD_WIDTH,
                         transform: 'translateX(-50%)',
-                        textAlign: 'justify',
-                        ...(entry.side === 'above'
-                          ? { bottom: '50%', paddingBottom: 30 }
-                          : { top: '50%',    paddingTop:    30 }),
+                        ...(isAbove
+                          ? { bottom: `calc(50% + ${CIRCLE_R}px)` }
+                          : { top:    `calc(50% + ${CIRCLE_R}px)` }),
                       }}
                     >
-                      {/* Connector */}
-                      <div
-                        className="absolute bg-gray-200"
-                        style={{
-                          width: 1,
-                          height: 22,
-                          left: '50%',
-                          transform: 'translateX(-50%)',
-                          ...(entry.side === 'above' ? { bottom: 8 } : { top: 8 }),
-                        }}
-                      />
-                      <a
-                        href={entry.url || '#'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[12.5px] font-medium text-gray-700 leading-snug hover:text-gray-900 transition-colors"
-                        onClick={e => e.stopPropagation()}
-                      >
-                        {entry.title}
-                      </a>
-                      <span className="text-[11px] text-gray-300 mt-1.5 whitespace-nowrap">
-                        {formatDate(entry.date)}
-                      </span>
-                      {src && (
-                        <span
-                          className="text-[11px] text-gray-300 mt-0.5"
-                          style={{ maxWidth: 148, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
-                        >
-                          {src}
-                        </span>
+                      {isAbove ? (
+                        // Above: card text → dot → connector → date (date nearest axis)
+                        <>
+                          {cardText}
+                          <div style={{ marginTop: 8 }}>{endDot}</div>
+                          {connector}
+                          <div style={{ marginTop: 6, marginBottom: 4 }}>{dateLabel}</div>
+                        </>
+                      ) : (
+                        // Below: date → connector → dot → card text (date nearest axis)
+                        <>
+                          <div style={{ marginTop: 4, marginBottom: 6 }}>{dateLabel}</div>
+                          {connector}
+                          <div style={{ marginBottom: 8 }}>{endDot}</div>
+                          {cardText}
+                        </>
                       )}
                     </div>
                   </Fragment>
@@ -263,7 +282,7 @@ export default function TimelineClient({ entries }) {
         </div>
       </div>
 
-      {/* Footer bar */}
+      {/* Footer */}
       <div className="px-8 py-3 border-t border-gray-100 flex items-center justify-between gap-4">
         <p className="text-xs text-gray-400">
           Built as an interactive visualization using React and a small dataset of model and product milestones.
