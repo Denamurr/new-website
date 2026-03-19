@@ -73,7 +73,7 @@ export default function FeaturedSection() {
             return (
             <Link
               key={post.slug}
-              href={`/posts/${post.slug}`}
+              href={`/blog/${post.slug}`}
               className="group block flex-shrink-0 rounded-2xl transition-transform duration-200 hover:-translate-y-1 p-2.5"
               style={{
                 width: '160px',
