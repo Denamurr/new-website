@@ -420,7 +420,7 @@ function ChoiceButton({ choice, onClick }) {
       className="w-full text-left rounded-md border border-gray-200 bg-white px-4 py-3 hover:border-blue-400 hover:shadow-sm transition-all"
     >
       <div className="font-semibold text-sm text-gray-900 mb-0.5">{choice.label}</div>
-      {choice.desc && <div className="text-xs text-gray-500 mb-2">{choice.desc}</div>}
+      {choice.desc && <div className="text-sm text-gray-500 mb-2">{choice.desc}</div>}
       <div className="flex flex-wrap gap-x-3 gap-y-0.5">
         {Object.entries(choice.effects).map(([k, v]) => {
           const cfg = STATS_CONFIG.find(s => s.key === k)
