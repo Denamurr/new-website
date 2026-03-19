@@ -425,11 +425,8 @@ function ChoiceButton({ choice, onClick }) {
         {Object.entries(choice.effects).map(([k, v]) => {
           const cfg = STATS_CONFIG.find(s => s.key === k)
           return (
-            <span key={k} className="inline-flex items-center gap-0.5 text-xs font-semibold text-gray-800">
-              {v > 0 ? '+' : '-'}
-              {Array.from({ length: Math.abs(v) }).map((_, i) => (
-                <span key={i} className={`inline-block w-2.5 h-2.5 rounded-sm shrink-0 ${cfg.color}`} />
-              ))}
+            <span key={k} className={`text-xs font-semibold ${v > 0 ? 'text-emerald-600' : 'text-red-500'}`}>
+              {v > 0 ? `+${v}` : v} {cfg.label}
             </span>
           )
         })}
