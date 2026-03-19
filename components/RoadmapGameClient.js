@@ -67,6 +67,24 @@ const STAGE_POOLS = {
         { label: "Combine it with the sprint review", desc: "Two birds, one deeply confused meeting.",                         effects: { roadmap: 1, quality: -1, morale: -1 }, consequence: "Two meetings became one. Neither goal was achieved." },
       ],
     },
+    {
+      id: 'PM-006', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
+      scenario: "You interview five users. Each one describes a completely different problem.",
+      choices: [
+        { label: "Build features for all of them",          desc: "Give everyone a feature and hope it adds up to a product.",      effects: { roadmap: 2, quality: 1 },   consequence: "The roadmap is five features wide and one feature deep. Each user gets one thing they wanted. None of them get what they needed." },
+        { label: "Focus on the most common problem",        desc: "Find the thread and pull it.",                                   effects: { quality: 2, roadmap: -1 },  consequence: "You solved the thing most people mentioned. The four outliers were hiding a problem nobody mentioned yet." },
+        { label: "Ignore interviews and trust the vision",  desc: "The research was directional. Direction: forward.",              effects: { trust: 1, quality: -1 },    consequence: "Comfortable. The interviews are still in a folder labeled 'Research — DO NOT DELETE.'" },
+      ],
+    },
+    {
+      id: 'PM-007', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
+      scenario: "The CEO explains the product idea using a whiteboard, three arrows, and the phrase 'platform strategy.'",
+      choices: [
+        { label: "Build exactly what they described",  desc: "The whiteboard is the PRD.",                                        effects: { roadmap: 2, trust: 1 },    consequence: "You built the whiteboard. The three arrows are now three features. 'Platform strategy' appears in the brief." },
+        { label: "Ask users first",                    desc: "Slow down. Ground the vision in something real.",                   effects: { quality: 1, roadmap: 1 },  consequence: "Slow but grounded. Users confirmed the CEO's instinct and added nuance. This is the job." },
+        { label: "Suggest starting smaller",           desc: "Propose a focused version before going broad.",                     effects: { roadmap: -1, trust: -1 },  consequence: "The CEO did not enjoy this suggestion. You are no longer invited to whiteboard sessions." },
+      ],
+    },
   ],
 
   1: [ // Strategy
@@ -118,6 +136,15 @@ const STAGE_POOLS = {
         { label: "Accept them and adjust the OKRs",                 desc: "Rewrite the roadmap and hope the math works out later.",              effects: { roadmap: -2, morale: -1 },            consequence: "The OKRs are now aspirational. The team knows it. So do you." },
         { label: "Ask the VP to prioritize them",                   desc: "Politely request clarity on what actually matters.",                  effects: { trust: 1, roadmap: -1 },              consequence: "Smart move. Slower. The VP schedules a follow-up. The follow-up is not useful." },
         { label: "Submit vague OKRs that accommodate everything",   desc: "'Improve platform outcomes through strategic initiatives.'",          effects: { morale: -1, quality: -1 },            consequence: "On time. Unmeasurable. This may be the point." },
+      ],
+    },
+    {
+      id: 'PM-016', epic: 'STRATEGY', epicColor: 'bg-blue-100 text-blue-700',
+      scenario: "You present the roadmap. A stakeholder asks why their feature isn't on it.",
+      choices: [
+        { label: "Add their feature",                    desc: "Find room on the roadmap and put it there.",                        effects: { roadmap: 1, trust: 1 },    consequence: "The feature is added. The stakeholder is satisfied. Someone else's feature was moved to make room. Nobody told them yet." },
+        { label: "Explain the prioritization",           desc: "Walk through the framework. Be transparent.",                       effects: { quality: 1, trust: -1 },   consequence: "Logical. Transparent. The stakeholder nods. The feature is still not on the roadmap. The stakeholder has not forgotten." },
+        { label: "Say it's coming in a later phase",     desc: "'It's on our radar — definitely in a later phase.'",                effects: { trust: 1, morale: -1 },    consequence: "'Later phase' understood. Later phase always understood. Later phase never arrives." },
       ],
     },
   ],
@@ -226,6 +253,42 @@ const STAGE_POOLS = {
         { label: "Make documentation a launch blocker", desc: "Announce that nothing ships without docs.",                    effects: { tech: 2, morale: -2, roadmap: -1 }, consequence: "Nuclear option. The team delivers. They are tired and very vocal about it." },
       ],
     },
+    {
+      id: 'PM-036', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
+      scenario: "Leadership asks for one last feature before launch. They promise it's the final request.",
+      choices: [
+        { label: "Add it",                      desc: "Say yes. It's probably fine.",                                       effects: { roadmap: 2, trust: 1 },    consequence: "The feature is added. This was not the final request." },
+        { label: "Decline",                     desc: "Hold the scope. Protect the timeline.",                              effects: { roadmap: -1, trust: -1 },  consequence: "You held the line. Leadership's definition of 'final' is being revised as we speak." },
+        { label: "Add a simplified version",    desc: "Negotiate down to something shippable.",                             effects: { roadmap: 1, quality: 1 },  consequence: "You found the middle. Leadership is satisfied. The simplified version will become the full version in the next sprint." },
+      ],
+    },
+    {
+      id: 'PM-037', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
+      scenario: "A stakeholder asks for 'one small addition' to a feature mid-sprint.",
+      choices: [
+        { label: "Add the feature",                        desc: "It's small. How long could it take.",                          effects: { roadmap: 1, trust: 1, tech: -1 },  consequence: "The feature is in. 'One small addition' is now two sprints of work." },
+        { label: "Cut another feature to compensate",      desc: "Scope-neutral. Someone else loses.",                           effects: { roadmap: -1, trust: -1 },           consequence: "Balanced. Something else was cut. Nobody noticed until they needed it." },
+        { label: "Pretend you didn't hear them",           desc: "Selective attention is a project management skill.",           effects: { morale: 2 },                       consequence: "You did not hear them. They will find another way to ask." },
+      ],
+    },
+    {
+      id: 'PM-038', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
+      scenario: "The team spends 45 minutes in a meeting debating the color of a button.",
+      choices: [
+        { label: "Let design decide",             desc: "It's a design decision. Let design decide.",                       effects: { quality: 1 },               consequence: "Design decides. The button is a slightly different shade of blue. Nobody notices. Design notices." },
+        { label: "End the debate and move on",    desc: "Call time. Ship the existing color.",                              effects: { morale: 1, quality: -1 },   consequence: "The debate ends. The color stays. Someone will bring this up in retro." },
+        { label: "Escalate the decision",         desc: "Make it someone else's 45 minutes.",                              effects: { trust: 1, morale: -1 },     consequence: "Leadership picks a color. The team now has a documented process for button colors." },
+      ],
+    },
+    {
+      id: 'PM-039', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
+      scenario: "Engineering says the feature will take two more weeks. Engineering also said the last feature would take two weeks.",
+      choices: [
+        { label: "Trust the estimate",            desc: "Two weeks is two weeks.",                                          effects: { roadmap: 1, tech: 1 },      consequence: "The feature takes two more weeks. This is what two weeks means here." },
+        { label: "Ask for a simpler version",     desc: "Reduce scope until the estimate shrinks.",                        effects: { roadmap: -1, quality: -1 }, consequence: "Simpler is defined in the meeting. The simpler version also takes two weeks." },
+        { label: "Ask what happened last time",   desc: "Raise the pattern politely.",                                     effects: { morale: 1, trust: -1 },     consequence: "Last time was also two weeks. The story of last time takes fifteen minutes to tell." },
+      ],
+    },
   ],
 
   4: [ // Testing
@@ -277,6 +340,15 @@ const STAGE_POOLS = {
         { label: "Push through and fix live",             desc: "'We'll monitor it closely.'",                                effects: { morale: -2, tech: -1, quality: -1 },  consequence: "Heroic in a way that shouldn't be heroic. The engineer finds the bug at 2am. Nobody celebrates." },
         { label: "Roll back to the previous build",       desc: "Return to the last version that mostly worked.",             effects: { tech: 1, roadmap: -1, morale: -1 },   consequence: "Safe. The rollback procedure worked perfectly, which is itself meaningful." },
         { label: "Investigate for 2 hours, then decide", desc: "Buy time and hope the root cause reveals itself.",            effects: { trust: 1, tech: 1 },                  consequence: "Measured response. The 2 hours surface the issue. You launch on time with the fix in place." },
+      ],
+    },
+    {
+      id: 'PM-046', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
+      scenario: "The internal demo fails. It worked perfectly yesterday.",
+      choices: [
+        { label: "Delay the demo",               desc: "Buy time. Find the real problem.",                                  effects: { roadmap: 1, trust: -1 },    consequence: "The demo is rescheduled. The root cause is a setting nobody can account for. Nobody admits touching it." },
+        { label: "Proceed confidently anyway",   desc: "Confidence is half the demo.",                                     effects: { trust: 1, tech: -1 },       consequence: "The confidence is convincing right up until it isn't. The stakeholders remember this." },
+        { label: "Blame WiFi",                   desc: "WiFi has taken this blame before. WiFi never complains.",          effects: { morale: 1 },                consequence: "WiFi accepts the blame. The actual cause goes uninvestigated. The next demo is also on WiFi." },
       ],
     },
   ],
