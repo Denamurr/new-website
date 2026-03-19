@@ -1,5 +1,5 @@
 ---
-title: "Uniswap and the Product Design of Decentralized Trading"
+title: "What Uniswap Got Right"
 date: "2024-05-01"
 slug: "uniswap-product-design"
 ---

@@ -1,5 +1,5 @@
 ---
-title: "IP as Ecosystem Lock"
+title: "IP Is Lock-In"
 date: "2024-04-01"
 slug: "ip-as-ecosystem-lock"
 ---
@@ -28,7 +28,7 @@ A patent creates the same dynamic without any product design required. The holde
 
 The COVID vaccine situation is a clear case study in what ecosystem lock looks like when the platform is medicine.
 
-At the start of the pandemic, Moderna and Pfizer held the patents on the most effective mRNA vaccine technology. Qualified manufacturers existed in other parts of the world and were ready to produce doses. Demand was unmet. Supply was limited. The WHO asked both companies to contribute their vaccine IP to a shared technology pool so more manufacturers could produce doses.
+At the start of the pandemic, Moderna and Pfizer held the patents on the most effective mRNA vaccine technology. Qualified manufacturers existed in other parts of the world and were ready to produce doses. Demand was through the roof while supply was limited. The WHO asked both companies to contribute their vaccine IP to a shared technology pool so more manufacturers could produce doses.
 
 Both companies declined.
 

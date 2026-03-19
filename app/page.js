@@ -1,20 +1,14 @@
 import Navigation from '../components/Navigation'
-import Hero from '../components/Hero'
-import Tools from '../components/Tools'
-import LabDashboard from '../components/LabDashboard'
-import Projects from '../components/Projects'
-import Blog from '../components/Blog'
+import FeaturedSection from '../components/FeaturedSection'
+import ToolsSection from '../components/ToolsSection'
 import Footer from '../components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#fafafa]">
+    <main className="min-h-screen" style={{ background: '#131929' }}>
       <Navigation />
-      <Hero />
-      <Tools />
-      <LabDashboard />
-      <Projects />
-      <Blog />
+      <FeaturedSection />
+      <ToolsSection />
       <Footer />
     </main>
   )

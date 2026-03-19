@@ -3,21 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --foreground: #111111;
-  --background: #fafafa;
+  --bg: #131929;
+  --bg-card: #1a2238;
+  --bg-card-hover: #1f2a44;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8edf8;
+  --text-muted: #8899bb;
+  --accent: #5b8dee;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text);
+  background: var(--bg);
 }
 
 a {
   transition: color 0.2s ease;
-}
-
-a:hover {
-  color: #0066cc;
 }
 
 .timeline-scroll::-webkit-scrollbar {

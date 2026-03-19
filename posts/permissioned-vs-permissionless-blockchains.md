@@ -1,5 +1,5 @@
 ---
-title: "Permissioned vs. Permissionless Blockchains"
+title: "Who Gets Access?"
 date: "2024-03-01"
 slug: "permissioned-vs-permissionless-blockchains"
 ---

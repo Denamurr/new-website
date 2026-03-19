@@ -1,5 +1,5 @@
 ---
-title: "Instacart's IPO"
+title: "The Economics of Instacart"
 date: "2023-09-20"
 slug: "instacart-ipo"
 ---

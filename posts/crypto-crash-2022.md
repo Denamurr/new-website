@@ -1,7 +1,8 @@
 ---
-title: "2022: The Year Crypto Crashed"
+title: "When Crypto Becomes Everyone's Problem"
 date: "2023-02-01"
 slug: "crypto-crash-2022"
+image: "/when-crypto-becomes.png"
 ---
 
 In 2022, roughly $2 trillion was wiped from the crypto market. A lot of people lost real money, myself included.
@@ -17,6 +18,8 @@ Crypto, by design, removed most of that friction. Fast, permissionless, no inter
 ---
 
 ## The Terra collapse
+
+![Terra collapse](/terra.png)
 
 The first major failure was Terra, a stablecoin that was supposed to hold a fixed value of $1.
 
@@ -34,6 +37,8 @@ There was no reserve. No backstop. No cooling-off period. Nothing to slow the ex
 
 ## Celsius and the lending platforms
 
+![Crypto lenders](/crypto-lenders.jpeg)
+
 A month after Terra, Celsius Network filed for bankruptcy.
 
 Celsius let users deposit crypto and earn yield, similar to a savings account. The company took those deposits and lent them out at higher rates, keeping the spread. This is basic banking, except it operated without the requirements that govern banks.
@@ -49,6 +54,8 @@ The common thread: these platforms looked like banks, offered bank-like yields, 
 ---
 
 ## FTX
+
+![FTX collapse](/ftx.png)
 
 FTX was one of the largest and most visible crypto exchanges in the world, valued at $32 billion at its peak. It had celebrity endorsements, naming rights on a sports arena, and a founder who was regularly quoted in mainstream financial press.
 
@@ -78,4 +85,8 @@ Crypto had a version of that history compressed into a single year.
 
 ---
 
-The 2022 crypto crash didn't stay contained to crypto. Several traditional banks had meaningful exposure to the industry, and when crypto firms collapsed, those banks started to show strain too. That part of the story is in the next post.
+For years, the crypto market operated separately from the traditional financial sector. However, as investors saw how much money flowed into crypto, the more financial investors and lending firms became involved. They wanted a piece of the pie too. They started offering services to crypto companies.
+
+When crypto firms started collapsing, the damage didn't stay in the crypto world — it brought down regular banks with it. In early 2023, three banks failed: Silicon Valley Bank, Silvergate Bank, and Signature Bank (the fact that they all start with an S is a coincidence). These banks didn't trade cryptocurrency, but they worked closely with crypto companies, and took their money.
+
+All three banks fell one after another, much like the crypto firms before them. This chain reaction shows that crypto and traditional finance are no longer separate. A crisis in one can quickly trigger problems in the other. I know I'm not the only one nervous about this relationship.

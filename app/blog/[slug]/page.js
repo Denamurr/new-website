@@ -44,8 +44,8 @@ export default async function BlogPost({ params }) {
     <main className="pt-24 pb-24 px-6">
       <article className="max-w-2xl mx-auto">
         <Link
-          href="/#blog"
-          className="text-sm text-gray-400 hover:text-gray-900 transition-colors mb-10 inline-block"
+          href="/"
+          className="text-sm transition-colors mb-10 inline-block" style={{ color: '#8899bb' }}
         >
           ← Back
         </Link>
@@ -68,22 +68,23 @@ export default async function BlogPost({ params }) {
           </div>
         )}
 
-        <hr className="border-gray-200 mb-8" />
+        <hr className="mb-8" style={{ borderColor: 'rgba(255,255,255,0.08)' }} />
 
-        <h1 className="text-3xl font-bold text-gray-900 leading-snug mb-3 text-center">
+        <h1 className="text-3xl font-bold leading-snug mb-3 text-center" style={{ color: '#e8edf8' }}>
           {data.title}
         </h1>
 
         {data.date && (
-          <p className="text-sm text-gray-400 mb-10 text-center">
+          <p className="text-sm mb-10 text-center" style={{ color: '#8899bb' }}>
             {formatDate(data.date)}
           </p>
         )}
 
-        <hr className="border-gray-200 mb-10" />
+        <hr className="mb-10" style={{ borderColor: 'rgba(255,255,255,0.08)' }} />
 
         <div
-          className="prose prose-gray max-w-none prose-headings:font-normal prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:text-justify prose-strong:text-gray-900 prose-hr:border-gray-200 prose-li:text-gray-700"
+          className="prose max-w-none prose-headings:font-normal prose-p:leading-normal prose-p:text-justify prose-hr:border-opacity-10 prose-img:rounded-xl prose-img:mx-auto prose-img:block"
+          style={{ '--tw-prose-body': '#c8d4e8', '--tw-prose-headings': '#e8edf8', '--tw-prose-bold': '#e8edf8', '--tw-prose-hr': 'rgba(255,255,255,0.08)' }}
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
 

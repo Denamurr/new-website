@@ -1,5 +1,5 @@
 ---
-title: "DoorDash's IPO"
+title: "The DoorDash Bet"
 date: "2020-12-10"
 slug: "doordash-ipo"
 ---
@@ -30,7 +30,7 @@ DoorDash went public without ever having turned a profit:
 
 - 2018: ($204M) loss
 - 2019: ($667M) loss
-- 2020: ($149M) loss through nine months
+- 2020: ($149M) loss
 
 This is common for marketplace businesses and it's not inherently a red flag. The reason is that marketplaces are expensive to build and cheap to operate once they scale. In the early years, you're spending heavily to acquire all three sides simultaneously. Subsidize customer delivery fees, recruit and retain Dashers, expand restaurant partnerships. All of that costs money before the flywheel starts spinning on its own.
 
@@ -81,3 +81,5 @@ The structural questions about the business are harder to answer. The commission
 None of those concerns make DoorDash a bad business. They make it a marketplace business, which means the outcome depends almost entirely on whether DoorDash maintains its share across all three sides of its network. If it does, the flywheel compounds in its favor. If it doesn't, the unit economics deteriorate fast.
 
 At $182 per share on opening day, the market was betting that DoorDash would hold. At $102, its underwriters were more cautious. The $22 billion difference between those views is what platform investing actually looks like.
+
+UPDATE: DoorDash turns its first profit of $162 million in 2024.
