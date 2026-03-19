@@ -441,7 +441,7 @@ function ChoiceButton({ choice, onClick }) {
 // ── Components ───────────────────────────────────────────────────────────────
 
 function StatBar({ label, value, color }) {
-  const barColor = value <= 2 ? 'bg-red-500' : value <= 4 ? 'bg-yellow-400' : color
+  const barColor = color
   return (
     <div className="flex items-center gap-2 min-w-0">
       <span className="text-xs text-gray-500 w-14 shrink-0">{label}</span>
@@ -808,7 +808,7 @@ export default function RoadmapGameClient() {
               <div className="flex gap-0.5">
                 {Array.from({ length: 10 }).map((_, i) => {
                   const val = stats[s.key]
-                  const barColor = val <= 2 ? 'bg-red-500' : val <= 4 ? 'bg-yellow-400' : s.color
+                  const barColor = s.color
                   return <div key={i} className={`h-2.5 flex-1 rounded-sm transition-colors ${i < val ? barColor : 'bg-gray-100'}`} />
                 })}
               </div>
