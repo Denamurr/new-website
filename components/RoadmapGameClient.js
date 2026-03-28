@@ -28,10 +28,10 @@ const STAGE_POOLS = {
       ],
     },
     {
-      id: 'PM-002', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "Three stakeholders have given you three completely different definitions of success. One cares about revenue. One cares about engagement. One says success is 'strategic positioning.' The executive alignment meeting is next week. You've been in the role for four months. What do you do?",
+      id: 'DISC-002', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
+      scenario: "Three stakeholders have given you three completely different definitions of success; revenue, engagement and 'strategic positioning.' The executive alignment meeting is next week. You've been in the role for four months. What do you do?",
       choices: [
-        { label: "Synthesize all three into one definition",   desc: "Create a definition vague enough that everyone nods.",                     effects: { scope: -1, trust: 1, morale: -1 }, consequence: "You made one definition that technically includes all three. Nobody is wrong. Nobody is aligned." },
+        { label: "Synthesize all three into one definition",   desc: "Create a definition vague enough that everyone nods.",                     effects: { scope: 1, trust: 1, morale: 1 },  consequence: "You made one definition that technically includes all three. Nobody is wrong. Nobody is aligned." },
         { label: "Schedule 1:1s with each before the meeting", desc: "Quietly align expectations before the public debate.",                     effects: { trust: 2, morale: 1 },             consequence: "You did the pre-work. The meeting runs 22 minutes. This is what good looks like." },
         { label: "Default to the CEO's view",                  desc: "'Ultimately we should align with leadership's vision.'",                   effects: { trust: 1, morale: -1 },            consequence: "Expedient. The other two stakeholders will remember." },
         { label: "Write a framing doc and circulate it",       desc: "Document the options and hope the argument happens in comments instead.",  effects: { quality: 1, trust: 1 },            consequence: "A written artifact. In 6 months this doc will either vindicate you or be used against you." },
