@@ -87,7 +87,7 @@ const STAGE_POOLS = {
     },
   ],
 
-  [ // Strategy
+  1: [ // Strategy
   {
     id: 'STRAT-011',
     epic: 'STRATEGY',
@@ -160,7 +160,7 @@ const STAGE_POOLS = {
     ],
   },
 ],
-[ // Design
+  2: [ // Design
   {
     id: 'DES-017',
     epic: 'DESIGN',
@@ -286,7 +286,7 @@ const STAGE_POOLS = {
     ],
   },
 ],
-[ // Development
+  3: [ // Development
   {
     id: 'DEV-024', epic: 'DEVELOPMENT', epicColor: 'bg-blue-100 text-blue-700',
     scenario: "Mid-sprint, a stakeholder drops in with 'one tiny change' that touches the API, UI, copy, analytics, and your remaining will to live. What do you do?",
@@ -384,7 +384,7 @@ const STAGE_POOLS = {
     ],
   },
 ],
-4: [ // Testing
+  4: [ // Testing
   {
     id: 'TEST-033', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
     scenario: "QA files a P0 bug ticket two days before launch. It affects 20% of users but has a workaround. Your lead dev's Slack status is currently a red circle. What do you do?",
@@ -445,6 +445,8 @@ const STAGE_POOLS = {
     ],
   },
 ],
+}
+
 // ── Build a shuffled card sequence each game ─────────────────────────────────
 
 function shuffle(arr) {
