@@ -447,6 +447,30 @@ const STAGE_POOLS = {
 ],
 }
 
+const LEGENDARY_CARDS = [
+  {
+    id: 'PM-inf', insertAfterStage: 1,
+    title: 'The CEO Discovers AI',
+    body: 'i listened to this podcast this weekend about AI. It sounds like the future. We should add AI to this.',
+    choices: [
+      { label: "Add an AI feature immediately",         desc: "'Great idea -- we've actually been thinking about this.'",      effects: { scope: -1, trust: 1, tech: -1 },   consequence: "It's on the roadmap. Nobody knows what the AI feature actually does yet. Including the CEO." },
+      { label: "Ask what problem it solves",            desc: "Try to connect the idea to an actual user need.",               effects: { quality: 1, trust: -1 },             consequence: "Smart question. Wrong room. The CEO is now describing a problem that doesn't exist." },
+      { label: 'Create an "AI strategy task force"',   desc: "Form a group dedicated to thinking about AI.",                  effects: { trust: 1, morale: -1 },              consequence: "A task force. The team knows what task forces produce. Spoiler: it's another meeting." },
+      { label: 'Add "AI" to the roadmap slide',        desc: "Update the deck. Problem solved.",                              effects: { trust: 1, morale: 1, quality: -1 },  consequence: "The slide now says AI. Nothing else has changed. The CEO is satisfied." },
+    ],
+  },
+  {
+    id: 'PM-inf2', insertAfterStage: 3,
+    title: 'The All-Hands Reorg',
+    body: 'hey quick heads up - restructuring announcement going out tomorrow. your team is moving under Infrastructure now. no changes to your roadmap tho :)',
+    choices: [
+      { label: "Absorb it and move forward",           desc: "React with a thumbs up and pretend this won't affect anything.",  effects: { morale: -1, trust: 1 },             consequence: "You stayed calm. The new infra lead already has opinions about your backlog. Several of them." },
+      { label: "Schedule a team offsite immediately",  desc: "'Let's realign on priorities.'",                                  effects: { morale: 2, scope: -1 },             consequence: "Team loves it. Roadmap loses a week. They think it was worth it. You're not sure." },
+      { label: "Ask for clarity before committing",    desc: "Find out what 'no changes' actually means.",                      effects: { trust: 1, morale: 1 },              consequence: "Reasonable. Respected. You know 'no changes to your roadmap' is aspirational, not operational." },
+    ],
+  },
+]
+
 // ── Build a shuffled card sequence each game ─────────────────────────────────
 
 function shuffle(arr) {
