@@ -1010,7 +1010,7 @@ export default function RoadmapGameClient() {
     <div className="min-h-screen bg-[#f4f5f7] font-sans flex flex-col pt-[61px]">
 
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between shrink-0">
+      <div className="bg-white border-b border-gray-200 px-8 py-4 grid grid-cols-3 items-center shrink-0">
         <div className="flex items-center gap-3">
           <Link href="/" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">← Home</Link>
           <span className="text-gray-300 text-xs">/</span>
@@ -1018,10 +1018,12 @@ export default function RoadmapGameClient() {
             <div className="w-5 h-5 bg-blue-600 rounded grid grid-cols-3 gap-0.5 p-1">
               {Array.from({ length: 9 }).map((_, i) => <div key={i} className="bg-white rounded-sm opacity-80" />)}
             </div>
-            <span className="text-sm font-semibold text-gray-800">The PM Survival Game</span>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex justify-center">
+          <span className="text-xl font-bold text-gray-900">The PM Survival Game</span>
+        </div>
+        <div className="flex items-center justify-end gap-3">
           <div className="flex -space-x-2">
             {['bg-violet-400', 'bg-sky-400', 'bg-emerald-400', 'bg-amber-400'].map((c, i) => (
               <div key={i} className={`w-7 h-7 rounded-full ${c} border-2 border-white`} />
@@ -1079,7 +1081,10 @@ export default function RoadmapGameClient() {
 
                   {/* Column header */}
                   <div className="flex items-center justify-between px-1 mb-2">
-                    <span className={`text-xs font-bold uppercase tracking-widest ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>{stage}</span>
+                    <div className="flex items-center gap-2">
+                      <span className={`text-xs font-bold uppercase tracking-widest ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>{stage}</span>
+                      <span className={`text-xs font-medium px-1.5 py-0.5 rounded border ${isActive ? 'border-blue-300 text-blue-600 bg-blue-50' : isCompleted ? 'border-emerald-200 text-emerald-600 bg-emerald-50' : 'border-gray-200 text-gray-400 bg-gray-50'}`}>Sprint {si + 1}</span>
+                    </div>
                     {isActive && pendingInStage.length > 0 && (
                       <span className="text-xs bg-blue-100 text-blue-600 rounded-full px-2 py-0.5 font-medium">{pendingInStage.length}</span>
                     )}
@@ -1091,11 +1096,10 @@ export default function RoadmapGameClient() {
                     {completedInStage.map((card, i) => (
                       <div key={i} className="w-full rounded-lg border border-gray-100 bg-white p-4 opacity-60">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-[11px] font-mono text-gray-400">{card.id}</span>
-                          <span className="text-[11px] text-emerald-600 font-medium">Done</span>
+                          <span className="text-xs font-mono text-gray-400">{card.id}</span>
+                          <span className="text-xs text-emerald-600 font-medium">Done</span>
                         </div>
-                        <div className="h-2.5 rounded w-4/5 bg-gray-100 mb-1.5" />
-                        <div className="h-2.5 rounded w-3/5 bg-gray-100" />
+                        <p className="text-sm text-gray-400 leading-snug">{card.id}</p>
                       </div>
                     ))}
                     {isActive && pendingInStage.map((card, i) => {
@@ -1114,13 +1118,11 @@ export default function RoadmapGameClient() {
                           }`}
                         >
                           <div className="flex items-center justify-between mb-3">
-                            <span className={`text-[11px] font-mono ${isLegendary ? 'text-red-400' : 'text-gray-400'}`}>{card.id}</span>
+                            <span className={`text-xs font-mono ${isLegendary ? 'text-red-400' : 'text-gray-400'}`}>{card.id}</span>
                             {isLegendary && <span className="text-xs font-semibold text-red-600 bg-red-100 px-1.5 py-0.5 rounded">URGENT</span>}
                             {isCurrentCard && !isLegendary && <span className="text-xs text-red-500 font-semibold">Click to draw</span>}
                           </div>
-                          <div className={`h-3 rounded w-4/5 mb-2 ${isLegendary ? 'bg-red-100' : 'bg-gray-100'}`} />
-                          <div className={`h-3 rounded w-3/5 mb-2 ${isLegendary ? 'bg-red-100' : 'bg-gray-100'}`} />
-                          <div className={`h-3 rounded w-2/5 ${isLegendary ? 'bg-red-100' : 'bg-gray-100'}`} />
+                          <p className={`text-sm leading-snug ${isLegendary ? 'text-red-300' : 'text-gray-400'}`}>{card.id}</p>
                         </button>
                       )
                     })}
