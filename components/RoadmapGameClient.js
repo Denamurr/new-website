@@ -39,7 +39,7 @@ const STAGE_POOLS = {
     },
     {
       id: 'DISC-003', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "Your research consists of 5 user interviews and a survey with 40 responses. Three of the survey responses appear to be from the same person. Your designer raises an eyebrow. Your lead engineer asks if any of this is statistically significant. You briefly consider googling 'statistically significant.' What do you do?",
+      scenario: "Your research consists of 5 user interviews and a survey with 40 responses. Three of the survey responses appear to be from the same person. Your lead engineer asks how much confidence the team should actually place in the findings. What do you do?",
       choices: [
         { label: "Run 10 more interviews",              desc: "Let's increase the sample size before we decide.",                    effects: { scope: -1, quality: 2 },            consequence: "It costs time. You find a behavior pattern that changes the entire approach. You say nothing about the timeline." },
         { label: "Proceed with what we have",           desc: "It's directional research.",                                         effects: { quality: -1, scope: 1 },            consequence: "Ship it and find out. This is technically a research strategy." },
@@ -285,6 +285,38 @@ const STAGE_POOLS = {
       { label: "Bring in a contractor to assess",       desc: "Ask an outsider to tell everyone what they already know.", effects: { tech: 1, trust: 1, scope: 1 }, consequence: "Outside perspective. The assessment says rebuild. You now have the permission structure to do it." },
     ],
   },
+  {
+    id: 'DES-041',
+    epic: 'DESIGN',
+    epicColor: 'bg-pink-100 text-pink-700',
+    scenario: "A designer says the current layout feels 'emotionally cramped.' Engineering asks whether emotions are now a required breakpoint. The meeting is not going well. What do you do?",
+    choices: [
+      {
+        label: "Translate the feedback into specific UX issues",
+        desc: "Turn vibes into something testable.",
+        effects: { trust: 2, quality: 1 },
+        consequence: "The conversation improves the second everyone is forced to use nouns instead of feelings."
+      },
+      {
+        label: "Side with design and redo the layout",
+        desc: "Honor the emotional geometry.",
+        effects: { quality: 1, scope: -1, morale: -1 },
+        consequence: "The design gets cleaner, but the team loses a chunk of time to a problem nobody could originally define."
+      },
+      {
+        label: "Side with engineering and keep it moving",
+        desc: "If users can still click the button, call it resolved.",
+        effects: { scope: 2, trust: -1, quality: -1 },
+        consequence: "Progress continues, and design begins documenting your future mistakes with unusual precision."
+      },
+      {
+        label: "Put the design in front of users before changing it",
+        desc: "Let actual humans settle the argument.",
+        effects: { quality: 2, trust: 1, scope: -1 },
+        consequence: "User feedback reveals the truth, which is more useful and less flattering than either side expected."
+      }
+    ],
+  },
 ],
   3: [ // Development
   {
@@ -348,12 +380,33 @@ const STAGE_POOLS = {
   },
   {
     id: 'DEV-030', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
-    scenario: "A stakeholder asks for 'one small addition' to a feature mid-sprint.",
-    choices: [
-      { label: "Add the feature",                   desc: "It's small. How long could it take.",                 effects: { scope: 1, trust: 1, tech: -1 },  consequence: "The feature is in. 'One small addition' is now two sprints of work." },
-      { label: "Cut another feature to compensate", desc: "Scope-neutral. Someone else loses.",                  effects: { scope: -1, trust: -1 },           consequence: "Balanced. Something else was cut. Nobody noticed until they needed it." },
-      { label: "Pretend you didn't hear them",      desc: "Selective attention is a project management skill.",  effects: { morale: 2, scope: -1 },          consequence: "You did not hear them. They will find another way to ask." },
-    ],
+   scenario: "Halfway through the sprint, engineering reveals the feature is 'mostly done,' which in local dialect means the backend exists, the frontend is theoretical, and nothing has met another system yet. What do you do?",
+choices: [
+  {
+    label: "Cut scope and finish the core flow",
+    desc: "Ship one thing that works instead of four things that gesture vaguely at working.",
+    effects: { roadmap: 1, quality: 1, trust: 1 },
+    consequence: "The feature gets smaller, more coherent, and much less likely to humiliate you in demo."
+  },
+  {
+    label: "Push the team to finish everything",
+    desc: "Reject reality and request a more motivational version of it.",
+    effects: { roadmap: 2, morale: -2, quality: -1 },
+    consequence: "People work later, resent harder, and produce a version of done that requires spiritual generosity."
+  },
+  {
+    label: "Move the unfinished work to next sprint",
+    desc: "Call it sequencing, not slipping.",
+    effects: { roadmap: -1, tech: 1, morale: 1 },
+    consequence: "The sprint goal survives, though several Jira tickets now carry the sadness of reincarnation."
+  },
+  {
+    label: "Ask for a live walkthrough of what actually works",
+    desc: "Replace status updates with the radical act of looking.",
+    effects: { trust: 2, quality: 1 },
+    consequence: "Three assumptions die on the spot. This is still more efficient than finding out at the demo."
+  }
+]
   },
   {
     id: 'DEV-031', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
@@ -381,6 +434,15 @@ const STAGE_POOLS = {
       { label: "Push for longer hours to catch up",          desc: "Convert bad planning into human fatigue.",                  effects: { scope: -1, morale: -2, quality: -1 }, consequence: "Output rises briefly, then starts shedding judgment at an alarming rate." },
       { label: "Drop lower-priority tickets now",            desc: "Admit reality before reality schedules the meeting for you.", effects: { scope: -1, morale: 1, trust: 1 }, consequence: "The sprint goal becomes narrower and suddenly much more achievable, which annoys only the people addicted to fantasy." },
       { label: "Ask each engineer to show what changed since yesterday", desc: "Replace progress poetry with receipts.",       effects: { trust: 2, morale: -1, quality: 1 },  consequence: "The mood darkens, but clarity arrives wearing steel-toed boots." },
+    ],
+  },
+  {
+    id: 'DEV-042', epic: 'DEVELOPMENT', epicColor: 'bg-orange-100 text-orange-700',
+    scenario: "The team spends 45 minutes in a meeting debating the color of a button.",
+    choices: [
+      { label: "Let design decide",          desc: "It's a design decision. Let design decide.",         effects: { quality: 1 },              consequence: "Design decides. The button is a slightly different shade of blue. Nobody notices. Design notices." },
+      { label: "End the debate and move on", desc: "Call time. Ship the existing color.",                effects: { morale: 1, quality: -1 },  consequence: "The debate ends. The color stays. Someone will bring this up in retro." },
+      { label: "Escalate the decision",      desc: "Make it someone else's 45 minutes.",                 effects: { trust: 1, morale: -1 },    consequence: "Leadership picks a color. The team now has a documented process for button colors." },
     ],
   },
 ],
@@ -437,39 +499,55 @@ const STAGE_POOLS = {
   },
   {
     id: 'TEST-038', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
-    scenario: "The internal demo fails. It worked perfectly yesterday.",
+    scenario: "The internal demo fails. You're supposed to demo this in an hour to the c-suites. What do you do?",
     choices: [
       { label: "Delay the demo",             desc: "Buy time. Find the real problem.",                         effects: { trust: -1 }, consequence: "The demo is rescheduled. The root cause is a setting nobody can account for. Nobody admits touching it." },
       { label: "Proceed confidently anyway", desc: "Confidence is half the demo.",                            effects: { trust: 1, tech: -1 }, consequence: "The confidence is convincing right up until it isn't. The stakeholders remember this." },
       { label: "Blame WiFi",                 desc: "It's out of your hands.", effects: { morale: 1 }, consequence: "The Stakeholders keep pinging you saying their wifi connection is working great." },
     ],
   },
+  {
+    id: 'TEST-39', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
+    scenario: "The staging environment has been down twice, two bugs are marked 'probably fine,' and someone just said 'we can validate in prod' without irony. Release day is approaching like a tax audit. What do you do?",
+    choices: [
+      { label: "Push the release a week", desc: "Choose shame now over chaos later.", effects: { scope: -2, quality: 2, tech: 1 }, consequence: "The team groans, then gets weirdly productive. Several fake-green tests are exposed and dealt with." },
+      { label: "Launch anyway", desc: "Let production answer the questions nobody else can.", effects: { scope: 2, quality: -2, morale: -1 }, consequence: "Production does answer the questions. Loudly. At 11:43 p.m." },
+      { label: "Strip out the risky bits and ship the rest", desc: "A classic move for anyone who enjoys survival.", effects: { scope: 1, quality: 1, trust: 1 }, consequence: "The release becomes smaller, uglier, and much less likely to ruin your weekend." },
+      { label: "Make the loudest person own the launch decision", desc: "A bold governance model based entirely on consequences.", effects: { morale: -1, trust: 2 }, consequence: "Confidence levels across the room change instantly once accountability enters the chat." },
+    ],
+  },
+  {
+    id: 'TEST-40', epic: 'TESTING', epicColor: 'bg-red-100 text-red-700',
+    scenario: "QA logs 27 bugs before launch. Engineering says 19 are 'edge cases,' 5 are 'known issues,' and 3 are 'not reproducible,' which is a fun way of saying they still exist. What do you do?",
+    choices: [
+      {
+        label: "Triage every bug and rank by user pain",
+        desc: "Replace category theater with actual prioritization.",
+        effects: { quality: 2, trust: 1, scope: -1 },
+        consequence: "Several bugs keep their dramatic labels, but now everyone has to admit which ones actually matter."
+      },
+      {
+        label: "Close the edge cases and ship",
+        desc: "Trust that users will stay politely on the happy path.",
+        effects: { scope: 2, quality: -2, trust: -1 },
+        consequence: "Users immediately begin exploring the exact edges your team found theoretically unimportant."
+      },
+      {
+        label: "Fix only the bugs tied to core flows",
+        desc: "Protect login, checkout, save, and anything else capable of public humiliation.",
+        effects: { quality: 1, scope: 1, tech: 1 },
+        consequence: "The release survives, though a few weird corners of the product remain cursed."
+      },
+      {
+        label: "Make bug owners demo the issue live",
+        desc: "A miracle cure for loose opinions.",
+        effects: { trust: 2, morale: 1 },
+        consequence: "Half the arguments vanish once people have to reproduce their confidence in front of witnesses."
+      },
+    ],
+  },
 ],
 }
-
-const LEGENDARY_CARDS = [
-  {
-    id: 'PM-inf', insertAfterStage: 1,
-    title: 'The CEO Discovers AI',
-    body: 'i listened to this podcast this weekend about AI. It sounds like the future. We should add AI to this.',
-    choices: [
-      { label: "Add an AI feature immediately",         desc: "'Great idea -- we've actually been thinking about this.'",      effects: { scope: -1, trust: 1, tech: -1 },   consequence: "It's on the roadmap. Nobody knows what the AI feature actually does yet. Including the CEO." },
-      { label: "Ask what problem it solves",            desc: "Try to connect the idea to an actual user need.",               effects: { quality: 1, trust: -1 },             consequence: "Smart question. Wrong room. The CEO is now describing a problem that doesn't exist." },
-      { label: 'Create an "AI strategy task force"',   desc: "Form a group dedicated to thinking about AI.",                  effects: { trust: 1, morale: -1 },              consequence: "A task force. The team knows what task forces produce. Spoiler: it's another meeting." },
-      { label: 'Add "AI" to the roadmap slide',        desc: "Update the deck. Problem solved.",                              effects: { trust: 1, morale: 1, quality: -1 },  consequence: "The slide now says AI. Nothing else has changed. The CEO is satisfied." },
-    ],
-  },
-  {
-    id: 'PM-inf2', insertAfterStage: 3,
-    title: 'The All-Hands Reorg',
-    body: 'hey quick heads up - restructuring announcement going out tomorrow. your team is moving under Infrastructure now. no changes to your roadmap tho :)',
-    choices: [
-      { label: "Absorb it and move forward",           desc: "React with a thumbs up and pretend this won't affect anything.",  effects: { morale: -1, trust: 1 },             consequence: "You stayed calm. The new infra lead already has opinions about your backlog. Several of them." },
-      { label: "Schedule a team offsite immediately",  desc: "'Let's realign on priorities.'",                                  effects: { morale: 2, scope: -1 },             consequence: "Team loves it. Roadmap loses a week. They think it was worth it. You're not sure." },
-      { label: "Ask for clarity before committing",    desc: "Find out what 'no changes' actually means.",                      effects: { trust: 1, morale: 1 },              consequence: "Reasonable. Respected. You know 'no changes to your roadmap' is aspirational, not operational." },
-    ],
-  },
-]
 
 // ── Build a shuffled card sequence each game ─────────────────────────────────
 
