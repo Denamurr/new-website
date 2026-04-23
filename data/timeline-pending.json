@@ -1,0 +1,26 @@
+[
+  {
+    "id": "openai-introducing-openai-privacy-filter",
+    "date": "2026-04-22",
+    "category": "model_release",
+    "title": "Introducing OpenAI Privacy Filter",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-openai-privacy-filter",
+    "tags": [
+      "openai"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech",
+    "date": "2026-04-15",
+    "category": "model_release",
+    "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  }
+]
