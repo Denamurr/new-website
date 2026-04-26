@@ -1,0 +1,46 @@
+[
+  {
+    "id": "openai-introducing-gpt-5-5",
+    "date": "2026-04-23",
+    "category": "model_release",
+    "title": "Introducing GPT-5.5",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-5",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-5-5-bio-bug-bounty",
+    "date": "2026-04-23",
+    "category": "model_release",
+    "title": "GPT-5.5 Bio Bug Bounty",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-bio-bug-bounty",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-openai-privacy-filter",
+    "date": "2026-04-22",
+    "category": "model_release",
+    "title": "Introducing OpenAI Privacy Filter",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-openai-privacy-filter",
+    "tags": [
+      "openai"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech",
+    "date": "2026-04-15",
+    "category": "model_release",
+    "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  }
+]
