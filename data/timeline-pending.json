@@ -1,0 +1,45 @@
+[
+  {
+    "id": "openai-gpt-5-5-instant-smarter-clearer-and-more-personalized",
+    "date": "2026-05-05",
+    "category": "model_release",
+    "title": "GPT-5.5 Instant: smarter, clearer, and more personalized",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-instant",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-5",
+    "date": "2026-04-23",
+    "category": "model_release",
+    "title": "Introducing GPT-5.5",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-5",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-5-5-bio-bug-bounty",
+    "date": "2026-04-23",
+    "category": "model_release",
+    "title": "GPT-5.5 Bio Bug Bounty",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-bio-bug-bounty",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "hugging-face-introducing-nvidia-nemotron-3-nano-omni-long-context-multimodal-int",
+    "date": "2026-04-28",
+    "category": "model_release",
+    "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence",
+    "tags": [
+      "multimodal",
+      "agentic"
+    ],
+    "manual": false
+  }
+]
