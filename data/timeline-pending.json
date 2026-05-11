@@ -1,0 +1,35 @@
+[
+  {
+    "id": "openai-scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber",
+    "date": "2026-05-07",
+    "category": "model_release",
+    "title": "Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-5-5-instant-smarter-clearer-and-more-personalized",
+    "date": "2026-05-05",
+    "category": "model_release",
+    "title": "GPT-5.5 Instant: smarter, clearer, and more personalized",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-instant",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "hugging-face-introducing-nvidia-nemotron-3-nano-omni-long-context-multimodal-int",
+    "date": "2026-04-28",
+    "category": "model_release",
+    "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence",
+    "tags": [
+      "multimodal",
+      "agentic"
+    ],
+    "manual": false
+  }
+]
