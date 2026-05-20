@@ -1,0 +1,24 @@
+[
+  {
+    "id": "openai-scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber",
+    "date": "2026-05-07",
+    "category": "model_release",
+    "title": "Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-5-frontier-intelligence-with-action",
+    "date": "2026-05-15",
+    "category": "model_release",
+    "title": "Gemini 3.5: frontier intelligence with action",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  }
+]
