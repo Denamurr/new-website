@@ -1,0 +1,26 @@
+[
+  {
+    "id": "openai-warp-s-big-bet-on-building-open-source-with-gpt-5-5",
+    "date": "2026-05-27",
+    "category": "model_release",
+    "title": "Warp’s big bet on building open source with GPT-5.5",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/warp",
+    "tags": [
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-ai-gemini-3-5-frontier-intelligence-with-action",
+    "date": "2026-05-19",
+    "category": "model_release",
+    "title": "Gemini 3.5: frontier intelligence with action",
+    "source": "Google AI",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  }
+]
