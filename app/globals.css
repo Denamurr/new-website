@@ -3,24 +3,207 @@
 @tailwind utilities;
 
 :root {
-  --bg: #131929;
-  --bg-card: #1a2238;
-  --bg-card-hover: #1f2a44;
-  --border: rgba(255, 255, 255, 0.08);
-  --text: #e8edf8;
-  --text-muted: #8899bb;
-  --accent: #5b8dee;
+  --bg: #f7f2ea;
+  --ink: #111111;
+  --accent: #ec5a8f;
+  --yellow: #f8e632;
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--text);
+  margin: 0;
+  padding: 0;
   background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-a {
-  transition: color 0.2s ease;
-}
-
+/* timeline page scrollbar hiding */
 .timeline-scroll::-webkit-scrollbar {
   display: none;
+}
+
+/* hero scroll-driven wordmark */
+.wordmark {
+  margin: 0;
+  font-family: "Anton", "Oswald", "Impact", sans-serif;
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 38%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.wordmark-outline {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  font-family: "Anton", "Oswald", "Impact", sans-serif;
+  font-weight: 400;
+  line-height: 0.8;
+  letter-spacing: -0.015em;
+  white-space: nowrap;
+  background: none;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  -webkit-text-stroke: var(--stroke, 2px) var(--ink);
+  pointer-events: none;
+}
+
+/* essay rows */
+.essay-row {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.essay-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cat);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 0;
+}
+
+.essay-row:hover::before {
+  transform: scaleY(1);
+}
+
+.essay-row a {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 26px 18px;
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+  transition: padding 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.essay-row a > * {
+  position: relative;
+  z-index: 1;
+}
+
+.essay-row:hover a {
+  padding-left: 34px;
+  padding-right: 34px;
+}
+
+.essay-cat {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cat);
+  transition: color 0.25s ease;
+}
+
+.essay-row:hover .essay-cat {
+  color: var(--ink);
+}
+
+.essay-title {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: clamp(26px, 3.4vw, 46px);
+  line-height: 1;
+  letter-spacing: -0.012em;
+}
+
+.essay-arrow {
+  font-size: 22px;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.essay-row:hover .essay-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 680px) {
+  .essay-row a {
+    grid-template-columns: 1fr auto;
+    gap: 6px 16px;
+    padding: 20px 14px;
+  }
+  .essay-cat {
+    grid-column: 1;
+  }
+  .essay-title {
+    grid-column: 1 / -1;
+  }
+  .essay-arrow {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+/* tool cards */
+.tool-card {
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  padding: 30px 30px 26px;
+  text-decoration: none;
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.tool-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.tool-card-featured {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.tool-card-featured .tool-kind,
+.tool-card-featured .tool-desc {
+  opacity: 0.85;
+}
+
+/* sec-label */
+.sec-label {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.sec-label .bar {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.25;
 }
