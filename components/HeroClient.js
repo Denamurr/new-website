@@ -75,6 +75,11 @@ export default function HeroClient() {
     wordmark.style.backgroundPosition = `${posX}px ${posY}px`
     wordmark.style.opacity = String(easeInOutCubic(collapse))
 
+    // Cream background on wrap once pinned, so scrolled content doesn't bleed through
+    wrap.style.background = pin > 0 ? `rgba(247,242,234,${easeOutCubic(pin)})` : ''
+    wrap.style.borderRadius = '4px'
+    wrap.style.padding = pin > 0 ? '4px 8px' : '0'
+
     // Outline
     const outOp = textFade * (1 - easeOutCubic(pin) * 0.85)
     outline.style.opacity = String(outOp)
