@@ -1223,33 +1223,35 @@ export default function RoadmapGameClient() {
   const totalDays = sequence.length
 
   return (
-    <div style={{ minHeight: '100vh', background: '#f4f5f7', fontFamily: '"Droid Sans", sans-serif', filter: showSlack ? 'blur(2px) brightness(.7)' : 'none', transition: 'filter .3s', pointerEvents: showSlack ? 'none' : 'auto' }}>
-      <GameNav
-        crumb={`Sprint ${stageIndex + 1} — ${STAGES[stageIndex]}`}
-        dayLabel={`Day ${dayNum} / ${totalDays}`}
-        onRestart={handleRestart}
-      />
-      <div className="pm-game-wrap" style={{ maxWidth: 980, margin: '0 auto', padding: '34px 24px 60px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 28, alignItems: 'start' }}>
-        <div>
-          {currentCard?.type === 'stage' && (
-            <IssueCard
-              card={currentCard}
-              onChoice={handleChoice}
-              chosen={chosen}
-              onContinue={handleContinue}
-            />
-          )}
-          {currentCard?.type === 'legendary' && chosen && (
-            <ConsequencePanel chosen={chosen} onContinue={handleContinue} />
-          )}
+    <>
+      <div style={{ minHeight: '100vh', background: '#f4f5f7', fontFamily: '"Droid Sans", sans-serif', filter: showSlack ? 'blur(2px) brightness(.7)' : 'none', transition: 'filter .3s', pointerEvents: showSlack ? 'none' : 'auto' }}>
+        <GameNav
+          crumb={`Sprint ${stageIndex + 1} — ${STAGES[stageIndex]}`}
+          dayLabel={`Day ${dayNum} / ${totalDays}`}
+          onRestart={handleRestart}
+        />
+        <div className="pm-game-wrap" style={{ maxWidth: 980, margin: '0 auto', padding: '34px 24px 60px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 28, alignItems: 'start' }}>
+          <div>
+            {currentCard?.type === 'stage' && (
+              <IssueCard
+                card={currentCard}
+                onChoice={handleChoice}
+                chosen={chosen}
+                onContinue={handleContinue}
+              />
+            )}
+            {currentCard?.type === 'legendary' && chosen && (
+              <ConsequencePanel chosen={chosen} onContinue={handleContinue} />
+            )}
+          </div>
+          <StatRail stats={stats} effects={chosen?.effects} />
         </div>
-        <StatRail stats={stats} effects={chosen?.effects} />
       </div>
       {showSlack && (
-        <div style={{ position: 'fixed', inset: 0, zIndex: 50, pointerEvents: 'auto', filter: 'none' }}>
+        <div style={{ position: 'fixed', inset: 0, zIndex: 50, pointerEvents: 'auto' }}>
           <SlackModal card={currentCard} onChoice={handleChoice} />
         </div>
       )}
-    </div>
+    </>
   )
 }
