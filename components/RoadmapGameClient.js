@@ -754,7 +754,7 @@ function StatRail({ stats, effects }) {
 
 // ── IssueCard ─────────────────────────────────────────────────────────────────
 
-function IssueCard({ card, onChoice, chosen, onContinue }) {
+function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
   const epic = EPIC_STYLES[card.epic] || { bg: '#f4f5f7', color: '#6b778c' }
   return (
     <div style={{ background: '#fff', border: '1px solid #dfe1e6', borderRadius: 6, boxShadow: '0 1px 2px rgba(9,30,66,.1)', overflow: 'hidden' }}>
@@ -824,7 +824,7 @@ function IssueCard({ card, onChoice, chosen, onContinue }) {
                 style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif', fontSize: 14, fontWeight: 600, padding: '9px 18px', cursor: 'pointer' }}
                 onMouseEnter={e => { e.currentTarget.style.background = '#0065ff' }}
                 onMouseLeave={e => { e.currentTarget.style.background = '#0052cc' }}
-              >Next issue →</button>
+              >{continueLabel ?? 'Next issue →'}</button>
             </div>
           </div>
         )}
@@ -864,7 +864,7 @@ function ConsequencePanel({ chosen, onContinue }) {
 
 // ── SlackModal ────────────────────────────────────────────────────────────────
 
-function SlackModal({ card, onChoice }) {
+function SlackModal({ card, onChoice, chosen, onContinue }) {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 50 }}>
       {/* Scrim */}
@@ -953,25 +953,51 @@ function SlackModal({ card, onChoice }) {
                   </div>
                 </div>
 
-                {/* Reply separator */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '14px 0 10px' }}>
-                  <div style={{ flex: 1, height: 1, background: '#e8e8e8' }} />
-                  <span style={{ fontSize: 12, color: '#616061', fontFamily: '"Lato", sans-serif' }}>Reply as yourself</span>
-                  <div style={{ flex: 1, height: 1, background: '#e8e8e8' }} />
-                </div>
-
-                <div style={{ fontSize: 12, color: '#616061', marginBottom: 8, fontFamily: '"Lato", sans-serif' }}>How do you respond?</div>
-                {card.choices.map((choice, i) => (
-                  <div
-                    key={i}
-                    className="pm-slack-reply"
-                    onClick={() => onChoice(choice, i)}
-                    style={{ padding: '10px 12px', borderRadius: 4, cursor: 'pointer', marginBottom: 4, borderLeft: '3px solid transparent', fontFamily: '"Lato", sans-serif' }}
-                  >
-                    <div style={{ fontWeight: 700, fontSize: 13, color: '#1d1c1d' }}>{choice.label}</div>
-                    <div style={{ fontSize: 13, color: '#4a4a4a', marginTop: 2, lineHeight: 1.4 }}>{choice.desc}</div>
+                {!chosen ? (
+                  <>
+                    {/* Reply separator */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '14px 0 10px' }}>
+                      <div style={{ flex: 1, height: 1, background: '#e8e8e8' }} />
+                      <span style={{ fontSize: 12, color: '#616061', fontFamily: '"Lato", sans-serif' }}>Reply as yourself</span>
+                      <div style={{ flex: 1, height: 1, background: '#e8e8e8' }} />
+                    </div>
+                    <div style={{ fontSize: 12, color: '#616061', marginBottom: 8, fontFamily: '"Lato", sans-serif' }}>How do you respond?</div>
+                    {card.choices.map((choice, i) => (
+                      <div
+                        key={i}
+                        className="pm-slack-reply"
+                        onClick={() => onChoice(choice, i)}
+                        style={{ padding: '10px 12px', borderRadius: 4, cursor: 'pointer', marginBottom: 4, borderLeft: '3px solid transparent', fontFamily: '"Lato", sans-serif' }}
+                      >
+                        <div style={{ fontWeight: 700, fontSize: 13, color: '#1d1c1d' }}>{choice.label}</div>
+                        <div style={{ fontSize: 13, color: '#4a4a4a', marginTop: 2, lineHeight: 1.4 }}>{choice.desc}</div>
+                      </div>
+                    ))}
+                  </>
+                ) : (
+                  <div style={{ marginTop: 14, padding: '14px 16px', background: '#e3fcef', border: '1px solid #abf5d1', borderRadius: 6, animation: 'gameRev .35s cubic-bezier(.2,.8,.2,1)' }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '3px 9px', borderRadius: 3, fontFamily: '"Lato", sans-serif' }}>Result</span>
+                    <p style={{ fontSize: 14, lineHeight: 1.5, color: '#172b4d', margin: '10px 0 0', fontFamily: '"Lato", sans-serif' }}>{chosen.consequence}</p>
+                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 12 }}>
+                      {Object.entries(chosen.effects).map(([k, v]) => {
+                        const cfg = STATS_CONFIG.find(s => s.key === k)
+                        return cfg ? (
+                          <span key={k} style={{ fontSize: 11, fontWeight: 700, padding: '3px 9px', borderRadius: 3, background: v > 0 ? '#e3fcef' : '#ffebe6', color: v > 0 ? '#00875a' : '#de350b', fontFamily: '"Lato", sans-serif' }}>
+                            {cfg.label} {v > 0 ? `+${v}` : v}
+                          </span>
+                        ) : null
+                      })}
+                    </div>
+                    <div style={{ marginTop: 14, display: 'flex', justifyContent: 'flex-end' }}>
+                      <button
+                        onClick={onContinue}
+                        style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Lato", sans-serif', fontSize: 13, fontWeight: 700, padding: '8px 16px', cursor: 'pointer' }}
+                        onMouseEnter={e => { e.currentTarget.style.background = '#0065ff' }}
+                        onMouseLeave={e => { e.currentTarget.style.background = '#0052cc' }}
+                      >Continue →</button>
+                    </div>
                   </div>
-                ))}
+                )}
               </div>
 
               {/* Composer */}
@@ -986,6 +1012,113 @@ function SlackModal({ card, onChoice }) {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  )
+}
+
+// ── BoardTicket ───────────────────────────────────────────────────────────────
+
+function BoardTicket({ card, epic, clickable, done, onCardClick }) {
+  const [hovered, setHovered] = useState(false)
+  return (
+    <div
+      onClick={clickable ? () => onCardClick(card.seqIdx) : undefined}
+      onMouseEnter={clickable ? () => setHovered(true)  : undefined}
+      onMouseLeave={clickable ? () => setHovered(false) : undefined}
+      style={{
+        background: '#fff',
+        border: `1px solid ${hovered ? '#0065ff' : '#dfe1e6'}`,
+        borderRadius: 4,
+        padding: '12px 14px',
+        marginBottom: 8,
+        cursor: clickable ? 'pointer' : 'default',
+        opacity: done ? 0.6 : 1,
+        boxShadow: hovered ? '0 2px 8px rgba(0,101,255,.18)' : '0 1px 2px rgba(9,30,66,.08)',
+        transition: 'border-color .15s, box-shadow .15s',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+        <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', padding: '2px 7px', borderRadius: 3, background: epic.bg, color: epic.color, fontFamily: '"Droid Sans", sans-serif' }}>
+          {card.epic}
+        </span>
+        {done && <span style={{ marginLeft: 'auto', fontSize: 11, color: '#00875a', fontWeight: 700, fontFamily: '"Droid Sans", sans-serif' }}>✓ Done</span>}
+      </div>
+      <p style={{ fontFamily: '"Droid Sans", sans-serif', fontSize: 13, lineHeight: 1.45, color: '#172b4d', margin: '0 0 10px' }}>
+        {card.scenario.length > 88 ? card.scenario.slice(0, 88) + '…' : card.scenario}
+      </p>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#6b778c' }}>{card.id}</span>
+        {clickable && (
+          <span style={{ fontSize: 11, color: hovered ? '#0052cc' : '#6b778c', fontWeight: 600, fontFamily: '"Droid Sans", sans-serif', transition: 'color .15s' }}>
+            Open →
+          </span>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── JiraBoard ─────────────────────────────────────────────────────────────────
+
+function JiraBoard({ stageIdx, stageCards, doneSet, onCardClick }) {
+  const todos = stageCards.filter(c => !doneSet.has(c.seqIdx))
+  const done  = stageCards.filter(c =>  doneSet.has(c.seqIdx))
+
+  const COLUMNS = [
+    { id: 'todo',   label: 'To Do',       dotColor: '#dfe1e6', cards: todos, clickable: true  },
+    { id: 'inprog', label: 'In Progress',  dotColor: '#0052cc', cards: [],    clickable: false },
+    { id: 'done',   label: 'Done',         dotColor: '#00875a', cards: done,  clickable: false },
+  ]
+
+  return (
+    <div>
+      <div style={{ marginBottom: 22 }}>
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.1em', textTransform: 'uppercase', color: '#6b778c', fontFamily: '"Droid Sans", sans-serif' }}>
+          Sprint {stageIdx + 1} of 5
+        </div>
+        <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 26, letterSpacing: '.02em', textTransform: 'uppercase', color: '#172b4d', margin: '4px 0 6px' }}>
+          {STAGES[stageIdx]}
+        </h1>
+        <div style={{ fontSize: 13, color: '#6b778c', fontFamily: '"Droid Sans", sans-serif' }}>
+          {done.length} of {stageCards.length} tickets resolved · click a ticket to open it
+        </div>
+      </div>
+
+      <div className="pm-board-grid">
+        {COLUMNS.map(col => (
+          <div key={col.id}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 7, marginBottom: 9, padding: '0 2px' }}>
+              <div style={{ width: 8, height: 8, borderRadius: 2, background: col.dotColor }} />
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: '#6b778c', fontFamily: '"Droid Sans", sans-serif' }}>
+                {col.label}
+              </span>
+              <span style={{ fontSize: 11, color: '#6b778c', background: '#ebecf0', borderRadius: 10, padding: '1px 7px', fontFamily: '"Droid Sans", sans-serif' }}>
+                {col.cards.length}
+              </span>
+            </div>
+            <div style={{ background: '#ebecf0', borderRadius: 6, padding: 8, minHeight: 100 }}>
+              {col.cards.map(card => {
+                const epic = EPIC_STYLES[card.epic] || { bg: '#f4f5f7', color: '#6b778c' }
+                return (
+                  <BoardTicket
+                    key={card.id}
+                    card={card}
+                    epic={epic}
+                    clickable={col.clickable}
+                    done={col.id === 'done'}
+                    onCardClick={onCardClick}
+                  />
+                )
+              })}
+              {col.cards.length === 0 && (
+                <div style={{ display: 'grid', placeItems: 'center', minHeight: 70, color: '#c1c7d0', fontSize: 12, fontFamily: '"Droid Sans", sans-serif' }}>
+                  No tickets
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -1169,23 +1302,47 @@ function OutcomeScreen({ stats, sequence, onRestart }) {
 // ── Main game component ───────────────────────────────────────────────────────
 
 export default function RoadmapGameClient() {
-  const [gameState, setGameState] = useState('intro')  // 'intro' | 'playing' | 'outcome'
-  const [cardIndex, setCardIndex] = useState(0)
-  const [stats, setStats] = useState(INITIAL_STATS)
-  const [chosen, setChosen] = useState(null)   // {effects, consequence, index} | null
-  const [sequence, setSequence] = useState([])
+  const [gameState, setGameState]           = useState('intro')  // 'intro' | 'playing' | 'outcome'
+  const [viewMode,  setViewMode]            = useState('board')  // 'board' | 'card'
+  const [activeIdx, setActiveIdx]           = useState(null)
+  const [doneSet,   setDoneSet]             = useState(new Set())
+  const [stats,     setStats]               = useState(INITIAL_STATS)
+  const [chosen,    setChosen]              = useState(null)
+  const [sequence,  setSequence]            = useState([])
+  const [pendingLegendary, setPendingLeg]   = useState(null)
 
-  const currentCard = sequence[cardIndex]
-  const stageIndex  = currentCard?.stage ?? 0
-  const showSlack   = gameState === 'playing' && currentCard?.type === 'legendary' && !chosen
+  // First stage that still has unresolved cards
+  const currentStage = (() => {
+    if (!sequence.length) return 0
+    for (let s = 0; s <= 4; s++) {
+      if (sequence.some((c, i) => c.type === 'stage' && c.stage === s && !doneSet.has(i))) return s
+    }
+    return 4
+  })()
+
+  const currentStageCards = sequence
+    .map((c, i) => ({ ...c, seqIdx: i }))
+    .filter(c => c.type === 'stage' && c.stage === currentStage)
+
+  const activeCard = activeIdx !== null ? sequence[activeIdx] : null
+  const showSlack  = !!pendingLegendary
 
   function handleStart() {
     const seq = buildSequence()
     setSequence(seq)
-    setCardIndex(0)
+    setDoneSet(new Set())
     setStats(INITIAL_STATS)
     setChosen(null)
+    setActiveIdx(null)
+    setViewMode('board')
+    setPendingLeg(null)
     setGameState('playing')
+  }
+
+  function handleCardClick(seqIdx) {
+    setActiveIdx(seqIdx)
+    setChosen(null)
+    setViewMode('card')
   }
 
   function handleChoice(choice, index) {
@@ -1193,22 +1350,51 @@ export default function RoadmapGameClient() {
     setChosen({ effects: choice.effects, consequence: choice.consequence, index })
   }
 
-  function handleContinue() {
-    const next = cardIndex + 1
-    if (next >= sequence.length) {
+  function handleBackToBoard() {
+    const newDone = new Set(doneSet)
+    newDone.add(activeIdx)
+    const stage = sequence[activeIdx].stage
+    const stageIndices = sequence
+      .map((c, i) => (c.type === 'stage' && c.stage === stage ? i : -1))
+      .filter(i => i !== -1)
+    const stageComplete = stageIndices.every(i => newDone.has(i))
+
+    setDoneSet(newDone)
+    setActiveIdx(null)
+    setChosen(null)
+    setViewMode('board')
+
+    if (stageComplete) {
+      const leg = sequence.find(c => c.type === 'legendary' && c.stage === stage)
+      if (leg) { setPendingLeg(leg); return }
+      if (sequence.every((c, i) => c.type !== 'stage' || newDone.has(i))) {
+        setGameState('outcome')
+      }
+    }
+  }
+
+  function handleLegendaryChoice(choice) {
+    setStats(prev => applyEffects(prev, choice.effects))
+    setChosen({ effects: choice.effects, consequence: choice.consequence })
+  }
+
+  function handleLegendaryContinue() {
+    setPendingLeg(null)
+    setChosen(null)
+    if (sequence.every((c, i) => c.type !== 'stage' || doneSet.has(i))) {
       setGameState('outcome')
-    } else {
-      setCardIndex(next)
-      setChosen(null)
     }
   }
 
   function handleRestart() {
     setGameState('intro')
-    setCardIndex(0)
+    setViewMode('board')
+    setActiveIdx(null)
+    setDoneSet(new Set())
     setStats(INITIAL_STATS)
     setChosen(null)
     setSequence([])
+    setPendingLeg(null)
   }
 
   if (gameState === 'outcome') {
@@ -1219,37 +1405,56 @@ export default function RoadmapGameClient() {
     return <IntroScreen onStart={handleStart} />
   }
 
-  const dayNum    = cardIndex + 1
-  const totalDays = sequence.length
+  // ── Card view ──────────────────────────────────────────────────────────────
+  if (viewMode === 'card' && activeCard) {
+    return (
+      <div style={{ minHeight: '100vh', background: '#f4f5f7', fontFamily: '"Droid Sans", sans-serif' }}>
+        <GameNav
+          crumb={`Sprint ${activeCard.stage + 1} — ${STAGES[activeCard.stage]}`}
+          dayLabel={`Sprint ${activeCard.stage + 1} of 5`}
+          onRestart={handleRestart}
+        />
+        <div className="pm-game-wrap" style={{ maxWidth: 980, margin: '0 auto', padding: '34px 24px 60px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 28, alignItems: 'start' }}>
+          <IssueCard
+            card={activeCard}
+            onChoice={handleChoice}
+            chosen={chosen}
+            onContinue={handleBackToBoard}
+            continueLabel="← Back to board"
+          />
+          <StatRail stats={stats} effects={chosen?.effects} />
+        </div>
+      </div>
+    )
+  }
 
+  // ── Board view ─────────────────────────────────────────────────────────────
   return (
     <>
       <div style={{ minHeight: '100vh', background: '#f4f5f7', fontFamily: '"Droid Sans", sans-serif', filter: showSlack ? 'blur(2px) brightness(.7)' : 'none', transition: 'filter .3s', pointerEvents: showSlack ? 'none' : 'auto' }}>
         <GameNav
-          crumb={`Sprint ${stageIndex + 1} — ${STAGES[stageIndex]}`}
-          dayLabel={`Day ${dayNum} / ${totalDays}`}
+          crumb={`Sprint ${currentStage + 1} — ${STAGES[currentStage]}`}
+          dayLabel={`Sprint ${currentStage + 1} of 5`}
           onRestart={handleRestart}
         />
-        <div className="pm-game-wrap" style={{ maxWidth: 980, margin: '0 auto', padding: '34px 24px 60px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 28, alignItems: 'start' }}>
-          <div>
-            {currentCard?.type === 'stage' && (
-              <IssueCard
-                card={currentCard}
-                onChoice={handleChoice}
-                chosen={chosen}
-                onContinue={handleContinue}
-              />
-            )}
-            {currentCard?.type === 'legendary' && chosen && (
-              <ConsequencePanel chosen={chosen} onContinue={handleContinue} />
-            )}
-          </div>
-          <StatRail stats={stats} effects={chosen?.effects} />
+        <div style={{ maxWidth: 980, margin: '0 auto', padding: '34px 24px 60px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 28, alignItems: 'start' }}>
+          <JiraBoard
+            stageIdx={currentStage}
+            stageCards={currentStageCards}
+            doneSet={doneSet}
+            onCardClick={handleCardClick}
+          />
+          <StatRail stats={stats} effects={null} />
         </div>
       </div>
       {showSlack && (
         <div style={{ position: 'fixed', inset: 0, zIndex: 50, pointerEvents: 'auto' }}>
-          <SlackModal card={currentCard} onChoice={handleChoice} />
+          <SlackModal
+            card={pendingLegendary}
+            onChoice={handleLegendaryChoice}
+            chosen={chosen}
+            onContinue={handleLegendaryContinue}
+          />
         </div>
       )}
     </>

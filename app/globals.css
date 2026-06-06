@@ -399,6 +399,12 @@ body {
   border-left-color: #007a5a !important;
 }
 
+.pm-board-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
 @media (max-width: 820px) {
   .pm-game-wrap { grid-template-columns: 1fr !important; }
   .pm-stat-rail { position: static !important; top: auto !important; }
@@ -406,4 +412,5 @@ body {
   .pm-intro-badge { display: none !important; }
   .pm-how-grid { grid-template-columns: 1fr !important; }
   .pm-stats-grid { grid-template-columns: 1fr !important; }
+  .pm-board-grid { grid-template-columns: 1fr !important; }
 }
