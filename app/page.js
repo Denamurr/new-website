@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const ESSAYS = [
   { title: 'What Uniswap Got Right', category: 'Crypto', color: '#ec5a8f', href: '/blog/uniswap-product-design' },
-  { title: 'RICE Framework in the Age of AI', category: 'Product', color: '#2bb673', href: '/blog/rice-framework-age-of-ai' },
+  { title: "RICE Framework in the Age of AI (don't trust it)", category: 'Product', color: '#2bb673', href: '/blog/rice-framework-age-of-ai' },
   { title: 'The Economics of Instacart', category: 'Fintech', color: '#2a6fdb', href: '/blog/instacart-ipo' },
   { title: 'Mission as Product Strategy', category: 'Strategy', color: '#ff7a3d', href: '/blog/mission-statements-tech' },
   { title: "Apple's AI Strategy", category: 'AI', color: '#8b5cf6', href: '/blog/apples-ai-strategy' },

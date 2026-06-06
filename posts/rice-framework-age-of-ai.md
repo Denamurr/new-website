@@ -1,5 +1,5 @@
 ---
-title: "The RICE Framework in the Age of AI (and why it needs an update)"
+title: "The RICE Framework in the Age of AI (don't trust it)"
 date: "2026-03-06"
 slug: "rice-framework-age-of-ai"
 tool_label: "RICE Prioritization Tool"
@@ -9,6 +9,8 @@ image_alt: "RICE prioritization framework diagram"
 ---
 
 RICE is a popular framework for product managers to use to evaluate and rank new product or feature ideas, by level of priority. It considers the Reach, Impact, Confidence and Effort it will take to build an idea, and gives you a numerical score. Whichever idea has the highest score is the most bang for your buck and should be prioritized first. It's clean, understandable and easy to share with stakeholders.
+
+![How RICE is calculated](/rice-formula.svg)
 
 It also wasn't really built for AI work. If you're using it to evaluate new AI ideas, the score results are going to be skewed unless you make some adjustments.
 
