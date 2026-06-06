@@ -80,9 +80,6 @@ export default function Home() {
 
         {/* Intro strip */}
         <section style={{ background: 'var(--bg)', padding: '128px 6vw 72px' }}>
-          <div className="sec-label">
-            <span>Now</span><span className="bar" /><span>San Francisco</span>
-          </div>
           <p style={{
             fontFamily: '"Anton", sans-serif', fontWeight: 400,
             fontSize: 'clamp(24px, 3vw, 44px)', lineHeight: 1.14,
