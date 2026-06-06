@@ -88,9 +88,7 @@ export default function Home() {
             fontSize: 'clamp(24px, 3vw, 44px)', lineHeight: 1.14,
             letterSpacing: '-0.005em', margin: '24px 0 0'
           }}>
-            Essays, product observations, and{' '}
-            <span style={{ color: 'var(--accent)' }}>experiments</span>{' '}
-            from a PM thinking out loud.
+            Essays, product observations, and experiments from a PM thinking out loud.
           </p>
         </section>
 
@@ -270,9 +268,6 @@ export default function Home() {
             </p>
             <p style={{ margin: '0 0 20px', maxWidth: '46ch' }}>
               I build small PM tools and games, and I write essays to think out loud about how products work, why some win, and what the next thing might be.
-            </p>
-            <p style={{ margin: '0 0 20px', maxWidth: '46ch' }}>
-              Everything here is co-built with AI — a collaboration between human taste and machine speed.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 30 }}>
               {['AI', 'Fintech', 'Crypto', 'Investing', 'Product'].map(tag => (
