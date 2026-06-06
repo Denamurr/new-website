@@ -217,7 +217,7 @@ export default async function BlogPost({ params }) {
             display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap',
             gap: 10, fontFamily: '"Inter", sans-serif', fontSize: 13, opacity: 0.55, marginTop: 48
           }}>
-            <span>Built with AI · San Francisco, CA</span>
+            <span>Co-built with AI · San Francisco, CA</span>
             <span>© 2026 Dena Murr</span>
           </div>
         </div>

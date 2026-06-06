@@ -272,7 +272,7 @@ export default function Home() {
               I build small PM tools and games, and I write essays to think out loud about how products work, why some win, and what the next thing might be.
             </p>
             <p style={{ margin: '0 0 20px', maxWidth: '46ch' }}>
-              Everything here is built with AI, by hand, on nights and weekends.
+              Everything here is co-built with AI — a collaboration between human taste and machine speed.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 30 }}>
               {['AI', 'Fintech', 'Crypto', 'Investing', 'Product'].map(tag => (
@@ -340,7 +340,7 @@ export default function Home() {
           gap: 10, fontFamily: '"Inter", sans-serif', fontSize: 13,
           opacity: 0.55, marginTop: 64
         }}>
-          <span>Built with AI · San Francisco, CA</span>
+          <span>Co-built with AI · San Francisco, CA</span>
           <span>© 2026 Dena Murr</span>
         </div>
       </footer>

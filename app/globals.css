@@ -348,3 +348,62 @@ body {
   background: currentColor;
   opacity: 0.25;
 }
+
+/* ── PM Survival Game ────────────────────────────────────────────────────── */
+
+@keyframes gameRev {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes pmPulse {
+  0%, 100% { opacity: .3; transform: scale(.8); }
+  50%       { opacity: 1;  transform: scale(1.15); }
+}
+
+@keyframes pmAlertDrop {
+  from { opacity: 0; transform: translateX(-50%) translateY(-16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes pmStatDelta {
+  0%   { opacity: 0; transform: translateY(6px); }
+  18%  { opacity: 1; transform: none; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.pm-start-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #c8407a !important;
+}
+
+.pm-game-opt {
+  transition: border-color .15s, box-shadow .15s, background .15s;
+}
+.pm-game-opt:not(:disabled):hover {
+  border-color: #0065ff !important;
+  box-shadow: 0 1px 3px rgba(9,30,66,.16);
+  background: #fafbfc !important;
+}
+.pm-game-opt:not(:disabled):hover .pm-opt-arrow {
+  opacity: 1 !important;
+  transform: translateY(-50%) translateX(0) !important;
+}
+
+.pm-slack-reply {
+  transition: background .15s, border-color .15s;
+}
+.pm-slack-reply:hover {
+  background: #f4f5f7;
+  border-left-color: #007a5a !important;
+}
+
+@media (max-width: 820px) {
+  .pm-game-wrap { grid-template-columns: 1fr !important; }
+  .pm-stat-rail { position: static !important; top: auto !important; }
+  .pm-intro-hero { flex-direction: column !important; }
+  .pm-intro-badge { display: none !important; }
+  .pm-how-grid { grid-template-columns: 1fr !important; }
+  .pm-stats-grid { grid-template-columns: 1fr !important; }
+}

@@ -714,161 +714,308 @@ function applyEffects(stats, effects) {
   return next
 }
 
-// ── Choice card -- shared by both modals ──────────────────────────────────────
+// ── Design tokens ────────────────────────────────────────────────────────────
 
-function ChoiceButton({ choice, onClick }) {
+const STAT_COLORS = { scope: '#6554c0', tech: '#ff991f', morale: '#36b37e', quality: '#ec5a8f', trust: '#4bade8' }
+const STAT_DESCS  = { scope: 'Roadmap on track', tech: 'Codebase health', morale: 'Team energy', quality: 'Product quality', trust: 'Stakeholder confidence' }
+const EPIC_STYLES = {
+  DISCOVERY:   { bg: '#eae6ff', color: '#6554c0' },
+  STRATEGY:    { bg: '#deebff', color: '#0052cc' },
+  DESIGN:      { bg: '#fce4ec', color: '#c2185b' },
+  DEVELOPMENT: { bg: '#deebff', color: '#0052cc' },
+  TESTING:     { bg: '#e3fcef', color: '#00875a' },
+  URGENT:      { bg: '#ffebe6', color: '#de350b' },
+}
+const TIER_COLORS = ['#de350b', '#ff991f', '#ffab00', '#0052cc', '#00875a']
+
+// ── GameNav ───────────────────────────────────────────────────────────────────
+
+function GameNav({ crumb, dayLabel, onRestart }) {
+  const nav = { background: '#fff', borderBottom: '1px solid #dfe1e6', display: 'flex', alignItems: 'center', gap: 14, padding: '0 20px', height: 48, position: 'sticky', top: 0, zIndex: 10 }
   return (
-    <button
-      onClick={onClick}
-      className="w-full text-left rounded-md border border-gray-200 bg-white px-4 py-3 hover:border-blue-400 hover:shadow-sm transition-all"
-    >
-      <div className="font-semibold text-sm text-gray-900 mb-0.5">{choice.label}</div>
-      {choice.desc && <div className="text-sm text-gray-500 mb-2">{choice.desc}</div>}
-      <div className="flex flex-wrap gap-x-3 gap-y-0.5">
-        {Object.entries(choice.effects).map(([k, v]) => {
+    <div style={nav}>
+      <span style={{ fontFamily: '"Anton", sans-serif', fontSize: 17, letterSpacing: '-.01em' }}>
+        PM SURVIVAL<span style={{ color: '#ec5a8f' }}>.</span>
+      </span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 7, color: '#6b778c', fontSize: 13, fontFamily: '"Droid Sans", sans-serif' }}>
+        <Link href="/" style={{ color: '#6b778c', textDecoration: 'none' }}>Home</Link>
+        <span style={{ opacity: .45 }}>/</span>
+        <span style={{ color: '#172b4d', fontWeight: 600 }}>{crumb}</span>
+      </div>
+      <div style={{ flex: 1 }} />
+      {dayLabel && (
+        <span style={{ fontSize: 12, fontWeight: 600, color: '#fff', background: '#0052cc', padding: '5px 11px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif' }}>{dayLabel}</span>
+      )}
+      {onRestart && (
+        <button onClick={onRestart} style={{ fontSize: 12, color: '#6b778c', background: 'none', border: '1px solid #dfe1e6', borderRadius: 3, padding: '5px 10px', cursor: 'pointer', fontFamily: '"Droid Sans", sans-serif' }}>Restart</button>
+      )}
+      <div style={{ width: 28, height: 28, borderRadius: 999, background: '#ec5a8f', color: '#fff', display: 'grid', placeItems: 'center', fontWeight: 700, fontSize: 12, fontFamily: '"Droid Sans", sans-serif' }}>DM</div>
+    </div>
+  )
+}
+
+// ── StatRail ──────────────────────────────────────────────────────────────────
+
+function StatRail({ stats, effects }) {
+  return (
+    <div className="pm-stat-rail" style={{ position: 'sticky', top: 70, background: '#fff', border: '1px solid #dfe1e6', borderRadius: 6, padding: '18px 18px 8px' }}>
+      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#6b778c', fontFamily: '"Droid Sans", sans-serif' }}>Sprint Health</div>
+      <div style={{ fontSize: 12, color: '#6b778c', margin: '3px 0 14px', fontFamily: '"Droid Sans", sans-serif' }}>5 stats · start at 5 / 10</div>
+      {STATS_CONFIG.map(({ key, label }) => {
+        const val = stats[key]
+        const delta = effects?.[key]
+        const color = STAT_COLORS[key]
+        return (
+          <div key={key} style={{ padding: '13px 0', borderTop: '1px solid #ebecf0', position: 'relative' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+              <span style={{ fontSize: 13, fontWeight: 600, color: '#172b4d', fontFamily: '"Droid Sans", sans-serif' }}>{label}</span>
+              <span style={{ fontSize: 15, fontWeight: 700, color: '#42526e', fontVariantNumeric: 'tabular-nums', fontFamily: '"Oswald", sans-serif' }}>{val}</span>
+            </div>
+            <div style={{ height: 8, borderRadius: 4, background: '#ebecf0', marginTop: 8, overflow: 'hidden' }}>
+              <div style={{ height: '100%', borderRadius: 4, background: color, width: `${val * 10}%`, transition: 'width .7s cubic-bezier(.2,.8,.2,1)' }} />
+            </div>
+            {delta != null && (
+              <span style={{ position: 'absolute', right: 0, top: 9, fontSize: 13, fontWeight: 700, color: delta > 0 ? '#00875a' : '#de350b', fontFamily: '"Droid Sans", sans-serif', animation: 'pmStatDelta 2s ease forwards' }}>
+                {delta > 0 ? `+${delta}` : delta}
+              </span>
+            )}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
+// ── IssueCard ─────────────────────────────────────────────────────────────────
+
+function IssueCard({ card, onChoice, chosen, onContinue }) {
+  const epic = EPIC_STYLES[card.epic] || { bg: '#f4f5f7', color: '#6b778c' }
+  return (
+    <div style={{ background: '#fff', border: '1px solid #dfe1e6', borderRadius: 6, boxShadow: '0 1px 2px rgba(9,30,66,.1)', overflow: 'hidden' }}>
+      {/* Issue header */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '13px 22px', borderBottom: '1px solid #ebecf0' }}>
+        <span style={{ width: 18, height: 18, borderRadius: 3, background: '#36b37e', display: 'grid', placeItems: 'center', color: '#fff', fontSize: 11, fontWeight: 700, flexShrink: 0, fontFamily: '"Droid Sans", sans-serif' }}>›</span>
+        <span style={{ fontWeight: 600, color: '#6b778c', fontSize: 13, fontFamily: '"Droid Sans", sans-serif' }}>{card.id}</span>
+        <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', padding: '3px 8px', borderRadius: 3, background: epic.bg, color: epic.color, fontFamily: '"Droid Sans", sans-serif' }}>{card.epic}</span>
+        <span style={{ marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, letterSpacing: '.04em', textTransform: 'uppercase', color: '#0052cc', background: '#deebff', padding: '5px 10px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif' }}>● In Progress</span>
+      </div>
+
+      {/* Issue body */}
+      <div style={{ padding: '22px 24px 26px' }}>
+        <p style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 27, lineHeight: 1.28, letterSpacing: '.012em', margin: 0, color: '#172b4d' }}>
+          {card.scenario}
+        </p>
+
+        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#6b778c', margin: '34px 0 14px', fontFamily: '"Droid Sans", sans-serif' }}>
+          What do you do?
+        </div>
+
+        <div>
+          {card.choices.map((choice, i) => {
+            const isChosen = chosen?.index === i
+            const isOther  = chosen && !isChosen
+            return (
+              <button
+                key={i}
+                onClick={!chosen ? () => onChoice(choice, i) : undefined}
+                disabled={!!chosen}
+                className={chosen ? undefined : 'pm-game-opt'}
+                style={{
+                  display: 'block', width: '100%', textAlign: 'left',
+                  background: isChosen ? '#e3fcef' : '#fff',
+                  border: `1.5px solid ${isChosen ? '#00875a' : '#dfe1e6'}`,
+                  borderRadius: 8,
+                  padding: isOther ? '11px 18px' : '16px 44px 16px 18px',
+                  cursor: chosen ? 'default' : 'pointer',
+                  marginBottom: 10, position: 'relative',
+                  opacity: isOther ? .38 : 1,
+                  boxShadow: isChosen ? '0 0 0 1px #00875a' : 'none',
+                  transition: 'padding .2s',
+                }}
+              >
+                <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 13.5, lineHeight: 1.3, letterSpacing: '.05em', textTransform: 'uppercase', color: '#172b4d' }}>
+                  {choice.label}
+                </div>
+                {!isOther && (
+                  <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 400, fontSize: 14.5, color: '#172b4d', lineHeight: 1.5, marginTop: 7 }}>{choice.desc}</div>
+                )}
+                {!chosen && (
+                  <span className="pm-opt-arrow" style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%) translateX(-4px)', color: '#0065ff', fontSize: 17, opacity: 0, transition: 'opacity .15s, transform .15s', pointerEvents: 'none' }}>→</span>
+                )}
+              </button>
+            )
+          })}
+        </div>
+
+        {/* Inline consequence strip */}
+        {chosen && (
+          <div style={{ marginTop: 6, padding: '16px 18px', borderRadius: 6, background: '#e3fcef', border: '1px solid #abf5d1', animation: 'gameRev .35s cubic-bezier(.2,.8,.2,1)' }}>
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, letterSpacing: '.04em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '4px 9px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif' }}>✓ Result</span>
+            <p style={{ fontSize: 15, lineHeight: 1.5, color: '#172b4d', margin: '12px 0 0', fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
+            <div style={{ marginTop: 16, display: 'flex', justifyContent: 'flex-end' }}>
+              <button
+                onClick={onContinue}
+                style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif', fontSize: 14, fontWeight: 600, padding: '9px 18px', cursor: 'pointer' }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#0065ff' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#0052cc' }}
+              >Next issue →</button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// ── ConsequencePanel (for legendary/Slack cards after choice) ─────────────────
+
+function ConsequencePanel({ chosen, onContinue }) {
+  return (
+    <div style={{ background: '#fff', border: '1px solid #dfe1e6', borderRadius: 6, boxShadow: '0 1px 2px rgba(9,30,66,.1)', padding: '28px 28px 24px', animation: 'gameRev .35s cubic-bezier(.2,.8,.2,1)' }}>
+      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#6b778c', marginBottom: 14, fontFamily: '"Droid Sans", sans-serif' }}>Sent · #all-hands</div>
+      <p style={{ fontSize: 16, lineHeight: 1.55, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 18 }}>
+        {Object.entries(chosen.effects).map(([k, v]) => {
           const cfg = STATS_CONFIG.find(s => s.key === k)
           return (
-            <span key={k} className={`text-xs font-semibold ${v > 0 ? 'text-emerald-600' : 'text-red-500'}`}>
-              {v > 0 ? `+${v}` : v} {cfg.label}
+            <span key={k} style={{ fontSize: 12, fontWeight: 700, padding: '4px 10px', borderRadius: 3, background: v > 0 ? '#e3fcef' : '#ffebe6', color: v > 0 ? '#00875a' : '#de350b', fontFamily: '"Droid Sans", sans-serif' }}>
+              {cfg.label} {v > 0 ? `+${v}` : v}
             </span>
           )
         })}
       </div>
-    </button>
-  )
-}
-
-// ── Components ───────────────────────────────────────────────────────────────
-
-function StatBar({ label, value, color }) {
-  const barColor = color
-  return (
-    <div className="flex items-center gap-2 min-w-0">
-      <span className="text-xs text-gray-500 w-14 shrink-0">{label}</span>
-      <div className="flex gap-0.5">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <div key={i} className={`w-3 h-3 rounded-sm transition-colors ${i < value ? barColor : 'bg-gray-200'}`} />
-        ))}
+      <div style={{ marginTop: 20, display: 'flex', justifyContent: 'flex-end' }}>
+        <button
+          onClick={onContinue}
+          style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif', fontSize: 14, fontWeight: 600, padding: '9px 18px', cursor: 'pointer' }}
+          onMouseEnter={e => { e.currentTarget.style.background = '#0065ff' }}
+          onMouseLeave={e => { e.currentTarget.style.background = '#0052cc' }}
+        >Next issue →</button>
       </div>
-      <span className="text-xs text-gray-400 w-4">{value}</span>
     </div>
   )
 }
 
-function JiraModal({ card, onChoice, onClose }) {
+// ── SlackModal ────────────────────────────────────────────────────────────────
+
+function SlackModal({ card, onChoice }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative w-full max-w-lg rounded-lg shadow-2xl overflow-hidden">
-        <div className="bg-white px-5 pt-5 pb-4">
-          <div className="flex items-start justify-between gap-4 mb-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-gray-400">{card.id}</span>
-              <span className={`text-xs font-semibold px-2 py-0.5 rounded ${card.epicColor}`}>{card.epic}</span>
-            </div>
-            <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-sm">✕</button>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 50 }}>
+      {/* Scrim */}
+      <div style={{ position: 'absolute', inset: 0, background: 'rgba(9,30,66,.72)' }} />
+
+      {/* Alert pill */}
+      <div style={{
+        position: 'absolute', top: 64, left: '50%',
+        transform: 'translateX(-50%)',
+        background: '#de350b', color: '#fff', borderRadius: 999,
+        padding: '8px 18px', fontSize: 13, fontWeight: 700,
+        display: 'flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap',
+        boxShadow: '0 4px 14px rgba(222,53,11,.5)', zIndex: 52,
+        fontFamily: '"Droid Sans", sans-serif',
+        animation: 'pmAlertDrop .4s cubic-bezier(.2,.8,.2,1)',
+      }}>
+        <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#fff', display: 'inline-block', animation: 'pmPulse 1.2s ease-in-out infinite' }} />
+        New urgent message · #all-hands
+      </div>
+
+      {/* Slack window */}
+      <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '100px 24px 24px' }}>
+        <div style={{ width: '100%', maxWidth: 680, borderRadius: 10, overflow: 'hidden', boxShadow: '0 24px 60px rgba(0,0,0,.5)' }}>
+          {/* Mac traffic lights */}
+          <div style={{ background: '#1a1d21', display: 'flex', alignItems: 'center', gap: 6, padding: '10px 14px 8px' }}>
+            {['#ff5f57', '#ffbd2e', '#28ca41'].map(c => <div key={c} style={{ width: 12, height: 12, borderRadius: '50%', background: c }} />)}
           </div>
-          <p className="text-sm text-gray-700 leading-relaxed">{card.scenario}</p>
-        </div>
-        <div className="bg-gray-50 px-5 pb-5 pt-4 space-y-2">
-          <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">Choose a response</p>
-          {card.choices.map((choice, i) => (
-            <ChoiceButton key={i} choice={choice} onClick={() => onChoice(choice)} />
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
 
-function SlackModal({ card, onChoice, onClose }) {
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
-      <div className="relative w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden" style={{ background: '#1a1d21' }}>
-        <div className="flex items-center gap-1.5 px-3 pt-2.5 pb-2" style={{ background: '#1a1d21' }}>
-          <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-          <div className="w-3 h-3 rounded-full bg-[#28ca41]" />
-        </div>
-        <div className="flex" style={{ minHeight: '400px' }}>
-          <div className="w-52 shrink-0 flex flex-col pt-1" style={{ background: '#3F0E40' }}>
-            <div className="px-3 py-2"><span className="text-white font-bold text-sm">Acme Product Co</span></div>
-            <div className="px-2 mt-1 space-y-0.5">
+          <div style={{ display: 'flex', minHeight: 460 }}>
+            {/* Sidebar */}
+            <div style={{ width: 200, background: '#3f0e40', display: 'flex', flexDirection: 'column', padding: '8px 0', flexShrink: 0 }}>
+              <div style={{ padding: '4px 12px 8px', fontFamily: '"Lato", sans-serif', fontWeight: 700, fontSize: 15, color: '#fff' }}>Acme Product Co</div>
               {['Home', 'DMs', 'Activity'].map(item => (
-                <div key={item} className="flex items-center gap-2 px-2 py-1 rounded text-white/50 text-xs">
-                  <div className="w-3.5 h-3.5 rounded-sm bg-white/20" />{item}
+                <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 20px', color: 'rgba(255,255,255,.5)', fontSize: 13, fontFamily: '"Lato", sans-serif' }}>
+                  <div style={{ width: 14, height: 14, borderRadius: 3, background: 'rgba(255,255,255,.2)', flexShrink: 0 }} />{item}
+                </div>
+              ))}
+              <div style={{ padding: '10px 12px 4px', fontSize: 11, fontWeight: 900, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', fontFamily: '"Lato", sans-serif' }}>Channels</div>
+              {['#general', '#eng-team', '#design-sync', '#all-hands'].map(ch => (
+                <div key={ch} style={{ margin: '1px 8px', padding: '4px 8px', borderRadius: 4, background: ch === '#all-hands' ? '#1264a3' : 'transparent', color: ch === '#all-hands' ? '#fff' : 'rgba(255,255,255,.5)', fontSize: 13, fontFamily: '"Lato", sans-serif', display: 'flex', alignItems: 'center', gap: 4 }}>
+                  {ch}
+                  {ch === '#all-hands' && <span style={{ marginLeft: 'auto', background: '#de350b', color: '#fff', fontSize: 10, fontWeight: 700, borderRadius: 10, padding: '1px 5px', fontFamily: '"Lato", sans-serif' }}>1</span>}
+                </div>
+              ))}
+              <div style={{ padding: '10px 12px 4px', fontSize: 11, fontWeight: 900, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', fontFamily: '"Lato", sans-serif' }}>Direct Messages</div>
+              {[{ name: 'Jordan Chen (CEO)', online: true }, { name: 'You', online: false }].map(u => (
+                <div key={u.name} style={{ margin: '1px 8px', padding: '4px 8px', borderRadius: 4, color: 'rgba(255,255,255,.4)', fontSize: 12, fontFamily: '"Lato", sans-serif', display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: u.online ? '#2bac76' : '#6b778c', flexShrink: 0 }} />{u.name}
                 </div>
               ))}
             </div>
-            <div className="mt-3 px-3 mb-1"><span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Channels</span></div>
-            {['general', 'eng-team', 'design-sync', 'all-hands'].map(ch => (
-              <div key={ch} className={`mx-1 px-2 py-1 rounded flex items-center gap-1.5 text-xs ${ch === 'all-hands' ? 'bg-[#1264A3] text-white font-semibold' : 'text-white/50'}`}>
-                <span className="text-white/60">#</span><span>{ch}</span>
-                {ch === 'all-hands' && <span className="ml-auto bg-red-500 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">1</span>}
+
+            {/* Channel pane */}
+            <div style={{ flex: 1, background: '#fff', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', padding: '10px 18px', borderBottom: '1px solid #e8e8e8', gap: 8 }}>
+                <span style={{ fontSize: 14, fontWeight: 700, color: '#1d1c1d', fontFamily: '"Lato", sans-serif' }}>#all-hands</span>
+                <span style={{ fontSize: 13, color: '#616061', fontFamily: '"Lato", sans-serif' }}>24 members</span>
               </div>
-            ))}
-            <div className="mt-3 px-3 mb-1"><span className="text-white/40 text-[10px] uppercase tracking-widest font-semibold">Direct Messages</span></div>
-            {[{ name: 'Jordan Chen (CEO)', dot: 'bg-green-400' }, { name: 'You', dot: 'bg-gray-500' }].map(u => (
-              <div key={u.name} className="mx-1 px-2 py-1 rounded text-white/40 text-xs flex items-center gap-1.5">
-                <div className={`w-2 h-2 rounded-full ${u.dot} shrink-0`} />{u.name}
-              </div>
-            ))}
-          </div>
-          <div className="flex-1 bg-white flex flex-col min-w-0">
-            <div className="flex items-center justify-between px-4 py-2.5 border-b border-gray-200">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-bold text-gray-900"># all-hands</span>
-                <span className="text-xs text-gray-400">24 members</span>
-              </div>
-              <button onClick={onClose} className="text-gray-400 hover:text-gray-600 text-sm">✕</button>
-            </div>
-            <div className="flex-1 px-4 py-3 overflow-y-auto">
-              <div className="flex gap-2.5 mb-4 opacity-40">
-                <div className="w-8 h-8 rounded bg-violet-400 shrink-0 flex items-center justify-center text-white text-xs font-bold">SR</div>
-                <div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-xs font-bold text-gray-900">Sarah R.</span>
-                    <span className="text-[11px] text-gray-400">9:41 AM</span>
+
+              <div style={{ flex: 1, padding: '16px 18px', overflowY: 'auto' }}>
+                {/* Faded prior message */}
+                <div style={{ display: 'flex', gap: 10, marginBottom: 20, opacity: .4 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 4, background: '#7c3aed', flexShrink: 0, display: 'grid', placeItems: 'center', color: '#fff', fontSize: 12, fontWeight: 700, fontFamily: '"Lato", sans-serif' }}>SR</div>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                      <span style={{ fontSize: 14, fontWeight: 700, color: '#1d1c1d', fontFamily: '"Lato", sans-serif' }}>Sarah R.</span>
+                      <span style={{ fontSize: 12, color: '#616061', fontFamily: '"Lato", sans-serif' }}>9:41 AM</span>
+                    </div>
+                    <p style={{ fontSize: 14, color: '#4a4a4a', margin: '2px 0 0', lineHeight: 1.46, fontFamily: '"Lato", sans-serif' }}>Anyone see the Q3 board deck yet?</p>
                   </div>
-                  <p className="text-xs text-gray-500">Anyone see the Q3 board deck yet?</p>
                 </div>
-              </div>
-              <div className="flex gap-2.5">
-                <div className="w-8 h-8 rounded bg-amber-400 shrink-0 flex items-center justify-center text-white text-sm font-bold">JC</div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-baseline gap-2 mb-0.5">
-                    <span className="text-sm font-bold text-gray-900">Jordan Chen</span>
-                    <span className="text-[11px] text-gray-400">just now</span>
-                    <span className="text-[10px] bg-green-100 text-green-700 px-1 rounded">active</span>
+
+                {/* CEO message */}
+                <div style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 4, background: '#f59e0b', flexShrink: 0, display: 'grid', placeItems: 'center', color: '#fff', fontSize: 13, fontWeight: 700, fontFamily: '"Lato", sans-serif' }}>JC</div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 2 }}>
+                      <span style={{ fontSize: 14, fontWeight: 700, color: '#1d1c1d', fontFamily: '"Lato", sans-serif' }}>Jordan Chen</span>
+                      <span style={{ fontSize: 12, color: '#616061', fontFamily: '"Lato", sans-serif' }}>just now</span>
+                      <span style={{ fontSize: 11, background: '#dcf0e4', color: '#007a5a', padding: '1px 5px', borderRadius: 3, fontFamily: '"Lato", sans-serif' }}>active</span>
+                    </div>
+                    <p style={{ fontSize: 14, color: '#1d1c1d', margin: 0, lineHeight: 1.46, fontFamily: '"Lato", sans-serif' }}>{card.body}</p>
+                    <div style={{ display: 'flex', gap: 4, marginTop: 6 }}>
+                      {['😰', '🤔', '🙃'].map(e => <span key={e} style={{ fontSize: 16, padding: '2px 4px', borderRadius: 4, cursor: 'pointer' }}>{e}</span>)}
+                    </div>
                   </div>
-                  <p className="text-sm text-gray-800 leading-relaxed">{card.body}</p>
-                  <div className="flex items-center gap-1 mt-1.5">
-                    <span className="text-base hover:bg-gray-100 rounded px-1 cursor-pointer">😰</span>
-                    <span className="text-base hover:bg-gray-100 rounded px-1 cursor-pointer">🤔</span>
-                    <span className="text-base hover:bg-gray-100 rounded px-1 cursor-pointer">🙃</span>
-                  </div>
-                  <button className="mt-1.5 text-[11px] text-[#1264A3] font-semibold">3 replies · View thread</button>
                 </div>
-              </div>
-              <div className="flex items-center gap-2 my-3">
-                <div className="flex-1 h-px bg-gray-100" />
-                <span className="text-[11px] text-gray-400 font-medium">Reply as yourself</span>
-                <div className="flex-1 h-px bg-gray-100" />
-              </div>
-              <div className="space-y-1.5">
-                <p className="text-[11px] text-gray-400 mb-2">How do you respond?</p>
+
+                {/* Reply separator */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, margin: '14px 0 10px' }}>
+                  <div style={{ flex: 1, height: 1, background: '#e8e8e8' }} />
+                  <span style={{ fontSize: 12, color: '#616061', fontFamily: '"Lato", sans-serif' }}>Reply as yourself</span>
+                  <div style={{ flex: 1, height: 1, background: '#e8e8e8' }} />
+                </div>
+
+                <div style={{ fontSize: 12, color: '#616061', marginBottom: 8, fontFamily: '"Lato", sans-serif' }}>How do you respond?</div>
                 {card.choices.map((choice, i) => (
-                  <ChoiceButton key={i} choice={choice} onClick={() => onChoice(choice)} />
+                  <div
+                    key={i}
+                    className="pm-slack-reply"
+                    onClick={() => onChoice(choice, i)}
+                    style={{ padding: '10px 12px', borderRadius: 4, cursor: 'pointer', marginBottom: 4, borderLeft: '3px solid transparent', fontFamily: '"Lato", sans-serif' }}
+                  >
+                    <div style={{ fontWeight: 700, fontSize: 13, color: '#1d1c1d' }}>{choice.label}</div>
+                    <div style={{ fontSize: 13, color: '#4a4a4a', marginTop: 2, lineHeight: 1.4 }}>{choice.desc}</div>
+                  </div>
                 ))}
               </div>
-            </div>
-            <div className="border-t border-gray-200 px-3 py-2">
-              <div className="border border-gray-300 rounded-lg overflow-hidden">
-                <div className="flex items-center gap-2 px-2 py-1.5 border-b border-gray-200 bg-gray-50">
-                  {['B', 'I', 'S'].map(f => <button key={f} className="text-xs text-gray-400 font-bold w-5 h-5 hover:bg-gray-200 rounded">{f}</button>)}
+
+              {/* Composer */}
+              <div style={{ borderTop: '1px solid #e8e8e8', padding: '8px 12px' }}>
+                <div style={{ border: '1px solid #ddd', borderRadius: 8, overflow: 'hidden' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '5px 10px', borderBottom: '1px solid #e8e8e8', background: '#f8f8f8' }}>
+                    {['B', 'I', 'S'].map(f => <button key={f} style={{ fontSize: 12, color: '#616061', fontWeight: 700, width: 20, height: 20, background: 'none', border: 'none', cursor: 'pointer', fontFamily: '"Lato", sans-serif' }}>{f}</button>)}
+                  </div>
+                  <div style={{ padding: '8px 12px', fontSize: 14, color: '#ccc', fontFamily: '"Lato", sans-serif' }}>Message #all-hands</div>
                 </div>
-                <div className="px-3 py-2 text-sm text-gray-300">Message #all-hands</div>
               </div>
             </div>
           </div>
@@ -878,335 +1025,264 @@ function SlackModal({ card, onChoice, onClose }) {
   )
 }
 
-function ConsequenceScreen({ consequence, effects, onContinue }) {
+// ── IntroScreen ───────────────────────────────────────────────────────────────
+
+function IntroScreen({ onStart }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="relative w-full max-w-sm bg-white rounded-xl shadow-2xl p-6">
-        <p className="text-sm text-gray-700 leading-relaxed mb-5">{consequence}</p>
-        <div className="flex flex-wrap gap-2 mb-6">
-          {Object.entries(effects).map(([k, v]) => {
-            const cfg = STATS_CONFIG.find(s => s.key === k)
+    <div style={{ background: '#f4f5f7', minHeight: '100vh', fontFamily: '"Droid Sans", sans-serif' }}>
+      <GameNav crumb="New game" />
+      <div style={{ maxWidth: 760, margin: '0 auto', padding: '44px 24px 70px' }}>
+
+        {/* Hero row */}
+        <div className="pm-intro-hero" style={{ display: 'flex', gap: 30, alignItems: 'flex-start' }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: '#ec5a8f' }}>A realistic PM simulation</div>
+            <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 700, fontSize: 'clamp(40px,7vw,62px)', lineHeight: .98, letterSpacing: '.005em', textTransform: 'uppercase', margin: '12px 0 0', color: '#172b4d' }}>The PM Survival Game</h1>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: '#42526e', margin: '16px 0 0', maxWidth: '46ch' }}>
+              Think you can ship the product without burning out the team, blowing the roadmap, or losing your stakeholders&rsquo; trust? Five sprints. Fifteen tickets. No good options.
+            </p>
+          </div>
+          {/* Tilted ticket badge */}
+          <div className="pm-intro-badge" style={{ flexShrink: 0, width: 168, background: '#fff', border: '1px solid #dfe1e6', borderRadius: 10, boxShadow: '0 6px 18px rgba(9,30,66,.12)', padding: '15px 16px', transform: 'rotate(3deg)' }}>
+            <div style={{ fontSize: 11, color: '#6b778c', fontFamily: 'monospace' }}>DISC—001</div>
+            <span style={{ display: 'inline-block', fontSize: 9, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#fff', background: '#6554c0', padding: '2px 7px', borderRadius: 3, marginTop: 8 }}>Discovery</span>
+            <div style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 500, fontSize: 14, lineHeight: 1.32, marginTop: 9, color: '#172b4d' }}>The CEO has three product visions. You have room for one.</div>
+            <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 11, color: '#ec5a8f', marginTop: 10 }}>What do you do?</div>
+          </div>
+        </div>
+
+        {/* How to play */}
+        <div style={{ background: '#fff', border: '1px solid #dfe1e6', borderRadius: 12, padding: '24px 26px', marginTop: 22 }}>
+          <h2 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#6b778c', margin: '0 0 16px' }}>How to Play</h2>
+          <div className="pm-how-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 26px' }}>
+            {[
+              ['5 sprints', 'Take the product from discovery to launch across 5 sprints — each with 3 Jira tickets to resolve, in order.'],
+              ['Tradeoffs', 'Every choice is a tradeoff. Pick a response and live with the consequence.'],
+              ['Slack interrupts', 'Urgent Slack messages will interrupt you — the CEO with a quick thought. Handle it.'],
+              ['5 / 10 start', 'Every stat starts at 5 / 10. Keep them balanced — your lowest stat decides how the launch goes.'],
+            ].map(([title, text], i) => (
+              <div key={i} style={{ display: 'flex', gap: 11, fontSize: 14, lineHeight: 1.5, color: '#42526e' }}>
+                <span style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 15, color: '#ec5a8f', flexShrink: 0 }}>{i + 1}</span>
+                <span><strong style={{ fontFamily: '"Droid Sans", sans-serif' }}>{title}</strong> — {text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div style={{ background: '#fff', border: '1px solid #dfe1e6', borderRadius: 12, padding: '24px 26px', marginTop: 16 }}>
+          <h2 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#6b778c', margin: '0 0 4px' }}>The 5 Stats — all start at 5 / 10</h2>
+          {STATS_CONFIG.map(({ key, label }) => {
+            const color = STAT_COLORS[key]
             return (
-              <span key={k} className={`text-xs font-mono font-semibold px-2 py-1 rounded ${v > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-600'}`}>
-                {cfg.label} {v > 0 ? '+' : ''}{v}
-              </span>
+              <div key={key} style={{ display: 'grid', gridTemplateColumns: '108px 1fr', gap: 16, alignItems: 'center', padding: '11px 0', borderTop: '1px solid #ebecf0' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 15, textTransform: 'uppercase', letterSpacing: '.04em', color: '#172b4d' }}>
+                  <span style={{ width: 10, height: 10, borderRadius: 3, background: color, flexShrink: 0 }} />
+                  {label}
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                  <span style={{ fontSize: 13, color: '#6b778c', lineHeight: 1.45, fontFamily: '"Droid Sans", sans-serif' }}>{STAT_DESCS[key]}</span>
+                  <div style={{ width: 130, flexShrink: 0, display: 'flex', gap: 4 }}>
+                    {Array.from({ length: 10 }).map((_, j) => (
+                      <div key={j} style={{ height: 12, flex: 1, borderRadius: 3, background: j < 5 ? color : '#ebecf0' }} />
+                    ))}
+                  </div>
+                </div>
+              </div>
             )
           })}
         </div>
-        <button onClick={onContinue} className="w-full bg-blue-600 text-white text-sm font-medium py-2.5 rounded-md hover:bg-blue-700 transition-colors">
-          Continue
-        </button>
+
+        {/* Start */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, marginTop: 30 }}>
+          <button
+            onClick={onStart}
+            className="pm-start-btn"
+            style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 19, letterSpacing: '.03em', textTransform: 'uppercase', background: '#ec5a8f', color: '#fff', border: 'none', borderRadius: 8, padding: '15px 40px', cursor: 'pointer', boxShadow: '0 4px 0 #c8407a' }}
+          >Start Sprint 1 · Discovery</button>
+          <p style={{ fontSize: 12.5, color: '#6b778c', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>15 tickets · Slack interrupts · no good options</p>
+        </div>
       </div>
     </div>
   )
 }
 
-function OutcomeScreen({ stats, onRestart }) {
+// ── OutcomeScreen ─────────────────────────────────────────────────────────────
+
+function OutcomeScreen({ stats, sequence, onRestart }) {
   const { name, emoji, flavorText, tier, pmStyle } = getOutcome(stats)
-  const tierColors = ['text-red-600', 'text-orange-500', 'text-yellow-600', 'text-blue-600', 'text-emerald-600']
+  const borderColor = TIER_COLORS[tier]
+  const allVals = Object.values(stats)
+  const maxVal = Math.max(...allVals)
+  const minVal = Math.min(...allVals)
+
   return (
-    <div className="min-h-screen bg-[#f4f5f7] flex items-center justify-center p-6">
-      <div className="w-full max-w-md space-y-3">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Your PM Style</div>
-          <h2 className="text-xl font-bold text-gray-900 mb-2">{pmStyle.emoji} {pmStyle.title}</h2>
-          <p className="text-sm text-gray-500 leading-relaxed">{pmStyle.desc}</p>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Launch Outcome</div>
-          <h2 className={`text-xl font-bold mb-2 ${tierColors[tier]}`}>{emoji} {name}</h2>
-          <p className="text-sm text-gray-600 leading-relaxed">{flavorText}</p>
-        </div>
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">Final Stats</div>
-          <div className="space-y-2">
-            {STATS_CONFIG.map(s => <StatBar key={s.key} label={s.label} value={stats[s.key]} color={s.color} />)}
+    <div style={{ background: '#f4f5f7', minHeight: '100vh', fontFamily: '"Droid Sans", sans-serif' }}>
+      <GameNav crumb="Sprint Report" />
+      <div style={{ maxWidth: 680, margin: '0 auto', padding: '34px 24px 70px' }}>
+
+        {/* Verdict */}
+        <div style={{ display: 'flex', gap: 18, alignItems: 'center', background: '#fff', border: '1px solid #dfe1e6', borderLeft: `5px solid ${borderColor}`, borderRadius: 10, padding: '20px 22px', boxShadow: '0 1px 2px rgba(9,30,66,.1)' }}>
+          <span style={{ fontSize: 40, lineHeight: 1, flexShrink: 0 }}>{emoji}</span>
+          <div>
+            <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', color: borderColor }}>
+              You brought a product to market · {sequence.length} cards
+            </div>
+            <h2 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 24, letterSpacing: '.01em', textTransform: 'uppercase', margin: '3px 0 0', color: '#172b4d' }}>{name}</h2>
+            <p style={{ fontSize: 14, lineHeight: 1.55, color: '#42526e', margin: '7px 0 0' }}>{flavorText}</p>
           </div>
         </div>
-        <button onClick={onRestart} className="w-full bg-blue-600 text-white text-sm font-medium py-2.5 rounded-md hover:bg-blue-700 transition-colors">
-          Play Again
-        </button>
+
+        {/* PM Style hero */}
+        <div style={{
+          position: 'relative', marginTop: 16, borderRadius: 12, overflow: 'hidden', color: '#fff',
+          padding: '30px 32px 28px', boxShadow: '0 6px 18px rgba(9,30,66,.16)',
+          background: 'radial-gradient(120% 130% at 88% 0%, rgba(255,255,255,.2), transparent 55%), linear-gradient(135deg, #ec5a8f, #c8407a)',
+        }}>
+          <span style={{ position: 'absolute', top: 24, right: 30, fontSize: 50, lineHeight: 1 }}>{pmStyle.emoji}</span>
+          <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .88 }}>Your PM Style</div>
+          <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 700, fontSize: 'clamp(36px,7.5vw,52px)', lineHeight: 1, letterSpacing: '.01em', textTransform: 'uppercase', margin: '8px 0 0' }}>{pmStyle.title}</h1>
+          <p style={{ fontSize: 15, lineHeight: 1.6, marginTop: 14, opacity: .96, maxWidth: '52ch' }}>{pmStyle.desc}</p>
+        </div>
+
+        {/* Final stats */}
+        <div style={{ marginTop: 16, background: '#fff', border: '1px solid #dfe1e6', borderRadius: 10, padding: '24px 28px 26px' }}>
+          <div style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase', color: '#6b778c', margin: '0 0 14px' }}>Final Sprint Health</div>
+          <div className="pm-stats-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 24px' }}>
+            {STATS_CONFIG.map(({ key, label }) => {
+              const val = stats[key]
+              const color = STAT_COLORS[key]
+              const isTop = val === maxVal
+              const isLow = val === minVal && val < maxVal
+              return (
+                <div key={key}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                    <span style={{ fontWeight: 700, fontSize: 13, color: '#172b4d', fontFamily: '"Droid Sans", sans-serif' }}>
+                      {label}
+                      {isTop && <span style={{ fontWeight: 700, fontSize: 9, color: '#fff', background: '#00875a', padding: '2px 6px', borderRadius: 3, marginLeft: 6, verticalAlign: 'middle' }}>TOP</span>}
+                      {isLow && <span style={{ fontWeight: 700, fontSize: 9, color: '#fff', background: '#de350b', padding: '2px 6px', borderRadius: 3, marginLeft: 6, verticalAlign: 'middle' }}>LOW</span>}
+                    </span>
+                    <span style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 17, color: '#42526e' }}>{val * 10}</span>
+                  </div>
+                  <div style={{ height: 8, borderRadius: 4, background: '#ebecf0', marginTop: 7, overflow: 'hidden' }}>
+                    <div style={{ height: '100%', borderRadius: 4, background: color, width: `${val * 10}%` }} />
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          <div style={{ display: 'flex', gap: 30, marginTop: 26, paddingTop: 22, borderTop: '1px solid #ebecf0' }}>
+            {[
+              { n: `${sequence.filter(c => c.type === 'stage').length}`, l: 'Cards resolved' },
+              { n: `${sequence.filter(c => c.type === 'legendary').length}`, l: 'Slack interrupts' },
+              { n: `${STATS_CONFIG.filter(s => stats[s.key] <= 3).length}`, l: 'Stats in the red' },
+            ].map(({ n, l }) => (
+              <div key={l}>
+                <div style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 26, color: '#172b4d' }}>{n}</div>
+                <div style={{ fontSize: 12, color: '#6b778c', marginTop: 2, fontFamily: '"Droid Sans", sans-serif' }}>{l}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: 'flex', gap: 12, marginTop: 24 }}>
+            <button
+              onClick={onRestart}
+              style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 14, borderRadius: 6, padding: '12px 22px', cursor: 'pointer', background: '#0052cc', color: '#fff', border: 'none' }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#0065ff' }}
+              onMouseLeave={e => { e.currentTarget.style.background = '#0052cc' }}
+            >Play again</button>
+            <Link href="/" style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 14, borderRadius: 6, padding: '12px 22px', cursor: 'pointer', background: '#fff', color: '#172b4d', border: '1.5px solid #dfe1e6', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>← Back to site</Link>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-// ── Main game component ──────────────────────────────────────────────────────
+// ── Main game component ───────────────────────────────────────────────────────
 
 export default function RoadmapGameClient() {
-  const [gameState, setGameState] = useState('intro')
+  const [gameState, setGameState] = useState('intro')  // 'intro' | 'playing' | 'outcome'
   const [cardIndex, setCardIndex] = useState(0)
-  const [modalOpen, setModalOpen] = useState(false)
   const [stats, setStats] = useState(INITIAL_STATS)
-  const [pending, setPending] = useState(null)
-  const [completedCards, setCompletedCards] = useState(new Set())
+  const [chosen, setChosen] = useState(null)   // {effects, consequence, index} | null
   const [sequence, setSequence] = useState([])
 
   const currentCard = sequence[cardIndex]
-  const currentStageIndex = currentCard ? currentCard.stage : 4
+  const stageIndex  = currentCard?.stage ?? 0
+  const showSlack   = gameState === 'playing' && currentCard?.type === 'legendary' && !chosen
 
   function handleStart() {
     const seq = buildSequence()
     setSequence(seq)
     setCardIndex(0)
     setStats(INITIAL_STATS)
-    setCompletedCards(new Set())
-    setPending(null)
+    setChosen(null)
     setGameState('playing')
   }
 
-  function handleChoice(choice) {
+  function handleChoice(choice, index) {
     setStats(prev => applyEffects(prev, choice.effects))
-    setPending({ effects: choice.effects, consequence: choice.consequence })
-    setModalOpen(false)
-    setCompletedCards(prev => new Set([...prev, cardIndex]))
-    setGameState('consequence')
+    setChosen({ effects: choice.effects, consequence: choice.consequence, index })
   }
 
   function handleContinue() {
-    const nextIndex = cardIndex + 1
-    if (nextIndex >= sequence.length) {
+    const next = cardIndex + 1
+    if (next >= sequence.length) {
       setGameState('outcome')
     } else {
-      setCardIndex(nextIndex)
-      setGameState('playing')
+      setCardIndex(next)
+      setChosen(null)
     }
-    setPending(null)
   }
 
   function handleRestart() {
     setGameState('intro')
     setCardIndex(0)
-    setModalOpen(false)
     setStats(INITIAL_STATS)
-    setPending(null)
-    setCompletedCards(new Set())
+    setChosen(null)
     setSequence([])
   }
 
   if (gameState === 'outcome') {
-    return <OutcomeScreen stats={stats} onRestart={handleRestart} />
+    return <OutcomeScreen stats={stats} sequence={sequence} onRestart={handleRestart} />
   }
 
   if (gameState === 'intro') {
-    return (
-      <div className="min-h-screen bg-[#f4f5f7] font-sans flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-3xl">
-
-          <div className="mb-5">
-            <Link href="/" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">← Home</Link>
-          </div>
-
-          {/* Top: text left, image right */}
-          <div className="flex items-center gap-10 mb-6">
-
-            {/* Left: label + title + desc */}
-            <div className="flex-1 min-w-0">
-              <div className="text-xs font-semibold uppercase tracking-widest text-blue-600 mb-2">A realistic PM simulation</div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-3">The PM Survival Game</h1>
-              <p className="text-gray-700 leading-relaxed">
-                Think you can ship the product without burning out the team, blowing the roadmap, or losing your stakeholders trust?
-              </p>
-            </div>
-
-            {/* Right: floating image */}
-            <div className="flex-shrink-0 w-[280px]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/slack-hero.png" alt="" className="w-full h-auto object-contain opacity-90 drop-shadow-lg" />
-            </div>
-          </div>
-
-          {/* How to Play — full width */}
-          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3">How to Play</p>
-            <div className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm text-gray-600">
-              {[
-                "The goal is simple: ship on time, keep the team motivated, maintain stakeholder trust, and launch a product that's both well built and genuinely useful.",
-                "You have 5 sprints to take the product from discovery to launch. Each sprint has 3 jira cards to resolve.",
-                "Watch out for urgent Slack messages that can easily get you off track.",
-                "Every stat starts at 5 out of 10. Your decisions move them up or down. Tradeoffs are inevitable, so try to keep things balanced.",
-              ].map((t, i) => (
-                <div key={i} className={`flex gap-3${i === 2 ? ' mt-5' : ''}`}>
-                  <span className="text-gray-500 font-mono mt-0.5 shrink-0">{i + 1}</span>
-                  <span>{t}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom: stats + button full width */}
-          <div className="bg-white rounded-xl border border-gray-200 p-5 mb-6">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4 text-center">Stats</p>
-            <div className="grid grid-cols-2 gap-x-10 gap-y-2.5">
-              {[
-                { color: 'bg-violet-500',  label: 'Scope', desc: 'Can you keep the roadmap on track?' },
-                { color: 'bg-amber-500',   label: 'Tech',    desc: 'Is the codebase staying healthy?' },
-                { color: 'bg-emerald-500', label: 'Morale',  desc: "How's the team holding up?" },
-                { color: 'bg-rose-500',    label: 'Quality', desc: 'Will users actually want this?' },
-                { color: 'bg-sky-500',     label: 'Trust',   desc: 'Do stakeholders still believe in you?' },
-              ].map(s => (
-                <div key={s.label} className="flex items-center gap-3">
-                  <div className={`w-2.5 h-2.5 rounded-sm shrink-0 ${s.color}`} />
-                  <span className="text-sm font-medium text-gray-700 w-16 shrink-0">{s.label}</span>
-                  <span className="text-sm text-gray-400">{s.desc}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="flex flex-col items-center gap-3">
-            <button onClick={handleStart} className="bg-blue-600 text-white font-medium py-2.5 px-8 rounded-lg hover:bg-blue-700 transition-colors text-sm">
-              Start Sprint 1: Discovery
-            </button>
-            <p className="text-xs text-gray-400">Click the first Jira card to draw your opening scenario</p>
-          </div>
-        </div>
-      </div>
-    )
+    return <IntroScreen onStart={handleStart} />
   }
 
-  // ── Board view ──
+  const dayNum    = cardIndex + 1
+  const totalDays = sequence.length
+
   return (
-    <div className="min-h-screen bg-[#f4f5f7] font-sans flex flex-col pt-[61px]">
-
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-8 py-4 grid grid-cols-3 items-center shrink-0">
-        <div className="flex items-center gap-3">
-          <Link href="/" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">← Home</Link>
-          <span className="text-gray-300 text-xs">/</span>
-          <div className="flex items-center gap-2.5">
-            <div className="w-5 h-5 bg-blue-600 rounded grid grid-cols-3 gap-0.5 p-1">
-              {Array.from({ length: 9 }).map((_, i) => <div key={i} className="bg-white rounded-sm opacity-80" />)}
-            </div>
-          </div>
+    <div style={{ minHeight: '100vh', background: '#f4f5f7', fontFamily: '"Droid Sans", sans-serif', filter: showSlack ? 'blur(2px) brightness(.7)' : 'none', transition: 'filter .3s', pointerEvents: showSlack ? 'none' : 'auto' }}>
+      <GameNav
+        crumb={`Sprint ${stageIndex + 1} — ${STAGES[stageIndex]}`}
+        dayLabel={`Day ${dayNum} / ${totalDays}`}
+        onRestart={handleRestart}
+      />
+      <div className="pm-game-wrap" style={{ maxWidth: 980, margin: '0 auto', padding: '34px 24px 60px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 28, alignItems: 'start' }}>
+        <div>
+          {currentCard?.type === 'stage' && (
+            <IssueCard
+              card={currentCard}
+              onChoice={handleChoice}
+              chosen={chosen}
+              onContinue={handleContinue}
+            />
+          )}
+          {currentCard?.type === 'legendary' && chosen && (
+            <ConsequencePanel chosen={chosen} onContinue={handleContinue} />
+          )}
         </div>
-        <div className="flex justify-center">
-          <span className="text-xl font-bold text-gray-900">The PM Survival Game</span>
-        </div>
-        <div className="flex items-center justify-end gap-3">
-          <div className="flex -space-x-2">
-            {['bg-violet-400', 'bg-sky-400', 'bg-emerald-400', 'bg-amber-400'].map((c, i) => (
-              <div key={i} className={`w-7 h-7 rounded-full ${c} border-2 border-white`} />
-            ))}
-          </div>
-          <button onClick={handleRestart} className="text-xs border border-gray-300 text-gray-600 hover:bg-gray-50 px-3 py-1.5 rounded-md font-medium transition-colors">
-            Resign from Product
-          </button>
-        </div>
+        <StatRail stats={stats} effects={chosen?.effects} />
       </div>
-
-      {/* Board */}
-      <div className="flex flex-1 min-h-0 px-8 pt-6 pb-8 gap-6 overflow-hidden max-w-7xl mx-auto w-full">
-
-        {/* Stats sidebar */}
-        <div className="w-52 shrink-0 bg-white border border-gray-200 rounded-xl p-4 flex flex-col gap-1 self-start">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-3">Stats</p>
-          {STATS_CONFIG.map(s => (
-            <div key={s.key} className="mb-3">
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs font-medium text-gray-600">{s.label}</span>
-                <span className="text-xs text-gray-400">{stats[s.key]}/10</span>
-              </div>
-              <div className="flex gap-0.5">
-                {Array.from({ length: 10 }).map((_, i) => {
-                  const val = stats[s.key]
-                  const barColor = s.color
-                  return <div key={i} className={`h-2.5 flex-1 rounded-sm transition-colors ${i < val ? barColor : 'bg-gray-100'}`} />
-                })}
-              </div>
-            </div>
-          ))}
-          <div className="mt-4 pt-4 border-t border-gray-100">
-            <div className="text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-2">Sprint</div>
-            <div className="text-sm font-bold text-gray-800">{currentStageIndex + 1} of 5</div>
-            <div className="text-xs text-gray-500">{STAGES[currentStageIndex]}</div>
-            {currentCard?.type === 'legendary' && (
-              <span className="mt-1.5 inline-block text-xs bg-red-100 text-red-600 font-semibold px-2 py-0.5 rounded">URGENT</span>
-            )}
-          </div>
+      {showSlack && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: 50, pointerEvents: 'auto', filter: 'none' }}>
+          <SlackModal card={currentCard} onChoice={handleChoice} />
         </div>
-
-        {/* Columns */}
-        <div className="flex-1 overflow-x-auto">
-          <div className="flex gap-4 min-w-max h-full">
-            {STAGES.map((stage, si) => {
-              const isActive = si === currentStageIndex
-              const isCompleted = si < currentStageIndex
-              const stageCards = sequence.filter(c => c.stage === si)
-              const completedInStage = stageCards.filter(c => completedCards.has(sequence.indexOf(c)))
-              const pendingInStage = stageCards.filter(c => !completedCards.has(sequence.indexOf(c)))
-
-              return (
-                <div key={stage} className={`w-64 shrink-0 flex flex-col transition-opacity ${!isActive && !isCompleted ? 'opacity-40' : ''}`}>
-
-                  {/* Column header */}
-                  <div className="flex items-center justify-between px-1 mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className={`text-xs font-bold uppercase tracking-widest ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>{stage}</span>
-                      <span className={`text-xs font-medium px-1.5 py-0.5 rounded border ${isActive ? 'border-blue-300 text-blue-600 bg-blue-50' : isCompleted ? 'border-emerald-200 text-emerald-600 bg-emerald-50' : 'border-gray-200 text-gray-400 bg-gray-50'}`}>Sprint {si + 1}</span>
-                    </div>
-                    {isActive && pendingInStage.length > 0 && (
-                      <span className="text-xs bg-blue-100 text-blue-600 rounded-full px-2 py-0.5 font-medium">{pendingInStage.length}</span>
-                    )}
-                    {isCompleted && <span className="text-xs text-emerald-500 font-medium">✓</span>}
-                  </div>
-
-                  {/* Column body */}
-                  <div className="flex-1 bg-[#e4e6ea] rounded-xl p-2 space-y-2.5 min-h-[280px]">
-                    {completedInStage.map((card, i) => (
-                      <div key={i} className="w-full rounded-lg border border-gray-100 bg-white p-4 opacity-60">
-                        <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs font-mono text-gray-400">{card.id}</span>
-                          <span className="text-xs text-emerald-600 font-medium">Done</span>
-                        </div>
-                        <p className="text-sm text-gray-400 leading-snug">{card.id}</p>
-                      </div>
-                    ))}
-                    {isActive && pendingInStage.map((card, i) => {
-                      const isCurrentCard = card === currentCard
-                      const isLegendary = card.type === 'legendary'
-                      return (
-                        <button
-                          key={i}
-                          onClick={isCurrentCard ? () => setModalOpen(true) : undefined}
-                          className={`w-full text-left rounded-lg p-4 transition-all shadow-sm ${
-                            isCurrentCard
-                              ? isLegendary
-                                ? 'border-2 border-red-400 bg-white hover:shadow-md hover:-translate-y-0.5 cursor-pointer'
-                                : 'border-2 border-blue-300 bg-white hover:shadow-md hover:-translate-y-0.5 cursor-pointer'
-                              : 'border border-gray-200 bg-white opacity-50 cursor-default'
-                          }`}
-                        >
-                          <div className="flex items-center justify-between mb-3">
-                            <span className={`text-xs font-mono ${isLegendary ? 'text-red-400' : 'text-gray-400'}`}>{card.id}</span>
-                            {isLegendary && <span className="text-xs font-semibold text-red-600 bg-red-100 px-1.5 py-0.5 rounded">URGENT</span>}
-                            {isCurrentCard && !isLegendary && <span className="text-xs text-red-500 font-semibold">Click to draw</span>}
-                          </div>
-                          <p className={`text-sm leading-snug ${isLegendary ? 'text-red-300' : 'text-gray-400'}`}>{card.id}</p>
-                        </button>
-                      )
-                    })}
-                    {!isActive && !isCompleted && (
-                      <div className="rounded-lg border border-dashed border-gray-300 p-4 text-center">
-                        <span className="text-xs text-gray-400">Locked</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-
-      {modalOpen && currentCard?.type === 'stage' && (
-        <JiraModal card={currentCard} onChoice={handleChoice} onClose={() => setModalOpen(false)} />
-      )}
-      {modalOpen && currentCard?.type === 'legendary' && (
-        <SlackModal card={currentCard} onChoice={handleChoice} onClose={() => setModalOpen(false)} />
-      )}
-      {gameState === 'consequence' && pending && (
-        <ConsequenceScreen consequence={pending.consequence} effects={pending.effects} onContinue={handleContinue} />
       )}
     </div>
   )
