@@ -549,62 +549,28 @@ choices: [
 ],
 }
 
-// ── Legendary (Slack) cards — one fires after each stage ─────────────────────
+// ── Legendary cards — fire after stages 1 and 3 ──────────────────────────────
 
 const LEGENDARY_CARDS = [
   {
-    id: 'SLACK-001', insertAfterStage: 0,
-    epic: 'URGENT', epicColor: 'bg-red-100 text-red-700',
-    body: "Hey — just saw the discovery readout. Quick thought: what if we also built a marketplace? I was talking to a founder at dinner last night and he said that's where the real money is. Could be a quick win. Thoughts? cc @you",
+    id: 'PM-inf', insertAfterStage: 1,
+    title: 'The CEO Discovers AI',
+    body: 'i listened to this podcast this weekend about AI. It sounds like the future. We should add AI to this.',
     choices: [
-      { label: "Add it to the backlog", desc: "It goes in the document where ideas go to feel heard.", effects: { scope: 1, trust: 1 }, consequence: "It's in the backlog. The CEO will ask about it in six weeks. The backlog will still be there." },
-      { label: "Explain the focus tradeoff", desc: "Politely describe what adding a marketplace actually means.", effects: { trust: 1, morale: 1, scope: -1 }, consequence: "You gave a clear answer. The CEO responded with a thumbs up and a follow-up question about NFTs." },
-      { label: "Start scoping it quietly", desc: "Maybe it fits. Maybe you're about to own two products.", effects: { scope: 2, morale: -1, quality: -1 }, consequence: "Scoping begins. The team senses it. Nobody says anything. The roadmap gets heavier." },
-      { label: "Say yes in the thread, figure it out later", desc: "Future-you can handle the consequences.", effects: { trust: 1, scope: 2, morale: -2 }, consequence: "The thread was satisfying. The sprint planning was not." },
+      { label: "Add an AI feature immediately",         desc: "'Great idea -- we've actually been thinking about this.'",      effects: { scope: -1, trust: 1, tech: -1 },   consequence: "It's on the roadmap. Nobody knows what the AI feature actually does yet. Including the CEO." },
+      { label: "Ask what problem it solves",            desc: "Try to connect the idea to an actual user need.",               effects: { quality: 1, trust: -1 },             consequence: "Smart question. Wrong room. The CEO is now describing a problem that doesn't exist." },
+      { label: 'Create an "AI strategy task force"',    desc: "Form a group dedicated to thinking about AI.",                  effects: { trust: 1, morale: -1 },              consequence: "A task force. The team knows what task forces produce. Spoiler: it's another meeting." },
+      { label: 'Add "AI" to the roadmap slide',         desc: "Update the deck. Problem solved.",                              effects: { trust: 1, morale: 1, quality: -1 },  consequence: "The slide now says AI. Nothing else has changed. The CEO is satisfied." },
     ],
   },
   {
-    id: 'SLACK-002', insertAfterStage: 1,
-    epic: 'URGENT', epicColor: 'bg-red-100 text-red-700',
-    body: "Heads up — ran into the CPO at a conference and may have mentioned we'd have a beta ready by end of month. Nothing official, just framing. Wanted to loop you in. No pressure!",
+    id: 'PM-inf2', insertAfterStage: 3,
+    title: 'The All-Hands Reorg',
+    body: 'hey quick heads up - restructuring announcement going out tomorrow. your team is moving under Infrastructure now. no changes to your roadmap tho :)',
     choices: [
-      { label: "Confirm the timeline with the team", desc: "Find out if end of month is possible. It is not.", effects: { trust: 1, morale: -1, scope: -1 }, consequence: "End of month is not possible. You now own delivering that news to the CPO." },
-      { label: "Push back directly on the thread", desc: "Respond clearly, professionally, and immediately.", effects: { trust: 1, morale: 1, scope: 1 }, consequence: "You reset the expectation before it calcified. The CPO appreciated the directness later. At the time, less so." },
-      { label: "Start cutting scope to make it happen", desc: "There is always a version of the product that ships on time.", effects: { scope: -1, morale: -1, quality: -1 }, consequence: "End of month ships. Nobody is happy with what end of month looks like." },
-      { label: "Ignore it and hope no one follows up", desc: "Technically nothing is official.", effects: { trust: -2, morale: 1 }, consequence: "Someone follows up." },
-    ],
-  },
-  {
-    id: 'SLACK-003', insertAfterStage: 2,
-    epic: 'URGENT', epicColor: 'bg-red-100 text-red-700',
-    body: "Hey, just checking — are we still planning to support the enterprise tier at launch? I've been telling the sales team yes. Also the sales team has already promised it to two accounts. Let me know!",
-    choices: [
-      { label: "Scope the enterprise tier now", desc: "Add it. Adjust everything else. Good luck.", effects: { scope: 2, morale: -1, quality: -1 }, consequence: "Enterprise tier is added to the sprint. Two other things fall off. Nobody discusses what fell off." },
-      { label: "Tell sales to pause those conversations", desc: "Stop the bleeding before the wound gets bigger.", effects: { trust: -1, morale: 1, scope: 1 }, consequence: "Sales is unhappy. The roadmap is grateful." },
-      { label: "Offer a lightweight workaround for launch", desc: "Give enterprise users something that technically works.", effects: { trust: 1, quality: -1 }, consequence: "It technically works. The enterprise accounts notice what 'technically works' means in practice." },
-      { label: "Escalate to leadership immediately", desc: "This decision is above your pay grade. Officially.", effects: { trust: 1, morale: 1, scope: -1 }, consequence: "Leadership aligns. It takes four meetings. You write the summary doc. The enterprise tier ships in V2." },
-    ],
-  },
-  {
-    id: 'SLACK-004', insertAfterStage: 3,
-    epic: 'URGENT', epicColor: 'bg-red-100 text-red-700',
-    body: "Hey team — quick pulse check. Board review is next week and I want to show momentum. Can we do a demo of current state? Something polished. @PM can you coordinate? Thanks 🙌",
-    choices: [
-      { label: "Build a polished demo environment", desc: "Spin up something that shows the best version of where you are.", effects: { morale: -1, trust: 2, quality: -1 }, consequence: "The demo looks good. The gap between the demo and the product looks wider than it is." },
-      { label: "Demo the real product", desc: "Show what actually exists, rough edges included.", effects: { trust: 1, quality: 1, morale: 1 }, consequence: "The board sees the real thing. Two board members ask good questions. One asks why the button is that color." },
-      { label: "Suggest a written update instead", desc: "A clear doc is less risky than a live demo right now.", effects: { trust: -1, scope: 1 }, consequence: "The board gets a doc. The CEO sends a calendar invite for the demo anyway." },
-      { label: "Ask engineering to freeze the branch", desc: "Lock the codebase so nothing new breaks before Friday.", effects: { tech: 1, morale: -2, scope: 1 }, consequence: "The branch is frozen. A critical bug is found Saturday. The freeze is quietly reversed." },
-    ],
-  },
-  {
-    id: 'SLACK-005', insertAfterStage: 4,
-    epic: 'URGENT', epicColor: 'bg-red-100 text-red-700',
-    body: "Just a thought — I know launch is close, but I was chatting with some users and they kept mentioning they'd love a dark mode. Seems like a quick add? Could really differentiate us. Happy to discuss 🌙",
-    choices: [
-      { label: "Add dark mode to V2", desc: "Document the request. Ship it later. Defend this forever.", effects: { scope: 1, trust: 1 }, consequence: "Dark mode goes on the V2 list. You will be asked about it at every sprint review until it ships." },
-      { label: "Scope it and add to the current sprint", desc: "Dark mode is never as quick as it sounds.", effects: { scope: -2, morale: -1, quality: -1, tech: -1 }, consequence: "Dark mode takes nine days. Other things get bumped. The CEO says it looks great. The engineers are somewhere between exhausted and impressed with themselves." },
-      { label: "Push back with data", desc: "Show the usage data and explain what actually moves the needle right now.", effects: { trust: 1, morale: 1, scope: 1 }, consequence: "Data-backed. The CEO says 'fair enough.' You make a note to add the data slide to every future ask." },
-      { label: "Say yes, assign it to the team without telling them why", desc: "Just add it to the board. It'll come up in standup.", effects: { morale: -2, scope: -2, trust: -1 }, consequence: "It came up in standup. The engineer who got it has feelings. You deal with those feelings on Thursday." },
+      { label: "Absorb it and move forward",           desc: "React with a thumbs up and pretend this won't affect anything.",  effects: { morale: -1, trust: 1 },             consequence: "You stayed calm. The new infra lead already has opinions about your backlog. Several of them." },
+      { label: "Schedule a team offsite immediately",  desc: "'Let's realign on priorities.'",                                  effects: { morale: 2, scope: -1 },             consequence: "Team loves it. Roadmap loses a week. They think it was worth it. You're not sure." },
+      { label: "Ask for clarity before committing",    desc: "Find out what 'no changes' actually means.",                      effects: { trust: 1, morale: 1 },              consequence: "Reasonable. Respected. You know 'no changes to your roadmap' is aspirational, not operational." },
     ],
   },
 ]
