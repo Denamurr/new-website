@@ -64,8 +64,9 @@ export default function HeroClient() {
     if (vw / vh > IMG_ASPECT) { vpW = vw; vpH = vw / IMG_ASPECT }
     else { vpH = vh; vpW = vh * IMG_ASPECT }
     let selfW, selfH
-    if (w / h > IMG_ASPECT) { selfW = w; selfH = w / IMG_ASPECT }
-    else { selfH = h; selfW = h * IMG_ASPECT }
+    const oversize = 1.35
+    if (w / h > IMG_ASPECT) { selfW = w * oversize; selfH = (w * oversize) / IMG_ASPECT }
+    else { selfH = h * oversize; selfW = (h * oversize) * IMG_ASPECT }
     const curBgW = lerp(vpW, selfW, t)
     const curBgH = lerp(vpH, selfH, t)
     const posX = lerp((vw - curBgW) / 2 - x, (w - curBgW) / 2, t)
