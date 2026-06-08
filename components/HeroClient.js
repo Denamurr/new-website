@@ -64,11 +64,12 @@ export default function HeroClient() {
     if (vw / vh > IMG_ASPECT) { vpW = vw; vpH = vw / IMG_ASPECT }
     else { vpH = vh; vpW = vh * IMG_ASPECT }
     let selfW, selfH
-    if (w / h > IMG_ASPECT) { selfW = w; selfH = w / IMG_ASPECT }
-    else { selfH = h; selfW = h * IMG_ASPECT }
+    if (w / h > IMG_ASPECT) { selfW = w * 1.5; selfH = (w * 1.5) / IMG_ASPECT }
+    else { selfH = h * 1.5; selfW = (h * 1.5) * IMG_ASPECT }
     const curBgW = lerp(vpW, selfW, t)
     const curBgH = lerp(vpH, selfH, t)
-    const posX = vw / 2 - x - curBgW / 2
+    // character sits at ~55% horizontal in illustration — shift left so it spans both words
+    const posX = vw / 2 - x - curBgW * 0.62
     const posY = vh * 0.38 - curBgH * 0.38 - y
 
     wordmark.style.backgroundSize = `${curBgW}px ${curBgH}px`
