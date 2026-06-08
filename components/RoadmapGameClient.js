@@ -574,7 +574,7 @@ function getOutcome(stats) {
 function clamp(v) { return Math.max(0, Math.min(10, v)) }
 function applyEffects(stats, effects) {
   const next = { ...stats }
-  for (const [k, v] of Object.entries(effects)) next[k] = clamp(next[k] + v)
+  for (const [k, v] of Object.entries(effects)) next[k] = clamp(next[k] + Math.max(-1, Math.min(1, v)))
   return next
 }
 
@@ -717,7 +717,18 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
             <div style={{ background: '#fff', borderRadius: 8, boxShadow: '0 8px 32px rgba(9,30,66,.3)', padding: '32px 36px', maxWidth: 480, width: '90%', textAlign: 'center' }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '6px 14px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif', marginBottom: 20 }}>✓ Resolved</div>
               <p style={{ fontSize: 16, lineHeight: 1.6, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
-              <div style={{ marginTop: 28 }}>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginTop: 20 }}>
+                {Object.entries(chosen.effects).map(([k, v]) => {
+                  const cfg = STATS_CONFIG.find(s => s.key === k)
+                  const clamped = Math.max(-1, Math.min(1, v))
+                  return (
+                    <span key={k} style={{ fontSize: 12, fontWeight: 700, padding: '4px 10px', borderRadius: 3, background: clamped > 0 ? '#e3fcef' : '#ffebe6', color: clamped > 0 ? '#00875a' : '#de350b', fontFamily: '"Droid Sans", sans-serif' }}>
+                      {cfg?.label} {clamped > 0 ? `+${clamped}` : clamped}
+                    </span>
+                  )
+                })}
+              </div>
+              <div style={{ marginTop: 20 }}>
                 <button
                   onClick={onContinue}
                   style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif', fontSize: 14, fontWeight: 600, padding: '10px 22px', cursor: 'pointer' }}
