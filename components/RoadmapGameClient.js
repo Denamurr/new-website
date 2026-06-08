@@ -738,7 +738,7 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
 function ConsequencePanel({ chosen, onContinue }) {
   return (
     <div style={{ background: '#fff', border: '1px solid #dfe1e6', borderRadius: 6, boxShadow: '0 1px 2px rgba(9,30,66,.1)', padding: '28px 28px 24px', animation: 'gameRev .35s cubic-bezier(.2,.8,.2,1)' }}>
-      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#6b778c', marginBottom: 14, fontFamily: '"Droid Sans", sans-serif' }}>Sent · #all-hands</div>
+      <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#6b778c', marginBottom: 14, fontFamily: '"Droid Sans", sans-serif' }}>Sent · Jordan Chen (CEO)</div>
       <p style={{ fontSize: 16, lineHeight: 1.55, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 18 }}>
         {Object.entries(chosen.effects).map(([k, v]) => {
@@ -782,7 +782,7 @@ function SlackModal({ card, onChoice, chosen, onContinue }) {
         animation: 'pmAlertDrop .4s cubic-bezier(.2,.8,.2,1)',
       }}>
         <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#fff', display: 'inline-block', animation: 'pmPulse 1.2s ease-in-out infinite' }} />
-        New urgent message · #all-hands
+        New direct message · Jordan Chen (CEO)
       </div>
 
       {/* Slack window */}
@@ -804,15 +804,15 @@ function SlackModal({ card, onChoice, chosen, onContinue }) {
               ))}
               <div style={{ padding: '10px 12px 4px', fontSize: 11, fontWeight: 900, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', fontFamily: '"Lato", sans-serif' }}>Channels</div>
               {['#general', '#eng-team', '#design-sync', '#all-hands'].map(ch => (
-                <div key={ch} style={{ margin: '1px 8px', padding: '4px 8px', borderRadius: 4, background: ch === '#all-hands' ? '#1264a3' : 'transparent', color: ch === '#all-hands' ? '#fff' : 'rgba(255,255,255,.5)', fontSize: 13, fontFamily: '"Lato", sans-serif', display: 'flex', alignItems: 'center', gap: 4 }}>
+                <div key={ch} style={{ margin: '1px 8px', padding: '4px 8px', borderRadius: 4, background: 'transparent', color: 'rgba(255,255,255,.5)', fontSize: 13, fontFamily: '"Lato", sans-serif', display: 'flex', alignItems: 'center', gap: 4 }}>
                   {ch}
-                  {ch === '#all-hands' && <span style={{ marginLeft: 'auto', background: '#de350b', color: '#fff', fontSize: 10, fontWeight: 700, borderRadius: 10, padding: '1px 5px', fontFamily: '"Lato", sans-serif' }}>1</span>}
                 </div>
               ))}
               <div style={{ padding: '10px 12px 4px', fontSize: 11, fontWeight: 900, letterSpacing: '.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,.4)', fontFamily: '"Lato", sans-serif' }}>Direct Messages</div>
               {[{ name: 'Jordan Chen (CEO)', online: true }, { name: 'You', online: false }].map(u => (
-                <div key={u.name} style={{ margin: '1px 8px', padding: '4px 8px', borderRadius: 4, color: 'rgba(255,255,255,.4)', fontSize: 12, fontFamily: '"Lato", sans-serif', display: 'flex', alignItems: 'center', gap: 6 }}>
+                <div key={u.name} style={{ margin: '1px 8px', padding: '4px 8px', borderRadius: 4, background: u.name === 'Jordan Chen (CEO)' ? '#1264a3' : 'transparent', color: u.name === 'Jordan Chen (CEO)' ? '#fff' : 'rgba(255,255,255,.4)', fontSize: 12, fontFamily: '"Lato", sans-serif', display: 'flex', alignItems: 'center', gap: 6 }}>
                   <div style={{ width: 8, height: 8, borderRadius: '50%', background: u.online ? '#2bac76' : '#6b778c', flexShrink: 0 }} />{u.name}
+                  {u.name === 'Jordan Chen (CEO)' && <span style={{ marginLeft: 'auto', background: '#de350b', color: '#fff', fontSize: 10, fontWeight: 700, borderRadius: 10, padding: '1px 5px', fontFamily: '"Lato", sans-serif' }}>1</span>}
                 </div>
               ))}
             </div>
@@ -820,23 +820,12 @@ function SlackModal({ card, onChoice, chosen, onContinue }) {
             {/* Channel pane */}
             <div style={{ flex: 1, background: '#fff', display: 'flex', flexDirection: 'column', minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', padding: '10px 18px', borderBottom: '1px solid #e8e8e8', gap: 8 }}>
-                <span style={{ fontSize: 14, fontWeight: 700, color: '#1d1c1d', fontFamily: '"Lato", sans-serif' }}>#all-hands</span>
-                <span style={{ fontSize: 13, color: '#616061', fontFamily: '"Lato", sans-serif' }}>24 members</span>
+                <div style={{ width: 20, height: 20, borderRadius: '50%', background: '#f59e0b', display: 'grid', placeItems: 'center', color: '#fff', fontSize: 10, fontWeight: 700, fontFamily: '"Lato", sans-serif', flexShrink: 0 }}>JC</div>
+                <span style={{ fontSize: 14, fontWeight: 700, color: '#1d1c1d', fontFamily: '"Lato", sans-serif' }}>Jordan Chen</span>
+                <span style={{ fontSize: 11, background: '#dcf0e4', color: '#007a5a', padding: '1px 5px', borderRadius: 3, fontFamily: '"Lato", sans-serif' }}>active</span>
               </div>
 
               <div style={{ flex: 1, padding: '16px 18px', overflowY: 'auto' }}>
-                {/* Faded prior message */}
-                <div style={{ display: 'flex', gap: 10, marginBottom: 20, opacity: .4 }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 4, background: '#7c3aed', flexShrink: 0, display: 'grid', placeItems: 'center', color: '#fff', fontSize: 12, fontWeight: 700, fontFamily: '"Lato", sans-serif' }}>SR</div>
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                      <span style={{ fontSize: 14, fontWeight: 700, color: '#1d1c1d', fontFamily: '"Lato", sans-serif' }}>Sarah R.</span>
-                      <span style={{ fontSize: 12, color: '#616061', fontFamily: '"Lato", sans-serif' }}>9:41 AM</span>
-                    </div>
-                    <p style={{ fontSize: 14, color: '#4a4a4a', margin: '2px 0 0', lineHeight: 1.46, fontFamily: '"Lato", sans-serif' }}>Anyone see the Q3 board deck yet?</p>
-                  </div>
-                </div>
-
                 {/* CEO message */}
                 <div style={{ display: 'flex', gap: 10, marginBottom: 12 }}>
                   <div style={{ width: 36, height: 36, borderRadius: 4, background: '#f59e0b', flexShrink: 0, display: 'grid', placeItems: 'center', color: '#fff', fontSize: 13, fontWeight: 700, fontFamily: '"Lato", sans-serif' }}>JC</div>
@@ -906,7 +895,7 @@ function SlackModal({ card, onChoice, chosen, onContinue }) {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '5px 10px', borderBottom: '1px solid #e8e8e8', background: '#f8f8f8' }}>
                     {['B', 'I', 'S'].map(f => <button key={f} style={{ fontSize: 12, color: '#616061', fontWeight: 700, width: 20, height: 20, background: 'none', border: 'none', cursor: 'pointer', fontFamily: '"Lato", sans-serif' }}>{f}</button>)}
                   </div>
-                  <div style={{ padding: '8px 12px', fontSize: 14, color: '#ccc', fontFamily: '"Lato", sans-serif' }}>Message #all-hands</div>
+                  <div style={{ padding: '8px 12px', fontSize: 14, color: '#ccc', fontFamily: '"Lato", sans-serif' }}>Message Jordan Chen</div>
                 </div>
               </div>
             </div>
