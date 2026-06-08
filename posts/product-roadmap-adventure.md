@@ -1,67 +1,231 @@
 ---
-title: "The Product Roadmap as Adventure Map"
+title: "If Product Roadmaps Were Adventure Maps"
 date: "2024-02-01"
 slug: "product-roadmap-adventure"
 ---
 
-Roadmaps look clean on a slide. A straight line from idea to launch, with milestones neatly spaced along the way. Anyone who has shipped a product knows the line is never straight.
+![Product roadmap as adventure map](/if-product-roadmaps.png)
 
-A better mental model: the roadmap is more like an adventure map. You know where you want to end up. You have a rough path drawn out. And you will absolutely encounter things along the way that your map did not account for.
+Imagine if every product roadmap resembled an adventure map, with levels, hidden challenges, plot twists, and the ultimate prize at the end: a successful product launch. Credits roll. Congratulations! You've beaten the game, and your achievements will be etched in history…or at least in the team's memory.
 
-That framing sounds casual, but it has practical value. It changes how you think about setbacks, scope, and what "done" actually means.
+Shipping a successful product might not be the same as completing an epic quest, but it sure feels like an achievement after navigating through a long maze of challenges. Like in games, the journey from ideation to launch isn't a straight path. It's filled with obstacles, delays, quests, side missions, boss battles, and unforeseen twists.
 
----
+Are you interested in playing the PM Adventure Roadmap Game? Then follow along. But first, before any adventure begins, there's character creation. Our protagonist is the Product Manager.
 
-## The first level is messier than it looks
+**PM Character Creation:**
 
-Before any planning happens, a team has to agree on what problem it's actually solving. This sounds obvious. It rarely is.
+Class Traits:
 
-You gather user research, look at market trends, talk to stakeholders. Everyone comes in with a different pet theory about what matters most. The trap here is trying to act on all of it. Every insight feels worth pursuing. The ideation phase can stretch indefinitely if you let it, because there will always be another user interview to schedule or another competitor to analyze.
+- Vision (+10 Strategic Planning)
+- Leadership (+8 Team Coordination)
+- Adaptability (+12 Problem Solving)
+- Communication (+15 Stakeholder Management)
 
-The real work of this phase is narrowing. You're not looking for every possible direction. You're looking for the one direction that is most defensible given what you know now. Everything else gets noted and parked.
+Starting Equipment:
 
----
+- Notebook of Infinite Ideas
+- Stakeholder Alignment Compass
+- Agile Methodology Handbook
+- Emergency Coffee Supply (+2 Stamina)
 
-## Side quests are the biggest threat to your timeline
-
-The planning phase is where roadmaps get built, resources allocated, and milestones set. It's also where scope creep begins.
-
-Scope creep rarely shows up as someone saying "let's build a completely different thing." It shows up as reasonable additions. A feature that would be really nice to have. A market shift that seems worth responding to. A stakeholder who has a genuinely good idea, just three months after the kickoff meeting.
-
-These are side quests. Each one feels low cost when you're considering it in isolation. The problem is they compound. A week added here, two weeks added there, and suddenly the launch date has moved and nobody can explain exactly why.
-
-The hard part is that some of these detours are worth taking. Not all scope creep is bad. But every addition needs to be weighed against the cost of delay, because delay is always real even when it feels abstract in the moment.
-
-A team that can say "that's a good idea and it goes on the backlog" is a team that ships on time.
+With these traits and tools, the PM character is now ready to begin on the adventure of a lifetime.
 
 ---
 
-## Plans erode on contact with execution
+## Level 1: The Starting Village (Ideation Phase)
 
-Design and development will surface assumptions that planning made without realizing it. The prototype that looked right in Figma behaves differently when engineers start building it. An integration that seemed straightforward turns out to have undocumented constraints. A technical decision made early in the project creates drag later.
+Every quest begins somewhere — a safe village where you gather supplies, talk to townsfolk, and learn about the journey ahead. In product management, this is the ideation phase. PMs and their teams explore ideas, connect with stakeholders, and set a broad vision for the product.
 
-None of this means the planning was bad. It means planning is always incomplete, because you cannot know everything in advance. The team that handles this well is not the one with the best initial plan. It's the one that can absorb new information without losing the thread of what they're building.
+Quest Objectives:
 
-The practical answer is building in margin. Not padding estimates to cover laziness, but genuinely accounting for the fact that complex systems rarely assemble themselves without friction.
+- Gather user insights from the Village Elder (CEO)
+- Interview local townspeople (potential users)
+- Collect market research scrolls
+- Form your initial party (core team)
+
+Power-Ups Available:
+
+- Market Research Spyglass (+5 Vision)
+- User Empathy Potion (+10 Understanding)
+- Competitive Analysis Map (+8 Strategy)
+
+Mini-Games:
+
+- Idea Sorting: Match user problems with potential solutions
+- Stakeholder Bingo: Align different perspectives into a coherent vision
+- Resource Gathering: Collect budget approvals and team commitments
+
+Sorting through ideas and identifying the main objective sets the foundation. It's tempting to explore every shiny idea, but the goal is to focus on the essentials that will guide you forward.
 
 ---
 
-## Testing is where you find out what you missed
+## Level 2: The Strategy Sanctum (Planning Phase)
 
-Testing is where assumptions get stress-tested against real use. Bugs are expected. What's more revealing are the things that work exactly as designed but don't work the way users actually need them to.
+Armed with insights and a vision, the PM lays down the roadmap, deciding on core features, setting milestones, and strategizing for the journey.
 
-A feature that passed QA can still fail in the hands of a real user who approaches it differently than the team imagined. This is not a failure of testing. It's a sign that the team got close enough to launch to discover something they couldn't have known earlier.
+Main Quests:
 
-Some of these findings can be fixed before launch. Some have to ship as known issues with a plan to address them. The judgment call is which is which.
+- Draft the Sacred Roadmap
+- Allocate Resources
+- Set Milestone Markers
+
+Side Quests:
+
+- Address Nice-to-have features
+- Reduce Technical debt
+- Optimize Platform
+
+Inventory Management: Balance feature scope (weight) against timeline (carrying capacity), prioritize backlog items, and store ideas for future releases in the Feature Vault.
+
+Hidden Challenges: Overconfidence in the plan, underestimating the roadblocks, or missing user needs. Just like a game, where surprises await, PMs face risks and must stay flexible. Side quests (nice-to-have features or market changes) may also appear to try and lure teams off the main path.
 
 ---
 
-## Launch is a beginning, not an ending
+## Level 3: The Forge of Creation (Design & Prototyping)
 
-Launch is where the product meets the world for the first time. It's also where the roadmap gets its first real feedback.
+Every great adventure requires the right gear. For PMs, this means developing prototypes and gathering early feedback to ensure that the product is equipped for real-world challenges. This is when the vision starts to take form, with each prototype iteration similar to trying out different gear and weapons.
 
-Users tell you things in aggregate that no amount of research fully predicted. They use features in unexpected ways. They ignore things you thought were essential. They complain about problems that weren't on anyone's radar. All of that is signal.
+Main Quests:
 
-The iteration mindset treats launch as a starting point. The shipped product is version one of an ongoing conversation with users, not the conclusion of a project. Post-launch feedback feeds back into prioritization, which reshapes the next version of the roadmap, which starts the cycle again.
+- User Testing Tournaments
+- Design Review Duels
+- Prototype Feedback Fairs
 
-This is uncomfortable for teams that have been heads-down executing for months and want to call it done. But a product that stops updating stops being useful. The adventure map doesn't end at the destination. It just shows you what the next map needs to include.
+Side Quests:
+
+- Combine user needs with technical constraints
+- Forge prototypes from raw ideas
+- Upgrade designs through iteration
+
+Achievement Unlocks:
+
+- "First Blood": Initial prototype completed
+- "Master Craftsman": 10 successful user tests
+- "Pixel Perfect": Design system established
+
+Seeing ideas come to life is fun but setbacks can arise as user tests reveal weaknesses. Gotta hone the arsenal and ensure the team is ready for what lies ahead.
+
+---
+
+## Level 4: The Quest Begins (Development Phase)
+
+With a map in hand and tools ready, the team embarks on the main journey: development. This phase is traversing from location to location, battling bugs, technical debt, and changing requirements, while steadily progressing towards milestones.
+
+Battles:
+
+- Technical Debt Trolls (Regular Enemies)
+- Scope Creep Serpents (Elite Enemies)
+- Legacy Code Liches (Mini-Bosses)
+
+Team Special Abilities:
+
+- Developer Duo Attack: Pair programming boost
+- Designer's Defensive Shield: UX protection
+- QA's Critical Strike: Bug detection
+
+Pay Attention To:
+
+- Technical Debt (Damage over Time)
+- Scope Creep (Slow drain)
+- Meeting Fatigue (Stamina Drain)
+
+Development can feel like a series of increasingly tough battles with minor bugs (minions) and major blockers (bosses) testing the team's abilities. There's also the ever-present health bar of timelines and budgets, which must be watched carefully to avoid burnout.
+
+---
+
+## Level 5: The Boss Battles (Testing Phase)
+
+It feels like victory is near and this is when the product faces its biggest challenges in QA. This is where the product meets the final bosses — the make or break moments that determine if it's ready for launch.
+
+Mini Battles:
+
+- Speed Run (Performance Testing)
+- Survival Mode (Load Testing)
+- Boss Rush (Integration Testing)
+
+Debug Tools:
+
+- Bug Tracking
+- Performance Monitoring Crystal
+
+Achievements:
+
+- "Bug Slayer": 100 bugs fixed
+- "Performance Wizard": All speed tests passed
+- "Integration Master": System stability achieved
+
+Its so satisfying to finally slay those persistent bugs! If you weren't successful, you may need to go back a few levels and start again.
+
+---
+
+## Level 6: The Launch Citadel (Final Boss Battle)
+
+After months of preparation, the product is ready for launch! This is the final boss battle — can the product stand up to real-world use? Here the team must confront unexpected user discoveries and resolve them quickly.
+
+Final Boss Phases:
+
+- The Infrastructure Titan
+- The User Adoption Dragon
+- The Performance Hydra
+
+Items:
+
+- Rollback Scroll (Emergency Use)
+- Hotfix Potion
+- Community Shield (Protection from initial feedback)
+
+Launch isn't the end; it's a doorway to the next quest.
+
+After launch, unlock:
+
+- Enhanced features
+- Harder stakeholder expectations
+- More complex user requirements
+- Legacy system challenges
+
+---
+
+## Bonus Level: The Secret Dungeon of Iteration
+
+Even after launch, the journey isn't over. In the post-launch phase, PMs enter the "secret dungeon" of iteration, where user feedback is added to the roadmap for further improvements. Here, PMs now have user data and insights to use to build upon the product's foundation. This sets the stage for updates and sequels to keep the adventure alive.
+
+Mode Features:
+
+- Procedurally generated user feedback
+- Dynamic feature evolution
+
+Items:
+
+- Analytics Crystal Ball
+- User Feedback Forge
+- A/B Testing Torch
+
+---
+
+## Achievement System — how well did your PM do?
+
+**Rookie Achievements**
+
+- "First Blood": Complete initial prototype
+- "Team Builder": Assemble core team
+- "Vision Quest": Define product strategy
+
+**Veteran Achievements**
+
+- "Sprint Master": Complete 10 successful sprints
+- "Bug Hunter": Resolve 100 issues
+- "Feature Smith": Ship 5 major features
+
+**Legendary Achievements**
+
+- "Product Whisperer": Achieve product-market fit
+- "Dragon Slayer": Successful major launch
+- "Eternal Iterator": Maintain 95% user satisfaction
+
+---
+
+Congratulations. You completed the quest and are a skilled Product Manager. You know that like any adventure worth taking, a product roadmap is filled with highs, lows, and unexpected twists and turns.
+
+Gamifying the process was a fun way to think about Product management. It also was a good reminder that the real battle is the journey itself and that teamwork makes it all possible.
+
+*Special thanks to Matt and David for their great ideas around level creations and achievements.*

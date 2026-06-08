@@ -19,6 +19,9 @@ const CATEGORY_MAP = {
   'meta-200-billion-day':                       { category: 'Platform', color: '#00b4b4' },
   'ip-as-ecosystem-lock':                       { category: 'Strategy', color: '#ff7a3d' },
   'permissioned-vs-permissionless-blockchains': { category: 'Crypto',   color: '#ec5a8f' },
+  'product-roadmap-adventure':                  { category: 'Product',  color: '#2bb673' },
+  'bcg-matrix-product-portfolio':               { category: 'Strategy', color: '#ff7a3d' },
+  'pm-salary-survey-2024':                      { category: 'Product',  color: '#2bb673' },
 }
 
 const ALL_ESSAYS = [
@@ -34,6 +37,9 @@ const ALL_ESSAYS = [
   { slug: 'meta-200-billion-day',                       title: "Meta's $200 Billion Day",                category: 'Platform', color: '#00b4b4' },
   { slug: 'ip-as-ecosystem-lock',                       title: 'IP Is Lock-In',                          category: 'Strategy', color: '#ff7a3d' },
   { slug: 'permissioned-vs-permissionless-blockchains', title: 'Who Gets Access?',                       category: 'Crypto',   color: '#ec5a8f' },
+  { slug: 'product-roadmap-adventure',                  title: 'If Product Roadmaps Were Adventure Maps', category: 'Product',  color: '#2bb673' },
+  { slug: 'bcg-matrix-product-portfolio',               title: 'Product Portfolio Decisions',            category: 'Strategy', color: '#ff7a3d' },
+  { slug: 'pm-salary-survey-2024',                      title: 'What 256 PMs Told Reddit About Pay',     category: 'Product',  color: '#2bb673' },
 ]
 
 function getRelated(slug, category, count = 3) {

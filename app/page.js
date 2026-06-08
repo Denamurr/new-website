@@ -16,6 +16,9 @@ const ESSAYS = [
   { title: "Meta's $200 Billion Day", category: 'Platform', color: '#00b4b4', href: '/blog/meta-200-billion-day' },
   { title: 'IP Is Lock-In', category: 'Strategy', color: '#ff7a3d', href: '/blog/ip-as-ecosystem-lock' },
   { title: 'Who Gets Access?', category: 'Crypto', color: '#ec5a8f', href: '/blog/permissioned-vs-permissionless-blockchains' },
+  { title: 'If Product Roadmaps Were Adventure Maps', category: 'Product', color: '#2bb673', href: '/blog/product-roadmap-adventure' },
+  { title: 'Product Portfolio Decisions', category: 'Strategy', color: '#ff7a3d', href: '/blog/bcg-matrix-product-portfolio' },
+  { title: 'What 256 PMs Told Reddit About Pay', category: 'Product', color: '#2bb673', href: '/blog/pm-salary-survey-2024' },
 ]
 
 export default function Home() {
@@ -92,7 +95,7 @@ export default function Home() {
         {/* Essays */}
         <section id="essays" style={{ background: 'var(--bg)', padding: '40px 6vw 120px' }}>
           <div className="sec-label">
-            <span>Essays</span><span className="bar" /><span>12 musings</span>
+            <span>Essays</span><span className="bar" /><span>15 musings</span>
           </div>
           <ul style={{
             listStyle: 'none', margin: '36px 0 0', padding: 0,

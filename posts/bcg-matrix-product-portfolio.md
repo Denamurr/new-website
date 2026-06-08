@@ -1,72 +1,71 @@
 ---
-title: "The BCG Matrix and Why It Falls Short for Modern Products"
-date: "2024-02-15"
+title: "Product Portfolio Decisions"
+date: "2020-05-01"
 slug: "bcg-matrix-product-portfolio"
 ---
 
-The BCG Matrix was created by Bruce Henderson in the early 1970s and became one of the most widely used tools in business strategy. By the late 70s, half of all Fortune 500 companies were using it. Harvard Business Review eventually named it one of five charts that "changed the world."
+![Product Life Cycle](/images/product-life-cycle.png)
 
-The idea is simple. You plot your products on a two-by-two grid. One axis is market share (how dominant you are relative to competitors). The other is market growth rate (how fast the overall market is expanding). That gives you four quadrants:
-
-- **Stars:** High market share, high growth. Invest here.
-- **Cash Cows:** High market share, low growth. Milk for profits.
-- **Question Marks:** Low market share, high growth. Decide whether to invest or cut.
-- **Dogs:** Low market share, low growth. Usually divest.
-
-The logic follows from there. Use profits from your Cash Cows to fund your Stars and promising Question Marks. Cut your losses on Dogs. It's a resource allocation framework, and for a company managing a portfolio of consumer goods or physical product lines, it still does what it promises.
-
-The problem is that most product teams today aren't managing detergent SKUs.
+I've been thinking a lot about how we evaluate product success lately. The BCG Matrix keeps coming up in product discussions, and while I get its appeal — it's clean, simple, and gives clear direction — I can't help but feel it misses so much of what makes modern products successful.
 
 ---
 
-## Where It Breaks Down
+## Background
 
-The BCG Matrix assumes you're competing in a market that already exists, with a growth rate you can measure and a market share you can calculate. That's a reasonable assumption for mature industries. It doesn't describe what most software and platform companies are doing.
+The BCG Matrix stands for Bain Consulting Matrix and it was created by the founder, Bruce Henderson, and it's been guiding product portfolio decisions since the 1970s. At its peak (the 1970s–80s), the matrix was used by half of all Fortune 500 companies. In 2011, Harvard Business Review named it one of the five charts that "changed the world."
 
-Consider AWS. When Amazon launched it in 2006, cloud computing wasn't really a defined market yet. There was no growth rate to reference. Amazon had to build massive infrastructure for something that most businesses hadn't asked for and couldn't fully evaluate yet. For the first nine years, AWS ran at a loss. Around $5 to 6 billion in cumulative investment before it turned a profit of $1.85 billion in 2015. By 2022, it was generating roughly $22 billion in annual profit.
+The BCG Matrix classifies products into four categories based on market growth and market share:
 
-A BCG analysis in 2009 would have looked at AWS and seen a product with low market share in an uncertain market requiring enormous ongoing investment. It would have flagged it as a Question Mark at best, a Dog at worst. The right call probably would have been to cut it. That call would have been catastrophically wrong.
+- **Stars**: High market share in growing markets
+- **Cash Cows**: High market share in mature markets
+- **Question Marks**: Low market share in growing markets
+- **Pets or Dogs**: Low market share in mature markets
 
-Netflix in the early 2000s is the mirror image. The DVD-by-mail business was profitable, growing, and dominant in its category. Classic Cash Cow behavior — extract profits, manage carefully, don't rock it. Instead, Netflix cannibalized that business to fund streaming. At the time, broadband penetration was limited and streaming video was unproven. On a BCG grid, moving away from a successful Cash Cow to fund a speculative bet made no sense. What it actually did was reshape the entire entertainment industry.
+![BCG Matrix](/images/bcg-matrix.png)
 
----
+This matrix is used to answer a fundamental business question: How should we allocate resources across our product portfolio?
 
-## The Network Effect Problem
+Use profits from Cash Cows to fund Stars and promising Question Marks, while divesting from Dogs. This seems logical. Reinvest profits from successful mature products into high-potential growth opportunities.
 
-The BCG Matrix measures market share as a proxy for competitive strength. For a lot of products, that's reasonable. A brand with more shelf space tends to be harder to displace.
-
-For platform businesses, it misses the actual source of value.
-
-WhatsApp, early in its growth, would have looked like a marginal product in a competitive space. But market share isn't what made WhatsApp hard to compete with. Network effects were. Every new user who joined made the platform more valuable for every existing user. That dynamic compounds in ways that market share numbers don't capture. Once a messaging network reaches critical mass in a given community, the reason to switch isn't price or features, it's who else is on the platform. WhatsApp didn't win by dominating a market. It won by becoming the default.
-
-LinkedIn works the same way. Its value isn't primarily about market share in professional networking. It's about becoming the place where professional identity lives. Recruiters are there because candidates are there. Candidates are there because recruiters are there. That self-reinforcing dynamic is what makes LinkedIn difficult to displace, and none of it shows up in a market share calculation.
+There's a lot of assumptions in the Matrix. For example, it assumes you're entering existing markets with defined growth rates and market shares. But what about products that create entirely new markets? Netflix's streaming service and Amazon's AWS are perfect examples. Neither would have made sense through the BCG lens.
 
 ---
 
-## The Question the Matrix Doesn't Ask
+## Amazon Web Services
 
-When you're evaluating a feature or product investment, the BCG Matrix asks: what's your market share? For many platform investments, that's the wrong question.
+When Amazon Web Services (AWS) launched in 2006, it required substantial investment in infrastructure and software development to support cloud services. Amazon had to build massive data centers and purchase hardware — all for a service that, at the time, was an unproven business model.
 
-A better question is: what does this enable?
+Despite the high growth potential of cloud computing, AWS started with a small market share. It took nine years and around $5–6 billion in investment before AWS turned its first profit of $1.85 billion in 2015. Amazon didn't even break even until a year or two after that. If Amazon had evaluated AWS using the BCG Matrix during corporate strategy planning, it might have decided to cut its losses, as the product was burning through cash without immediate returns.
 
-AWS didn't just sell compute capacity. It enabled thousands of companies to build products they couldn't have built otherwise. That ecosystem of builders created the lock-in, not the market share. A product that becomes infrastructure for other products is in a fundamentally different position than a product that competes head-to-head in a defined category.
-
-Sometimes what looks like a Dog in traditional terms is actually the foundation of a future platform. A low-revenue, low-growth product that happens to sit at the center of user workflows, holds valuable data, or creates switching costs through integration is not the same as a product that's simply losing. The matrix treats them identically.
+But Amazon stuck to its vision. Fast forward to 2022, AWS generates around $22 billion in profit annually, becoming one of the most critical drivers of Amazon's revenue. If Amazon had applied the BCG Matrix too rigidly, the company could have abandoned one of the most profitable tech ventures of the 21st century.
 
 ---
 
-## What to Measure Instead
+## Netflix
 
-The BCG Matrix isn't wrong. For traditional product portfolios, hardware lines, consumer packaged goods, it still works. The issue is applying it to businesses where value is generated through ecosystems, engagement, and network dynamics rather than market position alone.
+In the early 2000s, when Netflix's profits were doubling every year, the matrix would have said that the DVD business was a Star with potential to mature into a cash cow (the ultimate goal) — high market share, steady revenue, and no reinvestment needed. The logical step would have been to milk this profitable business for as long as possible, avoiding unnecessary risks.
 
-For modern product teams, a few other signals tend to be more revealing:
+However, Netflix took a bold, counterintuitive approach. Instead of simply maximizing its DVD rental profits, the company decided to pivot its business model away from DVD rentals by delivering the entertainment content in a completely new and different way — streaming. At the time, streaming was an unproven risk, and the market would only be those households that had broadband internet, providing the speed needed to watch a movie without interruption.
 
-**Retention curves.** A product that retains well over time is building something durable. A product where users leave quickly, regardless of acquisition numbers, usually has a fundamental problem that market share can't paper over.
+It was a bold move because they were inventing a market that didn't fully exist yet, relying on improving internet speeds and changing consumer habits to make it work. If Netflix had used the BCG Matrix back in the early 2000s, the matrix would have advised Netflix to focus on building up its DVD rental business even more, milking this profitable business for as long as possible, avoiding unnecessary risks. Netflix instead might have shifted more resources into DVDs rather than streaming.
 
-**NPS by cohort.** Rather than asking whether people like the product today, ask whether users who joined 12 months ago still recommend it. Cohort-level NPS shows whether satisfaction holds as the product matures and as the user base broadens beyond early adopters.
+By betting heavily on streaming and content creation, Netflix cannibalized its own DVD successes to pursue a larger opportunity, which ultimately reshaped the entertainment industry.
 
-**Network effect density.** How many meaningful connections does the average user have on the platform? Are users more engaged when they have more connections? If activity scales with network size, that's a sign the core mechanism is working.
+---
 
-**Platform activity metrics.** For products with ecosystems — APIs, developer tools, integration partners — track activity at the ecosystem level, not just within the core product. Developer adoption, third-party integrations, and API call volume can signal platform health long before revenue reflects it.
+## WhatsApp
 
-The BCG Matrix is a snapshot of competitive position at a single point in time. Most of the interesting strategic questions for platform businesses are about trajectory and dynamics, not position. That's what these signals try to capture.
+Think about WhatsApp for a minute. Early in its lifecycle, traditional metrics might have labeled it a Question Mark — low market share in a growing messaging market. But that completely misses what makes messaging apps valuable. WhatsApp grew to billions of users not because of market share, but because of network effects. Each new user made the platform more valuable for everyone else, creating a powerful growth engine that the BCG Matrix simply doesn't capture.
+
+---
+
+## LinkedIn
+
+The same story played out with LinkedIn. Its value isn't just about market share in the professional networking space — it's about becoming the default platform for professional identity. The BCG Matrix might tell you about LinkedIn's market position, but it wouldn't capture how the platform becomes increasingly valuable as more professionals join and engage with it.
+
+Sometimes, what looks like a Dog in traditional terms might actually be the foundation of your next platform play. That's because modern product success rarely fits into neat quadrants. And when you look closer, these success stories point to something crucial about modern product management: it's not just about where your product sits in today's market, it's about understanding how it might reshape tomorrow's market. Network effects, user trust, developer ecosystems, data advantages — these factors often matter more than pure market share or growth rates.
+
+The BCG Matrix isn't wrong; it's just incomplete. You wouldn't want to navigate a city with a 2D map when you're actually moving in three dimensions. Modern products create value in ways that Bruce Henderson couldn't have imagined in the 1970s.
+
+And the most valuable products often don't win by dominating existing markets — they win by creating new ones. The key is knowing when to trust the framework, and when to look beyond it. The takeaway is that product success isn't about fitting into the right quadrant — it's about understanding how your product creates value in ways no quadrant can capture.
+
