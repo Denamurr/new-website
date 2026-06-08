@@ -68,8 +68,8 @@ export default function HeroClient() {
     else { selfH = h; selfW = h * IMG_ASPECT }
     const curBgW = lerp(vpW, selfW, t)
     const curBgH = lerp(vpH, selfH, t)
-    const posX = lerp((vw - curBgW) / 2 - x, (w - curBgW) / 2, t)
-    const posY = lerp(vh * 0.38 - curBgH * 0.38 - y, (h - curBgH) / 2, t)
+    const posX = vw / 2 - x - curBgW / 2
+    const posY = vh * 0.38 - curBgH * 0.38 - y
 
     wordmark.style.backgroundSize = `${curBgW}px ${curBgH}px`
     wordmark.style.backgroundPosition = `${posX}px ${posY}px`
