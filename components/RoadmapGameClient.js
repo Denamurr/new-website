@@ -813,18 +813,20 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
           })}
         </div>
 
-        {/* Inline consequence strip */}
+        {/* Resolved modal */}
         {chosen && (
-          <div style={{ marginTop: 6, padding: '16px 18px', borderRadius: 6, background: '#e3fcef', border: '1px solid #abf5d1', animation: 'gameRev .35s cubic-bezier(.2,.8,.2,1)' }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 11, fontWeight: 700, letterSpacing: '.04em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '4px 9px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif' }}>✓ Result</span>
-            <p style={{ fontSize: 15, lineHeight: 1.5, color: '#172b4d', margin: '12px 0 0', fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
-            <div style={{ marginTop: 16, display: 'flex', justifyContent: 'flex-end' }}>
-              <button
-                onClick={onContinue}
-                style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif', fontSize: 14, fontWeight: 600, padding: '9px 18px', cursor: 'pointer' }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#0065ff' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#0052cc' }}
-              >{continueLabel ?? 'Next issue →'}</button>
+          <div style={{ position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(9,30,66,.5)', animation: 'gameRev .2s ease' }}>
+            <div style={{ background: '#fff', borderRadius: 8, boxShadow: '0 8px 32px rgba(9,30,66,.3)', padding: '32px 36px', maxWidth: 480, width: '90%', textAlign: 'center' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '6px 14px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif', marginBottom: 20 }}>✓ Resolved</div>
+              <p style={{ fontSize: 16, lineHeight: 1.6, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
+              <div style={{ marginTop: 28 }}>
+                <button
+                  onClick={onContinue}
+                  style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif', fontSize: 14, fontWeight: 600, padding: '10px 22px', cursor: 'pointer' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#0065ff' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = '#0052cc' }}
+                >{continueLabel ?? '← Back to jira'}</button>
+              </div>
             </div>
           </div>
         )}
@@ -1420,7 +1422,7 @@ export default function RoadmapGameClient() {
             onChoice={handleChoice}
             chosen={chosen}
             onContinue={handleBackToBoard}
-            continueLabel="← Back to board"
+            continueLabel="← Back to jira"
           />
           <StatRail stats={stats} effects={chosen?.effects} />
         </div>
