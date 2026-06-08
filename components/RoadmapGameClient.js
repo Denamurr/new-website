@@ -571,7 +571,7 @@ function getOutcome(stats) {
   }
 }
 
-function clamp(v) { return Math.max(0, Math.min(10, v)) }
+function clamp(v) { return Math.max(0, v) }
 function applyEffects(stats, effects) {
   const next = { ...stats }
   for (const [k, v] of Object.entries(effects)) next[k] = clamp(next[k] + Math.max(-1, Math.min(1, v)))
@@ -636,7 +636,7 @@ function StatRail({ stats, effects }) {
               <span style={{ fontSize: 15, fontWeight: 700, color: '#42526e', fontVariantNumeric: 'tabular-nums', fontFamily: '"Oswald", sans-serif' }}>{val}</span>
             </div>
             <div style={{ height: 8, borderRadius: 4, background: '#ebecf0', marginTop: 8, overflow: 'hidden' }}>
-              <div style={{ height: '100%', borderRadius: 4, background: color, width: `${val * 10}%`, transition: 'width .7s cubic-bezier(.2,.8,.2,1)' }} />
+              <div style={{ height: '100%', borderRadius: 4, background: color, width: `${Math.min(val * 10, 100)}%`, transition: 'width .7s cubic-bezier(.2,.8,.2,1)' }} />
             </div>
             {delta != null && (
               <span style={{ position: 'absolute', right: 0, top: 9, fontSize: 13, fontWeight: 700, color: delta > 0 ? '#00875a' : '#de350b', fontFamily: '"Droid Sans", sans-serif', animation: 'pmStatDelta 2s ease forwards' }}>
@@ -1161,10 +1161,10 @@ function OutcomeScreen({ stats, sequence, onRestart }) {
                       {isTop && <span style={{ fontWeight: 700, fontSize: 9, color: '#fff', background: '#00875a', padding: '2px 6px', borderRadius: 3, marginLeft: 6, verticalAlign: 'middle' }}>TOP</span>}
                       {isLow && <span style={{ fontWeight: 700, fontSize: 9, color: '#fff', background: '#de350b', padding: '2px 6px', borderRadius: 3, marginLeft: 6, verticalAlign: 'middle' }}>LOW</span>}
                     </span>
-                    <span style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 17, color: '#42526e' }}>{val * 10}</span>
+                    <span style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 17, color: '#42526e' }}>{val}</span>
                   </div>
                   <div style={{ height: 8, borderRadius: 4, background: '#ebecf0', marginTop: 7, overflow: 'hidden' }}>
-                    <div style={{ height: '100%', borderRadius: 4, background: color, width: `${val * 10}%` }} />
+                    <div style={{ height: '100%', borderRadius: 4, background: color, width: `${Math.min(val * 10, 100)}%` }} />
                   </div>
                 </div>
               )
