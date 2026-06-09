@@ -715,9 +715,10 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
         {chosen && (
           <div style={{ position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(9,30,66,.5)', animation: 'gameRev .2s ease' }}>
             <div style={{ background: '#fff', borderRadius: 8, boxShadow: '0 8px 32px rgba(9,30,66,.3)', padding: '32px 36px', maxWidth: 480, width: '90%', textAlign: 'center' }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '6px 14px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif', marginBottom: 20 }}>✓ Resolved</div>
-              <p style={{ fontSize: 18, lineHeight: 1.6, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
-              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginTop: 20 }}>
+              <div style={{ background: '#f4f5f7', borderRadius: 6, padding: '18px 20px', marginBottom: 20 }}>
+                <p style={{ fontSize: 18, lineHeight: 1.6, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
+              </div>
+              <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 20 }}>
                 {Object.entries(chosen.effects).map(([k, v]) => {
                   const cfg = STATS_CONFIG.find(s => s.key === k)
                   const clamped = Math.max(-1, Math.min(1, v))
@@ -728,7 +729,8 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
                   )
                 })}
               </div>
-              <div style={{ marginTop: 20 }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '10px 14px', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif' }}>✓ Resolved</div>
                 <button
                   onClick={onContinue}
                   style={{ background: '#0052cc', color: '#fff', border: 'none', borderRadius: 4, fontFamily: '"Droid Sans", sans-serif', fontSize: 14, fontWeight: 600, padding: '10px 22px', cursor: 'pointer' }}
