@@ -697,11 +697,11 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
                   transition: 'padding .2s',
                 }}
               >
-                <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 13.5, lineHeight: 1.3, color: '#172b4d' }}>
+                <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 15.5, lineHeight: 1.3, color: '#172b4d' }}>
                   {choice.label}
                 </div>
                 {!isOther && (
-                  <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 400, fontStyle: 'italic', fontSize: 14.5, color: '#172b4d', lineHeight: 1.5, marginTop: 7 }}>{choice.desc}</div>
+                  <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 400, fontStyle: 'italic', fontSize: 16.5, color: '#172b4d', lineHeight: 1.5, marginTop: 7 }}>{choice.desc}</div>
                 )}
                 {!chosen && (
                   <span className="pm-opt-arrow" style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%) translateX(-4px)', color: '#0065ff', fontSize: 17, opacity: 0, transition: 'opacity .15s, transform .15s', pointerEvents: 'none' }}>→</span>
@@ -716,13 +716,13 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
           <div style={{ position: 'fixed', inset: 0, zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(9,30,66,.5)', animation: 'gameRev .2s ease' }}>
             <div style={{ background: '#fff', borderRadius: 8, boxShadow: '0 8px 32px rgba(9,30,66,.3)', padding: '32px 36px', maxWidth: 480, width: '90%', textAlign: 'center' }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 11, fontWeight: 700, letterSpacing: '.08em', textTransform: 'uppercase', color: '#fff', background: '#00875a', padding: '6px 14px', borderRadius: 3, fontFamily: '"Droid Sans", sans-serif', marginBottom: 20 }}>✓ Resolved</div>
-              <p style={{ fontSize: 16, lineHeight: 1.6, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
+              <p style={{ fontSize: 18, lineHeight: 1.6, color: '#172b4d', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>{chosen.consequence}</p>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginTop: 20 }}>
                 {Object.entries(chosen.effects).map(([k, v]) => {
                   const cfg = STATS_CONFIG.find(s => s.key === k)
                   const clamped = Math.max(-1, Math.min(1, v))
                   return (
-                    <span key={k} style={{ fontSize: 12, fontWeight: 700, padding: '4px 10px', borderRadius: 3, background: clamped > 0 ? '#e3fcef' : '#ffebe6', color: clamped > 0 ? '#00875a' : '#de350b', fontFamily: '"Droid Sans", sans-serif' }}>
+                    <span key={k} style={{ fontSize: 14, fontWeight: 700, padding: '4px 10px', borderRadius: 3, background: clamped > 0 ? '#e3fcef' : '#ffebe6', color: clamped > 0 ? '#00875a' : '#de350b', fontFamily: '"Droid Sans", sans-serif' }}>
                       {cfg?.label} {clamped > 0 ? `+${clamped}` : clamped}
                     </span>
                   )
