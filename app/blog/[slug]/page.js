@@ -144,10 +144,44 @@ export default async function BlogPost({ params }) {
           <div style={{ maxWidth: 880, margin: '48px auto 0', height: 2, background: 'var(--ink)' }} />
         </div>
 
+        {/* Tool link — top */}
+        {data.tool_href && (
+          <div style={{ padding: '28px 6vw 0' }}>
+            <div style={{ maxWidth: 880, margin: '0 auto' }}>
+              <Link href={data.tool_href} style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                fontFamily: '"Inter", sans-serif', fontSize: 14, fontWeight: 600,
+                color: 'var(--ink)', background: 'var(--yellow)',
+                border: '2px solid var(--ink)', borderRadius: 999,
+                padding: '10px 20px', textDecoration: 'none'
+              }}>
+                {data.tool_label ?? 'Open the tool'} ↗
+              </Link>
+            </div>
+          </div>
+        )}
+
         {/* Body */}
         <div style={{ padding: '8px 6vw 40px' }}>
           <div className="body-inner" dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </div>
+
+        {/* Tool link — bottom */}
+        {data.tool_href && (
+          <div style={{ padding: '0 6vw 20px' }}>
+            <div style={{ maxWidth: 880, margin: '0 auto' }}>
+              <Link href={data.tool_href} style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                fontFamily: '"Inter", sans-serif', fontSize: 14, fontWeight: 600,
+                color: 'var(--ink)', background: 'var(--yellow)',
+                border: '2px solid var(--ink)', borderRadius: 999,
+                padding: '10px 20px', textDecoration: 'none'
+              }}>
+                {data.tool_label ?? 'Open the tool'} ↗
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* Author card */}
         <section style={{ padding: '60px 6vw' }}>

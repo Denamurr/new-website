@@ -138,35 +138,47 @@ export default function RiceClient() {
   const isEmpty = features.length === 0
 
   return (
-    <div className="max-w-[1000px] mx-auto px-8 pt-[72px] pb-16">
+    <div style={{ maxWidth: 1000, margin: '0 auto', padding: '72px 40px 80px' }}>
 
       {/* Intro */}
-      <div className="mb-8 pt-5 max-w-2xl">
-        <h1 className="text-2xl font-semibold tracking-tight text-gray-900 mb-1">
-          RICE stands for Reach, Impact, Confidence and Effort.
+      <div style={{ maxWidth: 680, paddingTop: 28, marginBottom: 48 }}>
+        <span style={{
+          display: 'inline-block', fontFamily: '"Inter", sans-serif',
+          fontSize: 12, fontWeight: 600, letterSpacing: '0.12em',
+          textTransform: 'uppercase', color: '#fff',
+          background: '#2bb673', padding: '5px 12px', borderRadius: 999,
+          marginBottom: 20
+        }}>Product</span>
+        <h1 style={{
+          fontFamily: '"Anton", sans-serif', fontWeight: 400,
+          fontSize: 'clamp(36px, 5vw, 64px)', lineHeight: 0.96,
+          letterSpacing: '-0.015em', margin: '0 0 24px', color: 'var(--ink)'
+        }}>
+          RICE Prioritization Tool
         </h1>
-        <p className="text-[13px] text-gray-400 mb-3">Free RICE tool.</p>
-        <p className="text-[13px] text-gray-500 leading-relaxed mb-4">
-          A framework I keep coming back to whenever a roadmap conversation starts going in circles.
-          It forces the debate onto numbers — if we built this, how many people would it reach? How
-          much would it move the needle on our north star? How confident are we about this? How long
-          will it take? I built this so I could pull it up during planning without hunting for a
-          spreadsheet.
+        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 15, lineHeight: 1.65, color: '#444', margin: '0 0 14px' }}>
+          Score and rank features by Reach, Impact, Confidence, and Effort.
+          The highest score is the most value for the least work — useful when a roadmap
+          conversation starts going in circles.
         </p>
-        <p className="text-[13px] text-gray-500 leading-relaxed mb-4">
-          Enter a name for each possible feature or product, then estimate how many users would see
-          it over 3 months. What impact could it have — more sign-ups, awareness, engagement? How
-          confident are you about the impact and reach? And lastly, how much effort will it take to
-          build. Use # of engineers × # of weeks, so 2 engineers over 3 weeks would be 6 in effort.
-          From there it will perform the calculation and give you a numerical score. Use this to
-          compare features and figure out what gives you the most bang for your buck.
+        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 15, lineHeight: 1.65, color: '#444', margin: '0 0 28px' }}>
+          Enter a feature name, estimate reach over 3 months, set impact and confidence,
+          then pick effort in person-weeks. Export to CSV when you're done.
         </p>
-        <p className="text-[13px] text-gray-500">You can even export it to share with your team.</p>
+        <a href="/blog/rice-framework-age-of-ai" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 8,
+          fontFamily: '"Inter", sans-serif', fontSize: 14, fontWeight: 600,
+          color: 'var(--ink)', background: 'var(--yellow)',
+          border: '2px solid var(--ink)', borderRadius: 999,
+          padding: '9px 18px', textDecoration: 'none'
+        }}>
+          Using RICE for AI features? Read this first ↗
+        </a>
       </div>
 
       {/* Session header */}
-      <div className="flex items-baseline justify-between gap-4 mb-5 flex-wrap">
-        <div className="flex flex-col gap-1">
+      <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 16, marginBottom: 20, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <input
             type="text"
             value={sessionName}
@@ -174,32 +186,53 @@ export default function RiceClient() {
               setSessionName(e.target.value)
               try { localStorage.setItem('rice:session', e.target.value) } catch {}
             }}
-            className="text-[18px] font-semibold tracking-tight outline-none border-b border-transparent focus:border-gray-200 pb-px transition-colors bg-transparent"
-            style={{ minWidth: '12ch', width: `${Math.max(sessionName.length + 2, 12)}ch` }}
+            style={{
+              fontFamily: '"Anton", sans-serif', fontWeight: 400, fontSize: 22,
+              letterSpacing: '-0.01em', outline: 'none', border: 'none',
+              borderBottom: '2px solid transparent', background: 'transparent',
+              color: 'var(--ink)', padding: '0 0 2px',
+              minWidth: '12ch', width: `${Math.max(sessionName.length + 2, 12)}ch`,
+              transition: 'border-color 0.15s'
+            }}
+            onFocus={e => e.target.style.borderBottomColor = '#ddd'}
+            onBlur={e => e.target.style.borderBottomColor = 'transparent'}
           />
           {!isEmpty && (
-            <span className="text-[13px] text-gray-400">
+            <span style={{ fontFamily: '"Inter", sans-serif', fontSize: 13, color: '#aaa' }}>
               {features.length} feature{features.length !== 1 ? 's' : ''}
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2 shrink-0">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <button
             onClick={clearAll}
-            className="text-[13px] px-3 py-1.5 rounded-md border border-gray-200 text-gray-400 hover:bg-gray-50 hover:text-gray-600 transition-colors"
+            style={{
+              fontFamily: '"Inter", sans-serif', fontSize: 13, padding: '7px 14px',
+              borderRadius: 6, border: '1px solid #e5e7eb', color: '#999',
+              background: '#fff', cursor: 'pointer'
+            }}
           >
             Clear
           </button>
           <button
             onClick={exportCSV}
             disabled={isEmpty}
-            className="text-[13px] px-3 py-1.5 rounded-md border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            style={{
+              fontFamily: '"Inter", sans-serif', fontSize: 13, padding: '7px 14px',
+              borderRadius: 6, border: '1px solid #e5e7eb', color: '#666',
+              background: '#fff', cursor: isEmpty ? 'not-allowed' : 'pointer',
+              opacity: isEmpty ? 0.35 : 1
+            }}
           >
             Export CSV
           </button>
           <button
             onClick={() => addRow(true)}
-            className="text-[13px] px-3 py-1.5 rounded-md bg-gray-900 text-white hover:bg-gray-700 transition-colors"
+            style={{
+              fontFamily: '"Inter", sans-serif', fontSize: 13, fontWeight: 600,
+              padding: '7px 16px', borderRadius: 6,
+              background: 'var(--ink)', color: '#fff', border: 'none', cursor: 'pointer'
+            }}
           >
             + Add feature
           </button>
@@ -207,16 +240,20 @@ export default function RiceClient() {
       </div>
 
       {isEmpty ? (
-        <div className="flex flex-col items-center justify-center gap-5 py-24 text-gray-500">
-          <div className="flex flex-col items-center gap-1.5 text-[14px]">
-            <span className="text-gray-400">Reach × Impact × Confidence</span>
-            <div className="w-52 h-px bg-gray-200" />
-            <span className="text-gray-400">Effort</span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 20, padding: '80px 0' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, fontFamily: '"Inter", sans-serif', fontSize: 14, color: '#bbb' }}>
+            <span>Reach × Impact × Confidence</span>
+            <div style={{ width: 200, height: 1, background: '#e5e7eb' }} />
+            <span>Effort</span>
           </div>
-          <p className="text-[13px] text-gray-400">Score and rank features. Add your first one to get started.</p>
+          <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 13, color: '#bbb', margin: 0 }}>Score and rank features. Add your first one to get started.</p>
           <button
             onClick={() => addRow(true)}
-            className="text-[13px] px-3.5 py-1.5 rounded-md bg-gray-900 text-white hover:bg-gray-700 transition-colors"
+            style={{
+              fontFamily: '"Inter", sans-serif', fontSize: 13, fontWeight: 600,
+              padding: '9px 20px', borderRadius: 6,
+              background: 'var(--ink)', color: '#fff', border: 'none', cursor: 'pointer'
+            }}
           >
             + Add your first feature
           </button>
@@ -226,28 +263,21 @@ export default function RiceClient() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b border-gray-100">
-                  <th className="text-left pb-2.5 pr-2 pl-0 min-w-[180px] w-[28%]">
-                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest">Feature</span>
-                  </th>
-                  <th className="text-left pb-2.5 px-2 min-w-[80px]">
-                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Reach</span>
-                    <span className="block text-[10px] font-normal text-gray-400 mt-0.5">per qtr</span>
-                  </th>
-                  <th className="text-left pb-2.5 px-2 min-w-[100px]">
-                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Impact</span>
-                  </th>
-                  <th className="text-left pb-2.5 px-2 min-w-[190px]">
-                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Confidence</span>
-                  </th>
-                  <th className="text-left pb-2.5 px-2 min-w-[80px]">
-                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Effort</span>
-                    <span className="block text-[10px] font-normal text-gray-400 mt-0.5">person-wks</span>
-                  </th>
-                  <th className="text-left pb-2.5 px-2 min-w-[120px]">
-                    <span className="block text-[11px] font-medium text-gray-500 uppercase tracking-widest leading-none">Score</span>
-                  </th>
-                  <th className="w-8" />
+                <tr style={{ borderBottom: '1px solid #f0f0f0' }}>
+                  {[
+                    { label: 'Feature', sub: null, minW: 180, w: '28%', pl: 0 },
+                    { label: 'Reach', sub: 'per qtr', minW: 80 },
+                    { label: 'Impact', sub: null, minW: 100 },
+                    { label: 'Confidence', sub: null, minW: 190 },
+                    { label: 'Effort', sub: 'person-wks', minW: 80 },
+                    { label: 'Score', sub: null, minW: 120 },
+                  ].map(col => (
+                    <th key={col.label} style={{ textAlign: 'left', paddingBottom: 10, paddingLeft: col.pl ?? 8, paddingRight: 8, minWidth: col.minW, width: col.w }}>
+                      <span style={{ display: 'block', fontFamily: '"Inter", sans-serif', fontSize: 11, fontWeight: 600, color: '#888', textTransform: 'uppercase', letterSpacing: '0.08em', lineHeight: 1 }}>{col.label}</span>
+                      {col.sub && <span style={{ display: 'block', fontFamily: '"Inter", sans-serif', fontSize: 10, color: '#bbb', marginTop: 3 }}>{col.sub}</span>}
+                    </th>
+                  ))}
+                  <th style={{ width: 32 }} />
                 </tr>
               </thead>
               <tbody>
@@ -374,9 +404,20 @@ export default function RiceClient() {
             </table>
           </div>
 
-          <p className="mt-5 text-[12px] text-gray-400">
+          <p style={{ marginTop: 20, fontFamily: '"Inter", sans-serif', fontSize: 12, color: '#bbb' }}>
             Reach is per quarter · Effort in person-weeks · {features.length} feature{features.length !== 1 ? 's' : ''}
           </p>
+          <div style={{ marginTop: 40, paddingTop: 32, borderTop: '1px solid #f0f0f0' }}>
+            <a href="/blog/rice-framework-age-of-ai" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              fontFamily: '"Inter", sans-serif', fontSize: 14, fontWeight: 600,
+              color: 'var(--ink)', background: 'var(--yellow)',
+              border: '2px solid var(--ink)', borderRadius: 999,
+              padding: '9px 18px', textDecoration: 'none'
+            }}>
+              Using RICE for AI features? Read this first ↗
+            </a>
+          </div>
         </>
       )}
     </div>

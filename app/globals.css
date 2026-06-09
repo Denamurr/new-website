@@ -31,14 +31,16 @@ body {
 /* hero scroll-driven wordmark */
 .wordmark {
   margin: 0;
+  padding: 0.15em 0;
   font-family: "Anton", "Oswald", "Impact", sans-serif;
   font-weight: 400;
   line-height: 0.8;
   letter-spacing: -0.015em;
   white-space: nowrap;
+  background-color: var(--accent);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center 38%;
+  background-position: center 50%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -50,6 +52,7 @@ body {
   left: 0;
   top: 0;
   margin: 0;
+  padding: 0.15em 0;
   font-family: "Anton", "Oswald", "Impact", sans-serif;
   font-weight: 400;
   line-height: 0.8;
@@ -123,7 +126,7 @@ body {
   font-family: "Anton", sans-serif;
   font-weight: 400;
   font-size: clamp(26px, 3.4vw, 46px);
-  line-height: 1;
+  line-height: 0.8;
   letter-spacing: -0.012em;
 }
 
@@ -218,6 +221,7 @@ body {
 }
 .body-inner a:hover { color: var(--cat, #ec5a8f); }
 .body-inner strong { font-weight: 600; }
+.body-inner p > strong:only-child { font-family: "Impact", "Anton", sans-serif; font-weight: 400; font-size: 1.15em; letter-spacing: 0.01em; }
 .body-inner em { font-style: italic; }
 .body-inner ul, .body-inner ol { margin: 24px 0; padding-left: 1.2em; }
 .body-inner li { margin: 12px 0; padding-left: 0.3em; }

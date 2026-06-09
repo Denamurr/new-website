@@ -10,7 +10,7 @@ const CATEGORIES = {
 const ITEM_GAP   = 100   // px between events
 const PADDING    = 200   // px left/right padding
 const CARD_WIDTH = 160   // px card width
-const CIRCLE_R   = 6     // axis circle radius
+const CIRCLE_R   = 6     // axis diamond half-size
 const DOT_R      = 3     // card-end dot radius
 const CONNECTOR  = 28    // connector line height
 
@@ -106,41 +106,46 @@ export default function TimelineClient({ entries }) {
     }
   }, [])
 
+  const btnBase = {
+    fontFamily: '"Inter", sans-serif', fontSize: 13, padding: '5px 12px',
+    borderRadius: 999, border: 'none', cursor: 'pointer',
+    display: 'flex', alignItems: 'center', gap: 6, background: 'transparent',
+  }
+
   return (
-    <div className="bg-white">
+    <div style={{ background: '#fff' }}>
 
       {/* Intro */}
-      <div className="px-8 pt-10 pb-8 border-b border-gray-100 flex items-center gap-12">
-        <div className="flex-1 max-w-xl">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-3">Timeline</p>
-          <h1 className="text-2xl font-bold text-gray-900 tracking-tight mb-3">
-            The Timeline of AI Breakthroughs
-          </h1>
-          <p className="text-[15px] text-gray-500 leading-relaxed">
-            AI has been advancing at a pace that&apos;s hard to follow. To make sense of it, I designed this
-            interactive timeline showing the major milestones that pushed AI into the mainstream. It starts
-            with a research paper, moves on to model releases and finally to the products that brought them
-            to millions of users.
-          </p>
-        </div>
-        <div className="flex-shrink-0 hidden md:block">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://substackcdn.com/image/fetch/$s_!jpqs!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F080273ad-5424-4bb3-9386-a10b5d23dbb4_2500x1406.png"
-            alt="Evolution of AI"
-            className="w-72 h-auto object-contain opacity-80"
-          />
-        </div>
+      <div style={{ padding: '32px 40px 28px', borderBottom: '1px solid #f0f0f0' }}>
+        <span style={{
+          display: 'inline-block', fontFamily: '"Inter", sans-serif',
+          fontSize: 12, fontWeight: 600, letterSpacing: '0.12em',
+          textTransform: 'uppercase', color: '#fff',
+          background: '#8b5cf6', padding: '5px 12px', borderRadius: 999, marginBottom: 18
+        }}>AI</span>
+        <h1 style={{
+          fontFamily: '"Anton", sans-serif', fontWeight: 400,
+          fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 0.96,
+          letterSpacing: '-0.015em', margin: '0 0 18px', color: 'var(--ink)'
+        }}>
+          The Timeline of AI Breakthroughs
+        </h1>
+        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 15, lineHeight: 1.65, color: '#555', maxWidth: 600, margin: 0 }}>
+          AI has been advancing at a pace that&apos;s hard to follow. This interactive timeline tracks
+          the major model releases and products that pushed AI into the mainstream. Drag or scroll to explore.
+        </p>
       </div>
 
-      {/* Topbar */}
-      <div className="flex items-center justify-between px-8 py-3 gap-4 border-b border-gray-100">
-        <div className="flex items-center gap-0.5">
+      {/* Filter + Search bar */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 40px', borderBottom: '1px solid #f0f0f0', gap: 16 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
           <button
             onClick={() => setActiveCategory('all')}
-            className={`text-[13px] px-2.5 py-1 rounded transition-colors ${
-              activeCategory === 'all' ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
-            }`}
+            style={{
+              ...btnBase,
+              background: activeCategory === 'all' ? 'var(--ink)' : 'transparent',
+              color: activeCategory === 'all' ? '#fff' : '#999',
+            }}
           >
             All
           </button>
@@ -148,11 +153,13 @@ export default function TimelineClient({ entries }) {
             <button
               key={key}
               onClick={() => setActiveCategory(activeCategory === key ? 'all' : key)}
-              className={`flex items-center gap-1.5 text-[13px] px-2.5 py-1 rounded transition-colors ${
-                activeCategory === key ? 'text-gray-900 bg-gray-100' : 'text-gray-400 hover:text-gray-600'
-              }`}
+              style={{
+                ...btnBase,
+                background: activeCategory === key ? 'var(--ink)' : 'transparent',
+                color: activeCategory === key ? '#fff' : '#999',
+              }}
             >
-              <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: cat.color }} />
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: cat.color, flexShrink: 0 }} />
               {cat.label}
             </button>
           ))}
@@ -162,34 +169,33 @@ export default function TimelineClient({ entries }) {
           placeholder="Search…"
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          className="border-0 border-b border-gray-200 pb-0.5 text-[13px] w-40 outline-none text-gray-900 placeholder-gray-300 bg-transparent focus:border-gray-500 transition-colors"
+          style={{
+            fontFamily: '"Inter", sans-serif', fontSize: 13, width: 160,
+            border: 'none', borderBottom: '1px solid #e5e7eb', outline: 'none',
+            background: 'transparent', color: 'var(--ink)', paddingBottom: 3,
+          }}
         />
       </div>
 
       {/* Timeline */}
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 w-24 pointer-events-none z-10"
-          style={{ background: 'linear-gradient(to right, white 40%, transparent)' }} />
-        <div className="absolute inset-y-0 right-0 w-24 pointer-events-none z-10"
-          style={{ background: 'linear-gradient(to left, white 40%, transparent)' }} />
+      <div style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: 80, pointerEvents: 'none', zIndex: 10, background: 'linear-gradient(to right, #fff 40%, transparent)' }} />
+        <div style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: 80, pointerEvents: 'none', zIndex: 10, background: 'linear-gradient(to left, #fff 40%, transparent)' }} />
 
         <div
           ref={wrapRef}
-          className="timeline-scroll overflow-x-auto overflow-y-hidden select-none"
-          style={{ cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 440 }}
+          className="timeline-scroll"
+          style={{ overflowX: 'auto', overflowY: 'hidden', userSelect: 'none', cursor: 'grab', scrollbarWidth: 'none', msOverflowStyle: 'none', height: 440 }}
         >
           {filtered.length === 0 ? (
-            <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm text-gray-300">
+            <p style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', fontFamily: '"Inter", sans-serif', fontSize: 14, color: '#ccc' }}>
               No entries match your filter.
             </p>
           ) : (
-            <div className="relative" style={{ width: totalWidth, height: '100%' }}>
+            <div style={{ position: 'relative', width: totalWidth, height: '100%' }}>
 
               {/* Axis line */}
-              <div
-                className="absolute top-1/2 bg-gray-200"
-                style={{ left: 0, right: 0, height: 1, transform: 'translateY(-50%)' }}
-              />
+              <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: '#e5e7eb', transform: 'translateY(-50%)' }} />
 
               {items.map(entry => {
                 const cat     = CATEGORIES[entry.category] || CATEGORIES.model_release
@@ -201,7 +207,7 @@ export default function TimelineClient({ entries }) {
                       href={entry.url || '#'}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-[12.5px] font-semibold text-gray-800 leading-snug hover:text-gray-900 transition-colors"
+                      style={{ display: 'block', fontFamily: '"Inter", sans-serif', fontSize: 12.5, fontWeight: 600, color: '#1a1a1a', lineHeight: 1.35, textDecoration: 'none' }}
                       onClick={e => e.stopPropagation()}
                     >
                       {cleanTitle(entry.title)}
@@ -210,52 +216,44 @@ export default function TimelineClient({ entries }) {
                 )
 
                 const dateLabel = (
-                  <span className="text-[10px] font-medium text-gray-400 whitespace-nowrap">
+                  <span style={{ fontFamily: '"Inter", sans-serif', fontSize: 10, fontWeight: 500, color: '#bbb', whiteSpace: 'nowrap' }}>
                     {formatDate(entry.date)}
                   </span>
                 )
 
                 const endDot = (
-                  <div
-                    className="rounded-full shrink-0"
-                    style={{ width: DOT_R * 2, height: DOT_R * 2, background: cat.color }}
-                  />
+                  <div style={{ width: DOT_R * 2, height: DOT_R * 2, borderRadius: '50%', background: cat.color, flexShrink: 0 }} />
                 )
 
                 const connector = (
-                  <div className="bg-gray-200 shrink-0" style={{ width: 1, height: CONNECTOR }} />
+                  <div style={{ width: 1, height: CONNECTOR, background: '#e5e7eb', flexShrink: 0 }} />
                 )
 
                 return (
                   <Fragment key={entry.id}>
-                    {/* Axis circle */}
+                    {/* Axis diamond */}
                     <div
-                      className="absolute rounded-full"
                       style={{
-                        left:       entry.x,
-                        top:        '50%',
-                        width:      CIRCLE_R * 2,
-                        height:     CIRCLE_R * 2,
-                        transform:  'translateX(-50%) translateY(-50%)',
-                        background: cat.color,
-                        zIndex:     1,
+                        position: 'absolute',
+                        left: entry.x, top: '50%',
+                        width: CIRCLE_R * 2, height: CIRCLE_R * 2,
+                        transform: 'translateX(-50%) translateY(-50%) rotate(45deg)',
+                        background: cat.color, zIndex: 1,
                       }}
                     />
 
-                    {/* Card container — anchored at axis circle edge, grows away from axis */}
+                    {/* Card */}
                     <div
-                      className="absolute flex flex-col items-center"
                       style={{
-                        left:      entry.x,
-                        width:     CARD_WIDTH,
+                        position: 'absolute', left: entry.x, width: CARD_WIDTH,
                         transform: 'translateX(-50%)',
+                        display: 'flex', flexDirection: 'column', alignItems: 'center',
                         ...(isAbove
                           ? { bottom: `calc(50% + ${CIRCLE_R}px)` }
                           : { top:    `calc(50% + ${CIRCLE_R}px)` }),
                       }}
                     >
                       {isAbove ? (
-                        // Above: card text → dot → connector → date (date nearest axis)
                         <>
                           {cardText}
                           <div style={{ marginTop: 8 }}>{endDot}</div>
@@ -263,7 +261,6 @@ export default function TimelineClient({ entries }) {
                           <div style={{ marginTop: 6, marginBottom: 4 }}>{dateLabel}</div>
                         </>
                       ) : (
-                        // Below: date → connector → dot → card text (date nearest axis)
                         <>
                           <div style={{ marginTop: 4, marginBottom: 6 }}>{dateLabel}</div>
                           {connector}
@@ -281,12 +278,12 @@ export default function TimelineClient({ entries }) {
       </div>
 
       {/* Footer */}
-      <div className="px-8 py-3 border-t border-gray-100 flex items-center justify-between gap-4">
-        <p className="text-xs text-gray-400">
-          Built as an interactive visualization using React and a small dataset of model and product milestones.
+      <div style={{ padding: '10px 40px', borderTop: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 12, color: '#bbb', margin: 0 }}>
+          Models and products only · curated by hand · {entries.length} entries
         </p>
         {showHint && (
-          <span className="text-xs text-gray-300 shrink-0">scroll or drag →</span>
+          <span style={{ fontFamily: '"Inter", sans-serif', fontSize: 12, color: '#ccc', flexShrink: 0 }}>scroll or drag →</span>
         )}
       </div>
 
