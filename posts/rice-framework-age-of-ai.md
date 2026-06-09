@@ -24,25 +24,27 @@ Take a simple example: let's say the idea is an AI feature that suggests email s
 
 But the overall effort of the idea will take weeks, not days.
 
-Before you can test anything, someone first has to define what a good subject line actually looks like. Otherwise, how do you know if it's ready to be deployed? Should they be under 50 characters? Do they need to match our brand voice? Can it make claims that are only partially supported by the email body? Can it use sarcasm? Is clickbait ever acceptable? This sounds obvious until you sit in a room and try to determine what kinds of subject lines are great and what subject lines the marketing team avoids. If you just trust that AI knows best, there will be lots of mistakes and failures that will slip through.
+**Clear Definition**
 
-Then someone has to build a test suite with real examples of emails and possible subject lines that are good and also not good, so there is something real and tangible to evaluate against.
+You need to work out many things to determine whether its AI Slop or AI success including defining what a *good* subject is. Should they be under 50 characters? Do they need to match the brand voice? Can it make claims that are only partially supported by the email body? Can it use sarcasm? Is clickbait ever acceptable? This sounds obvious until you sit in a room and try to determine what kinds of subject lines are great and what subject lines the marketing team avoids. If you just trust that AI knows best, there will be lots of mistakes and failures that will slip through.
 
-The prompting instructions will go through different iterations. The first version of those instructions will not produce great results. The AI might give you results that are technically correct but just feel off. They're too formal, too generic or missing the point.
+**Clear Testing with Examples**
 
-Revision of instructions. Add more context. Change the wording. Try again. Some improvement. Some results are worse. You adjust again. This back and forth is not coding in the traditional sense. There's no syntax to get right. It's closer to coaching someone who's very literal and very fast but doesn't have any common sense yet.
+Then someone has to build a test suite with real examples of emails and possible subject lines that are good and also not good subject lines, so there is something real and tangible to evaluate against.
 
-The feature needs to go through lots of revisions because you're not building a thing, you're nudging behavior in a system that doesn't explain itself. You try something, see what changed, guess at why, and then try again. This loop can run 10-20 rounds. Each round takes hours.
+**Revise Revise Revise**
 
-After a lot of extra effort and fine tweaking, you ship it. It took about a week, not 1-2 days. Now it's three months later and the model provider updates their model, changing the personality.
+The prompting instructions will go through different iterations. The first version of those instructions will look different than the final version.
 
-This happens because AI-generated code is more likely to default to calling by model name, because that's the most common pattern in documentation and training examples. It's the obvious way to write it. A human engineer with experience might think to be more specific with the version. An AI generating the code probably wouldn't unless explicitly told to. So any update to that model, which happens regularly, means the feature is automatically updated as well. Nobody on the team made any changes. The model just woke up slightly different one day. Sometimes it's an improvement. Sometimes the tone shifts in ways that quietly break everything you tuned. You might not even notice for a while.
+Now it's three months later and the model provider has updated their model, effectively changing the personality. Nobody on the team made any changes or has given any thought about the feature since it was released. And suddenly, the model just woke up slightly different today. Sometimes it's an improvement. Sometimes the tone shifts in ways that quietly break everything you tuned. You might not even notice for a while.
 
-If the code was written for a specific version, like gpt-4-0125 (instead of just gpt-4), then you avoid the automatic update — but eventually the provider is going to sunset that model. This means the code needs to be updated, triggering another round of quality checks.
+**Model Updates? Have a Plan.**
 
-The email from the provider notifying you about upcoming changes or model deprecation is going to whatever email set up the billing account — accounting or IT — not the PM whose feature depends on it. AI features come with ongoing maintenance, so that simple email subject line feature is weeks of initial effort and unknown future effort, compared to the hours or days used in the original RICE calculation.
+Who will handle the updates? Who will be responsible for getting the email notification coming from the AI provider about an upcoming model version deprecation?
 
-**Rule of thumb:** whatever the engineering estimate is, add at least 50% for the work that happens around the code. Testing, evaluating, monitoring, adjusting. That part never makes it into the first estimate and it always adds to the final timeline.
+That small email subject line feature you added is going to take more effort than you originally planned for.
+
+**Effort:** A good rule of thumb: whatever the engineering estimate is, add at least 50% for the work that happens around the code. Testing, evaluating, monitoring, adjusting. That part never makes it into the first estimate and it always adds to the final timeline.
 
 ---
 
