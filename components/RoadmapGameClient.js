@@ -667,7 +667,7 @@ function IssueCard({ card, onChoice, chosen, onContinue, continueLabel }) {
       {/* Issue body */}
       <div style={{ padding: '22px 24px 26px' }}>
         <p style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 27, lineHeight: 1.28, letterSpacing: '.012em', margin: 0, color: '#172b4d' }}>
-          {card.scenario}
+          {card.scenario.replace(/\s*What do you do\?$/i, '')}
         </p>
 
         <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', color: '#6b778c', margin: '34px 0 14px', fontFamily: '"Droid Sans", sans-serif' }}>
@@ -871,8 +871,8 @@ function SlackModal({ card, onChoice, chosen, onContinue }) {
                         onClick={() => onChoice(choice, i)}
                         style={{ padding: '10px 12px', borderRadius: 4, cursor: 'pointer', marginBottom: 4, borderLeft: '3px solid transparent', fontFamily: '"Lato", sans-serif' }}
                       >
-                        <div style={{ fontWeight: 700, fontSize: 13, color: '#1d1c1d' }}>{choice.label}</div>
-                        <div style={{ fontSize: 13, color: '#4a4a4a', marginTop: 2, lineHeight: 1.4 }}>{choice.desc}</div>
+                        <div style={{ fontWeight: 700, fontSize: 13, color: '#1d1c1d', fontFamily: '"Droid Sans", sans-serif' }}>{choice.label}</div>
+                        <div style={{ fontSize: 13, color: '#4a4a4a', marginTop: 2, lineHeight: 1.4, fontFamily: '"Droid Sans", sans-serif' }}>{choice.desc}</div>
                       </div>
                     ))}
                   </>
@@ -1122,8 +1122,20 @@ function OutcomeScreen({ stats, sequence, onRestart }) {
       <GameNav crumb="Sprint Report" />
       <div style={{ maxWidth: 680, margin: '0 auto', padding: '34px 24px 70px' }}>
 
+        {/* PM Style hero */}
+        <div style={{
+          position: 'relative', borderRadius: 12, overflow: 'hidden', color: '#fff',
+          padding: '30px 32px 28px', boxShadow: '0 6px 18px rgba(9,30,66,.16)',
+          background: 'radial-gradient(120% 130% at 88% 0%, rgba(255,255,255,.2), transparent 55%), linear-gradient(135deg, #ec5a8f, #c8407a)',
+        }}>
+          <span style={{ position: 'absolute', top: 24, right: 30, fontSize: 50, lineHeight: 1 }}>{pmStyle.emoji}</span>
+          <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .88 }}>Your PM Style</div>
+          <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 700, fontSize: 'clamp(36px,7.5vw,52px)', lineHeight: 1, letterSpacing: '.01em', textTransform: 'uppercase', margin: '8px 0 0' }}>{pmStyle.title}</h1>
+          <p style={{ fontSize: 15, lineHeight: 1.6, marginTop: 14, opacity: .96, maxWidth: '52ch' }}>{pmStyle.desc}</p>
+        </div>
+
         {/* Verdict */}
-        <div style={{ display: 'flex', gap: 18, alignItems: 'center', background: '#fff', border: '1px solid #dfe1e6', borderLeft: `5px solid ${borderColor}`, borderRadius: 10, padding: '20px 22px', boxShadow: '0 1px 2px rgba(9,30,66,.1)' }}>
+        <div style={{ display: 'flex', gap: 18, alignItems: 'center', background: '#fff', border: '1px solid #dfe1e6', borderLeft: `5px solid ${borderColor}`, borderRadius: 10, padding: '20px 22px', marginTop: 16, boxShadow: '0 1px 2px rgba(9,30,66,.1)' }}>
           <span style={{ fontSize: 40, lineHeight: 1, flexShrink: 0 }}>{emoji}</span>
           <div>
             <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', color: borderColor }}>
@@ -1132,18 +1144,6 @@ function OutcomeScreen({ stats, sequence, onRestart }) {
             <h2 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 24, letterSpacing: '.01em', textTransform: 'uppercase', margin: '3px 0 0', color: '#172b4d' }}>{name}</h2>
             <p style={{ fontSize: 14, lineHeight: 1.55, color: '#42526e', margin: '7px 0 0' }}>{flavorText}</p>
           </div>
-        </div>
-
-        {/* PM Style hero */}
-        <div style={{
-          position: 'relative', marginTop: 16, borderRadius: 12, overflow: 'hidden', color: '#fff',
-          padding: '30px 32px 28px', boxShadow: '0 6px 18px rgba(9,30,66,.16)',
-          background: 'radial-gradient(120% 130% at 88% 0%, rgba(255,255,255,.2), transparent 55%), linear-gradient(135deg, #ec5a8f, #c8407a)',
-        }}>
-          <span style={{ position: 'absolute', top: 24, right: 30, fontSize: 50, lineHeight: 1 }}>{pmStyle.emoji}</span>
-          <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '.14em', textTransform: 'uppercase', opacity: .88 }}>Your PM Style</div>
-          <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 700, fontSize: 'clamp(36px,7.5vw,52px)', lineHeight: 1, letterSpacing: '.01em', textTransform: 'uppercase', margin: '8px 0 0' }}>{pmStyle.title}</h1>
-          <p style={{ fontSize: 15, lineHeight: 1.6, marginTop: 14, opacity: .96, maxWidth: '52ch' }}>{pmStyle.desc}</p>
         </div>
 
         {/* Final stats */}
@@ -1161,7 +1161,7 @@ function OutcomeScreen({ stats, sequence, onRestart }) {
                     <span style={{ fontWeight: 700, fontSize: 13, color: '#172b4d', fontFamily: '"Droid Sans", sans-serif' }}>
                       {label}
                       {isTop && <span style={{ fontWeight: 700, fontSize: 9, color: '#fff', background: '#00875a', padding: '2px 6px', borderRadius: 3, marginLeft: 6, verticalAlign: 'middle' }}>TOP</span>}
-                      {isLow && <span style={{ fontWeight: 700, fontSize: 9, color: '#fff', background: '#de350b', padding: '2px 6px', borderRadius: 3, marginLeft: 6, verticalAlign: 'middle' }}>LOW</span>}
+                      {isLow && <span style={{ fontWeight: 700, fontSize: 9, color: '#fff', background: '#de350b', padding: '2px 6px', borderRadius: 3, marginLeft: 6, verticalAlign: 'middle' }}>{key === 'scope' ? 'BLOATED' : 'LOW'}</span>}
                     </span>
                     <span style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 17, color: '#42526e' }}>{val}</span>
                   </div>
