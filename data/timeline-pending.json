@@ -1,0 +1,26 @@
+[
+  {
+    "id": "google-deepmind-fluid-natural-voice-translation-with-gemini-3-5-live-translate",
+    "date": "2026-06-09",
+    "category": "model_release",
+    "title": "Fluid, natural voice translation with Gemini 3.5 Live Translate",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-ai-9-demos-of-gemini-omni-and-gemini-3-5-in-action",
+    "date": "2026-05-29",
+    "category": "model_release",
+    "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+    "source": "Google AI",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  }
+]
