@@ -6,7 +6,7 @@ image: "/images/pdlc.png"
 image_alt: "Product Management Is Getting Sunsetted — OpenAI PDLC paper"
 ---
 
-There's a paper OpenAI published last month that I keep thinking about. It's about how the entire product delivery lifecycle is changing — not just the coding part, but everything around it.
+There's a paper [OpenAI published](https://cdn.openai.com/pdf/0c77f335-3e3b-48b9-82d8-8717e58ea021%20/reinventing-the-enterprise-product-delivery-lifecycle-for-an-agentic-world.pdf) last month that I keep thinking about. It's about how the entire product delivery lifecycle is changing — not just the coding part, but everything around it.
 
 The first point is why AI making coding faster doesn't actually make products ship faster. Turns out coding was never really the bottleneck. According to research they cite, coding is about 8% of the work it actually takes to ship something. The other 92% is everything around it. The requests sitting in a queue waiting for someone to look at them, the PRD reviews, the sprint ceremonies, the approval committees. All the waiting rooms.
 
