@@ -52,6 +52,8 @@ The pattern here is the classic venture capital dynamic. Early investors take th
 
 ---
 
+![Instacart investor returns chart](/images/instacart chart.png)
+
 ## What bookrunners do and what they earned
 
 Before a company can sell shares to the public, it needs someone to manage the process. That role falls to underwriters, commonly called bookrunners.
