@@ -287,34 +287,5 @@
       "multimodal"
     ],
     "manual": true
-  },
-  {
-    "id": "manual-openai-o1",
-    "date": "2024-09-12",
-    "category": "model_release",
-    "title": "OpenAI releases o1-preview — reasoning model that thinks before answering",
-    "description": "OpenAI releases o1-preview and o1-mini, a new model family trained to reason through problems step-by-step using reinforcement learning. Significantly outperforms GPT-4o on math, science, and coding at the cost of slower responses.",
-    "source": "OpenAI",
-    "url": "https://openai.com/o1",
-    "tags": [
-      "openai",
-      "o1",
-      "reasoning",
-      "rl"
-    ],
-    "manual": true
-  },
-  {
-    "id": "openai-gpt-oss",
-    "date": "2025-08-05",
-    "category": "model_release",
-    "title": "OpenAI releases GPT OSS — first open-source model family",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-oss",
-    "tags": [
-      "openai",
-      "open-source"
-    ],
-    "manual": true
   }
 ]
