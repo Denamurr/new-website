@@ -170,7 +170,8 @@ export default function TimelineClient({ entries }) {
           ))}
         </div>
         <input
-          type="search"
+          type="text"
+          autoComplete="off"
           placeholder="Search…"
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
