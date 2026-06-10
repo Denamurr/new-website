@@ -2,6 +2,8 @@
 title: "The Economics of Instacart"
 date: "2023-09-20"
 slug: "instacart-ipo"
+image: "/images/instacart hero.png"
+image_alt: "The Economics of Instacart"
 ---
 
 Instacart went public in September 2023 at $30 per share, giving the company a market cap of about $9.3 billion. Shares briefly ran up to $42 on the first day before closing around $33.
@@ -21,6 +23,8 @@ Instacart earns revenue from several places: delivery and service fees from cust
 The advertising business is worth paying attention to. Grocery is a notoriously low-margin industry. Stores run on thin margins, which limits how much Instacart can take from each transaction. Advertising is where the platform can make real money, because brands will pay a premium to be seen at the moment someone is already shopping. It's similar to how Amazon generates outsized profit from ads relative to its retail business.
 
 ---
+
+![Instacart](/images/instacart.png)
 
 ## What the IPO numbers actually mean
 
