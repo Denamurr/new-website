@@ -22,6 +22,7 @@ const CATEGORY_MAP = {
   'product-roadmap-adventure':                  { category: 'Product',  color: '#2bb673' },
   'bcg-matrix-product-portfolio':               { category: 'Strategy', color: '#ff7a3d' },
   'pm-salary-survey-2024':                      { category: 'Product',  color: '#2bb673' },
+  'product-management-is-getting-sunsetted':    { category: 'Product',  color: '#2bb673' },
 }
 
 const ALL_ESSAYS = [
@@ -40,6 +41,7 @@ const ALL_ESSAYS = [
   { slug: 'product-roadmap-adventure',                  title: 'If Product Roadmaps Were Adventure Maps', category: 'Product',  color: '#2bb673' },
   { slug: 'bcg-matrix-product-portfolio',               title: 'Product Portfolio Decisions',            category: 'Strategy', color: '#ff7a3d' },
   { slug: 'pm-salary-survey-2024',                      title: 'What 256 PMs Told Reddit About Pay',     category: 'Product',  color: '#2bb673' },
+  { slug: 'product-management-is-getting-sunsetted',    title: 'Product Management Is Getting Sunsetted', category: 'Product',  color: '#2bb673' },
 ]
 
 function getRelated(slug, category, count = 3) {
@@ -143,6 +145,19 @@ export default async function BlogPost({ params }) {
           </div>
           <div style={{ maxWidth: 880, margin: '48px auto 0', height: 2, background: 'var(--ink)' }} />
         </div>
+
+        {/* Hero image */}
+        {data.image && (
+          <div style={{ padding: '40px 6vw 0' }}>
+            <div style={{ maxWidth: 880, margin: '0 auto', borderRadius: 12, overflow: 'hidden', border: '2px solid var(--ink)' }}>
+              <img
+                src={data.image}
+                alt={data.image_alt || data.title}
+                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+              />
+            </div>
+          </div>
+        )}
 
         {/* Tool link — top */}
         {data.tool_href && (

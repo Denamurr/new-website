@@ -2,6 +2,8 @@
 title: "Product Management Is Getting Sunsetted"
 date: "2026-06-10"
 slug: "product-management-is-getting-sunsetted"
+image: "/images/pdlc.png"
+image_alt: "Product Management Is Getting Sunsetted — OpenAI PDLC paper"
 ---
 
 There's a paper OpenAI published last month that I keep thinking about. It's about how the entire product delivery lifecycle is changing — not just the coding part, but everything around it.
