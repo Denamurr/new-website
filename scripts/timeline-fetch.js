@@ -49,6 +49,20 @@ const NOISE = [
   /\b(mental health|climate|education|enterprise|workforce)\b/,
   /\b(department of|government|federal|white house)\b/,
   /\bscaling (social|research program)\b/,
+  // Version bumps — reject X.Y decimal updates (GPT-5.2, Gemini 3.1, etc.)
+  // First releases use whole numbers (GPT-5, Gemini 3, Llama 4)
+  /\b(gpt|gemini|llama|mistral|deepseek|grok|claude|phi|qwen|nemotron|copilot|nova)[-\s]\d+\.\d+/i,
+  // Sub-variants of existing models (Flash-Lite, Instant, Nano, Turbo variants)
+  /\b(flash[-\s]lite|flash lite)\b/i,
+  /\b(gpt|gemini|llama|claude|deepseek|mistral)\b.{0,30}\b(instant|nano|turbo|cyber|safeguard)\b/i,
+  // "N demos of", "updates to", "expanding" — not releases
+  /\b\d+ demos? of\b/i,
+  /\bupdates? to (our|the)\b/i,
+  /\bwe.re expanding\b/i,
+  /\bretiring\b/i,
+  /\bbug bounty\b/i,
+  /\bprivacy filter\b/i,
+  /\bdriving (scalable|growth)\b/i,
 ];
 
 function isModelRelease(title, description = '') {
