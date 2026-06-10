@@ -223,6 +223,7 @@ body {
 .body-inner strong { font-weight: 600; }
 .body-inner p > strong:only-child { font-family: "Impact", "Anton", sans-serif; font-weight: 400; font-size: 1.15em; letter-spacing: 0.01em; }
 .body-inner em { font-style: italic; }
+.body-inner img { width: 100%; display: block; border: 3px solid var(--yellow); border-radius: 8px; margin: 8px 0; }
 .body-inner ul, .body-inner ol { margin: 24px 0; padding-left: 1.2em; }
 .body-inner li { margin: 12px 0; padding-left: 0.3em; }
 .body-inner li::marker { color: var(--cat, #ec5a8f); font-weight: 600; }

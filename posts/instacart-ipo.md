@@ -2,7 +2,7 @@
 title: "The Economics of Instacart"
 date: "2023-09-20"
 slug: "instacart-ipo"
-image: "/images/instacart hero.png"
+image: "/images/instacart-hero.png"
 image_alt: "The Economics of Instacart"
 ---
 
@@ -52,7 +52,7 @@ The pattern here is the classic venture capital dynamic. Early investors take th
 
 ---
 
-![Instacart investor returns chart](/images/instacart chart.png)
+![Instacart investor returns chart](/images/instacart-chart.png)
 
 ## What bookrunners do and what they earned
 
