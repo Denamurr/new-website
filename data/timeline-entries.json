@@ -1,21 +1,5 @@
 [
   {
-    "id": "manual-claude4",
-    "date": "2025-05-22",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 4 — Sonnet 4 and Opus 4 with hybrid reasoning",
-    "description": "Anthropic releases Claude Sonnet 4 and Claude Opus 4, both capable of switching between instant responses and extended thinking. Opus 4 is Anthropic's most capable model and sets new benchmarks on complex coding and agentic tasks.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-4",
-    "tags": [
-      "anthropic",
-      "claude",
-      "reasoning",
-      "agentic"
-    ],
-    "manual": true
-  },
-  {
     "id": "manual-o3-o4mini",
     "date": "2025-04-16",
     "category": "model_release",
@@ -76,22 +60,6 @@
       "openai",
       "gpt",
       "scaling"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude37",
-    "date": "2025-02-24",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3.7 Sonnet — first model with extended thinking",
-    "description": "Anthropic releases Claude 3.7 Sonnet with an optional extended thinking mode, letting the model reason through hard problems before responding. Sets new records on coding benchmarks (SWE-bench) and agentic tasks.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
-    "tags": [
-      "anthropic",
-      "claude",
-      "reasoning",
-      "extended-thinking"
     ],
     "manual": true
   },
@@ -228,35 +196,6 @@
     "manual": true
   },
   {
-    "id": "manual-claude35-haiku",
-    "date": "2024-10-22",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3.5 Haiku — fastest Claude yet, matches Opus 3",
-    "description": "Anthropic releases Claude 3.5 Haiku, the fastest model in the Claude 3.5 family. Delivers Claude 3 Opus-level performance at a fraction of the latency and cost. Designed for high-throughput applications.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-5-haiku",
-    "tags": [
-      "anthropic",
-      "claude",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude-35-sonnet-v2",
-    "date": "2024-10-22",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3.5 Sonnet v2 — tops SWE-bench, adds computer use",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/3-5-models-and-computer-use",
-    "tags": [
-      "anthropic",
-      "claude",
-      "agentic"
-    ],
-    "manual": true
-  },
-  {
     "id": "manual-llama32",
     "date": "2024-09-25",
     "category": "model_release",
@@ -335,34 +274,6 @@
     "manual": true
   },
   {
-    "id": "manual-anthropic-artifacts",
-    "date": "2024-06-20",
-    "category": "product_launch",
-    "title": "Anthropic launches Artifacts — Claude can generate interactive web apps",
-    "description": "Anthropic introduces Artifacts in Claude.ai, allowing Claude to create and display runnable code, documents, and interactive web apps alongside conversations.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
-    "tags": [
-      "anthropic",
-      "claude",
-      "product"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude-35-sonnet",
-    "date": "2024-06-20",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3.5 Sonnet — first model to surpass Claude 3 Opus",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-5-sonnet",
-    "tags": [
-      "anthropic",
-      "claude"
-    ],
-    "manual": true
-  },
-  {
     "id": "manual-gpt4o",
     "date": "2024-05-13",
     "category": "model_release",
@@ -390,20 +301,6 @@
       "meta",
       "llama",
       "open-source"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude3",
-    "date": "2024-03-04",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 3 family — Haiku, Sonnet, and Opus",
-    "description": "Anthropic releases three new models: Claude 3 Haiku (fast/cheap), Claude 3 Sonnet (balanced), and Claude 3 Opus (most capable). Opus claims to outperform GPT-4 on multiple benchmarks.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-3-family",
-    "tags": [
-      "anthropic",
-      "claude"
     ],
     "manual": true
   },
@@ -510,21 +407,6 @@
       "llama",
       "open-source",
       "commercial"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-claude2",
-    "date": "2023-07-11",
-    "category": "model_release",
-    "title": "Anthropic releases Claude 2 — 100k context window, improved reasoning",
-    "description": "Anthropic releases Claude 2 with a 100,000 token context window (able to process full books), stronger coding and math performance, and improved instruction following. Available in the US and UK via Claude.ai.",
-    "source": "Anthropic",
-    "url": "https://www.anthropic.com/news/claude-2",
-    "tags": [
-      "anthropic",
-      "claude",
-      "long-context"
     ],
     "manual": true
   },
@@ -823,6 +705,31 @@
       "computer-vision",
       "alexnet",
       "imagenet"
+    ],
+    "manual": true
+  },
+  {
+    "id": "openai-gpt-oss",
+    "date": "2025-08-05",
+    "category": "model_release",
+    "title": "OpenAI releases GPT OSS — first open-source model family",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-oss",
+    "tags": [
+      "openai",
+      "open-source"
+    ],
+    "manual": true
+  },
+  {
+    "id": "google-gemini-3",
+    "date": "2025-11-18",
+    "category": "model_release",
+    "title": "Google DeepMind releases Gemini 3",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/a-new-era-of-intelligence-with-gemini-3/",
+    "tags": [
+      "google"
     ],
     "manual": true
   }
