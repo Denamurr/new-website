@@ -130,9 +130,14 @@ export default function TimelineClient({ entries }) {
         }}>
           The Timeline of AI Breakthroughs
         </h1>
-        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 15, lineHeight: 1.65, color: '#555', maxWidth: 600, margin: 0 }}>
-          AI has been advancing at a pace that&apos;s hard to follow. This interactive timeline tracks
-          the major model releases and products that pushed AI into the mainstream. Drag or scroll to explore.
+        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 15, lineHeight: 1.65, color: '#555', maxWidth: 600, margin: '0 0 12px' }}>
+          AI has been advancing at a pace that&apos;s hard to follow. This timeline tracks the milestones — the model releases and products that genuinely moved things forward. First launches only, curated by hand. Drag or scroll to explore.
+        </p>
+        <p style={{ fontFamily: '"Inter", sans-serif', fontSize: 13, lineHeight: 1.6, color: '#aaa', maxWidth: 600, margin: 0 }}>
+          For a more comprehensive history,{' '}
+          <a href="https://nhlocal.github.io/AiTimeline/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--ink)', textDecoration: 'underline', textUnderlineOffset: 3 }}>
+            see this full AI timeline ↗
+          </a>
         </p>
       </div>
 

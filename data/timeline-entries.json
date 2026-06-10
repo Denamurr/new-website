@@ -1,907 +1,253 @@
 [
   {
-    "id": "google-deepmind-fluid-natural-voice-translation-with-gemini-3-5-live-translate",
-    "date": "2026-06-09",
+    "id": "manual-alexnet",
+    "date": "2012-09-30",
     "category": "model_release",
-    "title": "Fluid, natural voice translation with Gemini 3.5 Live Translate",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
+    "title": "AlexNet wins ImageNet — deep learning era begins",
+    "description": "Krizhevsky, Sutskever, and Hinton's deep convolutional network crushes the ImageNet competition by a 10-point margin, proving deep learning at scale. Triggers a decade-long AI research explosion.",
+    "source": "NeurIPS 2012",
+    "url": "https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
     "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-ai-9-demos-of-gemini-omni-and-gemini-3-5-in-action",
-    "date": "2026-05-29",
-    "category": "model_release",
-    "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
-    "source": "Google AI",
-    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-warp-s-big-bet-on-building-open-source-with-gpt-5-5",
-    "date": "2026-05-27",
-    "category": "model_release",
-    "title": "Warp’s big bet on building open source with GPT-5.5",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/warp",
-    "tags": [
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-3-5-frontier-intelligence-with-action",
-    "date": "2026-05-15",
-    "category": "model_release",
-    "title": "Gemini 3.5: frontier intelligence with action",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber",
-    "date": "2026-05-07",
-    "category": "model_release",
-    "title": "Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-gpt-5-5-instant-smarter-clearer-and-more-personalized",
-    "date": "2026-05-05",
-    "category": "model_release",
-    "title": "GPT-5.5 Instant: smarter, clearer, and more personalized",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/gpt-5-5-instant",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "hugging-face-introducing-nvidia-nemotron-3-nano-omni-long-context-multimodal-int",
-    "date": "2026-04-28",
-    "category": "model_release",
-    "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
-    "source": "Hugging Face",
-    "url": "https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence",
-    "tags": [
-      "multimodal",
-      "agentic"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-gpt-5-5",
-    "date": "2026-04-23",
-    "category": "model_release",
-    "title": "Introducing GPT-5.5",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-5-5",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-gpt-5-5-bio-bug-bounty",
-    "date": "2026-04-23",
-    "category": "model_release",
-    "title": "GPT-5.5 Bio Bug Bounty",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/gpt-5-5-bio-bug-bounty",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-openai-privacy-filter",
-    "date": "2026-04-22",
-    "category": "model_release",
-    "title": "Introducing OpenAI Privacy Filter",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-openai-privacy-filter",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech",
-    "date": "2026-04-15",
-    "category": "model_release",
-    "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable",
-    "date": "2026-03-26",
-    "category": "model_release",
-    "title": "Gemini 3.1 Flash Live: Making audio AI more natural and reliable",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-gpt-5-4-mini-and-nano",
-    "date": "2026-03-17",
-    "category": "model_release",
-    "title": "Introducing GPT-5.4 mini and nano",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-gpt-5-4",
-    "date": "2026-03-05",
-    "category": "model_release",
-    "title": "Introducing GPT-5.4",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-5-4",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-gpt-5-3-instant-smoother-more-useful-everyday-conversations",
-    "date": "2026-03-03",
-    "category": "model_release",
-    "title": "GPT-5.3 Instant: Smoother, more useful everyday conversations",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/gpt-5-3-instant",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-3-1-flash-lite-built-for-intelligence-at-scale",
-    "date": "2026-03-03",
-    "category": "model_release",
-    "title": "Gemini 3.1 Flash-Lite: Built for intelligence at scale",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-3-1-flash-lite-built-for-intelligence-at-scale/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-3-1-pro-a-smarter-model-for-your-most-complex-tasks",
-    "date": "2026-02-19",
-    "category": "model_release",
-    "title": "Gemini 3.1 Pro: A smarter model for your most complex tasks",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-3-1-pro-a-smarter-model-for-your-most-complex-tasks/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-gpt-5-2-derives-a-new-result-in-theoretical-physics",
-    "date": "2026-02-13",
-    "category": "model_release",
-    "title": "GPT-5.2 derives a new result in theoretical physics",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/new-result-theoretical-physics",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-gpt-5-3-codex-spark",
-    "date": "2026-02-12",
-    "category": "model_release",
-    "title": "Introducing GPT-5.3-Codex-Spark",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-5-3-codex-spark",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-3-deep-think-advancing-science-research-and-engineering",
-    "date": "2026-02-12",
-    "category": "model_release",
-    "title": "Gemini 3 Deep Think: Advancing science, research and engineering",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-3-deep-think-advancing-science-research-and-engineering/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-gpt-5-3-codex",
-    "date": "2026-02-05",
-    "category": "model_release",
-    "title": "Introducing GPT-5.3-Codex",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-5-3-codex",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "hugging-face-the-future-of-the-global-open-source-ai-ecosystem-from-deepseek-to-",
-    "date": "2026-02-03",
-    "category": "model_release",
-    "title": "The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+",
-    "source": "Hugging Face",
-    "url": "https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3",
-    "tags": [
-      "deepseek",
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-retiring-gpt-4o-gpt-4-1-gpt-4-1-mini-and-openai-o4-mini-in-chatgpt",
-    "date": "2026-01-29",
-    "category": "model_release",
-    "title": "Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/retiring-gpt-4o-and-older-models",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hugging-face-architectural-choices-in-china-s-open-source-ai-ecosystem-building-",
-    "date": "2026-01-27",
-    "category": "model_release",
-    "title": "Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek",
-    "source": "Hugging Face",
-    "url": "https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2",
-    "tags": [
-      "deepseek",
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-gpt-5-2-codex",
-    "date": "2025-12-18",
-    "category": "model_release",
-    "title": "Introducing GPT-5.2-Codex",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-5-2-codex",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-3-flash-frontier-intelligence-built-for-speed",
-    "date": "2025-12-17",
-    "category": "model_release",
-    "title": "Gemini 3 Flash: frontier intelligence built for speed",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-3-flash-frontier-intelligence-built-for-speed/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hugging-face-the-open-evaluation-standard-benchmarking-nvidia-nemotron-3-nano-wi",
-    "date": "2025-12-17",
-    "category": "model_release",
-    "title": "The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator",
-    "source": "Hugging Face",
-    "url": "https://huggingface.co/blog/nvidia/nemotron-3-nano-evaluation-recipe",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-advancing-science-and-math-with-gpt-5-2",
-    "date": "2025-12-11",
-    "category": "model_release",
-    "title": "Advancing science and math with GPT-5.2",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/gpt-5-2-for-science-and-math",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "openai-introducing-gpt-5-2",
-    "date": "2025-12-11",
-    "category": "model_release",
-    "title": "Introducing GPT-5.2",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-5-2",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "hugging-face-we-got-claude-to-fine-tune-an-open-source-llm",
-    "date": "2025-12-04",
-    "category": "model_release",
-    "title": "We Got Claude to Fine-Tune an Open Source LLM",
-    "source": "Hugging Face",
-    "url": "https://huggingface.co/blog/hf-skills-training",
-    "tags": [
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-build-with-nano-banana-pro-our-gemini-3-pro-image-model",
-    "date": "2025-11-20",
-    "category": "model_release",
-    "title": "Build with Nano Banana Pro, our Gemini 3 Pro Image model",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/build-with-nano-banana-pro-our-gemini-3-pro-image-model/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-start-building-with-gemini-3",
-    "date": "2025-11-18",
-    "category": "model_release",
-    "title": "Start building with Gemini 3",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/start-building-with-gemini-3/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-gemini-3",
-    "date": "2025-11-18",
-    "category": "model_release",
-    "title": "Google DeepMind releases Gemini 3",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/a-new-era-of-intelligence-with-gemini-3/",
-    "tags": [
-      "google"
+      "deep-learning",
+      "computer-vision",
+      "alexnet",
+      "imagenet"
     ],
     "manual": true
   },
   {
-    "id": "openai-introducing-gpt-oss-safeguard",
-    "date": "2025-10-29",
+    "id": "manual-gans",
+    "date": "2014-06-10",
     "category": "model_release",
-    "title": "Introducing gpt-oss-safeguard",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-oss-safeguard",
-    "tags": [],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-2-5-flash-lite-is-now-ready-for-scaled-production-use",
-    "date": "2025-10-25",
-    "category": "model_release",
-    "title": "Gemini 2.5 Flash-Lite is now ready for scaled production use",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-25-flash-lite-is-now-ready-for-scaled-production-use/",
+    "title": "Generative Adversarial Networks introduced by Goodfellow et al.",
+    "description": "Ian Goodfellow proposes GANs — a framework where two neural networks compete: a generator creates fake data and a discriminator tries to distinguish it from real data. Becomes the foundation for synthetic image generation.",
+    "source": "ArXiv",
+    "url": "https://arxiv.org/abs/1406.2661",
     "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-introducing-the-gemini-2-5-computer-use-model",
-    "date": "2025-10-23",
-    "category": "model_release",
-    "title": "Introducing the Gemini 2.5 Computer Use model",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/introducing-the-gemini-25-computer-use-model/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-gpt-oss",
-    "date": "2025-08-05",
-    "category": "model_release",
-    "title": "OpenAI releases GPT OSS — first open-source model family",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-oss",
-    "tags": [
-      "openai",
-      "open-source"
+      "gans",
+      "generative",
+      "deep-learning"
     ],
     "manual": true
   },
   {
-    "id": "hugging-face-welcome-gpt-oss-the-new-open-source-model-family-from-openai",
-    "date": "2025-08-05",
+    "id": "manual-attention",
+    "date": "2017-06-12",
     "category": "model_release",
-    "title": "Welcome GPT OSS, the new open-source model family from OpenAI!",
-    "source": "Hugging Face",
-    "url": "https://huggingface.co/blog/welcome-openai-gpt-oss",
+    "title": "\"Attention Is All You Need\" — the Transformer architecture is published",
+    "description": "Google Brain researchers introduce the Transformer, replacing recurrent networks with self-attention. Becomes the foundational architecture for every major language model that follows, from BERT to GPT to Claude.",
+    "source": "ArXiv",
+    "url": "https://arxiv.org/abs/1706.03762",
     "tags": [
-      "openai",
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "hugging-face-measuring-open-source-llama-nemotron-models-on-deepresearch-bench",
-    "date": "2025-08-04",
-    "category": "model_release",
-    "title": "Measuring Open-Source Llama Nemotron Models on DeepResearch Bench",
-    "source": "Hugging Face",
-    "url": "https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent",
-    "tags": [
-      "meta",
-      "open-source"
-    ],
-    "manual": false
-  },
-  {
-    "id": "openai-driving-scalable-growth-with-openai-o3-gpt-4-1-and-cua",
-    "date": "2025-06-24",
-    "category": "model_release",
-    "title": "Driving scalable growth with OpenAI o3, GPT-4.1, and CUA",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/unify",
-    "tags": [
-      "openai"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-gemini-2-5-updates-to-our-family-of-thinking-models",
-    "date": "2025-06-17",
-    "category": "model_release",
-    "title": "Gemini 2.5: Updates to our family of thinking models",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/gemini-25-updates-to-our-family-of-thinking-models/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "google-deepmind-we-re-expanding-our-gemini-2-5-family-of-models",
-    "date": "2025-06-17",
-    "category": "model_release",
-    "title": "We’re expanding our Gemini 2.5 family of models",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/blog/were-expanding-our-gemini-25-family-of-models/",
-    "tags": [
-      "google"
-    ],
-    "manual": false
-  },
-  {
-    "id": "manual-o3-o4mini",
-    "date": "2025-04-16",
-    "category": "model_release",
-    "title": "OpenAI releases o3 and o4-mini — reasoning models with tool use and vision",
-    "description": "OpenAI releases o3 and o4-mini, the latest in their reasoning model line. Both can use tools (web search, Python, image generation) natively during their thinking process. o4-mini achieves o3-level math at a fraction of the cost.",
-    "source": "OpenAI",
-    "url": "https://openai.com/o3",
-    "tags": [
-      "openai",
-      "o3",
-      "reasoning",
-      "multimodal",
-      "agentic"
+      "transformer",
+      "attention",
+      "architecture"
     ],
     "manual": true
   },
   {
-    "id": "manual-llama4",
-    "date": "2025-04-05",
+    "id": "manual-gpt1",
+    "date": "2018-06-11",
     "category": "model_release",
-    "title": "Meta releases Llama 4 — natively multimodal MoE models with 10M context",
-    "description": "Meta releases Llama 4 Scout and Maverick, natively multimodal mixture-of-experts models supporting up to 10 million token context. Scout (17B active params) is the most efficient; Maverick rivals GPT-4o and Gemini 2.0 Flash.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
-    "tags": [
-      "meta",
-      "llama",
-      "multimodal",
-      "moe",
-      "long-context"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini25-pro",
-    "date": "2025-03-25",
-    "category": "model_release",
-    "title": "Google releases Gemini 2.5 Pro — best reasoning model on public benchmarks",
-    "description": "Google releases Gemini 2.5 Pro with strong reasoning capabilities via an internal thinking process. Tops the LMArena leaderboard and achieves best-in-class results on math, science, and coding evaluations.",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/technologies/gemini/pro/",
-    "tags": [
-      "google",
-      "gemini",
-      "reasoning"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt45",
-    "date": "2025-02-27",
-    "category": "model_release",
-    "title": "OpenAI releases GPT-4.5 — largest and most emotionally intelligent GPT yet",
-    "description": "OpenAI releases GPT-4.5, their largest model trained with unsupervised learning at unprecedented scale. Focuses on improved emotional intelligence, reduced hallucination, and better world knowledge. Available to ChatGPT Pro users first.",
+    "title": "OpenAI releases GPT-1 — first large-scale generative language model",
+    "description": "OpenAI releases the first GPT (Generative Pre-trained Transformer), a 117M parameter model pre-trained on BooksCorpus. Demonstrates that unsupervised pre-training followed by fine-tuning achieves strong NLP results.",
     "source": "OpenAI",
-    "url": "https://openai.com/index/introducing-gpt-4-5/",
+    "url": "https://openai.com/research/language-unsupervised",
     "tags": [
       "openai",
       "gpt",
+      "language-model"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-bert",
+    "date": "2018-10-11",
+    "category": "model_release",
+    "title": "Google releases BERT — bidirectional language model sets new NLP benchmarks",
+    "description": "Google releases BERT (Bidirectional Encoder Representations from Transformers), pre-trained on Wikipedia and Books. Sets state-of-the-art on 11 NLP tasks. Becomes the dominant approach for NLP fine-tuning for years.",
+    "source": "Google Research",
+    "url": "https://arxiv.org/abs/1810.04805",
+    "tags": [
+      "google",
+      "bert",
+      "nlp",
+      "language-model"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gpt2",
+    "date": "2019-11-05",
+    "category": "model_release",
+    "title": "OpenAI releases GPT-2 1.5B in full after staged rollout",
+    "description": "After a controversial phased release citing misuse concerns, OpenAI releases the full 1.5B parameter GPT-2. The model generates coherent long-form text and sparks public debate about AI safety and responsible disclosure.",
+    "source": "OpenAI",
+    "url": "https://openai.com/research/gpt-2-1-5b-release",
+    "tags": [
+      "openai",
+      "gpt",
+      "language-model"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gpt3",
+    "date": "2020-05-28",
+    "category": "model_release",
+    "title": "GPT-3 paper published — 175B parameter model stuns with few-shot learning",
+    "description": "OpenAI publishes the GPT-3 paper, describing a 175B parameter model that performs tasks from just a few examples in the prompt — no fine-tuning required. Sets off widespread excitement about large language models.",
+    "source": "ArXiv",
+    "url": "https://arxiv.org/abs/2005.14165",
+    "tags": [
+      "openai",
+      "gpt",
+      "few-shot",
       "scaling"
     ],
     "manual": true
   },
   {
-    "id": "manual-grok3",
-    "date": "2025-02-17",
+    "id": "manual-dalle1",
+    "date": "2021-01-05",
     "category": "model_release",
-    "title": "xAI releases Grok 3 — trained on 100k GPU cluster, tops reasoning benchmarks",
-    "description": "Elon Musk's xAI releases Grok 3, trained on a 100,000 H100 GPU cluster. Claims top performance on math and science reasoning benchmarks. Includes a \"Think\" mode for extended chain-of-thought reasoning.",
-    "source": "xAI",
-    "url": "https://x.ai/blog/grok-3",
-    "tags": [
-      "xai",
-      "grok",
-      "reasoning"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini-20-pro",
-    "date": "2025-02-05",
-    "category": "model_release",
-    "title": "Google releases Gemini 2.0 Pro — leads coding and world knowledge benchmarks",
-    "source": "Google DeepMind",
-    "url": "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/",
-    "tags": [
-      "google"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-o3-mini",
-    "date": "2025-01-31",
-    "category": "model_release",
-    "title": "OpenAI releases o3-mini — fast, affordable reasoning model for STEM",
+    "title": "OpenAI unveils DALL-E — GPT-3 variant that generates images from text",
+    "description": "OpenAI demonstrates DALL-E, a 12B parameter version of GPT-3 trained to generate images from text descriptions. Shows surprisingly creative and compositional outputs, marking the beginning of mainstream text-to-image AI.",
     "source": "OpenAI",
-    "url": "https://openai.com/index/openai-o3-mini/",
+    "url": "https://openai.com/research/dall-e",
     "tags": [
       "openai",
-      "reasoning"
+      "dalle",
+      "image-generation",
+      "multimodal"
     ],
     "manual": true
   },
   {
-    "id": "manual-deepseek-r1",
-    "date": "2025-01-20",
-    "category": "model_release",
-    "title": "DeepSeek R1 released — open-source reasoning model matches o1 performance",
-    "description": "DeepSeek releases R1, an open-source reasoning model trained with reinforcement learning. Achieves performance comparable to OpenAI o1 on math and coding benchmarks at a fraction of the cost.",
-    "source": "DeepSeek",
-    "url": "https://github.com/deepseek-ai/DeepSeek-R1",
-    "tags": [
-      "deepseek",
-      "reasoning",
-      "open-source",
-      "rl"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-deepseek-v3",
-    "date": "2024-12-26",
-    "category": "model_release",
-    "title": "DeepSeek V3 released — open-source model rivaling GPT-4o trained for $6M",
-    "description": "Chinese AI lab DeepSeek releases V3, a 671B MoE model that matches or beats GPT-4o and Claude 3.5 Sonnet on many benchmarks. Trained for approximately $6M — a fraction of comparable Western models — sparking intense discussion about efficiency.",
-    "source": "DeepSeek",
-    "url": "https://github.com/deepseek-ai/DeepSeek-V3",
-    "tags": [
-      "deepseek",
-      "open-source",
-      "moe",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini2-flash",
-    "date": "2024-12-11",
-    "category": "model_release",
-    "title": "Gemini 2.0 Flash released — faster multimodal model with agentic features",
-    "description": "Google releases Gemini 2.0 Flash, a fast multimodal model with native image generation, tool use, and improved reasoning. Designed for agentic workflows and real-time applications.",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/technologies/gemini/flash/",
-    "tags": [
-      "google",
-      "gemini",
-      "multimodal",
-      "agentic"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-sora-public",
-    "date": "2024-12-09",
+    "id": "manual-copilot",
+    "date": "2021-06-29",
     "category": "product_launch",
-    "title": "OpenAI opens Sora to ChatGPT Plus and Pro users",
-    "description": "After nearly a year as a closed demo, OpenAI makes Sora generally available to ChatGPT Plus and Pro subscribers. Includes a creative mode, storyboard editor, and remix tools. Turbo variant enables faster generation.",
-    "source": "OpenAI",
-    "url": "https://openai.com/sora",
+    "title": "GitHub Copilot launches in technical preview — AI pair programmer",
+    "description": "GitHub and OpenAI launch Copilot, an AI coding assistant trained on public GitHub repositories. Powered by Codex (a GPT-3 descendant), it autocompletes functions and writes boilerplate from comments. First mass-market AI coding tool.",
+    "source": "GitHub",
+    "url": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/",
     "tags": [
+      "github",
       "openai",
-      "sora",
-      "video"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-o1-full",
-    "date": "2024-12-05",
-    "category": "model_release",
-    "title": "OpenAI releases o1 — full reasoning model available to all ChatGPT Plus users",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/openai-o1/",
-    "tags": [
-      "openai",
-      "reasoning"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama33",
-    "date": "2024-11-19",
-    "category": "model_release",
-    "title": "Meta releases Llama 3.3 70B — 405B-level performance at a fraction of the cost",
-    "description": "Meta releases Llama 3.3 70B, a text-only model delivering performance comparable to Llama 3.1 405B on key benchmarks while being dramatically cheaper to run. Immediately becomes the go-to open-source model for cost-sensitive deployments.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/meta-llama-3-3/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama32",
-    "date": "2024-09-25",
-    "category": "model_release",
-    "title": "Meta releases Llama 3.2 — first multimodal Llama with vision and 1B/3B edge models",
-    "description": "Meta releases Llama 3.2 with two multimodal vision models (11B, 90B) and two lightweight models (1B, 3B) optimized for edge and mobile devices. First Llama models to process images alongside text.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/",
-    "tags": [
-      "meta",
-      "llama",
-      "multimodal",
-      "edge"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-openai-o1",
-    "date": "2024-09-12",
-    "category": "model_release",
-    "title": "OpenAI releases o1-preview — reasoning model that thinks before answering",
-    "description": "OpenAI releases o1-preview and o1-mini, a new model family trained to reason through problems step-by-step using reinforcement learning. Significantly outperforms GPT-4o on math, science, and coding at the cost of slower responses.",
-    "source": "OpenAI",
-    "url": "https://openai.com/o1",
-    "tags": [
-      "openai",
-      "o1",
-      "reasoning",
-      "rl"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-mistral-large2",
-    "date": "2024-07-24",
-    "category": "model_release",
-    "title": "Mistral Large 2 released — 128k context, strong at coding and reasoning",
-    "description": "Mistral AI releases Mistral Large 2 (123B parameters) with 128k context, strong multilingual support, and improved coding and math performance. Available via API and for self-hosting.",
-    "source": "Mistral AI",
-    "url": "https://mistral.ai/news/mistral-large-2407/",
-    "tags": [
-      "mistral",
-      "open-weights",
-      "coding"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama31",
-    "date": "2024-07-23",
-    "category": "model_release",
-    "title": "Llama 3.1 released with 405B flagship — first open-source frontier model",
-    "description": "Meta releases Llama 3.1 including a 405B parameter flagship model that competes with GPT-4o and Claude 3.5 Sonnet. First open-source model to be considered genuinely frontier-level.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/meta-llama-3-1/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "frontier"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt4o-mini",
-    "date": "2024-07-18",
-    "category": "model_release",
-    "title": "GPT-4o mini released — replaces GPT-3.5 Turbo as default cheap model",
-    "description": "OpenAI releases GPT-4o mini, a small efficient model that outperforms GPT-3.5 Turbo while being cheaper. Becomes the new default for cost-sensitive applications.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
-    "tags": [
-      "openai",
-      "gpt",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt4o",
-    "date": "2024-05-13",
-    "category": "model_release",
-    "title": "GPT-4o released by OpenAI — native multimodal model with real-time voice",
-    "description": "OpenAI launches GPT-4o ('omni'), their first natively multimodal model that processes text, audio, and images in a unified architecture. Introduces real-time conversational voice mode.",
-    "source": "OpenAI",
-    "url": "https://openai.com/index/hello-gpt-4o/",
-    "tags": [
-      "openai",
-      "gpt",
-      "multimodal",
-      "voice"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-llama3",
-    "date": "2024-04-18",
-    "category": "model_release",
-    "title": "Meta releases Llama 3 (8B and 70B) — best open models at their size",
-    "description": "Meta releases Llama 3 in 8B and 70B parameter sizes, claiming best-in-class performance for open models. Available under a custom license permitting commercial use for most applications.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/meta-llama-3/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini-15-pro",
-    "date": "2024-02-15",
-    "category": "model_release",
-    "title": "Google releases Gemini 1.5 Pro — 1M token context window",
-    "source": "Google DeepMind",
-    "url": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
-    "tags": [
-      "google",
-      "multimodal"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-mixtral",
-    "date": "2023-12-11",
-    "category": "model_release",
-    "title": "Mistral releases Mixtral 8x7B — sparse mixture-of-experts open model",
-    "description": "Mistral AI releases Mixtral 8x7B, a sparse mixture-of-experts model that routes tokens through 2 of 8 expert networks per token. Matches or beats Llama 2 70B and GPT-3.5 on most benchmarks at lower inference cost.",
-    "source": "Mistral AI",
-    "url": "https://mistral.ai/news/mixtral-of-experts/",
-    "tags": [
-      "mistral",
-      "open-source",
-      "moe",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gemini1",
-    "date": "2023-12-06",
-    "category": "model_release",
-    "title": "Google announces Gemini — multimodal model in Ultra, Pro, and Nano sizes",
-    "description": "Google DeepMind announces Gemini, its most capable model family. Comes in three sizes: Ultra (most capable), Pro (balanced), and Nano (on-device). Claims to outperform GPT-4 on several benchmarks. Gemini Pro ships in Bard immediately.",
-    "source": "Google DeepMind",
-    "url": "https://deepmind.google/technologies/gemini/",
-    "tags": [
-      "google",
-      "gemini",
-      "multimodal"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-gpt4-turbo",
-    "date": "2023-11-06",
-    "category": "model_release",
-    "title": "OpenAI DevDay: GPT-4 Turbo with 128k context and updated knowledge",
-    "description": "At the first OpenAI DevDay, Sam Altman announces GPT-4 Turbo with a 128k context window, knowledge cutoff of April 2023, and lower prices. Also announces the GPT Store, Assistants API, and custom GPTs.",
-    "source": "OpenAI",
-    "url": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
-    "tags": [
-      "openai",
-      "gpt",
-      "long-context"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-mistral7b",
-    "date": "2023-09-27",
-    "category": "model_release",
-    "title": "Mistral 7B released — outperforms Llama 2 13B on most benchmarks",
-    "description": "Mistral AI releases Mistral 7B under Apache 2.0, a 7B model using grouped-query attention and sliding window attention. Despite its small size, it outperforms Llama 2 13B across most benchmarks and becomes a widely adopted open model.",
-    "source": "Mistral AI",
-    "url": "https://mistral.ai/news/announcing-mistral-7b/",
-    "tags": [
-      "mistral",
-      "open-source",
-      "efficient"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-code-llama",
-    "date": "2023-08-24",
-    "category": "model_release",
-    "title": "Meta releases Code Llama — open-source coding model up to 34B",
-    "description": "Meta releases Code Llama, a family of coding-specialized models fine-tuned from Llama 2 in 7B, 13B, and 34B sizes. Supports fill-in-the-middle completions and long context (100k tokens). Free for research and commercial use.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/code-llama-large-language-model-for-coding/",
-    "tags": [
-      "meta",
-      "llama",
       "coding",
+      "copilot"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-alphafold2",
+    "date": "2021-07-15",
+    "category": "product_launch",
+    "title": "DeepMind releases AlphaFold 2 database — solves protein folding",
+    "description": "DeepMind releases the AlphaFold Protein Structure Database with predicted structures for nearly all human proteins. Solves a 50-year grand challenge in biology. Over 1 million structures made freely available to researchers.",
+    "source": "DeepMind",
+    "url": "https://www.deepmind.com/blog/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology",
+    "tags": [
+      "deepmind",
+      "biology",
+      "protein-folding",
+      "science"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-dalle2",
+    "date": "2022-04-06",
+    "category": "product_launch",
+    "title": "OpenAI announces DALL-E 2 — photorealistic image generation leap",
+    "description": "OpenAI demonstrates DALL-E 2, producing photorealistic images and artistic compositions with dramatically improved quality over the original. Combines CLIP with a diffusion model. Released in limited beta before broader access.",
+    "source": "OpenAI",
+    "url": "https://openai.com/dall-e-2",
+    "tags": [
+      "openai",
+      "dalle",
+      "image-generation",
+      "diffusion"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-midjourney",
+    "date": "2022-07-12",
+    "category": "product_launch",
+    "title": "Midjourney enters open beta — AI art generation goes mainstream",
+    "description": "Midjourney opens its Discord-based image generation tool to the public. Its distinctive artistic aesthetic and accessible interface make it one of the first AI tools to reach millions of non-technical users.",
+    "source": "Midjourney",
+    "url": "https://www.midjourney.com/",
+    "tags": [
+      "midjourney",
+      "image-generation",
+      "art"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-stable-diffusion",
+    "date": "2022-08-22",
+    "category": "model_release",
+    "title": "Stable Diffusion released openly — first open-source image generation model",
+    "description": "Stability AI releases Stable Diffusion weights publicly, making high-quality image generation available for anyone to run locally. The open release triggers an explosion of derivative models, fine-tunes, and applications.",
+    "source": "Stability AI",
+    "url": "https://stability.ai/blog/stable-diffusion-public-release",
+    "tags": [
+      "stability-ai",
+      "stable-diffusion",
+      "open-source",
+      "image-generation",
+      "diffusion"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-whisper",
+    "date": "2022-09-21",
+    "category": "model_release",
+    "title": "OpenAI releases Whisper — robust open-source speech recognition",
+    "description": "OpenAI open-sources Whisper, a speech recognition model trained on 680,000 hours of audio. Achieves near-human transcription accuracy across dozens of languages and is released as freely usable open-source software.",
+    "source": "OpenAI",
+    "url": "https://openai.com/research/whisper",
+    "tags": [
+      "openai",
+      "whisper",
+      "speech",
       "open-source"
     ],
     "manual": true
   },
   {
-    "id": "manual-llama2",
-    "date": "2023-07-18",
-    "category": "model_release",
-    "title": "Meta releases Llama 2 with commercial license — open-source LLM goes legit",
-    "description": "Meta releases Llama 2 (7B, 13B, 70B) with a commercial-use license in partnership with Microsoft. Includes instruction-tuned chat variants. Becomes the dominant open-source LLM baseline for fine-tuning and research.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/llama/",
+    "id": "manual-chatgpt",
+    "date": "2022-11-30",
+    "category": "product_launch",
+    "title": "ChatGPT launches — reaches 1 million users in 5 days",
+    "description": "OpenAI launches ChatGPT as a free research preview. Built on GPT-3.5 with RLHF fine-tuning, it becomes the fastest-growing consumer application in history, reaching 100 million users in two months and triggering an industry-wide AI race.",
+    "source": "OpenAI",
+    "url": "https://openai.com/blog/chatgpt",
     "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "commercial"
+      "openai",
+      "chatgpt",
+      "rlhf",
+      "chatbot"
     ],
     "manual": true
   },
   {
-    "id": "manual-bard",
-    "date": "2023-03-21",
-    "category": "product_launch",
-    "title": "Google opens Bard to public — powered by LaMDA, later PaLM 2",
-    "description": "Google opens Bard, its conversational AI product, to the public in the US and UK following a stumbling demo in February. Initially powered by LaMDA and later upgraded to PaLM 2, it later becomes Gemini.",
-    "source": "Google",
-    "url": "https://blog.google/technology/ai/bard-google-ai-search-updates/",
+    "id": "manual-llama1",
+    "date": "2023-02-24",
+    "category": "model_release",
+    "title": "Meta releases LLaMA — open foundation models from 7B to 65B parameters",
+    "description": "Meta AI releases LLaMA (Large Language Model Meta AI) as a research artifact in sizes from 7B to 65B. Though access-gated, the weights leak within days, sparking an open-source LLM movement and countless fine-tuned derivatives.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
     "tags": [
-      "google",
-      "bard",
-      "chatbot"
+      "meta",
+      "llama",
+      "open-source",
+      "foundation-model"
     ],
     "manual": true
   },
@@ -937,255 +283,920 @@
     "manual": true
   },
   {
-    "id": "manual-llama1",
-    "date": "2023-02-24",
-    "category": "model_release",
-    "title": "Meta releases LLaMA — open foundation models from 7B to 65B parameters",
-    "description": "Meta AI releases LLaMA (Large Language Model Meta AI) as a research artifact in sizes from 7B to 65B. Though access-gated, the weights leak within days, sparking an open-source LLM movement and countless fine-tuned derivatives.",
-    "source": "Meta AI",
-    "url": "https://ai.meta.com/blog/large-language-model-llama-meta-ai/",
-    "tags": [
-      "meta",
-      "llama",
-      "open-source",
-      "foundation-model"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-chatgpt",
-    "date": "2022-11-30",
+    "id": "manual-bard",
+    "date": "2023-03-21",
     "category": "product_launch",
-    "title": "ChatGPT launches — reaches 1 million users in 5 days",
-    "description": "OpenAI launches ChatGPT as a free research preview. Built on GPT-3.5 with RLHF fine-tuning, it becomes the fastest-growing consumer application in history, reaching 100 million users in two months and triggering an industry-wide AI race.",
-    "source": "OpenAI",
-    "url": "https://openai.com/blog/chatgpt",
+    "title": "Google opens Bard to public — powered by LaMDA, later PaLM 2",
+    "description": "Google opens Bard, its conversational AI product, to the public in the US and UK following a stumbling demo in February. Initially powered by LaMDA and later upgraded to PaLM 2, it later becomes Gemini.",
+    "source": "Google",
+    "url": "https://blog.google/technology/ai/bard-google-ai-search-updates/",
     "tags": [
-      "openai",
-      "chatgpt",
-      "rlhf",
+      "google",
+      "bard",
       "chatbot"
     ],
     "manual": true
   },
   {
-    "id": "manual-whisper",
-    "date": "2022-09-21",
+    "id": "manual-llama2",
+    "date": "2023-07-18",
     "category": "model_release",
-    "title": "OpenAI releases Whisper — robust open-source speech recognition",
-    "description": "OpenAI open-sources Whisper, a speech recognition model trained on 680,000 hours of audio. Achieves near-human transcription accuracy across dozens of languages and is released as freely usable open-source software.",
-    "source": "OpenAI",
-    "url": "https://openai.com/research/whisper",
+    "title": "Meta releases Llama 2 with commercial license — open-source LLM goes legit",
+    "description": "Meta releases Llama 2 (7B, 13B, 70B) with a commercial-use license in partnership with Microsoft. Includes instruction-tuned chat variants. Becomes the dominant open-source LLM baseline for fine-tuning and research.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/llama/",
     "tags": [
-      "openai",
-      "whisper",
-      "speech",
+      "meta",
+      "llama",
+      "open-source",
+      "commercial"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-code-llama",
+    "date": "2023-08-24",
+    "category": "model_release",
+    "title": "Meta releases Code Llama — open-source coding model up to 34B",
+    "description": "Meta releases Code Llama, a family of coding-specialized models fine-tuned from Llama 2 in 7B, 13B, and 34B sizes. Supports fill-in-the-middle completions and long context (100k tokens). Free for research and commercial use.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/blog/code-llama-large-language-model-for-coding/",
+    "tags": [
+      "meta",
+      "llama",
+      "coding",
       "open-source"
     ],
     "manual": true
   },
   {
-    "id": "manual-stable-diffusion",
-    "date": "2022-08-22",
+    "id": "manual-mistral7b",
+    "date": "2023-09-27",
     "category": "model_release",
-    "title": "Stable Diffusion released openly — first open-source image generation model",
-    "description": "Stability AI releases Stable Diffusion weights publicly, making high-quality image generation available for anyone to run locally. The open release triggers an explosion of derivative models, fine-tunes, and applications.",
-    "source": "Stability AI",
-    "url": "https://stability.ai/blog/stable-diffusion-public-release",
+    "title": "Mistral 7B released — outperforms Llama 2 13B on most benchmarks",
+    "description": "Mistral AI releases Mistral 7B under Apache 2.0, a 7B model using grouped-query attention and sliding window attention. Despite its small size, it outperforms Llama 2 13B across most benchmarks and becomes a widely adopted open model.",
+    "source": "Mistral AI",
+    "url": "https://mistral.ai/news/announcing-mistral-7b/",
     "tags": [
-      "stability-ai",
-      "stable-diffusion",
+      "mistral",
       "open-source",
-      "image-generation",
-      "diffusion"
+      "efficient"
     ],
     "manual": true
   },
   {
-    "id": "manual-midjourney",
-    "date": "2022-07-12",
-    "category": "product_launch",
-    "title": "Midjourney enters open beta — AI art generation goes mainstream",
-    "description": "Midjourney opens its Discord-based image generation tool to the public. Its distinctive artistic aesthetic and accessible interface make it one of the first AI tools to reach millions of non-technical users.",
-    "source": "Midjourney",
-    "url": "https://www.midjourney.com/",
-    "tags": [
-      "midjourney",
-      "image-generation",
-      "art"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-dalle2",
-    "date": "2022-04-06",
-    "category": "product_launch",
-    "title": "OpenAI announces DALL-E 2 — photorealistic image generation leap",
-    "description": "OpenAI demonstrates DALL-E 2, producing photorealistic images and artistic compositions with dramatically improved quality over the original. Combines CLIP with a diffusion model. Released in limited beta before broader access.",
-    "source": "OpenAI",
-    "url": "https://openai.com/dall-e-2",
-    "tags": [
-      "openai",
-      "dalle",
-      "image-generation",
-      "diffusion"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-alphafold2",
-    "date": "2021-07-15",
-    "category": "product_launch",
-    "title": "DeepMind releases AlphaFold 2 database — solves protein folding",
-    "description": "DeepMind releases the AlphaFold Protein Structure Database with predicted structures for nearly all human proteins. Solves a 50-year grand challenge in biology. Over 1 million structures made freely available to researchers.",
-    "source": "DeepMind",
-    "url": "https://www.deepmind.com/blog/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology",
-    "tags": [
-      "deepmind",
-      "biology",
-      "protein-folding",
-      "science"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-copilot",
-    "date": "2021-06-29",
-    "category": "product_launch",
-    "title": "GitHub Copilot launches in technical preview — AI pair programmer",
-    "description": "GitHub and OpenAI launch Copilot, an AI coding assistant trained on public GitHub repositories. Powered by Codex (a GPT-3 descendant), it autocompletes functions and writes boilerplate from comments. First mass-market AI coding tool.",
-    "source": "GitHub",
-    "url": "https://github.blog/2021-06-29-introducing-github-copilot-ai-pair-programmer/",
-    "tags": [
-      "github",
-      "openai",
-      "coding",
-      "copilot"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-dalle1",
-    "date": "2021-01-05",
+    "id": "manual-grok",
+    "date": "2023-11-04",
     "category": "model_release",
-    "title": "OpenAI unveils DALL-E — GPT-3 variant that generates images from text",
-    "description": "OpenAI demonstrates DALL-E, a 12B parameter version of GPT-3 trained to generate images from text descriptions. Shows surprisingly creative and compositional outputs, marking the beginning of mainstream text-to-image AI.",
+    "title": "xAI releases Grok — real-time web-connected AI model with personality",
+    "source": "xAI",
+    "url": "https://x.ai/blog/grok",
+    "tags": [
+      "xai"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gpt4-turbo",
+    "date": "2023-11-06",
+    "category": "model_release",
+    "title": "OpenAI DevDay: GPT-4 Turbo with 128k context and updated knowledge",
+    "description": "At the first OpenAI DevDay, Sam Altman announces GPT-4 Turbo with a 128k context window, knowledge cutoff of April 2023, and lower prices. Also announces the GPT Store, Assistants API, and custom GPTs.",
     "source": "OpenAI",
-    "url": "https://openai.com/research/dall-e",
+    "url": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
     "tags": [
       "openai",
-      "dalle",
-      "image-generation",
+      "gpt",
+      "long-context"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gemini1",
+    "date": "2023-12-06",
+    "category": "model_release",
+    "title": "Google announces Gemini — multimodal model in Ultra, Pro, and Nano sizes",
+    "description": "Google DeepMind announces Gemini, its most capable model family. Comes in three sizes: Ultra (most capable), Pro (balanced), and Nano (on-device). Claims to outperform GPT-4 on several benchmarks. Gemini Pro ships in Bard immediately.",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/technologies/gemini/",
+    "tags": [
+      "google",
+      "gemini",
       "multimodal"
     ],
     "manual": true
   },
   {
-    "id": "manual-gpt3",
-    "date": "2020-05-28",
+    "id": "manual-mixtral",
+    "date": "2023-12-11",
     "category": "model_release",
-    "title": "GPT-3 paper published — 175B parameter model stuns with few-shot learning",
-    "description": "OpenAI publishes the GPT-3 paper, describing a 175B parameter model that performs tasks from just a few examples in the prompt — no fine-tuning required. Sets off widespread excitement about large language models.",
-    "source": "ArXiv",
-    "url": "https://arxiv.org/abs/2005.14165",
+    "title": "Mistral releases Mixtral 8x7B — sparse mixture-of-experts open model",
+    "description": "Mistral AI releases Mixtral 8x7B, a sparse mixture-of-experts model that routes tokens through 2 of 8 expert networks per token. Matches or beats Llama 2 70B and GPT-3.5 on most benchmarks at lower inference cost.",
+    "source": "Mistral AI",
+    "url": "https://mistral.ai/news/mixtral-of-experts/",
+    "tags": [
+      "mistral",
+      "open-source",
+      "moe",
+      "efficient"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gemini-15-pro",
+    "date": "2024-02-15",
+    "category": "model_release",
+    "title": "Google releases Gemini 1.5 Pro — 1M token context window",
+    "source": "Google DeepMind",
+    "url": "https://blog.google/technology/ai/google-gemini-next-generation-model-february-2024/",
+    "tags": [
+      "google",
+      "multimodal"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-sora",
+    "date": "2024-02-15",
+    "category": "product_launch",
+    "title": "OpenAI announces Sora — text-to-video model generates realistic 60-second clips",
+    "source": "OpenAI",
+    "url": "https://openai.com/research/video-generation-models-as-world-simulators",
+    "tags": [
+      "openai",
+      "video",
+      "multimodal"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-llama3",
+    "date": "2024-04-18",
+    "category": "model_release",
+    "title": "Meta releases Llama 3 (8B and 70B) — best open models at their size",
+    "description": "Meta releases Llama 3 in 8B and 70B parameter sizes, claiming best-in-class performance for open models. Available under a custom license permitting commercial use for most applications.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/blog/meta-llama-3/",
+    "tags": [
+      "meta",
+      "llama",
+      "open-source"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gpt4o",
+    "date": "2024-05-13",
+    "category": "model_release",
+    "title": "GPT-4o released by OpenAI — native multimodal model with real-time voice",
+    "description": "OpenAI launches GPT-4o ('omni'), their first natively multimodal model that processes text, audio, and images in a unified architecture. Introduces real-time conversational voice mode.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/hello-gpt-4o/",
     "tags": [
       "openai",
       "gpt",
-      "few-shot",
+      "multimodal",
+      "voice"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gpt4o-mini",
+    "date": "2024-07-18",
+    "category": "model_release",
+    "title": "GPT-4o mini released — replaces GPT-3.5 Turbo as default cheap model",
+    "description": "OpenAI releases GPT-4o mini, a small efficient model that outperforms GPT-3.5 Turbo while being cheaper. Becomes the new default for cost-sensitive applications.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-4o-mini-advancing-cost-efficient-intelligence/",
+    "tags": [
+      "openai",
+      "gpt",
+      "efficient"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-llama31",
+    "date": "2024-07-23",
+    "category": "model_release",
+    "title": "Llama 3.1 released with 405B flagship — first open-source frontier model",
+    "description": "Meta releases Llama 3.1 including a 405B parameter flagship model that competes with GPT-4o and Claude 3.5 Sonnet. First open-source model to be considered genuinely frontier-level.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/blog/meta-llama-3-1/",
+    "tags": [
+      "meta",
+      "llama",
+      "open-source",
+      "frontier"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-mistral-large2",
+    "date": "2024-07-24",
+    "category": "model_release",
+    "title": "Mistral Large 2 released — 128k context, strong at coding and reasoning",
+    "description": "Mistral AI releases Mistral Large 2 (123B parameters) with 128k context, strong multilingual support, and improved coding and math performance. Available via API and for self-hosting.",
+    "source": "Mistral AI",
+    "url": "https://mistral.ai/news/mistral-large-2407/",
+    "tags": [
+      "mistral",
+      "open-weights",
+      "coding"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-openai-o1",
+    "date": "2024-09-12",
+    "category": "model_release",
+    "title": "OpenAI releases o1-preview — reasoning model that thinks before answering",
+    "description": "OpenAI releases o1-preview and o1-mini, a new model family trained to reason through problems step-by-step using reinforcement learning. Significantly outperforms GPT-4o on math, science, and coding at the cost of slower responses.",
+    "source": "OpenAI",
+    "url": "https://openai.com/o1",
+    "tags": [
+      "openai",
+      "o1",
+      "reasoning",
+      "rl"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-llama32",
+    "date": "2024-09-25",
+    "category": "model_release",
+    "title": "Meta releases Llama 3.2 — first multimodal Llama with vision and 1B/3B edge models",
+    "description": "Meta releases Llama 3.2 with two multimodal vision models (11B, 90B) and two lightweight models (1B, 3B) optimized for edge and mobile devices. First Llama models to process images alongside text.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/blog/llama-3-2-connect-2024-vision-edge-mobile-devices/",
+    "tags": [
+      "meta",
+      "llama",
+      "multimodal",
+      "edge"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-llama33",
+    "date": "2024-11-19",
+    "category": "model_release",
+    "title": "Meta releases Llama 3.3 70B — 405B-level performance at a fraction of the cost",
+    "description": "Meta releases Llama 3.3 70B, a text-only model delivering performance comparable to Llama 3.1 405B on key benchmarks while being dramatically cheaper to run. Immediately becomes the go-to open-source model for cost-sensitive deployments.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/blog/meta-llama-3-3/",
+    "tags": [
+      "meta",
+      "llama",
+      "open-source",
+      "efficient"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-o1-full",
+    "date": "2024-12-05",
+    "category": "model_release",
+    "title": "OpenAI releases o1 — full reasoning model available to all ChatGPT Plus users",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/openai-o1/",
+    "tags": [
+      "openai",
+      "reasoning"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gemini2-flash",
+    "date": "2024-12-11",
+    "category": "model_release",
+    "title": "Gemini 2.0 Flash released — faster multimodal model with agentic features",
+    "description": "Google releases Gemini 2.0 Flash, a fast multimodal model with native image generation, tool use, and improved reasoning. Designed for agentic workflows and real-time applications.",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/technologies/gemini/flash/",
+    "tags": [
+      "google",
+      "gemini",
+      "multimodal",
+      "agentic"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-deepseek-v3",
+    "date": "2024-12-26",
+    "category": "model_release",
+    "title": "DeepSeek V3 released — open-source model rivaling GPT-4o trained for $6M",
+    "description": "Chinese AI lab DeepSeek releases V3, a 671B MoE model that matches or beats GPT-4o and Claude 3.5 Sonnet on many benchmarks. Trained for approximately $6M — a fraction of comparable Western models — sparking intense discussion about efficiency.",
+    "source": "DeepSeek",
+    "url": "https://github.com/deepseek-ai/DeepSeek-V3",
+    "tags": [
+      "deepseek",
+      "open-source",
+      "moe",
+      "efficient"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-deepseek-r1",
+    "date": "2025-01-20",
+    "category": "model_release",
+    "title": "DeepSeek R1 released — open-source reasoning model matches o1 performance",
+    "description": "DeepSeek releases R1, an open-source reasoning model trained with reinforcement learning. Achieves performance comparable to OpenAI o1 on math and coding benchmarks at a fraction of the cost.",
+    "source": "DeepSeek",
+    "url": "https://github.com/deepseek-ai/DeepSeek-R1",
+    "tags": [
+      "deepseek",
+      "reasoning",
+      "open-source",
+      "rl"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-o3-mini",
+    "date": "2025-01-31",
+    "category": "model_release",
+    "title": "OpenAI releases o3-mini — fast, affordable reasoning model for STEM",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/openai-o3-mini/",
+    "tags": [
+      "openai",
+      "reasoning"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gemini-20-pro",
+    "date": "2025-02-05",
+    "category": "model_release",
+    "title": "Google releases Gemini 2.0 Pro — leads coding and world knowledge benchmarks",
+    "source": "Google DeepMind",
+    "url": "https://blog.google/technology/google-deepmind/gemini-model-updates-february-2025/",
+    "tags": [
+      "google"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-grok3",
+    "date": "2025-02-17",
+    "category": "model_release",
+    "title": "xAI releases Grok 3 — trained on 100k GPU cluster, tops reasoning benchmarks",
+    "description": "Elon Musk's xAI releases Grok 3, trained on a 100,000 H100 GPU cluster. Claims top performance on math and science reasoning benchmarks. Includes a \"Think\" mode for extended chain-of-thought reasoning.",
+    "source": "xAI",
+    "url": "https://x.ai/blog/grok-3",
+    "tags": [
+      "xai",
+      "grok",
+      "reasoning"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-gpt45",
+    "date": "2025-02-27",
+    "category": "model_release",
+    "title": "OpenAI releases GPT-4.5 — largest and most emotionally intelligent GPT yet",
+    "description": "OpenAI releases GPT-4.5, their largest model trained with unsupervised learning at unprecedented scale. Focuses on improved emotional intelligence, reduced hallucination, and better world knowledge. Available to ChatGPT Pro users first.",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-4-5/",
+    "tags": [
+      "openai",
+      "gpt",
       "scaling"
     ],
     "manual": true
   },
   {
-    "id": "manual-gpt2",
-    "date": "2019-11-05",
+    "id": "manual-gemini25-pro",
+    "date": "2025-03-25",
     "category": "model_release",
-    "title": "OpenAI releases GPT-2 1.5B in full after staged rollout",
-    "description": "After a controversial phased release citing misuse concerns, OpenAI releases the full 1.5B parameter GPT-2. The model generates coherent long-form text and sparks public debate about AI safety and responsible disclosure.",
-    "source": "OpenAI",
-    "url": "https://openai.com/research/gpt-2-1-5b-release",
-    "tags": [
-      "openai",
-      "gpt",
-      "language-model"
-    ],
-    "manual": true
-  },
-  {
-    "id": "manual-bert",
-    "date": "2018-10-11",
-    "category": "model_release",
-    "title": "Google releases BERT — bidirectional language model sets new NLP benchmarks",
-    "description": "Google releases BERT (Bidirectional Encoder Representations from Transformers), pre-trained on Wikipedia and Books. Sets state-of-the-art on 11 NLP tasks. Becomes the dominant approach for NLP fine-tuning for years.",
-    "source": "Google Research",
-    "url": "https://arxiv.org/abs/1810.04805",
+    "title": "Google releases Gemini 2.5 Pro — best reasoning model on public benchmarks",
+    "description": "Google releases Gemini 2.5 Pro with strong reasoning capabilities via an internal thinking process. Tops the LMArena leaderboard and achieves best-in-class results on math, science, and coding evaluations.",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/technologies/gemini/pro/",
     "tags": [
       "google",
-      "bert",
-      "nlp",
-      "language-model"
+      "gemini",
+      "reasoning"
     ],
     "manual": true
   },
   {
-    "id": "manual-gpt1",
-    "date": "2018-06-11",
+    "id": "manual-llama4",
+    "date": "2025-04-05",
     "category": "model_release",
-    "title": "OpenAI releases GPT-1 — first large-scale generative language model",
-    "description": "OpenAI releases the first GPT (Generative Pre-trained Transformer), a 117M parameter model pre-trained on BooksCorpus. Demonstrates that unsupervised pre-training followed by fine-tuning achieves strong NLP results.",
+    "title": "Meta releases Llama 4 — natively multimodal MoE models with 10M context",
+    "description": "Meta releases Llama 4 Scout and Maverick, natively multimodal mixture-of-experts models supporting up to 10 million token context. Scout (17B active params) is the most efficient; Maverick rivals GPT-4o and Gemini 2.0 Flash.",
+    "source": "Meta AI",
+    "url": "https://ai.meta.com/blog/llama-4-multimodal-intelligence/",
+    "tags": [
+      "meta",
+      "llama",
+      "multimodal",
+      "moe",
+      "long-context"
+    ],
+    "manual": true
+  },
+  {
+    "id": "manual-o3-o4mini",
+    "date": "2025-04-16",
+    "category": "model_release",
+    "title": "OpenAI releases o3 and o4-mini — reasoning models with tool use and vision",
+    "description": "OpenAI releases o3 and o4-mini, the latest in their reasoning model line. Both can use tools (web search, Python, image generation) natively during their thinking process. o4-mini achieves o3-level math at a fraction of the cost.",
     "source": "OpenAI",
-    "url": "https://openai.com/research/language-unsupervised",
+    "url": "https://openai.com/o3",
     "tags": [
       "openai",
-      "gpt",
-      "language-model"
+      "o3",
+      "reasoning",
+      "multimodal",
+      "agentic"
     ],
     "manual": true
   },
   {
-    "id": "manual-attention",
-    "date": "2017-06-12",
+    "id": "google-deepmind-gemini-2-5-updates-to-our-family-of-thinking-models",
+    "date": "2025-06-17",
     "category": "model_release",
-    "title": "\"Attention Is All You Need\" — the Transformer architecture is published",
-    "description": "Google Brain researchers introduce the Transformer, replacing recurrent networks with self-attention. Becomes the foundational architecture for every major language model that follows, from BERT to GPT to Claude.",
-    "source": "ArXiv",
-    "url": "https://arxiv.org/abs/1706.03762",
+    "title": "Gemini 2.5: Updates to our family of thinking models",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-25-updates-to-our-family-of-thinking-models/",
     "tags": [
-      "transformer",
-      "attention",
-      "architecture"
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-we-re-expanding-our-gemini-2-5-family-of-models",
+    "date": "2025-06-17",
+    "category": "model_release",
+    "title": "We’re expanding our Gemini 2.5 family of models",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/were-expanding-our-gemini-25-family-of-models/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-driving-scalable-growth-with-openai-o3-gpt-4-1-and-cua",
+    "date": "2025-06-24",
+    "category": "model_release",
+    "title": "Driving scalable growth with OpenAI o3, GPT-4.1, and CUA",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/unify",
+    "tags": [
+      "openai"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hugging-face-measuring-open-source-llama-nemotron-models-on-deepresearch-bench",
+    "date": "2025-08-04",
+    "category": "model_release",
+    "title": "Measuring Open-Source Llama Nemotron Models on DeepResearch Bench",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent",
+    "tags": [
+      "meta",
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-oss",
+    "date": "2025-08-05",
+    "category": "model_release",
+    "title": "OpenAI releases GPT OSS — first open-source model family",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-oss",
+    "tags": [
+      "openai",
+      "open-source"
     ],
     "manual": true
   },
   {
-    "id": "manual-gans",
-    "date": "2014-06-10",
+    "id": "hugging-face-welcome-gpt-oss-the-new-open-source-model-family-from-openai",
+    "date": "2025-08-05",
     "category": "model_release",
-    "title": "Generative Adversarial Networks introduced by Goodfellow et al.",
-    "description": "Ian Goodfellow proposes GANs — a framework where two neural networks compete: a generator creates fake data and a discriminator tries to distinguish it from real data. Becomes the foundation for synthetic image generation.",
-    "source": "ArXiv",
-    "url": "https://arxiv.org/abs/1406.2661",
+    "title": "Welcome GPT OSS, the new open-source model family from OpenAI!",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/welcome-openai-gpt-oss",
     "tags": [
-      "gans",
-      "generative",
-      "deep-learning"
+      "openai",
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-introducing-the-gemini-2-5-computer-use-model",
+    "date": "2025-10-23",
+    "category": "model_release",
+    "title": "Introducing the Gemini 2.5 Computer Use model",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/introducing-the-gemini-25-computer-use-model/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-2-5-flash-lite-is-now-ready-for-scaled-production-use",
+    "date": "2025-10-25",
+    "category": "model_release",
+    "title": "Gemini 2.5 Flash-Lite is now ready for scaled production use",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-25-flash-lite-is-now-ready-for-scaled-production-use/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-oss-safeguard",
+    "date": "2025-10-29",
+    "category": "model_release",
+    "title": "Introducing gpt-oss-safeguard",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-oss-safeguard",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-start-building-with-gemini-3",
+    "date": "2025-11-18",
+    "category": "model_release",
+    "title": "Start building with Gemini 3",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/start-building-with-gemini-3/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-gemini-3",
+    "date": "2025-11-18",
+    "category": "model_release",
+    "title": "Google DeepMind releases Gemini 3",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/a-new-era-of-intelligence-with-gemini-3/",
+    "tags": [
+      "google"
     ],
     "manual": true
   },
   {
-    "id": "manual-alexnet",
-    "date": "2012-09-30",
+    "id": "google-deepmind-build-with-nano-banana-pro-our-gemini-3-pro-image-model",
+    "date": "2025-11-20",
     "category": "model_release",
-    "title": "AlexNet wins ImageNet — deep learning era begins",
-    "description": "Krizhevsky, Sutskever, and Hinton's deep convolutional network crushes the ImageNet competition by a 10-point margin, proving deep learning at scale. Triggers a decade-long AI research explosion.",
-    "source": "NeurIPS 2012",
-    "url": "https://proceedings.neurips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
+    "title": "Build with Nano Banana Pro, our Gemini 3 Pro Image model",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/build-with-nano-banana-pro-our-gemini-3-pro-image-model/",
     "tags": [
-      "deep-learning",
-      "computer-vision",
-      "alexnet",
-      "imagenet"
+      "google"
     ],
-    "manual": true
+    "manual": false
+  },
+  {
+    "id": "hugging-face-we-got-claude-to-fine-tune-an-open-source-llm",
+    "date": "2025-12-04",
+    "category": "model_release",
+    "title": "We Got Claude to Fine-Tune an Open Source LLM",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/hf-skills-training",
+    "tags": [
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-advancing-science-and-math-with-gpt-5-2",
+    "date": "2025-12-11",
+    "category": "model_release",
+    "title": "Advancing science and math with GPT-5.2",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-2-for-science-and-math",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-2",
+    "date": "2025-12-11",
+    "category": "model_release",
+    "title": "Introducing GPT-5.2",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-2",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-flash-frontier-intelligence-built-for-speed",
+    "date": "2025-12-17",
+    "category": "model_release",
+    "title": "Gemini 3 Flash: frontier intelligence built for speed",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-flash-frontier-intelligence-built-for-speed/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hugging-face-the-open-evaluation-standard-benchmarking-nvidia-nemotron-3-nano-wi",
+    "date": "2025-12-17",
+    "category": "model_release",
+    "title": "The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-3-nano-evaluation-recipe",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-2-codex",
+    "date": "2025-12-18",
+    "category": "model_release",
+    "title": "Introducing GPT-5.2-Codex",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-2-codex",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "hugging-face-architectural-choices-in-china-s-open-source-ai-ecosystem-building-",
+    "date": "2026-01-27",
+    "category": "model_release",
+    "title": "Architectural Choices in China's Open-Source AI Ecosystem: Building Beyond DeepSeek",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-2",
+    "tags": [
+      "deepseek",
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-retiring-gpt-4o-gpt-4-1-gpt-4-1-mini-and-openai-o4-mini-in-chatgpt",
+    "date": "2026-01-29",
+    "category": "model_release",
+    "title": "Retiring GPT-4o, GPT-4.1, GPT-4.1 mini, and OpenAI o4-mini in ChatGPT",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/retiring-gpt-4o-and-older-models",
+    "tags": [
+      "openai"
+    ],
+    "manual": false
+  },
+  {
+    "id": "hugging-face-the-future-of-the-global-open-source-ai-ecosystem-from-deepseek-to-",
+    "date": "2026-02-03",
+    "category": "model_release",
+    "title": "The Future of the Global Open-Source AI Ecosystem: From DeepSeek to AI+",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/huggingface/one-year-since-the-deepseek-moment-blog-3",
+    "tags": [
+      "deepseek",
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-3-codex",
+    "date": "2026-02-05",
+    "category": "model_release",
+    "title": "Introducing GPT-5.3-Codex",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-3-codex",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-3-codex-spark",
+    "date": "2026-02-12",
+    "category": "model_release",
+    "title": "Introducing GPT-5.3-Codex-Spark",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-3-codex-spark",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-deep-think-advancing-science-research-and-engineering",
+    "date": "2026-02-12",
+    "category": "model_release",
+    "title": "Gemini 3 Deep Think: Advancing science, research and engineering",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-deep-think-advancing-science-research-and-engineering/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-5-2-derives-a-new-result-in-theoretical-physics",
+    "date": "2026-02-13",
+    "category": "model_release",
+    "title": "GPT-5.2 derives a new result in theoretical physics",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/new-result-theoretical-physics",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-1-pro-a-smarter-model-for-your-most-complex-tasks",
+    "date": "2026-02-19",
+    "category": "model_release",
+    "title": "Gemini 3.1 Pro: A smarter model for your most complex tasks",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-1-pro-a-smarter-model-for-your-most-complex-tasks/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-5-3-instant-smoother-more-useful-everyday-conversations",
+    "date": "2026-03-03",
+    "category": "model_release",
+    "title": "GPT-5.3 Instant: Smoother, more useful everyday conversations",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-3-instant",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-1-flash-lite-built-for-intelligence-at-scale",
+    "date": "2026-03-03",
+    "category": "model_release",
+    "title": "Gemini 3.1 Flash-Lite: Built for intelligence at scale",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-1-flash-lite-built-for-intelligence-at-scale/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-4",
+    "date": "2026-03-05",
+    "category": "model_release",
+    "title": "Introducing GPT-5.4",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-4",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-4-mini-and-nano",
+    "date": "2026-03-17",
+    "category": "model_release",
+    "title": "Introducing GPT-5.4 mini and nano",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-4-mini-and-nano",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable",
+    "date": "2026-03-26",
+    "category": "model_release",
+    "title": "Gemini 3.1 Flash Live: Making audio AI more natural and reliable",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-1-flash-live-making-audio-ai-more-natural-and-reliable/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech",
+    "date": "2026-04-15",
+    "category": "model_release",
+    "title": "Gemini 3.1 Flash TTS: the next generation of expressive AI speech",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-1-flash-tts-the-next-generation-of-expressive-ai-speech/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-openai-privacy-filter",
+    "date": "2026-04-22",
+    "category": "model_release",
+    "title": "Introducing OpenAI Privacy Filter",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-openai-privacy-filter",
+    "tags": [
+      "openai"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-introducing-gpt-5-5",
+    "date": "2026-04-23",
+    "category": "model_release",
+    "title": "Introducing GPT-5.5",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/introducing-gpt-5-5",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-5-5-bio-bug-bounty",
+    "date": "2026-04-23",
+    "category": "model_release",
+    "title": "GPT-5.5 Bio Bug Bounty",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-bio-bug-bounty",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "hugging-face-introducing-nvidia-nemotron-3-nano-omni-long-context-multimodal-int",
+    "date": "2026-04-28",
+    "category": "model_release",
+    "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
+    "source": "Hugging Face",
+    "url": "https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence",
+    "tags": [
+      "multimodal",
+      "agentic"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-gpt-5-5-instant-smarter-clearer-and-more-personalized",
+    "date": "2026-05-05",
+    "category": "model_release",
+    "title": "GPT-5.5 Instant: smarter, clearer, and more personalized",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-instant",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "openai-scaling-trusted-access-for-cyber-with-gpt-5-5-and-gpt-5-5-cyber",
+    "date": "2026-05-07",
+    "category": "model_release",
+    "title": "Scaling Trusted Access for Cyber with GPT-5.5 and GPT-5.5-Cyber",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/gpt-5-5-with-trusted-access-for-cyber",
+    "tags": [],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-gemini-3-5-frontier-intelligence-with-action",
+    "date": "2026-05-15",
+    "category": "model_release",
+    "title": "Gemini 3.5: frontier intelligence with action",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "openai-warp-s-big-bet-on-building-open-source-with-gpt-5-5",
+    "date": "2026-05-27",
+    "category": "model_release",
+    "title": "Warp’s big bet on building open source with GPT-5.5",
+    "source": "OpenAI",
+    "url": "https://openai.com/index/warp",
+    "tags": [
+      "open-source"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-ai-9-demos-of-gemini-omni-and-gemini-3-5-in-action",
+    "date": "2026-05-29",
+    "category": "model_release",
+    "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+    "source": "Google AI",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
+  },
+  {
+    "id": "google-deepmind-fluid-natural-voice-translation-with-gemini-3-5-live-translate",
+    "date": "2026-06-09",
+    "category": "model_release",
+    "title": "Fluid, natural voice translation with Gemini 3.5 Live Translate",
+    "source": "Google DeepMind",
+    "url": "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
+    "tags": [
+      "google"
+    ],
+    "manual": false
   }
 ]
