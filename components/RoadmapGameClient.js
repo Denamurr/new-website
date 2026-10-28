@@ -1060,7 +1060,7 @@ function IntroScreen({ onStart }) {
               ['The goal', 'You have 5 sprints (15 questions) to ship a product. Pay attention to scope creep, team morale, team trust, the code (technology), and product quality.'],
               ['Tradeoffs', 'Every choice is a tradeoff. Pick a response and live with the consequence.'],
               ['Slack interrupts', 'Urgent Slack messages will interrupt you — the CEO with a quick thought. Handle it.'],
-              ['Your PM style', 'There’s no scoring. At the end, your pattern of choices reveals your PM archetype — not just how the launch went.'],
+              ['Your PM style', 'Which answers you choose determines your PM style — not just how the launch went.'],
             ].map(([title, text], i) => (
               <div key={i} style={{ display: 'flex', gap: 11, fontSize: 14, lineHeight: 1.5, color: '#42526e' }}>
                 <span style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 15, color: '#ec5a8f', flexShrink: 0 }}>{i + 1}</span>
