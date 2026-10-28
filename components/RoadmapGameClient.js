@@ -59,12 +59,12 @@ const STAGE_POOLS = {
     },
     {
       id: 'DISC-005', epic: 'DISCOVERY', epicColor: 'bg-purple-100 text-purple-700',
-      scenario: "The CEO wants to invite three enterprise customers to a vision alignment session before you finalize discovery outputs. The invites have already gone out. You can see them on the calendar.",
+      scenario: "The CEO has invited three enterprise customers to a “vision alignment session” before you’ve finished discovery. The invitations are already out, and you’re on the calendar.",
       choices: [
-        { label: "Run it. Customer insight is good.", desc: "Customer conversations are research. Sort of.",    effects: { quality: 1, scope: -1 }, consequence: "One customer casually mentions a problem nobody on the team had considered. Six months of roadmap planning immediately enter the witness protection program." },
-        { label: "Redirect to structured interviews", desc: "Reframe the chaos as a methodology.",             effects: { quality: 1, trust: -1 },            consequence: "The CEO wanted a vision session. The customers got interview questions. Everyone was mildly annoyed, but the notes were surprisingly useful." },
-        { label: "Let the CEO run it.",               desc: "What could possibly go wrong?",                   effects: { trust: 1, quality: -1 },             consequence: "Ninety minutes later the customers know everything about the product and you've learned absolutely nothing about them." },
-        { label: "Combine it with the sprint review", desc: "Two birds, one deeply confused meeting.",         effects: { trust: 1, morale: -1 }, consequence: "Customers watched bug fixes. Engineers watched customer feedback. Nobody knew which audience they were supposed to be performing for." },
+        { label: "Turn it into a discovery session",              desc: "If they're going to talk, you might as well learn something.",        effects: { quality: 1, scope: -1 }, consequence: "The 'vision alignment session' becomes forty-five minutes of unplanned but genuinely useful discovery. The CEO calls it strategic. You call it Tuesday." },
+        { label: "Accept and take control of the agenda",         desc: "The CEO booked the meeting. You're bringing the guardrails.",         effects: { trust: 1, scope: -1 },   consequence: "You show up with an agenda doc. The CEO shows up with vibes. The customers leave with a clearer picture than usual — and so do you." },
+        { label: "Let the CEO work their magic",                  desc: "Nothing says product strategy like three customers and an executive with a whiteboard.", effects: { trust: 1, quality: -1 }, consequence: "Ninety minutes later the customers know everything about the product and you've learned absolutely nothing about them." },
+        { label: "Reschedule until discovery is complete",        desc: "Sorry, we can't align on the vision until we've discovered what the vision is.",         effects: { quality: 1, trust: -1 }, consequence: "The CEO reschedules, mildly confused about why discovery needs to happen before the discovery meeting. The customers get rebooked for a date that is, coincidentally, also before discovery is complete." },
       ],
     },
     {
@@ -594,7 +594,7 @@ const TIER_COLORS = ['#de350b', '#ff991f', '#ffab00', '#0052cc', '#00875a']
 
 // ── GameNav ───────────────────────────────────────────────────────────────────
 
-function GameNav({ crumb, dayLabel, onRestart }) {
+function GameNav({ crumb, dayLabel, onRestart, onBack }) {
   const nav = { background: '#fff', borderBottom: '1px solid #dfe1e6', display: 'flex', alignItems: 'center', gap: 14, padding: '0 20px', height: 48, position: 'sticky', top: 0, zIndex: 10 }
   return (
     <div style={nav}>
@@ -603,6 +603,15 @@ function GameNav({ crumb, dayLabel, onRestart }) {
       </span>
       <div style={{ display: 'flex', alignItems: 'center', gap: 7, color: '#6b778c', fontSize: 13, fontFamily: '"Droid Sans", sans-serif' }}>
         <Link href="/" style={{ color: '#6b778c', textDecoration: 'none' }}>Home</Link>
+        {onBack && (
+          <>
+            <span style={{ opacity: .45 }}>/</span>
+            <button
+              onClick={onBack}
+              style={{ color: '#0052cc', background: 'none', border: 'none', padding: 0, font: 'inherit', fontWeight: 600, cursor: 'pointer' }}
+            >← Board</button>
+          </>
+        )}
         <span style={{ opacity: .45 }}>/</span>
         <span style={{ color: '#172b4d', fontWeight: 600 }}>{crumb}</span>
       </div>
@@ -921,7 +930,7 @@ function SlackModal({ card, onChoice, chosen, onContinue }) {
 
 // ── BoardTicket ───────────────────────────────────────────────────────────────
 
-function BoardTicket({ card, epic, clickable, done, onCardClick }) {
+function BoardTicket({ card, epic, clickable, locked, done, onCardClick }) {
   const [hovered, setHovered] = useState(false)
   return (
     <div
@@ -930,30 +939,27 @@ function BoardTicket({ card, epic, clickable, done, onCardClick }) {
       onMouseLeave={clickable ? () => setHovered(false) : undefined}
       style={{
         background: '#fff',
-        border: `1px solid ${hovered ? '#0065ff' : '#dfe1e6'}`,
+        border: `1.5px solid ${hovered ? '#0065ff' : clickable && !done ? '#4c9aff' : '#dfe1e6'}`,
         borderRadius: 4,
         padding: '12px 14px',
         marginBottom: 8,
         cursor: clickable ? 'pointer' : 'default',
-        opacity: done ? 0.6 : 1,
-        boxShadow: hovered ? '0 2px 8px rgba(0,101,255,.18)' : '0 1px 2px rgba(9,30,66,.08)',
+        opacity: locked ? 0.5 : done ? 0.6 : 1,
+        boxShadow: hovered ? '0 2px 8px rgba(0,101,255,.18)' : clickable && !done ? '0 1px 3px rgba(0,82,204,.12)' : '0 1px 2px rgba(9,30,66,.08)',
         transition: 'border-color .15s, box-shadow .15s',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
         <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '.06em', textTransform: 'uppercase', padding: '2px 7px', borderRadius: 3, background: epic.bg, color: epic.color, fontFamily: '"Droid Sans", sans-serif' }}>
           {card.epic}
         </span>
         {done && <span style={{ marginLeft: 'auto', fontSize: 11, color: '#00875a', fontWeight: 700, fontFamily: '"Droid Sans", sans-serif' }}>✓ Done</span>}
       </div>
-      <p style={{ fontFamily: '"Droid Sans", sans-serif', fontSize: 13, lineHeight: 1.45, color: done ? '#8993a4' : '#6b778c', fontStyle: 'italic', margin: '0 0 10px' }}>
-        {done ? 'Resolved — details locked in.' : 'Open this ticket to see the dilemma.'}
-      </p>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 }}>
         <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#6b778c' }}>{card.id}</span>
         {clickable && (
           <span style={{ fontSize: 11, color: hovered ? '#0052cc' : '#6b778c', fontWeight: 600, fontFamily: '"Droid Sans", sans-serif', transition: 'color .15s' }}>
-            Open →
+            {done ? 'Review →' : 'Open →'}
           </span>
         )}
       </div>
@@ -968,9 +974,9 @@ function JiraBoard({ stageIdx, stageCards, doneSet, onCardClick }) {
   const done  = stageCards.filter(c =>  doneSet.has(c.seqIdx))
 
   const COLUMNS = [
-    { id: 'todo',   label: 'To Do',       dotColor: '#dfe1e6', cards: todos, clickable: true  },
-    { id: 'inprog', label: 'In Progress',  dotColor: '#0052cc', cards: [],    clickable: false },
-    { id: 'done',   label: 'Done',         dotColor: '#00875a', cards: done,  clickable: false },
+    { id: 'todo',   label: 'To Do',       dotColor: '#dfe1e6', cards: todos },
+    { id: 'inprog', label: 'In Progress',  dotColor: '#0052cc', cards: [] },
+    { id: 'done',   label: 'Done',         dotColor: '#00875a', cards: done },
   ]
 
   return (
@@ -1000,15 +1006,18 @@ function JiraBoard({ stageIdx, stageCards, doneSet, onCardClick }) {
               </span>
             </div>
             <div style={{ background: '#ebecf0', borderRadius: 6, padding: 8, minHeight: 100 }}>
-              {col.cards.map(card => {
+              {col.cards.map((card, i) => {
                 const epic = EPIC_STYLES[card.epic] || { bg: '#f4f5f7', color: '#6b778c' }
+                const isTodo = col.id === 'todo'
+                const isDone = col.id === 'done'
                 return (
                   <BoardTicket
                     key={card.id}
                     card={card}
                     epic={epic}
-                    clickable={col.clickable}
-                    done={col.id === 'done'}
+                    clickable={isTodo ? i === 0 : isDone}
+                    locked={isTodo && i > 0}
+                    done={isDone}
                     onCardClick={onCardClick}
                   />
                 )
@@ -1210,6 +1219,7 @@ export default function RoadmapGameClient() {
   const [doneSet,   setDoneSet]             = useState(new Set())
   const [stats,     setStats]               = useState(INITIAL_STATS)
   const [chosen,    setChosen]              = useState(null)
+  const [answers,   setAnswers]             = useState({})  // seqIdx -> { effects, consequence, index }
   const [sequence,  setSequence]            = useState([])
   const [pendingLegendary, setPendingLeg]   = useState(null)
 
@@ -1235,21 +1245,34 @@ export default function RoadmapGameClient() {
     setDoneSet(new Set())
     setStats(INITIAL_STATS)
     setChosen(null)
+    setAnswers({})
     setActiveIdx(null)
     setViewMode('board')
     setPendingLeg(null)
     setGameState('playing')
   }
 
+  // Opening a resolved ticket reviews the answer you already gave it;
+  // opening an unresolved one starts fresh.
   function handleCardClick(seqIdx) {
     setActiveIdx(seqIdx)
-    setChosen(null)
+    setChosen(doneSet.has(seqIdx) ? (answers[seqIdx] ?? null) : null)
     setViewMode('card')
   }
 
   function handleChoice(choice, index) {
     setStats(prev => applyEffects(prev, choice.effects))
-    setChosen({ effects: choice.effects, consequence: choice.consequence, index })
+    const result = { effects: choice.effects, consequence: choice.consequence, index }
+    setChosen(result)
+    setAnswers(prev => ({ ...prev, [activeIdx]: result }))
+  }
+
+  // Leave a card without resolving it (not yet chosen) or close out
+  // a review of an already-resolved card — neither touches doneSet.
+  function handleCancelCard() {
+    setActiveIdx(null)
+    setChosen(null)
+    setViewMode('board')
   }
 
   function handleBackToBoard() {
@@ -1295,6 +1318,7 @@ export default function RoadmapGameClient() {
     setDoneSet(new Set())
     setStats(INITIAL_STATS)
     setChosen(null)
+    setAnswers({})
     setSequence([])
     setPendingLeg(null)
   }
@@ -1309,22 +1333,24 @@ export default function RoadmapGameClient() {
 
   // ── Card view ──────────────────────────────────────────────────────────────
   if (viewMode === 'card' && activeCard) {
+    const isReviewing = doneSet.has(activeIdx)
     return (
       <div style={{ minHeight: '100vh', background: '#f4f5f7', fontFamily: '"Droid Sans", sans-serif' }}>
         <GameNav
           crumb={`Sprint ${activeCard.stage + 1} — ${STAGES[activeCard.stage]}`}
           dayLabel={`Sprint ${activeCard.stage + 1} of 5`}
           onRestart={handleRestart}
+          onBack={handleCancelCard}
         />
         <div className="pm-game-wrap" style={{ maxWidth: 980, margin: '0 auto', padding: '34px 24px 60px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 28, alignItems: 'start' }}>
           <IssueCard
             card={activeCard}
             onChoice={handleChoice}
             chosen={chosen}
-            onContinue={handleBackToBoard}
-            continueLabel="← Back to jira"
+            onContinue={isReviewing ? handleCancelCard : handleBackToBoard}
+            continueLabel={isReviewing ? '← Back to board' : '← Back to jira'}
           />
-          <StatRail stats={stats} effects={chosen?.effects} />
+          <StatRail stats={stats} effects={isReviewing ? null : chosen?.effects} />
         </div>
       </div>
     )
