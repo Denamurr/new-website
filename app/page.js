@@ -132,7 +132,7 @@ export default function Home() {
             {/* Featured card */}
             <a
               className="tool-card tool-card-featured"
-              href="https://www.denamurr.com/tools/roadmap-game"
+              href="https://www.denamurr.com/tools/pm-personality-game"
               style={{ gridColumn: 'span 12' }}
             >
               <span style={{ fontSize: 40, lineHeight: 1, marginBottom: 'auto' }}>🎮</span>
@@ -144,11 +144,11 @@ export default function Home() {
                 fontFamily: '"Anton", sans-serif', fontWeight: 400,
                 fontSize: 'clamp(28px, 3.2vw, 40px)', lineHeight: 0.98,
                 letterSpacing: '-0.01em', margin: '18px 0 10px', display: 'block'
-              }}>PM Survival Game</span>
+              }}>What Kind of Product Manager Are You?</span>
               <span className="tool-desc" style={{
                 fontFamily: '"Inter", sans-serif', fontSize: 15,
                 lineHeight: 1.5, maxWidth: '38ch', display: 'block'
-              }}>Navigate the chaos of a product launch. Make prioritization calls, handle stakeholders, and survive the roadmap.</span>
+              }}>You have 5 sprints (15 questions) to ship a product. Watch scope creep, team morale, trust, the code, and product quality.</span>
               <span style={{
                 marginTop: 18, fontFamily: '"Inter", sans-serif',
                 fontSize: 14, fontWeight: 600, display: 'inline-flex',

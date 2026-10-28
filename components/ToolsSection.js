@@ -3,10 +3,10 @@ import Link from 'next/link'
 
 const tools = [
   {
-    href: '/tools/roadmap-game',
-    title: 'PM Survival Game',
+    href: '/tools/pm-personality-game',
+    title: 'What Kind of Product Manager Are You?',
     label: 'Interactive',
-    description: 'Navigate the chaos of a product launch. Make prioritization calls, handle stakeholders, and survive the roadmap.',
+    description: 'You have 5 sprints (15 questions) to ship a product. Watch scope creep, team morale, trust, the code, and product quality.',
     image: null,
     gradient: 'linear-gradient(135deg, #0f2b1f 0%, #1a4a32 50%, #0a1f17 100%)',
     icon: '🎮',

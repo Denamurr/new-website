@@ -946,8 +946,8 @@ function BoardTicket({ card, epic, clickable, done, onCardClick }) {
         </span>
         {done && <span style={{ marginLeft: 'auto', fontSize: 11, color: '#00875a', fontWeight: 700, fontFamily: '"Droid Sans", sans-serif' }}>✓ Done</span>}
       </div>
-      <p style={{ fontFamily: '"Droid Sans", sans-serif', fontSize: 13, lineHeight: 1.45, color: '#172b4d', margin: '0 0 10px' }}>
-        {card.scenario.length > 88 ? card.scenario.slice(0, 88) + '…' : card.scenario}
+      <p style={{ fontFamily: '"Droid Sans", sans-serif', fontSize: 13, lineHeight: 1.45, color: done ? '#8993a4' : '#6b778c', fontStyle: 'italic', margin: '0 0 10px' }}>
+        {done ? 'Resolved — details locked in.' : 'Open this ticket to see the dilemma.'}
       </p>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#6b778c' }}>{card.id}</span>
@@ -1037,10 +1037,10 @@ function IntroScreen({ onStart }) {
         {/* Hero row */}
         <div className="pm-intro-hero" style={{ display: 'flex', gap: 30, alignItems: 'flex-start' }}>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: '#ec5a8f' }}>A realistic PM simulation</div>
-            <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 700, fontSize: 'clamp(40px,7vw,62px)', lineHeight: .98, letterSpacing: '.005em', textTransform: 'uppercase', margin: '12px 0 0', color: '#172b4d' }}>The PM Survival Game</h1>
+            <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: '#ec5a8f' }}>A realistic PM decision game</div>
+            <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 700, fontSize: 'clamp(34px,6vw,56px)', lineHeight: 1.02, letterSpacing: '.005em', textTransform: 'uppercase', margin: '12px 0 0', color: '#172b4d' }}>What Kind of Product Manager Are You?</h1>
             <p style={{ fontSize: 16, lineHeight: 1.6, color: '#42526e', margin: '16px 0 0', maxWidth: '46ch' }}>
-              Think you can ship the product without burning out the team, blowing the roadmap, or losing your stakeholders&rsquo; trust? Five sprints. Fifteen tickets. No good options.
+              You have 5 sprints — 15 tickets — to ship a product. Watch scope creep, team morale, stakeholder trust, the code, and product quality. There&rsquo;s no score. How you handle the tradeoffs is the answer.
             </p>
           </div>
           {/* Tilted ticket badge */}
@@ -1060,7 +1060,7 @@ function IntroScreen({ onStart }) {
               ['5 sprints', 'Take the product from discovery to launch across 5 sprints — each with 3 Jira tickets to resolve, in order.'],
               ['Tradeoffs', 'Every choice is a tradeoff. Pick a response and live with the consequence.'],
               ['Slack interrupts', 'Urgent Slack messages will interrupt you — the CEO with a quick thought. Handle it.'],
-              ['5 / 10 start', 'Every stat starts at 5 / 10. Keep them balanced — your lowest stat decides how the launch goes.'],
+              ['Your PM style', 'There’s no scoring. At the end, your pattern of choices reveals your PM archetype — not just how the launch went.'],
             ].map(([title, text], i) => (
               <div key={i} style={{ display: 'flex', gap: 11, fontSize: 14, lineHeight: 1.5, color: '#42526e' }}>
                 <span style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 15, color: '#ec5a8f', flexShrink: 0 }}>{i + 1}</span>
@@ -1101,7 +1101,7 @@ function IntroScreen({ onStart }) {
             className="pm-start-btn"
             style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 19, letterSpacing: '.03em', textTransform: 'uppercase', background: '#ec5a8f', color: '#fff', border: 'none', borderRadius: 8, padding: '15px 40px', cursor: 'pointer', boxShadow: '0 4px 0 #c8407a' }}
           >Start Sprint 1 · Discovery</button>
-          <p style={{ fontSize: 12.5, color: '#6b778c', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>15 tickets · Slack interrupts · no good options</p>
+          <p style={{ fontSize: 12.5, color: '#6b778c', margin: 0, fontFamily: '"Droid Sans", sans-serif' }}>15 tickets · Slack interrupts · find out your PM style</p>
         </div>
       </div>
     </div>

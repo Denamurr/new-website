@@ -354,7 +354,7 @@ body {
   opacity: 0.25;
 }
 
-/* ── PM Survival Game ────────────────────────────────────────────────────── */
+/* ── PM Personality Game ────────────────────────────────────────────────────── */
 
 @keyframes gameRev {
   from { opacity: 0; transform: translateY(-6px); }

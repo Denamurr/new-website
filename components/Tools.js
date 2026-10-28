@@ -10,11 +10,11 @@ export default function Tools() {
       href: '/tools/rice'
     },
     {
-      title: 'NEW: The PM Survival Game',
-      description: 'Think you can launch a product 0 to 1?',
+      title: 'NEW: What Kind of Product Manager Are You?',
+      description: '5 sprints, 15 questions. Watch scope creep, morale, trust, the code, and product quality.',
       status: 'Live',
       icon: '🗺️',
-      href: '/tools/roadmap-game'
+      href: '/tools/pm-personality-game'
     },
     {
       title: 'BCG Matrix Analyzer',
