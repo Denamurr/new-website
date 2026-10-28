@@ -1040,7 +1040,7 @@ function IntroScreen({ onStart }) {
             <div style={{ fontFamily: '"Droid Sans", sans-serif', fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: '#ec5a8f' }}>A realistic PM decision game</div>
             <h1 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 700, fontSize: 'clamp(34px,6vw,56px)', lineHeight: 1.02, letterSpacing: '.005em', textTransform: 'uppercase', margin: '12px 0 0', color: '#172b4d' }}>What Kind of Product Manager Are You?</h1>
             <p style={{ fontSize: 16, lineHeight: 1.6, color: '#42526e', margin: '16px 0 0', maxWidth: '46ch' }}>
-              You have 5 sprints — 15 tickets — to ship a product. Watch scope creep, team morale, stakeholder trust, the code, and product quality. There&rsquo;s no score. How you handle the tradeoffs is the answer.
+              Think you can ship the product without burning out the team, blowing the roadmap, or losing your stakeholders&rsquo; trust? Five sprints. Fifteen tickets. No good options.
             </p>
           </div>
           {/* Tilted ticket badge */}
@@ -1057,7 +1057,7 @@ function IntroScreen({ onStart }) {
           <h2 style={{ fontFamily: '"Oswald", sans-serif', fontWeight: 600, fontSize: 13, letterSpacing: '.12em', textTransform: 'uppercase', color: '#6b778c', margin: '0 0 16px' }}>How to Play</h2>
           <div className="pm-how-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px 26px' }}>
             {[
-              ['5 sprints', 'Take the product from discovery to launch across 5 sprints — each with 3 Jira tickets to resolve, in order.'],
+              ['The goal', 'You have 5 sprints (15 questions) to ship a product. Pay attention to scope creep, team morale, team trust, the code (technology), and product quality.'],
               ['Tradeoffs', 'Every choice is a tradeoff. Pick a response and live with the consequence.'],
               ['Slack interrupts', 'Urgent Slack messages will interrupt you — the CEO with a quick thought. Handle it.'],
               ['Your PM style', 'There’s no scoring. At the end, your pattern of choices reveals your PM archetype — not just how the launch went.'],
